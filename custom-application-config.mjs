@@ -13,7 +13,7 @@ const config = {
     },
     production: {
       applicationId: 'TODO',
-      url: 'https://your_app_hostname.com',
+      url: 'https://ct-reporting-tool.vercel.app/',
     },
   },
   oAuthScopes: {
@@ -30,6 +30,24 @@ const config = {
     {
       uriPath: 'channels',
       defaultLabel: 'Channels',
+      labelAllLocales: [],
+      permissions: [PERMISSIONS.View],
+    },
+    {
+      uriPath: 'materials',
+      defaultLabel: 'Materials',
+      labelAllLocales: [],
+      permissions: [PERMISSIONS.View],
+    },
+    {
+      uriPath: 'product-types',
+      defaultLabel: 'ProductTypes',
+      labelAllLocales: [],
+      permissions: [PERMISSIONS.View],
+    },
+    {
+      uriPath: 'all-products',
+      defaultLabel: 'ProductTypes',
       labelAllLocales: [],
       permissions: [PERMISSIONS.View],
     },

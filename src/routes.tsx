@@ -1,8 +1,11 @@
-import type { ReactNode } from 'react';
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
-import Spacings from '@commercetools-uikit/spacings';
-import Channels from './components/channels';
-import Welcome from './components/welcome';
+import type { ReactNode } from "react";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
+import Spacings from "@commercetools-uikit/spacings";
+import Channels from "./components/channels";
+import Welcome from "./components/welcome";
+import Materials from "./components/materials";
+import ProductTypes from "./components/unique-product-types";
+import AllProducts from "./components/all-products";
 
 type ApplicationRoutesProps = {
   children?: ReactNode;
@@ -27,6 +30,15 @@ const ApplicationRoutes = (_props: ApplicationRoutesProps) => {
         <Route path={`${match.path}/channels`}>
           <Channels linkToWelcome={match.url} />
         </Route>
+        <Route path={`${match.path}/materials`}>
+          <Materials />
+        </Route>
+        <Route path={`${match.path}/product-types`}>
+          <ProductTypes />
+        </Route>
+        <Route path={`${match.path}/all-products`}>
+          <AllProducts />
+        </Route>
         <Route>
           <Welcome />
         </Route>
@@ -34,6 +46,6 @@ const ApplicationRoutes = (_props: ApplicationRoutesProps) => {
     </Spacings.Inset>
   );
 };
-ApplicationRoutes.displayName = 'ApplicationRoutes';
+ApplicationRoutes.displayName = "ApplicationRoutes";
 
 export default ApplicationRoutes;

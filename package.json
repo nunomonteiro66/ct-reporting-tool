@@ -16,7 +16,9 @@
     "format": "prettier --write '**/*.{js,ts,tsx}'",
     "typecheck": "tsc --noEmit",
     "versions:appkit": "manypkg upgrade @commercetools-frontend",
-    "versions:uikit": "manypkg upgrade @commercetools-uikit"
+    "versions:uikit": "manypkg upgrade @commercetools-uikit",
+    "tailwind:init": "tailwindcss init -p",
+    "tailwind:build": "tailwindcss -i ./src/index.css -o ./dist/output.css --watch"
   },
   "dependencies": {
     "@apollo/client": "3.13.9",
@@ -37,8 +39,10 @@
     "@commercetools-frontend/mc-dev-authentication": "25.2.0",
     "@commercetools-frontend/mc-scripts": "25.2.0",
     "@commercetools-frontend/permissions": "25.2.0",
+    "@commercetools-uikit/collapsible-panel": "^20.3.1",
     "@commercetools-uikit/constraints": "^20.3.0",
     "@commercetools-uikit/data-table": "^20.3.0",
+    "@commercetools-uikit/filters": "^20.3.1",
     "@commercetools-uikit/flat-button": "^20.3.0",
     "@commercetools-uikit/grid": "^20.3.0",
     "@commercetools-uikit/hooks": "^20.3.0",
@@ -49,6 +53,7 @@
     "@commercetools-uikit/localized-text-input": "^20.3.0",
     "@commercetools-uikit/notifications": "^20.3.0",
     "@commercetools-uikit/pagination": "^20.3.0",
+    "@commercetools-uikit/primary-button": "^20.3.1",
     "@commercetools-uikit/select-field": "^20.3.0",
     "@commercetools-uikit/spacings": "^20.3.0",
     "@commercetools-uikit/text": "^20.3.0",
@@ -58,6 +63,7 @@
     "@commercetools/sync-actions": "^5.14.0",
     "@emotion/react": "^11.14.0",
     "@formatjs/cli": "6.7.2",
+    "@graphql-eslint/eslint-plugin": "^4.4.0",
     "@jest/types": "29.6.3",
     "@manypkg/cli": "0.25.0",
     "@testing-library/dom": "^10.4.0",
@@ -71,7 +77,6 @@
     "@types/testing-library__jest-dom": "^5.14.9",
     "eslint": "8.57.1",
     "eslint-formatter-pretty": "4.1.0",
-    "@graphql-eslint/eslint-plugin": "^4.4.0",
     "formik": "2.4.6",
     "graphql": "^16.8.0",
     "graphql-tag": "^2.12.6",
@@ -83,6 +88,7 @@
     "omit-empty-es": "1.2.0",
     "prettier": "2.8.8",
     "react": "19.0.0",
+    "react-csv": "^2.2.2",
     "react-dom": "19.0.0",
     "react-intl": "^7.1.4",
     "react-redux": "9.2.0",
@@ -99,5 +105,9 @@
     "headers-polyfill": "3.2.5",
     "nwsapi": "2.2.7"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "autoprefixer": "^10.4.24",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19"
+  }
 }

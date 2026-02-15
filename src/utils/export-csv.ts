@@ -1,0 +1,102 @@
+import { useEffect, useMemo, useState } from "react";
+import {
+  useGetAllProductTypes,
+  useGetProductTypes,
+} from "../hooks/use-products-connector/use-products-graphql";
+
+//extract all unique attributes, regardless of product type
+export function extractUniqueAttributes(productTypes: any) {
+  //get a list of unique attributes (values only) (without the group)
+  const uniqueAttributesValues = new Set();
+
+  //get a list of unique attributes (without the group)
+  const uniqueAttributesComplete = [];
+
+  productTypes.forEach((group) => {
+    group.attributes?.forEach((attr) => {
+      if (!uniqueAttributesValues.has(attr.value)) {
+        uniqueAttributesValues.add(attr.value);
+        uniqueAttributesComplete.push(attr);
+      }
+    });
+  });
+
+  return { uniqueAttributesComplete, uniqueAttributesComplete };
+}
+
+function mapAllAttributes(uniqueAttributesComplete, variant, productType) {
+  // Convert variant.attributes to a map for faster lookup
+  const variantAttributesMap = Object.fromEntries(
+    (variant.attributes ?? []).map((attr) => [attr.name, attr])
+  );
+
+  // Convert productType.attributes to a Set for quick existence check
+  const productTypeAttrSet = new Set(
+    (productType.attributes ?? []).map((attr) => attr.value ?? attr.name)
+  );
+
+  return uniqueAttributesComplete.reduce((acc, uniqueAttr) => {
+    const key = uniqueAttr.value;
+    const label = uniqueAttr.label;
+
+    let value = "";
+
+    const variantAttr = variantAttributesMap[key];
+
+    if (variantAttr) {
+      const val = variantAttr.value;
+
+      if (typeof val === "object" && val !== null) {
+        // Pick English if exists, otherwise first key with language code
+        const [firstKey] = Object.keys(val);
+        value = val.en ?? (firstKey ? `${val[firstKey]} (${firstKey})` : "");
+      } else {
+        value = val ?? "";
+      }
+    } else {
+      // If attribute exists in product type, leave empty; else "N/A"
+      value = productTypeAttrSet.has(key) ? "" : "N/A";
+    }
+
+    acc[key] = { label, value };
+    return acc;
+  }, {});
+}
+
+export function mapProducts(allProducts, productTypes) {
+  //1º get all product types, and their respective attributes
+  const { uniqueAttributesValues, uniqueAttributesComplete } =
+    extractUniqueAttributes(productTypes);
+
+  //for each product in list
+  return allProducts.flatMap((product) => {
+    //extract all variants from the product (both masterVariant and variants)
+    const variants = [...product.variants, product.masterVariant];
+
+    //get the product type (with all attributes) for the product type
+    const productType = productTypes.find(
+      (type) => type.product_type_value === product.productType.obj.key
+    );
+
+    //for each variant
+    //each variant is a row, with the data from the parent (the product)
+    return variants.map((variant) => {
+      //map from the all attributes
+      const newAttributes = mapAllAttributes(
+        uniqueAttributesComplete,
+        variant,
+        productType
+      );
+      return {
+        ...product,
+        sku: variant.sku,
+        prices: variant.prices,
+        attributes: newAttributes,
+      };
+    });
+  });
+}
+
+export function exportCsv(allProducts, productTypes) {
+  mapProducts(allProducts, productTypes);
+}

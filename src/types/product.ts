@@ -1,0 +1,31 @@
+export type TProduct = {
+  id: string;
+  sku: string;
+  product_name: string;
+  product_description: string;
+  product_category: string;
+  product_type_key: string;
+  product_type_name: string;
+  type: string;
+  material: string;
+  colour: string;
+  cross_section: string;
+  length_type: string;
+  specification: string;
+  minimal_temperature: string;
+  ean: string;
+  el: string;
+  length: string;
+  packaging: string;
+  application: string;
+  country_specific: string;
+  customer_specific: string;
+  plants: string;
+  sales_organizations: string;
+  product_selection: string;
+  image: string;
+  datasheet: string;
+  dop_doc: string;
+  epd: string;
+  variants: any; //!!!!
+};
