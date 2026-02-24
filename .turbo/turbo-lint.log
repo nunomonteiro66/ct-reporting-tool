@@ -1,0 +1,3 @@
+[?9001h[?1004h[?25l[2J[m[H]0;C:\WINDOWS\system32\cmd.exe [?25h[?25l
+> @repo/ct-reporting-tool@1.0.0 lint C:\Users\NunoMonteiro_8h5eic3\Documents\NKT\Track My Drum\apps\ct-reporting-tool
+> eslint[5;1H[?25h[?9001l[?1004l

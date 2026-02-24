@@ -1,29 +1,32 @@
-import { useEffect, useMemo, useState } from "react";
-import {
-  useGetAllProductTypes,
-  useGetProductTypes,
-} from "../hooks/use-products-connector/use-products-graphql";
+const METADATA_TYPES = {
+  "DOP/DOC metadata type": "dop",
+  "EPD metadata type": "epd",
+  "Data sheet metadata type": "datasheet",
+};
 
 //extract all unique attributes, regardless of product type
 export function extractUniqueAttributes(productTypes: any) {
   //get a list of unique attributes (values only) (without the group)
-  const uniqueAttributesValues = new Set();
+  const uniqueAttributesValuesSet = new Set();
 
   //get a list of unique attributes (without the group)
   const uniqueAttributesComplete = [];
 
   productTypes.forEach((group) => {
     group.attributes?.forEach((attr) => {
-      if (!uniqueAttributesValues.has(attr.value)) {
-        uniqueAttributesValues.add(attr.value);
+      if (!uniqueAttributesValuesSet.has(attr.value)) {
+        uniqueAttributesValuesSet.add(attr.value);
         uniqueAttributesComplete.push(attr);
       }
     });
   });
 
-  return { uniqueAttributesComplete, uniqueAttributesComplete };
+  const uniqueAttributesValues = [...uniqueAttributesValuesSet];
+
+  return { uniqueAttributesValues, uniqueAttributesComplete };
 }
 
+//for each variant, add all the availabel attributes, and set "N/A" to the attributes unavailable to the product type
 function mapAllAttributes(uniqueAttributesComplete, variant, productType) {
   // Convert variant.attributes to a map for faster lookup
   const variantAttributesMap = Object.fromEntries(
@@ -32,7 +35,7 @@ function mapAllAttributes(uniqueAttributesComplete, variant, productType) {
 
   // Convert productType.attributes to a Set for quick existence check
   const productTypeAttrSet = new Set(
-    (productType.attributes ?? []).map((attr) => attr.value ?? attr.name)
+    (productType?.attributes ?? []).map((attr) => attr.value ?? attr.name)
   );
 
   return uniqueAttributesComplete.reduce((acc, uniqueAttr) => {
@@ -63,6 +66,26 @@ function mapAllAttributes(uniqueAttributesComplete, variant, productType) {
   }, {});
 }
 
+//check if some of the metadata are present in the variant assets
+const checkAssetType = (assets = []) => {
+  const result = {
+    dop: "No",
+    epd: "No",
+    datasheet: "No",
+  };
+
+  assets.forEach((asset) => {
+    const type = asset?.custom?.fields?.nkt_metadata_type;
+    const key = METADATA_TYPES[type];
+
+    if (key) {
+      result[key] = "Yes";
+    }
+  });
+
+  return result;
+};
+
 export function mapProducts(allProducts, productTypes) {
   //1º get all product types, and their respective attributes
   const { uniqueAttributesValues, uniqueAttributesComplete } =
@@ -81,6 +104,13 @@ export function mapProducts(allProducts, productTypes) {
     //for each variant
     //each variant is a row, with the data from the parent (the product)
     return variants.map((variant) => {
+      //check if variant has at least one image
+      let hasImage = "No";
+      if (variant.images && variant.images.length > 0) hasImage = "Yes";
+
+      //check if any of the assets are present in the variant
+      const assets = checkAssetType(variant.assets ?? []);
+
       //map from the all attributes
       const newAttributes = mapAllAttributes(
         uniqueAttributesComplete,
@@ -92,11 +122,10 @@ export function mapProducts(allProducts, productTypes) {
         sku: variant.sku,
         prices: variant.prices,
         attributes: newAttributes,
+        id: undefined,
+        image: hasImage,
+        ...assets,
       };
     });
   });
-}
-
-export function exportCsv(allProducts, productTypes) {
-  mapProducts(allProducts, productTypes);
 }

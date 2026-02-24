@@ -12,7 +12,7 @@ const config = {
       initialProjectKey: 'mynkt-production',
     },
     production: {
-      applicationId: 'TODO',
+      applicationId: 'cmlfevbsn000801v25qebfuak',
       url: 'https://ct-reporting-tool.vercel.app/',
     },
   },
@@ -27,30 +27,30 @@ const config = {
     permissions: [PERMISSIONS.View],
   },
   submenuLinks: [
-    {
+    /* {
       uriPath: 'channels',
       defaultLabel: 'Channels',
       labelAllLocales: [],
       permissions: [PERMISSIONS.View],
-    },
-    {
-      uriPath: 'materials',
-      defaultLabel: 'Materials',
-      labelAllLocales: [],
-      permissions: [PERMISSIONS.View],
-    },
-    {
-      uriPath: 'product-types',
-      defaultLabel: 'ProductTypes',
-      labelAllLocales: [],
-      permissions: [PERMISSIONS.View],
-    },
-    {
+    }, */
+    /*  {
+       uriPath: 'materials',
+       defaultLabel: 'Materials',
+       labelAllLocales: [],
+       permissions: [PERMISSIONS.View],
+     },
+     {
+       uriPath: 'product-types',
+       defaultLabel: 'ProductTypes',
+       labelAllLocales: [],
+       permissions: [PERMISSIONS.View],
+     }, */
+    /* {
       uriPath: 'all-products',
-      defaultLabel: 'ProductTypes',
+      defaultLabel: 'All Products with Attributes',
       labelAllLocales: [],
       permissions: [PERMISSIONS.View],
-    },
+    }, */
   ],
 };
 

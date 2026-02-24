@@ -49,7 +49,7 @@ export const useGetAllProductTypes = () => {
   return { allProductTypes, loading, error };
 };
 
-// get all attributes groups, and their attributes
+// get all product types, and their attributes
 export const useGetProductTypes = () => {
   const { allProductTypes, loading } = useGetAllProductTypes();
 

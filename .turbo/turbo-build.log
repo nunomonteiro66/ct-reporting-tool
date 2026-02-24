@@ -1,0 +1,97 @@
+[?9001h[?1004h[?25l[2J[m[H]0;C:\WINDOWS\system32\cmd.exe [?25h[?25l
+> @repo/ct-reporting-tool@1.0.0 build C:\Users\NunoMonteiro_8h5eic3\Documents\NKT\Track My Drum\apps\ct-reporting-tool
+> mc-scripts build[5;1H[?25hCreating an optimized production build...
+[?25l[32mCompiled successfully.[8;1H[?25h[?25l[mFile sizes after gzip:[10;1H[?25h  633.7 kB   [2mpublic\[36m[22mapp.9d79c935abdbecb19e03.js
+[m  323.49 kB  [2mpublic\[36m[22m996.996.20a11c9314d8d20a93fd.js[m
+  78.97 kB   [2mpublic\[36m[22m889.889.39b17c064bb2d1bcc53f.js[m
+  40.27 kB   [2mpublic\[36m[22m746.746.4e7813bf9dcdfbda9400.js[m
+  29.11 kB   [2mpublic\[36m[22m825.navbar.81fc3e3764c7c7d68de6.js[m
+  22.97 kB   [2mpublic\[36m[22m3589.3589.45292f239ca03b8dbf69.js[m
+  13.1 kB    [2mpublic\[36m[22m3608.user-settings-menu.5162752b23ed786f0aeb.js[K[m
+  7.46 kB    [2mpublic\[36m[22m853.853.eff5c460c85360dc7136.js[K[m
+  5.96 kB    [2mpublic\[36m[22m597.597.806523bfb9e5fc36d32e.js[K[m
+  5.59 kB    [2mpublic\[36m[22m7580.language-data-fr-FR.e357f6936bde1c6f6227.js[K[m
+  5.54 kB    [2mpublic\[36m[22m120.language-data-pt-BR.92e65dd2691a66875ad2.js[K[m
+  5.51 kB    [2mpublic\[36m[22m4270.language-data-de.a29d52a3216f8756fdcd.js[K[m
+  5.48 kB    [2mpublic\[36m[22m1347.language-data-es.53d28bd3b1d5066ba327.js[K[m
+  5.4 kB     [2mpublic\[36m[22m9382.language-data-en.5b59290c9a7c44681687.js[K[m
+  5.01 kB    [2mpublic\[36m[22m1465.timezone-data-pt-BR.4b8b13627bd355d3e201.js[K[m
+  4.91 kB    [2mpublic\[36m[22m6223.channels.ea1c89bf924d794b7ad9.js[K[m
+  4.75 kB    [2mpublic\[36m[22m8596.project-container.e27ff555cad0806859dd.js[K[m
+  4.55 kB    [2mpublic\[36m[22m7497.timezone-data-fr-FR.56eec5423f2ecc068c6b.js[K[m
+  4.55 kB    [2mpublic\[36m[22m8188.timezone-data-es.587bd022c845895ef280.js[K[m
+  4.54 kB    [2mpublic\[36m[22m8713.timezone-data-en.3acf3a574b2c4158ca55.js[K[m
+  4.54 kB    [2mpublic\[36m[22m545.timezone-data-de.a9780598eb7ac9a40c07.js[K[m
+  4.48 kB    [2mpublic\[36m[22m8505.project-not-found.d64b717c038d13efc352.js[K[m
+  4.21 kB    [2mpublic\[36m[22m3379.project-not-initialized.f06b34aff78ef2b81828.js[K[m
+  4.19 kB    [2mpublic\[36m[22m4786.project-expired.cf1badc8c7975eabba8a.js[K[m
+  4.13 kB    [2mpublic\[36m[22m8503.custom-views-selector.245bdcc167d34af656f3.js[K[m
+  4.07 kB    [2mpublic\[36m[22m3185.time-zone-translations-map.1e23a686f4d9399f9542.js[K[m
+  3.96 kB    [2mpublic\[36m[22m7291.public-page-layout.d685b3f4457342004174.js[K[m
+  3.95 kB    [2mpublic\[36m[22mruntime.26bc547362452a618f07.js[K[m
+  3.9 kB     [2mpublic\[36m[22m8496.oidc-callback.0c6715a75f3f69f198c3.js[K[m
+  3.79 kB    [2mpublic\[36m[22m5260.5260.71615f052e0db595f8da.js[K[m
+  3.66 kB    [2mpublic\[36m[22m9098.project-suspended.7528e6042fc7e2217166.js[K[m
+  3.65 kB    [2mpublic\[36m[22m6251.i18n-app-kit-locale-de.1dace7dece88351c1eb1.js[K[m
+  3.59 kB    [2mpublic\[36m[22m3951.i18n-app-kit-locale-fr-FR.387ce065b3b6f4237ff0.js[K[m
+  3.53 kB    [2mpublic\[36m[22m3418.i18n-app-kit-locale-es.ffe9b76a1ebd34f16b67.js[K[m
+  3.49 kB    [2mpublic\[36m[22m9335.i18n-app-kit-locale-pt-BR.8cd0da22d2ca379155af.js[K[m
+  3.35 kB    [2mpublic\[36m[22m5873.channel-details.7670149e2c4127c3b1eb.js[K[m
+  3.17 kB    [2mpublic\[36m[22m1967.i18n-app-kit-locale-en.9710fdacb7654ffa5631.js[K[m
+  2.96 kB    [2mpublic\[36m[22m2317.currency-data-de.5398a173dac7732c4e6b.js[K[m
+  2.92 kB    [2mpublic\[36m[22m9469.currency-data-pt-BR.c1808674007631ab4d1d.js[K[m
+  2.92 kB    [2mpublic\[36m[22m6293.currency-data-fr-FR.ef1abe887a7e64cfe060.js[K[m
+  2.89 kB    [2mpublic\[36m[22m341.currency-data-en.77ca090bc18d07580e22.js[K[m
+  2.66 kB    [2mpublic\[36m[22m6544.currency-data-es.9fc31904d0d4a1ebc1dd.js[K[m
+  2.65 kB    [2mpublic\[36m[22m490.country-data-fr-FR.984baee2caf5eefc0b7b.js[K[m
+  2.61 kB    [2mpublic\[36m[22m1558.country-data-pt-BR.1bc7d700e477e6ae5acb.js[K[m
+  2.58 kB    [2mpublic\[36m[22m2160.country-data-de.9dbc39bd35747eddbf2d.js[K[m
+  2.56 kB    [2mpublic\[36m[22m8761.country-data-es.db3863629bf16ce2345e.js[K[m
+  2.53 kB    [2mpublic\[36m[22m2418.redirect-to-logout.27a6548abaa98332e2f8.js[K[m
+  2.51 kB    [2mpublic\[36m[22m8236.country-data-en.74545beab8515acf97af.js[K[m
+  2.43 kB    [2mpublic\[36m[22m1917.custom-view-dev-host.bac3cabc8aa232e7ae10.js[K[m
+  2.4 kB     [2mpublic\[36m[22m8220.error-apologizer.8717e552f148d1337437.js[K[m
+  2.38 kB    [2mpublic\[36m[22m2450.2450.e9088fcb80eadd0cba54.js[K[m
+  2.24 kB    [2mpublic\[36m[22m7367.7367.150497b2c0f8232ae571.js[K[m
+  2.17 kB    [2mpublic\[36m[22m3591.redirect-to-login.6a1071798b1e63bba2e1.js[K[m
+  2.06 kB    [2mpublic\[36m[22m6434.requests-in-flight-loader.92d465cd092b3b94f729.js[K[m
+  1.86 kB    [2mpublic\[36m[22m9008.9008.821a922b55fdb1153a85.js[K[m
+  1.84 kB    [2mpublic\[36m[22m6994.i18n-ui-kit-locale-fr-FR.f8086e1cc8cb27416467.js[K[m
+  1.83 kB    [2mpublic\[36m[22m3982.i18n-ui-kit-locale-pt-BR.5e200590db8fd64dbe5a.js[m
+  1.8 kB     [2mpublic\[36m[22m7904.7904.0989c001e1a4884fb41c.js[K[m
+  1.79 kB    [2mpublic\[36m[22m8920.i18n-ui-kit-locale-de.6a7a5f24c6be900b972c.js[K[m
+  1.78 kB    [2mpublic\[36m[22m2641.i18n-ui-kit-locale-es.f2b3943bceb7b0601700.js[K[m
+  1.77 kB    [2mpublic\[36m[22m6177.6177.221d3741a3c0252d93b3.js[K[m
+  1.72 kB    [2mpublic\[36m[22m8054.8054.cda04f86a5d231804a95.js[K[m
+  1.63 kB    [2mpublic\[36m[22m6596.redirect-to-project-create.a7de0f9706b9598449e3.js[K[m
+  1.6 kB     [2mpublic\[36m[22m9380.i18n-ui-kit-locale-en.f0b7d8c254f4da31383f.js[K[m
+  1.56 kB    [2mpublic\[36m[22m457.457.e57a2f4549a66e3a1d67.js[K[m
+  1.52 kB    [2mpublic\[36m[22m2233.2233.f514f4c898d17fdae8ac.js[K[m
+  1.49 kB    [2mpublic\[36m[22m8197.8197.2a6fa5946b9cb8e93fcd.js[K[m
+  1.49 kB    [2mpublic\[36m[22m9831.9831.a471a49b1839e718d9e4.js[K[m
+  1.46 kB    [2mpublic\[36m[22m3097.3097.184865b0c9fb5e12c671.js[K[m
+  1.45 kB    [2mpublic\[36m[22m3391.3391.94ff872b99093681d73b.js[K[m
+  1.43 kB    [2mpublic\[36m[22m4200.4200.efda83362be9cbc829f4.js[K[m
+  1.38 kB    [2mpublic\[36m[22m594.594.1ba4bd9f6b1cb98f2add.js[K[m
+  1.37 kB    [2mpublic\[36m[22m8821.8821.12621b7a5d396afb722c.js[K[m
+  1.36 kB    [2mpublic\[36m[22m2498.2498.8ab8da36095e07c7b1b6.js[K[m
+  1.34 kB    [2mpublic\[36m[22m4671.4671.b22c2068ee9fa6a0d1f9.js[K[m
+  1.32 kB    [2mpublic\[36m[22m9232.9232.fe4aa3dd1a0dc0f0a175.js[K[m
+  874 B      [2mpublic\[36m[22m6705.6705.da5a180547b94e5ebcf2.js[K[m
+  730 B      [2mpublic\[36m[22m7957.routes.4fa7de143d02df9c9866.js[K[m
+  711 B      [2mpublic\[36m[22m38.route-catch-all.f8777adfdf037026c2bf.js[K[m
+  457 B      [2mpublic\[36m[22m7149.i18n-community-kit-locale-de.37211a6168d917facedf.js[K[m
+  450 B      [2mpublic\[36m[22m4150.4150.7ef8d5319797b9473852.js[K[m
+  440 B      [2mpublic\[36m[22m1877.i18n-community-kit-locale-fr-FR.8e9bfac5a0e5d154e7f8.js[K[m
+  440 B      [2mpublic\[36m[22m6558.6558.4e933f09c6575f51aa92.js[K[m
+  437 B      [2mpublic\[36m[22m608.i18n-community-kit-locale-es.21d0d23a9123402a4a10.js[K[m
+  405 B      [2mpublic\[36m[22m5701.i18n-community-kit-locale-en.a80cb2d59bb0865ba5a1.js[K[m
+  287 B      [2mpublic\[36m[22mapp.9d79c935abdbecb19e03.css[K[m
+  139 B      [2mpublic\[36m[22m5303.app-i18n-de.1363a19b60f3f6038a59.js[K[m
+  138 B      [2mpublic\[36m[22m5931.app-i18n-en.88780815553689f5e7df.js[K[m
+
+
+Compiling index.html...
+[32mCompiled successfully.[m
+
+[?9001l[?1004l
