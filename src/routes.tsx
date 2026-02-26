@@ -5,7 +5,7 @@ import Channels from "./components/channels";
 import Welcome from "./components/welcome";
 import Materials from "./components/materials";
 import ProductTypes from "./components/unique-product-types";
-import AllProducts from "./components/all-products";
+import AllProducts from "./screens/all-products";
 
 type ApplicationRoutesProps = {
   children?: ReactNode;
