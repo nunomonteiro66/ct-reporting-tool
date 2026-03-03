@@ -71,7 +71,6 @@ const ProductTypes = () => {
     (action: string, nextValue: any) => {
       switch (action) {
         case UPDATE_ACTIONS.COLUMNS_UPDATE:
-          console.log("Columns updated:", nextValue);
           setActive(nextValue);
           break;
         case UPDATE_ACTIONS.IS_TABLE_CONDENSED_UPDATE:

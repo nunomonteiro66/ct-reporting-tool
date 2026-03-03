@@ -1,14 +1,13 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useGetProductTypes } from "../../hooks/use-products-connector/use-products-graphql";
-import { useProductsAPI } from "../../hooks/use-products-connector";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { usePaginationState } from "@commercetools-uikit/hooks";
-import TemplateTable from "../../components/datatable/template-table";
+import TemplateTable, { Sort } from "../../components/datatable/template-table";
 import PrimaryButton from "@commercetools-uikit/primary-button";
-import DropdownMenu from "@commercetools-uikit/dropdown-menu";
-import SecondaryButton from "@commercetools-uikit/secondary-button";
-import CheckboxInput from "@commercetools-uikit/checkbox-input";
-import { FilterIcon } from "@commercetools-uikit/icons";
-import { CSVDownload } from "react-csv";
 import {
   extractUniqueAttributes,
   mapProducts,
@@ -16,11 +15,15 @@ import {
 import { exportToExcel } from "../../utils/export-excel";
 import Filters, { FiltersProps } from "../../components/filters/filters";
 import { TAppliedFilter } from "@commercetools-uikit/filters";
-import { TAppliedFilterValue } from "@commercetools-uikit/filters/dist/declarations/src/filter-menu";
+import SearchTextInput from "@commercetools-uikit/search-text-input";
+import { useProductsGraphql } from "../../hooks/use-products-connector/use-products-graphql";
+import { TProduct } from "../../types/product";
+import { COLUMN_ORDER } from "./columns-order";
 
 type Column = {
   key: string;
   label: string;
+  isSortable?: boolean;
   renderItem?: (row) => React.ReactNode;
 };
 
@@ -36,22 +39,32 @@ const defaultColumns = [
     key: "sku",
     label: "SKU",
   },
-  { key: "name.en", label: "Product Name" },
-  { key: "productType.obj.key", label: "Product Type Key" },
-  { key: "productType.typeId", label: "Product Type Id" },
-  { key: "description.en", label: "Description" },
-] as Column[];
+  { key: "masterData.current.name", label: "Product Name" },
+  { key: "productType.key", label: "Product Type Key" },
+  { key: "productType.name", label: "Product Type Name" },
+  { key: "masterData.current.description", label: "Description" },
+  { key: "categories", label: "Categories" },
+  { key: "selections", label: "Product Selections" },
+].map((col) => ({ ...col, isSortable: true })) as Column[];
 
 const MemoTable = React.memo(TemplateTable);
 
 const AllProducts = () => {
+  const { getAllProducts, getAllProductTypes } = useProductsGraphql();
+
   const { page, perPage } = usePaginationState();
-  const { productTypes } = useGetProductTypes();
-  const { fetchProducts, fetchAllProducts, fetchAllProductsParalel } =
-    useProductsAPI();
-  const [products, setProducts] = useState();
+
+  //all raw products (and variants) fetched from ct
+  const [allProducts, setAllProducts] = useState();
+
+  //products shown in the page (with pagination)
+  //will always be a slice of the mappedProducts
+  const [products, setProducts] = useState<TProduct[]>([]);
+
+  //final mapped data (allProducts mapped)
   const [mappedProducts, setMappedProducts] = useState([]);
-  const [exporting, setExporting] = useState(false);
+
+  const [productTypes, setProductTypes] = useState();
 
   const [columns, setColumns] = useState<Column[]>([]);
   const [activeColumns, setActiveColumns] = useState<string[]>(
@@ -63,45 +76,59 @@ const AllProducts = () => {
 
   //filters states
   const [appliedFilters, setAppliedFilters] = useState<TAppliedFilter[]>([]);
-
   const [filtersConfig, setFiltersConfig] = useState<FiltersProps[]>([]);
 
-  //fetch the data from the api
+  const [searchTerm, setSearchTerm] = useState<string | undefined>();
+
+  const [sort, setSort] = useState<Sort>();
+
+  //load the product types and the data
   useEffect(() => {
-    const loadAllProducts = async () => {
-      try {
-        setLoading(true);
-        //get all products
-        const results = await fetchProducts({
-          limit: perPage.value,
-          page: page.value,
-          expand: ["productType"],
-        });
-
-        setTotalItems(results?.total);
-        setProducts(results?.results);
-      } catch (err) {
-        //setError(err instanceof Error ? err : new Error("Unknown error"));
-        console.error(err);
-      } finally {
-        //setLoading(false);
-      }
+    const load = async () => {
+      const productTypes = await getAllProductTypes();
+      const allData = await getAllProducts();
+      setProductTypes(productTypes);
+      setAllProducts(allData);
     };
-    loadAllProducts();
-  }, [page.value, perPage.value]);
+    load();
+  }, []);
 
-  //map the data and add the attributes
+  //pagination handler
+  useEffect(() => {
+    const start = (page.value - 1) * perPage.value;
+    const end = start + perPage.value;
+    setProducts(mappedProducts.slice(start, end));
+  }, [page.value, perPage.value, mappedProducts]);
+
+  //sorting handler
+  useEffect(() => {
+    if (!sort || !sort.key) return;
+    const sorted = [...mappedProducts].sort((a, b) => {
+      const getNestedValue = (obj, key) => {
+        return key.split(".").reduce((acc, k) => acc?.[k], obj);
+      };
+      const valA = getNestedValue(a, sort.key);
+      const valB = getNestedValue(b, sort.key);
+      const compare = String(valA).localeCompare(String(valB)); // string sort
+
+      return sort.dir === "asc" ? compare : -compare;
+    });
+    page.onChange(1);
+    setMappedProducts(sorted);
+  }, [sort]);
+
+  //map the data and add the attributes and the categories names
   useEffect(() => {
     if (!productTypes || productTypes.length === 0 || !products) return;
 
     //map the products
-    const newProducts = mapProducts(products, productTypes);
+    const newProducts = mapProducts(allProducts, productTypes);
     setMappedProducts(newProducts);
 
     let { _, uniqueAttributesComplete } = extractUniqueAttributes(productTypes);
 
     //add the extra columns for the table (with the attributes)
-    const newColumns = [...defaultColumns];
+    let newColumns = [...defaultColumns];
     uniqueAttributesComplete.forEach((attribute, index) => {
       newColumns.push({
         label: attribute.label,
@@ -133,7 +160,12 @@ const AllProducts = () => {
     ];
     newColumns.push(...assetsColumns);
 
-    setColumns((prev) => [...defaultColumns, ...newColumns]);
+    //add sortable to the column
+    newColumns = newColumns.map((col) => ({ ...col, isSortable: true }));
+
+    //re-order the columns
+    newColumns = setCorrectColumnOrder(newColumns);
+    setColumns(newColumns);
 
     //set the options for the filters
     setFiltersConfig((prev) => [
@@ -144,9 +176,8 @@ const AllProducts = () => {
         options: uniqueAttributesComplete,
       },
     ]);
-
     setLoading(false);
-  }, [productTypes, products]);
+  }, [productTypes, allProducts]);
 
   //when columns changed, change the applied filters
   const changedColumns = (newColumns: string[]) => {
@@ -200,11 +231,6 @@ const AllProducts = () => {
 
   const exportExcel = async () => {
     setLoading(true);
-    //const results = await fetchAllProducts({ expand: ["productType"] });
-
-    let results = await fetchAllProductsParalel({ expand: ["productType"] });
-
-    const mappedProducts = mapProducts(results, productTypes);
 
     //give only the visible columns
     const visibleColumns = activeColumns
@@ -213,6 +239,42 @@ const AllProducts = () => {
 
     exportToExcel(mappedProducts, visibleColumns, "excel-export");
     setLoading(false);
+  };
+
+  //build the search query with "or" for all text fields (name, description, sku, ...)
+  const buildSearchQuery = (searchTerm: string | undefined) => {
+    if (!searchTerm) return undefined;
+
+    const fields = [
+      "name.en",
+      "description.en",
+      "masterVariant.sku",
+      "variants.sku",
+    ];
+
+    const searchQuery = fields.map((field) => {
+      const isComplex = field.split(".");
+
+      if (isComplex.length > 1) {
+        return `${isComplex[0]}(${isComplex[1]} = "${searchTerm}")`;
+      }
+      return `${field} = "${searchTerm}"`;
+    });
+
+    return `${searchQuery.join(" or ")}`;
+  };
+
+  //sets the order of the columns the same as the columnsOrder
+  const setCorrectColumnOrder = (columns: Column[]) => {
+    const orderIndex = new Map<string, number>(
+      COLUMN_ORDER.map((key, index) => [key, index])
+    );
+
+    return [...columns].sort((a, b) => {
+      const indexA = orderIndex.get(a.key) ?? Infinity;
+      const indexB = orderIndex.get(b.key) ?? Infinity;
+      return indexA - indexB;
+    });
   };
 
   return (
@@ -228,17 +290,25 @@ const AllProducts = () => {
           filtersConfig={filtersConfig}
           submitCallback={filtersChanged}
         />
+
+        {/* <SearchTextInput
+          value={searchTerm ?? ""}
+          //onSubmit={(val) => setSearchTerm(val)}
+          onSubmit={(val) => setSearchTerm(val)}
+          onReset={() => setSearchTerm(undefined)}
+        /> */}
       </div>
 
-      <MemoTable
-        data={mappedProducts}
+      <TemplateTable
+        data={products}
         columns={columns}
         isLoading={loading}
         page={page}
         perPage={perPage}
-        totalItems={totalItems}
+        totalItems={mappedProducts.length}
         activeColumns={activeColumns}
         columnsChangedCallback={changedColumns}
+        onSortChange={setSort}
       />
     </>
   );

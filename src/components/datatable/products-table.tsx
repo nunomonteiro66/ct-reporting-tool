@@ -88,8 +88,6 @@ const ProductsTable = ({
     isWrappingText: true,
   };
 
-  console.log("RENDERING: ", columns, products);
-
   return (
     <Spacings.Stack scale="l">
       <div

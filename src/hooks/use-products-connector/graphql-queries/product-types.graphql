@@ -12,6 +12,7 @@ query ProductTypes($limit: Int = 500, $offset: Int = 0) {
         results {
           label(acceptLanguage: "en")
           name
+          inputTip(locale: "en") #input tip refers to UoM
         }
       }
     }

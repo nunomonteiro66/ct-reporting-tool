@@ -1,0 +1,59 @@
+query Products($limit: Int = 500, $offset: Int = 0) {
+   products(limit: $limit, offset: $offset) {
+    results {
+      masterData {
+        current {
+          name(locale: "en")
+          description(locale: "en")
+          allVariants {
+            sku
+            attributesRaw {
+              name
+              value
+            }
+            images {
+              url
+              label
+            }
+            assets {
+              sources {
+                uri
+              }
+              custom {
+                customFieldsRaw {
+                  value
+                }
+              }
+            }
+          }
+          categories {
+            name(locale: "en")
+            parent {
+              name(locale: "en")
+            }
+          }
+        }
+      }
+      id
+      key
+      productType {
+        id
+        key
+        name
+      }
+      productSelectionRefs {
+        results {
+          productSelection {
+            name(locale: "en")
+            key
+          }
+          variantSelection {
+            skus
+          }
+        }
+      }
+    }
+    count
+    total
+  }
+}

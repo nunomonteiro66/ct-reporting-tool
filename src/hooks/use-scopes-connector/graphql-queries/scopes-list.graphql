@@ -1,0 +1,10 @@
+query ScopesList {
+  __schema {
+    description,
+    queryType {
+      fields {
+        name
+      }
+    }
+  }
+}

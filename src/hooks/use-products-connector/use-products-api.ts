@@ -6,6 +6,8 @@ import {
   TProductProjectionSearchResult,
 } from "../../types/generated/ctp";
 import { useAsyncDispatch, actions } from "@commercetools-frontend/sdk";
+import requestHandler from "../request-handler";
+import QueryParams from "../../types/api-query";
 
 /* type TProductProjection = {
   id: string;
@@ -37,59 +39,7 @@ type TProductProjectionsResponse = {
 }; */
 
 export const useProductsAPI = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
-  const dispatch = useAsyncDispatch();
-
-  const { projectKey } = useApplicationContext((context) => ({
-    projectKey: context.project?.key,
-  }));
-
-  const executeRequest = useCallback(
-    async <T>({
-      uri,
-      queryParams,
-    }: {
-      uri: string;
-      queryParams?: Record<string, any>;
-    }): Promise<T> => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const params = new URLSearchParams();
-
-        if (queryParams) {
-          Object.entries(queryParams).forEach(([key, value]) => {
-            if (value === undefined || value === null) return;
-
-            if (Array.isArray(value)) {
-              value.forEach((v) => params.append(key, v));
-            } else {
-              params.append(key, String(value));
-            }
-          });
-        }
-
-        const result = await dispatch({
-          type: "SDK",
-          payload: {
-            method: "GET",
-            uri: `/${projectKey}/${uri}?${params.toString()}`,
-          },
-        });
-
-        return result as T;
-      } catch (err) {
-        const error = err instanceof Error ? err : new Error("Unknown error");
-        setError(error);
-        throw error;
-      } finally {
-        setLoading(false);
-      }
-    },
-    [dispatch, projectKey]
-  );
+  const { executeRequest, loading, error } = requestHandler();
 
   const fetchProductsByMaterial = useCallback(
     (materialCode: string, options?: { offset?: number; limit?: number }) => {
@@ -111,45 +61,11 @@ export const useProductsAPI = () => {
     [executeRequest]
   );
 
-  const fetchProductProjections = useCallback(
-    (queryParams: {
-      offset?: number;
-      limit?: number;
-      where?: string;
-      sort?: string;
-      expand?: string[];
-    }) =>
-      executeRequest<TProductProjection>({
-        uri: "product-projections",
-        queryParams: {
-          offset: queryParams.offset ?? 0,
-          limit: queryParams.limit ?? 500,
-          where: queryParams.where,
-          sort: queryParams.sort,
-          expand: queryParams.expand,
-        },
-      }),
-    [executeRequest]
-  );
-
   const fetchProducts = useCallback(
-    (queryParams: {
-      page?: number;
-      limit?: number;
-      where?: string;
-      sort?: string;
-      expand?: string[];
-    }) =>
+    (queryParams: QueryParams) =>
       executeRequest<TProductProjectionSearchResult>({
         uri: "product-projections",
-        queryParams: {
-          offset: (queryParams.page ?? 0) * (queryParams.limit ?? 500),
-          limit: queryParams.limit ?? 500,
-          where: queryParams.where,
-          sort: queryParams.sort,
-          expand: queryParams.expand,
-          localeProjection: "en",
-        },
+        queryParams: queryParams,
       }),
     [executeRequest]
   );
@@ -193,7 +109,6 @@ export const useProductsAPI = () => {
 
   return {
     fetchProductsByMaterial,
-    fetchProductProjections,
     fetchProducts,
     fetchAllProducts,
     fetchAllProductsParalel,

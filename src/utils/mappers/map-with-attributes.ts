@@ -1,3 +1,13 @@
+import { CategoryNames } from "../../types/category";
+import {
+  TCategory,
+  TProduct,
+  TProductProjection,
+  TProductSelection,
+  TProjectProjection,
+} from "../../types/generated/ctp";
+import { ProductType } from "../../types/product-type";
+
 const METADATA_TYPES = {
   "DOP/DOC metadata type": "dop",
   "EPD metadata type": "epd",
@@ -35,7 +45,7 @@ export function extractUniqueAttributes(productTypes: any) {
 function mapAllAttributes(uniqueAttributesComplete, variant, productType) {
   // Convert variant.attributes to a map for faster lookup
   const variantAttributesMap = Object.fromEntries(
-    (variant.attributes ?? []).map((attr) => [attr.name, attr])
+    (variant.attributesRaw ?? []).map((attr) => [attr.name, attr])
   );
 
   // Convert productType.attributes to a Set for quick existence check
@@ -55,9 +65,16 @@ function mapAllAttributes(uniqueAttributesComplete, variant, productType) {
       const val = variantAttr.value;
 
       if (typeof val === "object" && val !== null) {
-        // Pick English if exists, otherwise first key with language code
-        const [firstKey] = Object.keys(val);
-        value = val.en ?? (firstKey ? `${val[firstKey]} (${firstKey})` : "");
+        // Check if is the column "EL" (0000_branch_code). This is the only column that needs all languages present
+        if (key === "0000_branch_code") {
+          value = Object.entries(val)
+            .map(([lang, text]) => `${text} (${lang})`)
+            .join(", ");
+        } else {
+          // Pick English if exists, otherwise first key with language code
+          const [firstKey] = Object.keys(val);
+          value = val.en ?? (firstKey ? `${val[firstKey]} (${firstKey})` : "");
+        }
       } else {
         value = val ?? "";
       }
@@ -80,7 +97,7 @@ const checkAssetType = (assets = []) => {
   };
 
   assets.forEach((asset) => {
-    const type = asset?.custom?.fields?.nkt_metadata_type;
+    const type = asset?.custom?.customFieldsRaw.value;
     const key = METADATA_TYPES[type];
 
     if (key) {
@@ -91,24 +108,29 @@ const checkAssetType = (assets = []) => {
   return result;
 };
 
-export function mapProducts(allProducts, productTypes) {
+export function mapProducts(
+  allProducts: TProduct[],
+  productTypes: ProductType[]
+) {
   //1º get all product types, and their respective attributes
   const { uniqueAttributesValues, uniqueAttributesComplete } =
     extractUniqueAttributes(productTypes);
 
   //for each product in list
-  return allProducts.flatMap((product) => {
-    //extract all variants from the product (both masterVariant and variants)
-    const variants = [...product.variants, product.masterVariant];
+  return allProducts.flatMap((productRaw) => {
+    const product = productRaw.masterData.current;
+    const productProductType = productRaw.productType ?? [];
+
+    if (!product) return;
 
     //get the product type (with all attributes) for the product type
     const productType = productTypes.find(
-      (type) => type.product_type_value === product.productType.obj.key
+      (type) => type.product_type_value === productProductType.key
     );
 
     //for each variant
     //each variant is a row, with the data from the parent (the product)
-    return variants.map((variant) => {
+    return product.allVariants.map((variant) => {
       //check if variant has at least one image
       let hasImage = "No";
       if (variant.images && variant.images.length > 0) hasImage = "Yes";
@@ -122,13 +144,36 @@ export function mapProducts(allProducts, productTypes) {
         variant,
         productType
       );
+
+      //add the product category name
+      //!!! Note: for now each category has at most one parent, it can change in the future
+      const categories = product.categories
+        .map((category) =>
+          category.parent
+            ? `${category.parent.name} > ${category.name}`
+            : category.name
+        )
+        .join(",");
+
+      //add the variant product selections
+      const selections = productRaw.productSelectionRefs.results
+        .filter((selectionRef) => {
+          const skus = selectionRef.variantSelection?.skus;
+          return !skus || skus.includes(variant.sku ?? "");
+        })
+        .map(
+          (selection) => selection.productSelection?.name?.split(" ")[0] ?? ""
+        )
+        .join(",");
+
       return {
-        ...product,
+        ...productRaw,
+        id: productRaw.id + Math.random(), //some keys get repeated (causes errors in the table)
         sku: variant.sku,
-        prices: variant.prices,
         attributes: newAttributes,
-        id: undefined,
         image: hasImage,
+        categories: categories,
+        selections: selections,
         ...assets,
       };
     });

@@ -45,8 +45,6 @@ const ExportCSV = () => {
           break;
         }
       }
-
-      console.log("Finished loading:", data.current.length);
       setFinished(true);
     };
 
@@ -103,8 +101,6 @@ const Materials = () => {
             }); */
 
         const result = await fetchAllProducts({ limit: 20, offset: 0 });
-
-        console.log("results: ", result);
 
         /* const result = await fetchProductsByMaterial({
           offset,

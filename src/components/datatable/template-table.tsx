@@ -5,7 +5,7 @@ import DataTableManager, {
   UPDATE_ACTIONS,
 } from "@commercetools-uikit/data-table-manager";
 import { Pagination } from "@commercetools-uikit/pagination";
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import LoadingSpinner from "@commercetools-uikit/loading-spinner";
 import { TState } from "@commercetools-uikit/hooks";
 
@@ -18,6 +18,12 @@ type TemplateTableProps = {
   totalItems: number;
   activeColumns: string[];
   columnsChangedCallback: any;
+  onSortChange?: ({ key, dir }: Sort) => void;
+};
+
+export type Sort = {
+  key?: string;
+  dir: "asc" | "desc";
 };
 
 const TemplateTable = ({
@@ -29,7 +35,12 @@ const TemplateTable = ({
   totalItems,
   activeColumns,
   columnsChangedCallback,
+  onSortChange,
 }: TemplateTableProps) => {
+  const [sort, setSort] = useState<Sort>({
+    dir: "asc",
+  });
+
   const displaySettings = useMemo(
     () => ({
       disableDisplaySettings: false,
@@ -53,14 +64,13 @@ const TemplateTable = ({
       return key.split(".").reduce((acc, k) => acc?.[k], obj);
     };
     const value = getNestedValue(item, column.key);
-    return <p key={item.key}>{value}</p>;
+    return <p>{value}</p>;
   }, []);
 
   const handleSettingsChange = useCallback(
     (action: string, nextValue: any) => {
       switch (action) {
         case UPDATE_ACTIONS.COLUMNS_UPDATE:
-          console.log("Columns updated: ", columns);
           //setActiveColumns(nextValue);
           columnsChangedCallback(nextValue);
           break;
@@ -69,6 +79,22 @@ const TemplateTable = ({
       }
     },
     [columns]
+  );
+
+  const handleSortChange = useCallback(
+    (key: string, dir: string) => {
+      const newSort: Sort = {
+        key: key,
+        dir: "asc",
+      };
+      //second click, change direction to desc
+      if (sort.key === key && sort.dir === "asc") {
+        newSort.dir = "desc";
+      }
+      setSort(newSort);
+      if (onSortChange) onSortChange(newSort);
+    },
+    [sort]
   );
 
   return (
@@ -103,6 +129,9 @@ const TemplateTable = ({
                 isCondensed
                 rows={data}
                 itemRenderer={itemRenderer}
+                onSortChange={handleSortChange}
+                sortDirection={sort.dir}
+                sortedBy={sort.key}
               />
             </DataTableManager>
           </div>
