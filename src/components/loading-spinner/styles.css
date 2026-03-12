@@ -1,0 +1,25 @@
+.loading-spinner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.loading-spinner > span > div {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+/* different sizes */
+.scale-M svg {
+    width: 10rem;
+    height: 10rem;
+}
+
+.scale-L svg {
+    width: 20rem;
+    height: 20rem;
+}

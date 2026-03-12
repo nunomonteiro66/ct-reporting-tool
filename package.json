@@ -6,8 +6,9 @@
   "scripts": {
     "build": "mc-scripts build",
     "start": "mc-scripts start",
+    "serve": "mc-scripts serve",
     "compile-html": "mc-scripts compile-html",
-    "compile-html:local": "MC_APP_ENV=development mc-scripts compile-html --transformer @commercetools-frontend/mc-dev-authentication/transformer-local.js",
+    "compile-html:local": "cross-env MC_APP_ENV=development mc-scripts compile-html --transformer @commercetools-frontend/mc-dev-authentication/transformer-local.js",
     "start:prod:local": "npm run compile-html:local && mc-scripts serve",
     "extract-intl": "formatjs extract --format=./intl-formatter.js --out-file=./src/i18n/data/core.json 'src/**/!(*.spec).(ts|tsx)'",
     "format": "prettier --write '**/*.{js,ts,tsx}'",
@@ -17,7 +18,8 @@
     "versions:uikit": "manypkg upgrade @commercetools-uikit",
     "tailwind:init": "tailwindcss init -p",
     "tailwind:build": "tailwindcss -i ./src/index.css -o ./dist/output.css --watch",
-    "test": "echo \"No tests\""
+    "test": "echo \"No tests\"",
+    "plop": "plop"
   },
   "dependencies": {
     "@apollo/client": "3.13.9",
@@ -38,10 +40,12 @@
     "@commercetools-frontend/mc-scripts": "25.2.0",
     "@commercetools-frontend/permissions": "25.2.0",
     "@commercetools-frontend/sdk": "^26.0.0",
+    "@commercetools-uikit/checkbox-input": "^20.4.0",
     "@commercetools-uikit/collapsible-panel": "^20.3.1",
     "@commercetools-uikit/constraints": "^20.3.0",
     "@commercetools-uikit/data-table": "^20.3.1",
     "@commercetools-uikit/data-table-manager": "^20.3.1",
+    "@commercetools-uikit/dropdown-menu": "^20.4.0",
     "@commercetools-uikit/filters": "^20.3.1",
     "@commercetools-uikit/flat-button": "^20.3.0",
     "@commercetools-uikit/grid": "^20.3.0",
@@ -54,7 +58,9 @@
     "@commercetools-uikit/notifications": "^20.3.0",
     "@commercetools-uikit/pagination": "^20.3.0",
     "@commercetools-uikit/primary-button": "^20.3.1",
+    "@commercetools-uikit/secondary-button": "^20.4.0",
     "@commercetools-uikit/select-field": "^20.3.0",
+    "@commercetools-uikit/select-input": "^20.4.0",
     "@commercetools-uikit/spacings": "^20.3.0",
     "@commercetools-uikit/text": "^20.3.0",
     "@commercetools-uikit/text-field": "^20.3.0",
@@ -64,6 +70,7 @@
     "@emotion/react": "^11.14.0",
     "@formatjs/cli": "6.7.2",
     "@manypkg/cli": "0.25.0",
+    "@tanstack/react-table": "^8.21.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "16.1.0",
     "@types/react": "^19.0.3",
@@ -78,6 +85,7 @@
     "graphql-tag": "^2.12.6",
     "moment": "^2.29.4",
     "omit-empty-es": "1.2.0",
+    "plop": "^4.0.5",
     "prettier": "2.8.8",
     "react": "19.0.0",
     "react-csv": "^2.2.2",
@@ -90,14 +98,15 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@graphql-eslint/eslint-plugin": "^4.4.0",
+    "@next/eslint-plugin-next": "^15.4.6",
     "@tailwindcss/postcss": "^4.1.18",
     "autoprefixer": "^10.4.24",
-    "msw": "^2.12.10",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.19",
-    "@next/eslint-plugin-next": "^15.4.6",
+    "cross-env": "^10.1.0",
     "eslint": "^8.57.0",
     "eslint-formatter-pretty": "4.1.0",
-    "@graphql-eslint/eslint-plugin": "^4.4.0"
+    "msw": "^2.12.10",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19"
   }
 }

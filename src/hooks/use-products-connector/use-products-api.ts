@@ -9,35 +9,6 @@ import { useAsyncDispatch, actions } from "@commercetools-frontend/sdk";
 import requestHandler from "../request-handler";
 import QueryParams from "../../types/api-query";
 
-/* type TProductProjection = {
-  id: string;
-  key?: string;
-  masterVariant: {
-    id: number;
-    sku?: string;
-    attributes: Array<{
-      name: string;
-      value: any;
-    }>;
-  };
-  variants: Array<{
-    id: number;
-    sku?: string;
-    attributes: Array<{
-      name: string;
-      value: any;
-    }>;
-  }>;
-};
-
-type TProductProjectionsResponse = {
-  limit: number;
-  offset: number;
-  count: number;
-  total: number;
-  results: TProductProjection[];
-}; */
-
 export const useProductsAPI = () => {
   const { executeRequest, loading, error } = requestHandler();
 
