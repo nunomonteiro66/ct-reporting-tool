@@ -92,13 +92,6 @@ const AllProducts = () => {
     load();
   }, []);
 
-  //pagination handler
-  /* useEffect(() => {
-    const start = (page.value - 1) * perPage.value;
-    const end = start + perPage.value;
-    setProducts(mappedProducts.slice(start, end));
-  }, [page.value, perPage.value, mappedProducts]); */
-
   //sorting handler
   useEffect(() => {
     if (!sort || !sort.key) return;
