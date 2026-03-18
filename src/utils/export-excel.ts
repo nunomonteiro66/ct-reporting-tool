@@ -26,7 +26,7 @@ export const exportToExcel = async (data, columns, fileName = "data.xlsx") => {
     const formattedRow = {};
 
     columns.forEach((col) => {
-      formattedRow[col.key] = getValueByPath(row, col.key) ?? "nnnna";
+      formattedRow[col.key] = getValueByPath(row, col.key);
     });
 
     worksheet.addRow(formattedRow);

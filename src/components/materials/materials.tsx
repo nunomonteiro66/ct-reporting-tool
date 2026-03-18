@@ -8,6 +8,7 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import { CSVLink, CSVDownload } from 'react-csv';
 import TanstackTable from '../tanstack-table/tanstack-table';
 import SortableList from '../sortable-list/sortable-list';
+import { ColumnFiltersState, SortingState, Table } from '@tanstack/react-table';
 
 type Data = {
   name: string;
@@ -17,7 +18,7 @@ type Data = {
 const Materials = () => {
   const data = [
     {
-      name: 'Name',
+      name: ['Name', 'Name2'],
       lastName: 'Henry',
     },
   ];
@@ -34,12 +35,33 @@ const Materials = () => {
 
   const activeColumns = ['name'];
 
+  const onSortingChange = (sorting: SortingState) => {
+    if (sorting.length === 0) {
+      return;
+    }
+
+    return;
+  };
+  const [products, setProducts] = useState<TProduct[]>([]);
+
+  const tableRef = useRef<Table<{ name: string; lastName: string }> | null>(
+    null
+  );
+
+  //callback when on column filters change
+  const columnFilterChanged = (filters: ColumnFiltersState) => {};
+
   return (
     <>
       <TanstackTable
         data={data}
         columns={columns}
         visibleColumns={activeColumns}
+        onFilterChange={columnFilterChanged}
+        onSortingChange={onSortingChange}
+        setTable={(t) => {
+          tableRef.current = t;
+        }}
       />
     </>
   );

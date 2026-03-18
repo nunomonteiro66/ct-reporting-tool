@@ -1,3 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+
+.disabled {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}

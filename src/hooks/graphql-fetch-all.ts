@@ -3,10 +3,10 @@ import {
   ApolloQueryResult,
   DocumentNode,
   useQuery,
-} from "@apollo/client";
-import { useEffect, useRef, useState } from "react";
-import { TProductQueryResult } from "../types/generated/ctp";
-import { GRAPHQL_TARGETS } from "@commercetools-frontend/constants";
+} from '@apollo/client';
+import { useEffect, useRef, useState } from 'react';
+import { TProductQueryResult } from '../types/generated/ctp';
+import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
 
 type PaginatedResult<T> = {
   results: T[];
@@ -23,7 +23,7 @@ export async function useGraphQLFetch<T, K extends string>(
   keyword: K,
   QUERY: DocumentNode,
   client: ApolloClient<object>,
-  options: { limit: number; page: number; context?: Record<string, any> }
+  options?: { limit: number; page: number; context?: Record<string, any> }
 ) {
   /* const { data, loading, error } = useQuery<ResultType<K, PaginatedResult<T>>>(
     QUERY,
@@ -38,9 +38,12 @@ export async function useGraphQLFetch<T, K extends string>(
     }
   ); */
 
+  const limit = options?.limit ?? 500;
+  const page = options?.page ?? 0;
+
   const { data, loading, error } = await client.query({
     query: QUERY,
-    variables: { limit: options.limit, offset: options.page * options.limit },
+    variables: { limit: limit, offset: page * limit },
     context: options?.context ?? {
       target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
     },
@@ -64,7 +67,7 @@ export async function graphqlFetchAll<T, K extends string>(
       context: options?.context ?? {
         target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
       },
-      fetchPolicy: "no-cache", //allows to bypass the serialization of the requests
+      fetchPolicy: 'no-cache', //allows to bypass the serialization of the requests
     });
 
   const firstResponse = await fetchPage(0);

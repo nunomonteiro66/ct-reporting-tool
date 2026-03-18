@@ -1,5 +1,3 @@
-import s from './styles.module.css';
-
 type CustomDropdownProps = {
   options: string[];
   selected: string[];
@@ -27,13 +25,17 @@ const CustomDropdown = ({
   };
 
   return (
-    <div className={s.dropdownList}>
+    <div className="flex flex-col gap-0.5 max-h-[200px] overflow-y-auto py-1">
       {options.map((opt) => (
-        <label key={opt} className={s.dropdownOption}>
+        <label
+          key={opt}
+          className="flex items-center px-3 py-[5px] text-[13px] text-[#334155] cursor-pointer rounded hover:bg-[#f0f5ff] whitespace-nowrap"
+        >
           <input
             type="checkbox"
             checked={selected.includes(opt)}
             onChange={() => toggle(opt)}
+            className="mr-1.5 accent-blue-500"
           />
           {opt}
         </label>

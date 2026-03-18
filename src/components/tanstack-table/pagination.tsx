@@ -1,7 +1,7 @@
 import { Table } from '@tanstack/react-table';
 import SecondaryIconButton from '@commercetools-uikit/secondary-icon-button';
 import { AngleLeftIcon, AngleRightIcon } from '@commercetools-uikit/icons';
-import s from './styles.module.css';
+import { Button } from '@headlessui/react';
 
 const Pagination = <T extends Record<string, unknown>>({
   table,
@@ -9,12 +9,13 @@ const Pagination = <T extends Record<string, unknown>>({
   table: Table<T>;
 }) => {
   return (
-    <div className={s.paginationBody}>
+    <div className="flex justify-between items-center">
       <select
         value={table.getState().pagination.pageSize}
         onChange={(e) => {
           table.setPageSize(Number(e.target.value));
         }}
+        className="text-[13px] border border-[#e2e8f0] rounded px-2 py-1 text-[#334155] bg-white cursor-pointer"
       >
         {[20, 30, 40, 50].map((pageSize) => (
           <option key={pageSize} value={pageSize}>
@@ -23,45 +24,40 @@ const Pagination = <T extends Record<string, unknown>>({
         ))}
       </select>
 
-      <div className={s.paginator}>
-        <SecondaryIconButton
-          icon={
-            <AngleLeftIcon
-              //color={!table.getCanPreviousPage() ? 'neutral60' : 'primary'}
-              color="neutral60"
-            />
-          }
+      <div className="flex items-center gap-4">
+        <Button
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
-          label=""
-        />
+        >
+          <AngleLeftIcon
+            color={!table.getCanPreviousPage() ? 'neutral60' : 'primary'}
+          />
+        </Button>
 
-        <div className={s.paginatorPages}>
+        <div className="flex items-center gap-2 text-[13px] text-[#334155]">
           Page
           <input
             type="number"
             min="1"
             max={table.getPageCount()}
-            defaultValue={table.getState().pagination.pageIndex + 1}
             value={table.getState().pagination.pageIndex + 1}
             onChange={(e) => {
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
               table.setPageIndex(page);
             }}
+            className="w-14 text-center border border-[#e2e8f0] rounded px-2 py-1 text-[13px]"
           />
           of {table.getPageCount().toLocaleString()}
         </div>
 
-        <SecondaryIconButton
-          icon={
-            <AngleRightIcon
-              color={!table.getCanNextPage() ? 'neutral60' : 'primary'}
-            />
-          }
+        <Button
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
-          label=""
-        />
+        >
+          <AngleRightIcon
+            color={!table.getCanNextPage() ? 'neutral60' : 'primary'}
+          />
+        </Button>
       </div>
     </div>
   );

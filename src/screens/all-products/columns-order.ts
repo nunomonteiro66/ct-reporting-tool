@@ -20,6 +20,8 @@ export const COLUMN_ORDER = [
   "datasheet",
   "dop",
   "epd",
+  "categories",
+  "selections",
   "attributes.1867_sap_characteristic_znkt_millca_standard_length.value",
   "attributes.0000_length.value",
   "attributes.0000_drum_type.value",
@@ -132,6 +134,4 @@ export const COLUMN_ORDER = [
   "attributes.esp_type_of_armour.value",
   "attributes.esp_anti_rodent_termite_sheath_additive.value",
   "attributes.2450_electric_current_type.value",
-  "categories",
-  "selections",
 ];

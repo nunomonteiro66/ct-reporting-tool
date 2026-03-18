@@ -58,6 +58,7 @@
     "@commercetools-uikit/notifications": "^20.3.0",
     "@commercetools-uikit/pagination": "^20.3.0",
     "@commercetools-uikit/primary-button": "^20.3.1",
+    "@commercetools-uikit/search-text-input": "^20.4.0",
     "@commercetools-uikit/secondary-button": "^20.4.0",
     "@commercetools-uikit/select-field": "^20.3.0",
     "@commercetools-uikit/select-input": "^20.4.0",
@@ -69,6 +70,7 @@
     "@commercetools/sync-actions": "^5.14.0",
     "@emotion/react": "^11.14.0",
     "@formatjs/cli": "6.7.2",
+    "@headlessui/react": "^2.2.9",
     "@manypkg/cli": "0.25.0",
     "@tanstack/react-table": "^8.21.3",
     "@testing-library/dom": "^10.4.0",
@@ -100,13 +102,12 @@
   "devDependencies": {
     "@graphql-eslint/eslint-plugin": "^4.4.0",
     "@next/eslint-plugin-next": "^15.4.6",
-    "@tailwindcss/postcss": "^4.1.18",
-    "autoprefixer": "^10.4.24",
+    "@tailwindcss/postcss": "^4.2.1",
     "cross-env": "^10.1.0",
     "eslint": "^8.57.0",
     "eslint-formatter-pretty": "4.1.0",
     "msw": "^2.12.10",
     "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.19"
+    "tailwindcss": "^4.2.1"
   }
 }

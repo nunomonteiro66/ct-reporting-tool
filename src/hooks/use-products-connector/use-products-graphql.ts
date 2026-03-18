@@ -34,8 +34,8 @@ export const useProductsGraphql = () => {
         (attr: any) => ({
           value: attr.name,
           label: attr.inputTip
-            ? `${attr.label} [${attr.inputTip}] (${attr.name})`
-            : `${attr.label} (${attr.name})`,
+            ? `${attr.label} [${attr.inputTip}]`
+            : `${attr.label}`,
         })
       );
 

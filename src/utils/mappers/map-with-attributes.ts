@@ -1,26 +1,19 @@
-import { CategoryNames } from "../../types/category";
-import {
-  TCategory,
-  TProduct,
-  TProductProjection,
-  TProductSelection,
-  TProjectProjection,
-} from "../../types/generated/ctp";
-import { ProductType } from "../../types/product-type";
+import { TProduct, TProductVariant } from '../../types/generated/ctp';
+import { ProductType } from '../../types/product-type';
 
 const METADATA_TYPES = {
-  "DOP/DOC metadata type": "dop",
-  "EPD metadata type": "epd",
-  "Data sheet metadata type": "datasheet",
+  'DOP/DOC metadata type': 'dop',
+  'EPD metadata type': 'epd',
+  'Data sheet metadata type': 'datasheet',
 };
 
 export type AttributeComplete = {
   value: string;
-  label: string;
+  label: string | string[]; //in case we want the label to be in several lines
 };
 
 //extract all unique attributes, regardless of product type
-export function extractUniqueAttributes(productTypes: any) {
+export function extractUniqueAttributes(productTypes: ProductType[]) {
   //get a list of unique attributes (values only) (without the group)
   const uniqueAttributesValuesSet = new Set<string>();
 
@@ -42,7 +35,12 @@ export function extractUniqueAttributes(productTypes: any) {
 }
 
 //for each variant, add all the available attributes, and set "N/A" to the attributes unavailable to the product type
-function mapAllAttributes(uniqueAttributesComplete, variant, productType) {
+function mapAllAttributes(
+  uniqueAttributesComplete: AttributeComplete[],
+  variant: TProductVariant,
+  productType: ProductType,
+  languages: string[]
+) {
   // Convert variant.attributes to a map for faster lookup
   const variantAttributesMap = Object.fromEntries(
     (variant.attributesRaw ?? []).map((attr) => [attr.name, attr])
@@ -57,30 +55,26 @@ function mapAllAttributes(uniqueAttributesComplete, variant, productType) {
     const key = uniqueAttr.value;
     const label = uniqueAttr.label;
 
-    let value = "";
+    let value: string | string[] = '';
 
     const variantAttr = variantAttributesMap[key];
 
     if (variantAttr) {
       const val = variantAttr.value;
 
-      if (typeof val === "object" && val !== null) {
-        // Check if is the column "EL" (0000_branch_code). This is the only column that needs all languages present
-        if (key === "0000_branch_code") {
-          value = Object.entries(val)
-            .map(([lang, text]) => `${text} (${lang})`)
-            .join(", ");
-        } else {
-          // Pick English if exists, otherwise first key with language code
-          const [firstKey] = Object.keys(val);
-          value = val.en ?? (firstKey ? `${val[firstKey]} (${firstKey})` : "");
-        }
+      if (typeof val === 'object' && val !== null) {
+        value = Object.entries(val)
+          .filter(([lang]) => languages.includes(lang))
+          .map(([lang, text]) => `${text} (${lang})`);
       } else {
-        value = val ?? "";
+        //check if it should be an array (several values)
+        if (String(val).includes(',')) {
+          value = val.split(',');
+        } else value = val ?? '';
       }
     } else {
       // If attribute exists in product type, leave empty; else "N/A"
-      value = productTypeAttrSet.has(key) ? "" : "N/A";
+      value = productTypeAttrSet.has(key) ? '' : 'N/A';
     }
 
     acc[key] = { label, value };
@@ -90,19 +84,25 @@ function mapAllAttributes(uniqueAttributesComplete, variant, productType) {
 
 //check if some of the metadata are present in the variant assets
 const checkAssetType = (assets = []) => {
+  console.log(assets, 'ASSETS');
   const result = {
-    dop: "No",
-    epd: "No",
-    datasheet: "No",
+    dop: 'No',
+    epd: 'No',
+    datasheet: 'No',
   };
 
   assets.forEach((asset) => {
-    const type = asset?.custom?.customFieldsRaw.value;
-    const key = METADATA_TYPES[type];
+    const assetTypes = asset.custom.customFieldsRaw.map((field) =>
+      Array.isArray(field.value) ? field.value[0] : field.value
+    );
 
-    if (key) {
-      result[key] = "Yes";
-    }
+    assetTypes.forEach((type: string) => {
+      const key: string = METADATA_TYPES[type];
+
+      if (key) {
+        result[key] = 'Yes';
+      }
+    });
   });
 
   return result;
@@ -110,7 +110,8 @@ const checkAssetType = (assets = []) => {
 
 export function mapProducts(
   allProducts: TProduct[],
-  productTypes: ProductType[]
+  productTypes: ProductType[],
+  languages: string[]
 ) {
   //1º get all product types, and their respective attributes
   const { uniqueAttributesValues, uniqueAttributesComplete } =
@@ -132,39 +133,39 @@ export function mapProducts(
     //each variant is a row, with the data from the parent (the product)
     return product.allVariants.map((variant) => {
       //check if variant has at least one image
-      let hasImage = "No";
-      if (variant.images && variant.images.length > 0) hasImage = "Yes";
+      let hasImage = 'No';
+      if (variant.images && variant.images.length > 0) hasImage = 'Yes';
 
       //check if any of the assets are present in the variant
       const assets = checkAssetType(variant.assets ?? []);
 
       //map from the all attributes
-      const newAttributes = mapAllAttributes(
-        uniqueAttributesComplete,
-        variant,
-        productType
-      );
+      let newAttributes = {};
+      if (productType)
+        newAttributes = mapAllAttributes(
+          uniqueAttributesComplete,
+          variant,
+          productType,
+          languages
+        );
 
       //add the product category name
       //!!! Note: for now each category has at most one parent, it can change in the future
-      const categories = product.categories
-        .map((category) =>
-          category.parent
-            ? `${category.parent.name} > ${category.name}`
-            : category.name
-        )
-        .join(",");
+      const categories = product.categories.map((category) =>
+        category.parent
+          ? `${category.parent.name} > ${category.name}`
+          : category.name
+      );
 
       //add the variant product selections
       const selections = productRaw.productSelectionRefs.results
         .filter((selectionRef) => {
           const skus = selectionRef.variantSelection?.skus;
-          return !skus || skus.includes(variant.sku ?? "");
+          return !skus || skus.includes(variant.sku ?? '');
         })
         .map(
-          (selection) => selection.productSelection?.name?.split(" ")[0] ?? ""
-        )
-        .join(",");
+          (selection) => selection.productSelection?.name?.split(' ')[0] ?? ''
+        );
 
       return {
         ...productRaw,
