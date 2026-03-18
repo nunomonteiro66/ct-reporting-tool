@@ -102,10 +102,14 @@ export const DataManager = ({
       'key'
     );
 
+    console.log(tableRef.current?.getFilteredRowModel(), tableState);
+
     //get the filtered data from the table
     const toExport = tableRef.current
-      ?.getRowModel()
+      ?.getFilteredRowModel()
       .rows.map((row) => row.original);
+
+    console.log(toExport);
 
     exportToExcel(toExport, visibleColumns, 'excel-export');
   };
