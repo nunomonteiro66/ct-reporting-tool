@@ -12,7 +12,7 @@ import {
   useReactTable,
   VisibilityState,
 } from '@tanstack/react-table';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import ColumnHeader from './column-header';
 import Pagination from './pagination';
 import SearchTextInput from '@commercetools-uikit/search-text-input';

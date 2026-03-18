@@ -1,18 +1,19 @@
-import ExcelJS from "exceljs";
-import { saveAs } from "file-saver";
+import ExcelJS from 'exceljs';
+import { saveAs } from 'file-saver';
 
-export const exportToExcel = async (data, columns, fileName = "data.xlsx") => {
-  console.log("Begining export");
+export const exportToExcel = async (data, columns, fileName = 'data.xlsx') => {
+  console.log('Begining export');
   const getValueByPath = (obj, path) => {
-    return path.split(".").reduce((acc, part) => {
-      if (acc === undefined || acc === null) return "";
+    return path.split('.').reduce((acc, part) => {
+      if (acc === undefined || acc === null) return '';
 
+      if (Array.isArray(acc[part])) return acc[part].join(',');
       return acc[part]; // bracket access handles numeric keys correctly
     }, obj);
   };
 
   const workbook = new ExcelJS.Workbook();
-  const worksheet = workbook.addWorksheet("Sheet1");
+  const worksheet = workbook.addWorksheet('Sheet1');
 
   // Define only your selected columns
   worksheet.columns = columns.map((col) => ({
@@ -35,7 +36,7 @@ export const exportToExcel = async (data, columns, fileName = "data.xlsx") => {
   const buffer = await workbook.xlsx.writeBuffer();
 
   const blob = new Blob([buffer], {
-    type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   });
 
   saveAs(blob, fileName);

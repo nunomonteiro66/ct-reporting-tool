@@ -50,8 +50,6 @@ const ColumnOrder = ({
     const keys = updatedColumns.map((c) => c.key);
     setVisibleColumns(keys);
     setColumnOrder(keys);
-
-    console.log(updatedColumns, keys, selectedColumns, hiddenColumns);
   };
 
   return (

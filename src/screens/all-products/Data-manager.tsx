@@ -4,10 +4,11 @@ import TanstackTable from '../../components/tanstack-table/tanstack-table';
 import { exportToExcel } from '../../utils/export-excel';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { TAppliedFilter } from '@commercetools-uikit/filters';
-import { Table } from '@tanstack/react-table';
+import { ColumnVisibility, Table } from '@tanstack/react-table';
 import { TProduct } from '../../types/product';
 import { Column } from '../../types/datatable-column';
 import { AttributeComplete } from '../../utils/mappers/map-with-attributes';
+import { sortByKeyOrder } from '../../utils/sorting';
 
 type OptionProps = { value: string; label: string };
 
@@ -78,14 +79,33 @@ export const DataManager = ({
     );
   }, []);
 
+  useEffect(() => {
+    console.log('COLLLLL ', ColumnVisibility);
+  }, [tableRef.current]);
+
   const exportExcel = async () => {
+    const tableState = tableRef.current?.getState();
+    if (!tableState) return;
+
+    const activeColumns = Object.keys(tableState.columnVisibility).filter(
+      (key) => tableState.columnVisibility[key]
+    );
+
     //give only the visible columns
-    const visibleColumns = activeColumns
+    let visibleColumns = activeColumns
       .map((colKey) => columns.find((col) => col.key === colKey))
-      .filter(Boolean);
+      .filter((col): col is Column => col !== undefined);
+
+    visibleColumns = sortByKeyOrder(
+      visibleColumns,
+      tableRef.current?.getState().columnOrder ?? [],
+      'key'
+    );
 
     //get the filtered data from the table
-    const toExport = tableRef.current?.getRowModel().rows;
+    const toExport = tableRef.current
+      ?.getRowModel()
+      .rows.map((row) => row.original);
 
     exportToExcel(toExport, visibleColumns, 'excel-export');
   };

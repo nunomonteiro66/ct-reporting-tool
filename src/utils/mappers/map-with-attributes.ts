@@ -84,7 +84,6 @@ function mapAllAttributes(
 
 //check if some of the metadata are present in the variant assets
 const checkAssetType = (assets = []) => {
-  console.log(assets, 'ASSETS');
   const result = {
     dop: 'No',
     epd: 'No',
