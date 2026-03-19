@@ -23,8 +23,8 @@ import ColumnOrder from './column-order';
 type TanstackTableProps<T> = {
   data: T[];
   columns: Column[];
-  visibleColumns: string[];
-  setVisibleColumns: Dispatch<SetStateAction<string[]>>;
+  visibleColumns?: string[];
+  setVisibleColumns?: Dispatch<SetStateAction<string[]>>;
   setTable: (t: Table<T>) => void;
 };
 
@@ -52,20 +52,25 @@ const TanstackTable = <T extends Record<string, unknown>>({
   const [openFilter, setOpenFilter] = useState<string | null>(null);
   const [globalFilter, setGlobalFilter] = useState('');
 
-  const [visibleColumnKeys, setVisibleColumnKeys] = useState<string[]>(
-    () => visibleColumns // initialize from prop
-  );
+  const [visibleColumnKeys, setVisibleColumnKeys] = useState<string[]>();
   const [columnOrder, setColumnOrder] = useState<ColumnOrderState>(() =>
     columns.map((col) => col.key)
   );
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(
-    () =>
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>();
+
+  //if visibleColumns is undefined, set all columns on
+  useEffect(() => {
+    if (!visibleColumns) return;
+    setVisibleColumnKeys(columns.map((col) => col.key));
+    setColumnVisibility(
       Object.fromEntries(
         columns.map((col) => [col.key, visibleColumns.includes(col.key)])
       )
-  );
+    );
+  }, []);
 
   useEffect(() => {
+    if (!visibleColumnKeys) return;
     setColumnVisibility(
       Object.fromEntries(
         columns.map((col) => [col.key, visibleColumnKeys.includes(col.key)])
@@ -183,11 +188,11 @@ const TanstackTable = <T extends Record<string, unknown>>({
         />
         <ColumnOrder
           columns={columns}
-          visibleColumns={visibleColumnKeys}
+          visibleColumns={visibleColumnKeys ?? []}
           setVisibleColumns={(columns: string[]) => {
             console.log('setting columns: ', columns);
             setVisibleColumnKeys(columns);
-            setVisibleColumns(columns); //parent
+            if (setVisibleColumns) setVisibleColumns(columns); //parent
           }}
           columnOrder={columnOrder}
           setColumnOrder={setColumnOrder}

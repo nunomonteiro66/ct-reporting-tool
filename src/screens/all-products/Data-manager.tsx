@@ -4,11 +4,13 @@ import TanstackTable from '../../components/tanstack-table/tanstack-table';
 import { exportToExcel } from '../../utils/export-excel';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { TAppliedFilter } from '@commercetools-uikit/filters';
-import { ColumnVisibility, Table } from '@tanstack/react-table';
+import { Table } from '@tanstack/react-table';
 import { TProduct } from '../../types/product';
 import { Column } from '../../types/datatable-column';
 import { AttributeComplete } from '../../utils/mappers/map-with-attributes';
 import { sortByKeyOrder } from '../../utils/sorting';
+import ExportTableExcel from '../../components/tanstack-table/export-excel';
+import exportTableExcel from '../../components/tanstack-table/export-excel';
 
 type OptionProps = { value: string; label: string };
 
@@ -172,7 +174,10 @@ export const DataManager = ({
   return (
     <>
       <div>
-        <PrimaryButton label="Export Excel" onClick={() => exportExcel()} />
+        <PrimaryButton
+          label="Export Excel"
+          onClick={() => exportTableExcel(tableRef, columns)}
+        />
         <Filters
           appliedFilters={appliedFilters}
           filtersConfig={filtersConfig}

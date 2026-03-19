@@ -1,20 +1,21 @@
-import { useApolloClient, useQuery } from "@apollo/client/react";
-import { GRAPHQL_TARGETS } from "@commercetools-frontend/constants";
-import PRODUCT_TYPES_QUERY from "./graphql-queries/product-types.graphql";
-import PRODUCTS_QUERY from "./graphql-queries/products.graphql";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useMcQuery } from "@commercetools-frontend/application-shell";
-import { DocumentNode } from "graphql";
-import { graphqlFetchAll, useGraphQLFetch } from "../graphql-fetch-all";
-import { TProduct, TProductQueryResult } from "../../types/generated/ctp";
-import { ApolloClient } from "@apollo/client";
+import { useApolloClient, useQuery } from '@apollo/client/react';
+import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
+import PRODUCT_TYPES_QUERY from './graphql-queries/product-types.graphql';
+import PRODUCTS_QUERY from './graphql-queries/products.graphql';
+import PRODUCTS_DOCUMENTS from './graphql-queries/product-documents.graphql';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useMcQuery } from '@commercetools-frontend/application-shell';
+import { DocumentNode } from 'graphql';
+import { graphqlFetchAll, useGraphQLFetch } from '../graphql-fetch-all';
+import { TProduct, TProductQueryResult } from '../../types/generated/ctp';
+import { ApolloClient } from '@apollo/client';
 
 export const useProductsGraphql = () => {
   const client = useApolloClient();
 
   const getAllProducts = useCallback(() => {
-    return graphqlFetchAll<TProduct, "products">(
-      "products",
+    return graphqlFetchAll<TProduct, 'products'>(
+      'products',
       PRODUCTS_QUERY,
       client,
       { limit: 50 }
@@ -23,8 +24,8 @@ export const useProductsGraphql = () => {
 
   //fetches all possible product types, and the returns the unique ones
   const getAllProductTypes = useCallback(async () => {
-    const data = await graphqlFetchAll<any, "productTypes">(
-      "productTypes",
+    const data = await graphqlFetchAll<any, 'productTypes'>(
+      'productTypes',
       PRODUCT_TYPES_QUERY,
       client
     );
@@ -52,8 +53,8 @@ export const useProductsGraphql = () => {
     async (page: number, limit: number) => {
       const { data, loading, error } = await useGraphQLFetch<
         TProduct,
-        "products"
-      >("products", PRODUCTS_QUERY, client, {
+        'products'
+      >('products', PRODUCTS_QUERY, client, {
         limit: limit,
         page: page,
       });
@@ -63,10 +64,19 @@ export const useProductsGraphql = () => {
     [client]
   );
 
+  const getAllProductsDocuments = useCallback(() => {
+    return graphqlFetchAll<TProduct, 'products'>(
+      'products',
+      PRODUCTS_DOCUMENTS,
+      client
+    );
+  }, [client]);
+
   return {
     getAllProducts,
     getAllProductTypes,
     getProducts,
+    getAllProductsDocuments,
   };
 };
 

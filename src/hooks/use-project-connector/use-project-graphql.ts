@@ -19,7 +19,7 @@ export const useProjectGraphql = () => {
       LANGUAGES_CODES_QUERY,
       client
     );
-    return data.languages;
+    return data.languages as string[];
   }, [client]);
 
   return {

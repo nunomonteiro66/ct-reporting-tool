@@ -1,15 +1,15 @@
-import type { ReactNode } from "react";
-import { useRouteMatch, Link as RouterLink } from "react-router-dom";
-import { useIntl } from "react-intl";
-import Constraints from "@commercetools-uikit/constraints";
-import Grid from "@commercetools-uikit/grid";
-import { AngleRightIcon } from "@commercetools-uikit/icons";
-import Spacings from "@commercetools-uikit/spacings";
-import Text from "@commercetools-uikit/text";
-import messages from "./messages";
-import styles from "./welcome.module.css";
-import WebDeveloperSvg from "./web-developer.svg";
-import PrimaryButton from "@commercetools-uikit/primary-button";
+import type { ReactNode } from 'react';
+import { useRouteMatch, Link as RouterLink } from 'react-router-dom';
+import { useIntl } from 'react-intl';
+import Constraints from '@commercetools-uikit/constraints';
+import Grid from '@commercetools-uikit/grid';
+import { AngleRightIcon } from '@commercetools-uikit/icons';
+import Spacings from '@commercetools-uikit/spacings';
+import Text from '@commercetools-uikit/text';
+import messages from './messages';
+import styles from './welcome.module.css';
+import WebDeveloperSvg from './web-developer.svg';
+import PrimaryButton from '@commercetools-uikit/primary-button';
 
 type TWrapWithProps = {
   children: ReactNode;
@@ -19,7 +19,7 @@ type TWrapWithProps = {
 const WrapWith = (props: TWrapWithProps) => (
   <>{props.condition ? props.wrapper(props.children) : props.children}</>
 );
-WrapWith.displayName = "WrapWith";
+WrapWith.displayName = 'WrapWith';
 
 type TInfoCardProps = {
   title: string;
@@ -63,7 +63,7 @@ const InfoCard = (props: TInfoCardProps) => (
     </div>
   </Grid.Item>
 );
-InfoCard.displayName = "InfoCard";
+InfoCard.displayName = 'InfoCard';
 
 const Welcome = () => {
   const match = useRouteMatch();
@@ -75,17 +75,25 @@ const Welcome = () => {
         <Text.Headline as="h1" intlMessage={messages.title} />
 
         <Spacings.Stack scale="l">
-          <PrimaryButton
-            label="All product and variant attributes"
-            onClick={() => {
-              window.location.href = `${match.url}/all-products`;
-            }}
-          />
+          <div className="flex gap-8">
+            <PrimaryButton
+              label="All product and variant attributes"
+              onClick={() => {
+                window.location.href = `${match.url}/all-products`;
+              }}
+            />
+            <PrimaryButton
+              label="All products documents"
+              onClick={() => {
+                window.location.href = `${match.url}/documents`;
+              }}
+            />
+          </div>
         </Spacings.Stack>
       </Spacings.Stack>
     </Constraints.Horizontal>
   );
 };
-Welcome.displayName = "Welcome";
+Welcome.displayName = 'Welcome';
 
 export default Welcome;
