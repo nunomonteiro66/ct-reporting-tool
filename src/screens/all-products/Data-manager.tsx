@@ -79,9 +79,31 @@ export const DataManager = ({
     );
   }, []);
 
+  //change filters when active columns change
   useEffect(() => {
-    console.log('COLLLLL ', ColumnVisibility);
-  }, [tableRef.current]);
+    const attributesOptions = filtersConfig.find(
+      (filter) => filter.filterKey === 'attributes'
+    )?.options;
+    if (!attributesOptions) return;
+
+    const activeColumnsAttributes = activeColumns
+      .filter((col) => col.startsWith('attributes'))
+      .map((col) => col.split('.')[1]);
+
+    const newActiveColumns = attributesOptions.filter((attr) =>
+      activeColumnsAttributes.includes(attr.value)
+    );
+
+    if (newActiveColumns.length > 0)
+      setAppliedFilters((prev) => [
+        ...prev.filter((f) => f.filterKey !== 'attributes'),
+        { filterKey: 'attributes', values: newActiveColumns },
+      ]);
+    else
+      setAppliedFilters((prev) => [
+        ...prev.filter((f) => f.filterKey !== 'attributes'),
+      ]);
+  }, [activeColumns]);
 
   const exportExcel = async () => {
     const tableState = tableRef.current?.getState();
@@ -102,14 +124,10 @@ export const DataManager = ({
       'key'
     );
 
-    console.log(tableRef.current?.getFilteredRowModel(), tableState);
-
     //get the filtered data from the table
     const toExport = tableRef.current
       ?.getFilteredRowModel()
       .rows.map((row) => row.original);
-
-    console.log(toExport);
 
     exportToExcel(toExport, visibleColumns, 'excel-export');
   };
@@ -147,6 +165,10 @@ export const DataManager = ({
     ]);
   };
 
+  useEffect(() => {
+    console.log(filtersConfig, appliedFilters);
+  }, [filtersConfig, appliedFilters]);
+
   return (
     <>
       <div>
@@ -161,6 +183,7 @@ export const DataManager = ({
         data={data}
         columns={columns}
         visibleColumns={activeColumns}
+        setVisibleColumns={setActiveColumns}
         setTable={(t) => {
           tableRef.current = t;
         }}

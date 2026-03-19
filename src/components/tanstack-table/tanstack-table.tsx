@@ -24,6 +24,7 @@ type TanstackTableProps<T> = {
   data: T[];
   columns: Column[];
   visibleColumns: string[];
+  setVisibleColumns: Dispatch<SetStateAction<string[]>>;
   setTable: (t: Table<T>) => void;
 };
 
@@ -43,6 +44,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
   data,
   columns,
   visibleColumns,
+  setVisibleColumns,
   setTable,
 }: TanstackTableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -182,7 +184,11 @@ const TanstackTable = <T extends Record<string, unknown>>({
         <ColumnOrder
           columns={columns}
           visibleColumns={visibleColumnKeys}
-          setVisibleColumns={setVisibleColumnKeys}
+          setVisibleColumns={(columns: string[]) => {
+            console.log('setting columns: ', columns);
+            setVisibleColumnKeys(columns);
+            setVisibleColumns(columns); //parent
+          }}
           columnOrder={columnOrder}
           setColumnOrder={setColumnOrder}
         />
