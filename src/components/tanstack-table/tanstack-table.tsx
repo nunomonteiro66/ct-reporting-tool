@@ -134,7 +134,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
         .includes(String(filterValue).toLowerCase());
     },
     enableColumnResizing: true,
-    columnResizeMode: 'onEnd',
+    columnResizeMode: 'onChange',
   });
 
   useEffect(() => {
