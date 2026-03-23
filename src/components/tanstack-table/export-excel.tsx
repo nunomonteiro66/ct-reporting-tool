@@ -8,23 +8,24 @@ const exportTableExcel = (
   tableRef: RefObject<Table<any>>,
   columns: Column[]
 ) => {
+  console.log(tableRef, columns);
   const tableState = tableRef.current?.getState();
   if (!tableState) return;
 
-  const activeColumns = Object.keys(tableState.columnVisibility).filter(
-    (key) => tableState.columnVisibility[key]
-  );
+  const { columnVisibility, columnOrder } = tableState;
 
-  //give only the visible columns
-  let visibleColumns = activeColumns
+  //keys of the visible columns
+  const activeKeys = columnVisibility
+    ? Object.keys(columnVisibility).filter((key) => columnVisibility[key])
+    : columns.map((col) => col.key);
+
+  //give only the visible columns (Column complete)
+  let visibleColumns = activeKeys
     .map((colKey) => columns.find((col) => col.key === colKey))
     .filter((col): col is Column => col !== undefined);
 
-  visibleColumns = sortByKeyOrder(
-    visibleColumns,
-    tableRef.current?.getState().columnOrder ?? [],
-    'key'
-  );
+  //sort the columns as in the table
+  visibleColumns = sortByKeyOrder(visibleColumns, columnOrder ?? [], 'key');
 
   //get the filtered data from the table
   const toExport = tableRef.current
