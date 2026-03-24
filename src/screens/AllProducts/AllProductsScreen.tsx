@@ -5,14 +5,14 @@ import {
   mapProducts,
 } from '../../utils/mappers/map-with-attributes';
 import { useProductsGraphql } from '../../hooks/use-products-connector/use-products-graphql';
-import { TProduct } from '../../types/product';
 import { COLUMN_ORDER } from './columns-order';
 import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
-import { ProductType } from '../../types/product-type';
 import { DataManager } from './Data-manager';
 import { Column } from '../../types/datatable-column';
-import { TProduct as CTProduct } from '../../types/generated/ctp';
 import { useProjectGraphql } from '../../hooks/use-project-connector/use-project-graphql';
+import { MappedProduct } from '../../types/mapped-product';
+import { TProduct } from '../../types/generated/ctp';
+import { ProductType } from '../../types/product-type';
 
 const defaultColumns = [
   { key: 'key', label: 'key' },
@@ -36,14 +36,12 @@ const AllProducts = () => {
   const { getAllProducts, getAllProductTypes } = useProductsGraphql();
   const { getAllLanguagesCodes } = useProjectGraphql();
 
-  //all raw products (and variants) fetched from ct
-  const [allProducts, setAllProducts] = useState<CTProduct[]>();
-
-  //products shown in the page (with pagination)
-  //will always be a slice of the mappedProducts
-  const [products, setProducts] = useState<TProduct[]>([]);
-
+  const [rawData, setRawData] = useState<TProduct[]>();
   const [productTypes, setProductTypes] = useState<ProductType[]>();
+
+  //products shown in the page (with filters)
+  //will always be a slice of the allProducts
+  const [products, setProducts] = useState<MappedProduct[]>([]);
 
   const [columns, setColumns] = useState<Column[]>([]);
 
@@ -61,43 +59,40 @@ const AllProducts = () => {
   useEffect(() => {
     const load = async () => {
       const productTypes = await getAllProductTypes();
-      const allData = await getAllProducts();
+      const rawData = await getAllProducts();
       const languages = await getAllLanguagesCodes();
+
+      setRawData(rawData);
       setProductTypes(productTypes);
-      setAllProducts(allData);
       setLanguages(languages);
+      getAllUniqueAttributes(productTypes);
     };
     load();
   }, []);
 
-  //map the data and add the attributes and the categories names
+  //maps the raw data into usable data (mapped data)
+  //triggers when the language changes
   useEffect(() => {
-    if (
-      !productTypes ||
-      productTypes.length === 0 ||
-      !allProducts ||
-      !languages
-    )
-      return;
+    if (!productTypes || !rawData || !languages) return;
 
     //map the products
-    const newProducts = mapProducts(allProducts, productTypes, languages);
-
-    //products are all by default
+    const newProducts = mapProducts(rawData, productTypes, languages);
     setProducts(newProducts);
 
     setLoading(false);
-  }, [productTypes, allProducts, languages]);
+  }, [languages]);
 
-  //get all unique attributes (for filters and columns)
-  useEffect(() => {
+  const getAllUniqueAttributes = (productTypes: any) => {
     if (!productTypes || productTypes.length === 0) return;
-    let { _, uniqueAttributesComplete } = extractUniqueAttributes(productTypes);
+    let { uniqueAttributesComplete } = extractUniqueAttributes(productTypes);
 
     //add keys to the attributes labels
     uniqueAttributesComplete = uniqueAttributesComplete.map((attr) => ({
       ...attr,
-      label: [attr.label, `(${attr.value})`],
+      label: [
+        ...(Array.isArray(attr.label) ? attr.label : [attr.label]),
+        `(${attr.value})`,
+      ],
     }));
 
     setUniqueAttributes(uniqueAttributesComplete);
@@ -116,7 +111,7 @@ const AllProducts = () => {
     //re-order the columns
     newColumns = setCorrectColumnOrder(newColumns);
     setColumns(newColumns);
-  }, [productTypes]);
+  };
 
   //sets the order of the columns the same as the columnsOrder
   const setCorrectColumnOrder = (columns: Column[]) => {

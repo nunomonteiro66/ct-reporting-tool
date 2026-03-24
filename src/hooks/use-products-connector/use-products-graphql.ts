@@ -1,14 +1,10 @@
-import { useApolloClient, useQuery } from '@apollo/client/react';
-import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants';
+import { useApolloClient } from '@apollo/client/react';
 import PRODUCT_TYPES_QUERY from './graphql-queries/product-types.graphql';
 import PRODUCTS_QUERY from './graphql-queries/products.graphql';
 import PRODUCTS_DOCUMENTS from './graphql-queries/product-documents.graphql';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useMcQuery } from '@commercetools-frontend/application-shell';
-import { DocumentNode } from 'graphql';
+import { useCallback } from 'react';
 import { graphqlFetchAll, useGraphQLFetch } from '../graphql-fetch-all';
-import { TProduct, TProductQueryResult } from '../../types/generated/ctp';
-import { ApolloClient } from '@apollo/client';
+import { TProduct } from '../../types/generated/ctp';
 
 export const useProductsGraphql = () => {
   const client = useApolloClient();
@@ -78,33 +74,4 @@ export const useProductsGraphql = () => {
     getProducts,
     getAllProductsDocuments,
   };
-};
-
-// get all product types, and their attributes
-export const useGetProductTypes = () => {
-  const { allData: allProductTypes, loading } = useGetAllProductTypes();
-
-  const productTypes = useMemo(() => {
-    if (!allProductTypes || allProductTypes.length === 0) return [];
-
-    const finalData = allProductTypes
-      //.flatMap((product) => product.attributeDefinitions?.results || [])
-      .map((product_type) => {
-        const allAttributes = product_type.attributeDefinitions.results.map(
-          (attr: any) => ({
-            value: attr.name,
-            label: attr.label,
-          })
-        );
-
-        return {
-          product_type_name: product_type.name,
-          product_type_value: product_type.key,
-          attributes: allAttributes,
-        };
-      });
-    return finalData;
-  }, [allProductTypes]);
-
-  return { allData: productTypes, loading };
 };

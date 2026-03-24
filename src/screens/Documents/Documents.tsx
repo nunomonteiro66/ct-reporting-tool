@@ -4,8 +4,12 @@ import { TProduct as CTProduct, TAsset } from '../../types/generated/ctp';
 import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
 import TanstackTable from '../../components/tanstack-table/tanstack-table';
 import { Table } from '@tanstack/react-table';
-import { TProduct } from '../../types/product';
 import { useProjectGraphql } from '../../hooks/use-project-connector/use-project-graphql';
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import exportTableExcel from '../../components/tanstack-table/export-excel';
+import Filters, { FiltersProps } from '../../components/filters/filters';
+import { TAppliedFilter } from '@commercetools-uikit/filters';
+import { FilterSubmitCallbackProps } from '../../types/filter';
 
 type DocumentProduct = {
   sku: string | null | undefined;
@@ -50,20 +54,60 @@ const typeMap = {
   'EPD metadata type': 'epd',
 };
 
-const VariantDocuments = () => {
+const Documents = () => {
   //table state
-  const tableRef = useRef<Table<TProduct> | null>(null);
+  const tableRef = useRef<Table<DocumentProduct> | null>(null);
 
   const [loading, setLoading] = useState(true);
+
   const [columns, setColumns] = useState(defaultColumns);
+  const [activeColumns, setActiveColumns] = useState<string[]>([]);
+
   const { getAllProductsDocuments } = useProductsGraphql();
   const { getAllLanguagesCodes } = useProjectGraphql();
 
+  //filters states
+  const [appliedFilters, setAppliedFilters] = useState<TAppliedFilter[]>([]);
+  const [filtersConfig, setFiltersConfig] = useState<FiltersProps[]>([]);
+
   const [data, setData] = useState<DocumentProduct[]>([]);
+
+  useEffect(() => {
+    const load = async () => {
+      const allLang = await getAllLanguagesCodes();
+      const data = await getAllProductsDocuments();
+      const mapped = extractData(data);
+
+      setData(mapped);
+      //add extra columns for the assets
+      const extraColumns: typeof defaultColumns = [];
+      allLang.forEach((lang) => {
+        defaultAssets.forEach((asset) => {
+          extraColumns.push({
+            key: `assets.${lang}.${asset.key}`,
+            label: `${asset.label} (${lang.toUpperCase()})`,
+          });
+        });
+      });
+
+      const finalColumns = [...defaultColumns, ...extraColumns];
+
+      setColumns(finalColumns);
+
+      //all columns are enabled by default
+      setActiveColumns(finalColumns.map((col) => col.key));
+
+      //filters
+      setDefaultFilters(allLang);
+
+      setLoading(false);
+    };
+    load();
+  }, []);
 
   const getDocumentType = (asset: TAsset) => {
     const values = asset.custom?.customFieldsRaw?.map(
-      (field) => field.value[0]
+      (field) => field.value[0] as string
     );
     if (values) {
       return typeMap[
@@ -93,7 +137,7 @@ const VariantDocuments = () => {
                 const fileName = asset.name;
                 acc[lang] = {
                   ...acc[lang],
-                  [`${fileType}_name`]: fileName,
+                  [`${fileType}_name`]: fileName ?? '',
                   [`${fileType}_link`]: link,
                 };
               }
@@ -105,34 +149,57 @@ const VariantDocuments = () => {
     });
   };
 
-  useEffect(() => {
-    const load = async () => {
-      const allLang = await getAllLanguagesCodes();
-      const data = await getAllProductsDocuments();
-      const mapped = extractData(data);
+  //active columns depend on the selected languages
+  const changeActiveColumns = (selectedLanguages: string[]) => {
+    //return only the columns that aren't assets, or that are assets of a selected language
+    const newColumns = columns
+      .filter(
+        (col) =>
+          !col.key.startsWith('assets.') ||
+          selectedLanguages.some((lang) =>
+            col.key.startsWith(`assets.${lang}.`)
+          )
+      )
+      .map((col) => col.key);
 
-      setData(mapped);
-      console.log(mapped);
+    setActiveColumns(newColumns);
+  };
 
-      //add extra columns for the assets
-      const extraColumns: typeof defaultColumns = [];
-      allLang.forEach((lang) => {
-        defaultAssets.forEach((asset) => {
-          extraColumns.push({
-            key: `assets.${lang}.${asset.key}`,
-            label: `${asset.label} (${lang.toUpperCase()})`,
-          });
-        });
-      });
+  const filtersChanged: FilterSubmitCallbackProps = (key, selectedOptions) => {
+    switch (key) {
+      case 'languages':
+        changeActiveColumns(selectedOptions.map((opt) => opt.value));
+        break;
+    }
 
-      setColumns([...defaultColumns, ...extraColumns]);
+    setAppliedFilters((prev) => [
+      ...prev.filter((f) => f.filterKey !== key),
+      { filterKey: key, values: selectedOptions },
+    ]);
+  };
 
-      console.log([...defaultColumns, ...extraColumns]);
+  const setDefaultFilters = (languages: string[]) => {
+    const languagesOptions = languages.map((lang) => ({
+      label: lang,
+      value: lang,
+    }));
 
-      setLoading(false);
-    };
-    load();
-  }, []);
+    setFiltersConfig([
+      {
+        filterKey: 'languages',
+        label: 'Languages',
+        options: languagesOptions,
+      },
+    ]);
+
+    //all languages are on by default
+    setAppliedFilters([
+      {
+        filterKey: 'languages',
+        values: languagesOptions,
+      },
+    ]);
+  };
 
   return (
     <>
@@ -140,9 +207,22 @@ const VariantDocuments = () => {
         <LoadingSpinner scale="L" />
       ) : (
         <>
+          <div>
+            <PrimaryButton
+              label="Export Excel"
+              onClick={() => exportTableExcel(tableRef, columns)}
+            />
+            <Filters
+              appliedFilters={appliedFilters}
+              filtersConfig={filtersConfig}
+              submitCallback={filtersChanged}
+            />
+          </div>
           <TanstackTable
             data={data}
             columns={columns}
+            visibleColumns={activeColumns}
+            setVisibleColumns={setActiveColumns}
             setTable={(t) => {
               tableRef.current = t;
             }}
@@ -153,4 +233,6 @@ const VariantDocuments = () => {
   );
 };
 
-export default VariantDocuments;
+Documents.displayName = 'Documents';
+
+export default Documents;

@@ -5,10 +5,9 @@ import { exportToExcel } from '../../utils/export-excel';
 import { sortByKeyOrder } from '../../utils/sorting';
 
 const exportTableExcel = (
-  tableRef: RefObject<Table<any>>,
+  tableRef: RefObject<Table<any> | null>,
   columns: Column[]
 ) => {
-  console.log(tableRef, columns);
   const tableState = tableRef.current?.getState();
   if (!tableState) return;
 

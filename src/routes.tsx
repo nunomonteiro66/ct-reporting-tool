@@ -5,8 +5,9 @@ import Channels from './components/channels';
 import Welcome from './components/welcome';
 import Materials from './components/materials';
 import ProductTypes from './components/unique-product-types';
-import AllProducts from './screens/all-products';
-import VariantDocuments from './screens/documents/VariantDocuments';
+import AllProducts from './screens/AllProducts';
+import Documents from './screens/Documents/Documents';
+import Images from './screens/Images/Images';
 
 type ApplicationRoutesProps = {
   children?: ReactNode;
@@ -32,7 +33,10 @@ const ApplicationRoutes = (_props: ApplicationRoutesProps) => {
           <Channels linkToWelcome={match.url} />
         </Route>
         <Route path={`${match.path}/documents`}>
-          <VariantDocuments />
+          <Documents />
+        </Route>
+        <Route path={`${match.path}/images`}>
+          <Images />
         </Route>
         <Route path={`${match.path}/all-products`}>
           <AllProducts />

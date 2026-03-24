@@ -1,16 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useProductsGraphql } from '../../hooks/use-products-connector/use-products-graphql';
-import { TProduct as CTProduct, TAsset } from '../../types/generated/ctp';
+import { TProduct as CTProduct } from '../../types/generated/ctp';
 import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
 import TanstackTable from '../../components/tanstack-table/tanstack-table';
 import { Table } from '@tanstack/react-table';
-import { TProduct } from '../../types/product';
-import { useProjectGraphql } from '../../hooks/use-project-connector/use-project-graphql';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import exportTableExcel from '../../components/tanstack-table/export-excel';
-import Filters, { FiltersProps } from '../../components/filters/filters';
-import { TAppliedFilter } from '@commercetools-uikit/filters';
-import { FilterSubmitCallbackProps } from '../../types/filter';
 
 type ImageProduct = {
   sku: string | null | undefined;
@@ -33,9 +28,9 @@ const defaultColumns = [
   { key: 'categories', label: 'Product categories' },
 ];
 
-const VariantImages = () => {
+const Images = () => {
   //table state
-  const tableRef = useRef<Table<TProduct> | null>(null);
+  const tableRef = useRef<Table<ImageProduct> | null>(null);
   const [loading, setLoading] = useState(true);
   const [columns, setColumns] = useState(defaultColumns);
 
@@ -125,6 +120,6 @@ const VariantImages = () => {
   );
 };
 
-VariantImages.displayName = 'Images';
+Images.displayName = 'Images';
 
-export default VariantImages;
+export default Images;

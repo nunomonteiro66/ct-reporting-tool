@@ -9,8 +9,8 @@ import { TProduct } from '../../types/product';
 import { Column } from '../../types/datatable-column';
 import { AttributeComplete } from '../../utils/mappers/map-with-attributes';
 import { sortByKeyOrder } from '../../utils/sorting';
-import ExportTableExcel from '../../components/tanstack-table/export-excel';
 import exportTableExcel from '../../components/tanstack-table/export-excel';
+import { MappedProduct } from '../../types/mapped-product';
 
 type OptionProps = { value: string; label: string };
 
@@ -20,7 +20,7 @@ type SubmitCallbackProps = (
 ) => void;
 
 type DataManagerProps = {
-  data: TProduct[];
+  data: MappedProduct[];
   columns: Column[];
   uniqueAttributes: AttributeComplete[];
   languages: string[];
@@ -35,7 +35,7 @@ export const DataManager = ({
   setLanguages,
 }: DataManagerProps) => {
   //table state
-  const tableRef = useRef<Table<TProduct> | null>(null);
+  const tableRef = useRef<Table<MappedProduct> | null>(null);
 
   //filters states
   const [appliedFilters, setAppliedFilters] = useState<TAppliedFilter[]>([]);
@@ -51,13 +51,12 @@ export const DataManager = ({
       label: lang,
       value: lang,
     }));
-    setFiltersConfig((prev) => [
-      /* ...prev, */
+    setFiltersConfig([
       {
         filterKey: 'attributes',
         label: 'Attributes',
         options: uniqueAttributes.map((attr) => ({
-          value: attr.value,
+          value: Array.isArray(attr.value) ? attr.value.join('\n') : attr.value,
           label: Array.isArray(attr.label) ? attr.label.join('\n') : attr.label,
         })),
       },
@@ -76,7 +75,7 @@ export const DataManager = ({
       },
     ]);
 
-    setActiveColumns((prev) =>
+    setActiveColumns(
       columns.filter((col) => col.isVisible ?? true).map((col) => col.key)
     );
   }, []);
@@ -106,33 +105,6 @@ export const DataManager = ({
         ...prev.filter((f) => f.filterKey !== 'attributes'),
       ]);
   }, [activeColumns]);
-
-  const exportExcel = async () => {
-    const tableState = tableRef.current?.getState();
-    if (!tableState) return;
-
-    const activeColumns = Object.keys(tableState.columnVisibility).filter(
-      (key) => tableState.columnVisibility[key]
-    );
-
-    //give only the visible columns
-    let visibleColumns = activeColumns
-      .map((colKey) => columns.find((col) => col.key === colKey))
-      .filter((col): col is Column => col !== undefined);
-
-    visibleColumns = sortByKeyOrder(
-      visibleColumns,
-      tableRef.current?.getState().columnOrder ?? [],
-      'key'
-    );
-
-    //get the filtered data from the table
-    const toExport = tableRef.current
-      ?.getFilteredRowModel()
-      .rows.map((row) => row.original);
-
-    exportToExcel(toExport, visibleColumns, 'excel-export');
-  };
 
   //when the attributes filters change, replace the active columns
   const changeAttributesShown = (selectedOptions: OptionProps[]) => {
@@ -166,10 +138,6 @@ export const DataManager = ({
       { filterKey: key, values: selectedOptions },
     ]);
   };
-
-  useEffect(() => {
-    console.log(filtersConfig, appliedFilters);
-  }, [filtersConfig, appliedFilters]);
 
   return (
     <>

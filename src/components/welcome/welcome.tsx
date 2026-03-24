@@ -88,6 +88,12 @@ const Welcome = () => {
                 window.location.href = `${match.url}/documents`;
               }}
             />
+            <PrimaryButton
+              label="All products images"
+              onClick={() => {
+                window.location.href = `${match.url}/images`;
+              }}
+            />
           </div>
         </Spacings.Stack>
       </Spacings.Stack>
