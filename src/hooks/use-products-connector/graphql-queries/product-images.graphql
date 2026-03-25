@@ -1,0 +1,32 @@
+query ProductImages($limit: Int = 500, $offset: Int = 0) {
+  products(limit: $limit, offset: $offset) {
+    count
+    offset
+    total
+    results {
+      productType {
+        key
+        name
+      }
+      masterData {
+        current {
+          name(acceptLanguage: "en")
+          categories {
+            name(acceptLanguage: "en")
+          }
+          allVariants {
+            sku
+            images {
+              label
+              url
+            }
+            attributesRaw(includeNames: "7_type") {
+              name
+              value
+            }
+          }
+        }
+      }
+    }
+  }
+}

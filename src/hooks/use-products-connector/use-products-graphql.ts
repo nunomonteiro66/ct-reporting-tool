@@ -2,6 +2,7 @@ import { useApolloClient } from '@apollo/client/react';
 import PRODUCT_TYPES_QUERY from './graphql-queries/product-types.graphql';
 import PRODUCTS_QUERY from './graphql-queries/products.graphql';
 import PRODUCTS_DOCUMENTS from './graphql-queries/product-documents.graphql';
+import PRODUCTS_IMAGES from './graphql-queries/product-images.graphql';
 import { useCallback } from 'react';
 import { graphqlFetchAll, useGraphQLFetch } from '../graphql-fetch-all';
 import { TProduct } from '../../types/generated/ctp';
@@ -68,10 +69,19 @@ export const useProductsGraphql = () => {
     );
   }, [client]);
 
+  const getAllProductsImages = useCallback(() => {
+    return graphqlFetchAll<TProduct, 'products'>(
+      'products',
+      PRODUCTS_IMAGES,
+      client
+    );
+  }, [client]);
+
   return {
     getAllProducts,
     getAllProductTypes,
     getProducts,
     getAllProductsDocuments,
+    getAllProductsImages,
   };
 };

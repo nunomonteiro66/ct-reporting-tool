@@ -34,9 +34,21 @@ const Images = () => {
   const [loading, setLoading] = useState(true);
   const [columns, setColumns] = useState(defaultColumns);
 
-  const { getAllProductsDocuments } = useProductsGraphql();
+  const { getAllProductsImages } = useProductsGraphql();
 
   const [data, setData] = useState<ImageProduct[]>([]);
+
+  const extractNameFromUrl = (url: string) => {
+    try {
+      const { pathname } = new URL(url);
+      // pathname: /content/qtwyayu3gl/png/NKT_LV_H07V-K_1G16_RF_yellow-green_horz.png
+      const segments = pathname.split('/');
+      const last = segments[segments.length - 1];
+      return last || '';
+    } catch {
+      return '';
+    }
+  };
 
   const extractData = (products: CTProduct[]) => {
     return products.flatMap((prod) => {
@@ -51,15 +63,13 @@ const Images = () => {
             product_type_key: prodType?.key,
             product_type_name: prodType?.name,
             categories: current?.categories.map((cat) => cat.name),
-            images: variant.assets
-              .filter((asset) => asset.sources[0].contentType === 'image')
-              .reduce((acc, asset, index) => {
-                acc[index] = {
-                  name: asset.name ?? '',
-                  link: asset.sources[0].uri,
-                };
-                return acc;
-              }, {} as Record<string, { name: string; link: string }>),
+            images: variant.images.reduce((acc, asset, index) => {
+              acc[index] = {
+                name: extractNameFromUrl(asset.url),
+                link: asset.url,
+              };
+              return acc;
+            }, {} as Record<string, { name: string; link: string }>),
           };
         }) ?? []
       );
@@ -68,7 +78,7 @@ const Images = () => {
 
   useEffect(() => {
     const load = async () => {
-      const data = await getAllProductsDocuments();
+      const data = await getAllProductsImages();
       const mapped = extractData(data);
 
       console.log(mapped);
