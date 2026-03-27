@@ -153,7 +153,6 @@ const Images = () => {
               tableRef.current = t;
             }}
             onTableChange={handleTableChange}
-            dynamicColumns
           />
         </DataPageLayout>
       )}

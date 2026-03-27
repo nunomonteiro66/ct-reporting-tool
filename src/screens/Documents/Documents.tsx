@@ -242,7 +242,6 @@ const Documents = () => {
               tableRef.current = t;
             }}
             onTableChange={handleTableChange}
-            dynamicColumns
           />
         </DataPageLayout>
       )}
