@@ -7,6 +7,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  Row,
   SortingState,
   Table,
   useReactTable,
@@ -17,15 +18,16 @@ import ColumnHeader from './column-header';
 import Pagination from './pagination';
 import SearchTextInput from '@commercetools-uikit/search-text-input';
 import { Column } from '../../types/datatable-column';
-import { ColumnSettingsManager } from '@commercetools-uikit/data-table-manager/column-settings-manager';
 import ColumnOrder from './column-order';
 
 type TanstackTableProps<T> = {
   data: T[];
-  columns: Column[];
-  visibleColumns?: string[];
-  setVisibleColumns?: Dispatch<SetStateAction<string[]>>;
+  initialColumns: Column[];
+  visibleColumns: string[];
+  setVisibleColumns: Dispatch<SetStateAction<string[]>>;
   setTable: (t: Table<T>) => void;
+  onTableChange?: (t: Table<T>) => void;
+  dynamicColumns?: boolean;
 };
 
 // Resolves dot-notation paths like "product.name" on a nested object
@@ -42,10 +44,12 @@ const getNestedValue = (
 
 const TanstackTable = <T extends Record<string, unknown>>({
   data,
-  columns,
+  initialColumns,
   visibleColumns,
   setVisibleColumns,
   setTable,
+  onTableChange,
+  dynamicColumns = false,
 }: TanstackTableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -54,17 +58,19 @@ const TanstackTable = <T extends Record<string, unknown>>({
 
   const [visibleColumnKeys, setVisibleColumnKeys] = useState<string[]>();
   const [columnOrder, setColumnOrder] = useState<ColumnOrderState>(() =>
-    columns.map((col) => col.key)
+    initialColumns.map((col) => col.key)
   );
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>();
+
+  const [columns, setColumns] = useState<Column[]>(initialColumns);
 
   //if visibleColumns is undefined, set all columns on
   useEffect(() => {
     if (!visibleColumns) return;
-    setVisibleColumnKeys(columns.map((col) => col.key));
+    setVisibleColumnKeys(initialColumns.map((col) => col.key));
     setColumnVisibility(
       Object.fromEntries(
-        columns.map((col) => [col.key, visibleColumns.includes(col.key)])
+        initialColumns.map((col) => [col.key, visibleColumns.includes(col.key)])
       )
     );
   }, []);
@@ -126,21 +132,47 @@ const TanstackTable = <T extends Record<string, unknown>>({
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onGlobalFilterChange: setGlobalFilter,
-    globalFilterFn: (row, columnId, filterValue) => {
+    globalFilterFn: (row, columnId, filterValue: string) => {
       if (!filterValue || filterValue.trim() === '') return true;
-      const value = row.getValue(columnId);
-      return String(value ?? '')
-        .toLowerCase()
-        .includes(String(filterValue).toLowerCase());
+      const value = String(row.getValue(columnId)).toLowerCase();
+
+      if (filterValue.includes(',')) {
+        const filterArray = filterValue
+          .split(',')
+          .map((f) => f.trim().toLowerCase())
+          .filter(Boolean);
+
+        return filterArray.some((filter) => value.includes(filter));
+      }
+      return value.includes(filterValue.toLowerCase());
     },
     enableColumnResizing: true,
     columnResizeMode: 'onChange',
   });
 
+  //if dynamicColumns is true, hide the columns that don't have any value
+  const setColumnsDynamically = () => {
+    console.log('DYNAMIC COL: ', initialColumns);
+
+    setColumns(
+      initialColumns.filter((col) =>
+        table.getRowModel().flatRows.some((row) => {
+          return getNestedValue(row.original, col.key);
+        })
+      )
+    );
+  };
+
   useEffect(() => {
     table.setPageSize(20);
     setTable(table);
   }, [table]);
+
+  useEffect(() => {
+    if (dynamicColumns) setColumnsDynamically();
+
+    onTableChange?.(table);
+  }, [table.getRowModel()]);
 
   const getUniqueValues = (key: string): string[] => {
     const allValues = data.flatMap((row) => {
@@ -167,17 +199,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
     setColumnFilters(filters());
   };
 
-  const handleSettingsChange = (
-    action: string,
-    nextValue: { visibleColumns: { key: string }[] }
-  ) => {
-    const newVisible = nextValue.visibleColumns.map((c) => c.key);
-    setColumnVisibility(
-      Object.fromEntries(newVisible.map((newV) => [newV, true]))
-    );
-    setColumnOrder(newVisible); // order follows the visible columns panel order
-  };
-
   return (
     <div className="flex flex-col h-full">
       <div className="flex flex-col items-end">
@@ -190,7 +211,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
           columns={columns}
           visibleColumns={visibleColumnKeys ?? []}
           setVisibleColumns={(columns: string[]) => {
-            console.log('setting columns: ', columns);
             setVisibleColumnKeys(columns);
             if (setVisibleColumns) setVisibleColumns(columns); //parent
           }}

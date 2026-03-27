@@ -73,7 +73,8 @@ export const useProductsGraphql = () => {
     return graphqlFetchAll<TProduct, 'products'>(
       'products',
       PRODUCTS_IMAGES,
-      client
+      client,
+      { limit: 50 }
     );
   }, [client]);
 

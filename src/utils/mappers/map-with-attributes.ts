@@ -1,6 +1,7 @@
 import { TAsset, TProduct, TProductVariant } from '../../types/generated/ctp';
 import { MappedProduct } from '../../types/mapped-product';
 import { ProductType } from '../../types/product-type';
+import { getProductSelectionsNames } from './miscellaneous';
 
 const METADATA_TYPES = {
   'DOP/DOC metadata type': 'dop',
@@ -161,15 +162,12 @@ export function mapProducts(
         )
         .filter((c): c is string => Boolean(c));
 
-      //add the variant product selections
-      const selections = productRaw.productSelectionRefs.results
-        .filter((selectionRef) => {
-          const skus = selectionRef.variantSelection?.skus;
-          return !skus || skus.includes(variant.sku ?? '');
-        })
-        .map(
-          (selection) => selection.productSelection?.name?.split(' ')[0] ?? ''
-        );
+      //add the product selections
+      const selections = getProductSelectionsNames(
+        productRaw.productSelectionRefs.results.map(
+          (res) => res.productSelection?.name ?? ''
+        )
+      );
 
       return {
         ...productRaw,

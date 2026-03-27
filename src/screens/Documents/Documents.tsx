@@ -10,6 +10,7 @@ import exportTableExcel from '../../components/tanstack-table/export-excel';
 import Filters, { FiltersProps } from '../../components/filters/filters';
 import { TAppliedFilter } from '@commercetools-uikit/filters';
 import { FilterSubmitCallbackProps } from '../../types/filter';
+import DataPageLayout from '../../layouts/data-page-layout';
 
 type DocumentProduct = {
   sku: string | null | undefined;
@@ -71,6 +72,8 @@ const Documents = () => {
   const [filtersConfig, setFiltersConfig] = useState<FiltersProps[]>([]);
 
   const [data, setData] = useState<DocumentProduct[]>([]);
+
+  const [totalResults, setTotalResults] = useState<number>(0);
 
   useEffect(() => {
     const load = async () => {
@@ -201,33 +204,47 @@ const Documents = () => {
     ]);
   };
 
+  const handleTableChange = (table: Table<DocumentProduct>) => {
+    setTotalResults(table.getRowCount());
+  };
+
+  const clearAllFilters = () => {
+    setAppliedFilters([]);
+  };
+
   return (
     <>
       {loading ? (
         <LoadingSpinner scale="L" />
       ) : (
-        <>
-          <div>
+        <DataPageLayout
+          title="Documents"
+          totalResults={totalResults}
+          actions={
             <PrimaryButton
               label="Export Excel"
               onClick={() => exportTableExcel(tableRef, columns)}
             />
-            <Filters
-              appliedFilters={appliedFilters}
-              filtersConfig={filtersConfig}
-              submitCallback={filtersChanged}
-            />
-          </div>
+          }
+        >
+          <Filters
+            appliedFilters={appliedFilters}
+            filtersConfig={filtersConfig}
+            submitCallback={filtersChanged}
+            clearAllCallback={clearAllFilters}
+          />
           <TanstackTable
             data={data}
-            columns={columns}
+            initialColumns={columns}
             visibleColumns={activeColumns}
             setVisibleColumns={setActiveColumns}
             setTable={(t) => {
               tableRef.current = t;
             }}
+            onTableChange={handleTableChange}
+            dynamicColumns
           />
-        </>
+        </DataPageLayout>
       )}
     </>
   );

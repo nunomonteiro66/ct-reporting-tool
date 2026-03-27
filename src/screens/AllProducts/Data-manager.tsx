@@ -1,16 +1,14 @@
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import Filters, { FiltersProps } from '../../components/filters/filters';
 import TanstackTable from '../../components/tanstack-table/tanstack-table';
-import { exportToExcel } from '../../utils/export-excel';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { TAppliedFilter } from '@commercetools-uikit/filters';
 import { Table } from '@tanstack/react-table';
-import { TProduct } from '../../types/product';
 import { Column } from '../../types/datatable-column';
 import { AttributeComplete } from '../../utils/mappers/map-with-attributes';
-import { sortByKeyOrder } from '../../utils/sorting';
 import exportTableExcel from '../../components/tanstack-table/export-excel';
 import { MappedProduct } from '../../types/mapped-product';
+import DataPageLayout from '../../layouts/data-page-layout';
 
 type OptionProps = { value: string; label: string };
 
@@ -42,6 +40,8 @@ export const DataManager = ({
   const [filtersConfig, setFiltersConfig] = useState<FiltersProps[]>([]);
 
   const [activeColumns, setActiveColumns] = useState<string[]>([]);
+
+  const [totalResults, setTotalResults] = useState<number>(0);
 
   //set the filters config
   //set the active columns
@@ -95,15 +95,29 @@ export const DataManager = ({
       activeColumnsAttributes.includes(attr.value)
     );
 
-    if (newActiveColumns.length > 0)
-      setAppliedFilters((prev) => [
+    setAppliedFilters((prev) => {
+      const isEqual = (a: OptionProps[], b: OptionProps[]) => {
+        if (a.length !== b.length) return false;
+        return a.every((val, i) => val.value === b[i]?.value);
+      };
+      const existing = prev.find((f) => f.filterKey === 'attributes');
+
+      if (
+        existing &&
+        isEqual(existing.values as OptionProps[], newActiveColumns)
+      ) {
+        return prev;
+      }
+
+      if (newActiveColumns.length === 0) {
+        return prev.filter((f) => f.filterKey !== 'attributes');
+      }
+
+      return [
         ...prev.filter((f) => f.filterKey !== 'attributes'),
         { filterKey: 'attributes', values: newActiveColumns },
-      ]);
-    else
-      setAppliedFilters((prev) => [
-        ...prev.filter((f) => f.filterKey !== 'attributes'),
-      ]);
+      ];
+    });
   }, [activeColumns]);
 
   //when the attributes filters change, replace the active columns
@@ -139,28 +153,49 @@ export const DataManager = ({
     ]);
   };
 
+  const handleTableChange = (table: Table<MappedProduct>) => {
+    setTotalResults(table.getRowCount());
+  };
+
+  const clearAllFilters = () => {
+    setAppliedFilters([]);
+    setLanguages([]);
+
+    // reset columns
+    setActiveColumns(
+      columns
+        .filter((col) => !col.key.startsWith('attributes'))
+        .map((col) => col.key)
+    );
+  };
+
   return (
-    <>
-      <div>
+    <DataPageLayout
+      title="Products"
+      totalResults={totalResults}
+      actions={
         <PrimaryButton
           label="Export Excel"
           onClick={() => exportTableExcel(tableRef, columns)}
         />
-        <Filters
-          appliedFilters={appliedFilters}
-          filtersConfig={filtersConfig}
-          submitCallback={filtersChanged}
-        />
-      </div>
+      }
+    >
+      <Filters
+        appliedFilters={appliedFilters}
+        filtersConfig={filtersConfig}
+        submitCallback={filtersChanged}
+        clearAllCallback={clearAllFilters}
+      />
       <TanstackTable
         data={data}
-        columns={columns}
+        initialColumns={columns}
         visibleColumns={activeColumns}
         setVisibleColumns={setActiveColumns}
         setTable={(t) => {
           tableRef.current = t;
         }}
+        onTableChange={handleTableChange}
       />
-    </>
+    </DataPageLayout>
   );
 };
