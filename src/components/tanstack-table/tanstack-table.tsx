@@ -56,10 +56,13 @@ const TanstackTable = <T extends Record<string, unknown>>({
   const [openFilter, setOpenFilter] = useState<string | null>(null);
   const [globalFilter, setGlobalFilter] = useState('');
 
+  //states for the column order component
   const [visibleColumnKeys, setVisibleColumnKeys] = useState<string[]>();
   const [columnOrder, setColumnOrder] = useState<ColumnOrderState>(() =>
     initialColumns.map((col) => col.key)
   );
+
+  //state for the tanstacktable
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>();
 
   const [columns, setColumns] = useState<Column[]>(initialColumns);
@@ -152,15 +155,25 @@ const TanstackTable = <T extends Record<string, unknown>>({
 
   //if dynamicColumns is true, hide the columns that don't have any value
   const setColumnsDynamically = () => {
-    console.log('DYNAMIC COL: ', initialColumns);
+    const currentRows = table.getRowModel().flatRows;
 
-    setColumns(
-      initialColumns.filter((col) =>
-        table.getRowModel().flatRows.some((row) => {
-          return getNestedValue(row.original, col.key);
-        })
-      )
+    console.log('CHANGING DYNAMIC COLS');
+
+    const dynamicVisibility = Object.fromEntries(
+      columns.map((col) => [
+        col.key,
+        currentRows.some((row) =>
+          getNestedValue(row.original as Record<string, unknown>, col.key)
+        ),
+      ])
     );
+
+    console.log(dynamicVisibility);
+
+    setColumnVisibility((prev) => ({
+      ...prev,
+      ...dynamicVisibility,
+    }));
   };
 
   useEffect(() => {

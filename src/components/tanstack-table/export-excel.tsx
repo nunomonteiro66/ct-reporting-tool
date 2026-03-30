@@ -6,7 +6,8 @@ import { sortByKeyOrder } from '../../utils/sorting';
 
 const exportTableExcel = (
   tableRef: RefObject<Table<any> | null>,
-  columns: Column[]
+  columns: Column[],
+  visibleColumnsKeys?: string[]
 ) => {
   const tableState = tableRef.current?.getState();
   if (!tableState) return;
@@ -19,7 +20,7 @@ const exportTableExcel = (
     : columns.map((col) => col.key);
 
   //give only the visible columns (Column complete)
-  let visibleColumns = activeKeys
+  let visibleColumns = (visibleColumnsKeys ?? activeKeys)
     .map((colKey) => columns.find((col) => col.key === colKey))
     .filter((col): col is Column => col !== undefined);
 

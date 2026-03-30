@@ -67,13 +67,9 @@ export const DataManager = ({
       },
     ]);
 
-    //all languages are on by default
-    setAppliedFilters([
-      {
-        filterKey: 'languages',
-        values: languagesOptions,
-      },
-    ]);
+    //only english is applied by default
+    const englishOption = languagesOptions.find((lang) => lang.value === 'en');
+    if (englishOption) filtersChanged('languages', [englishOption]);
 
     setActiveColumns(
       columns.filter((col) => col.isVisible ?? true).map((col) => col.key)

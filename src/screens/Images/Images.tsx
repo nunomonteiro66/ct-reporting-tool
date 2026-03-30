@@ -117,16 +117,6 @@ const Images = () => {
 
   const handleTableChange = (table: Table<ImageProduct>) => {
     setTotalResults(table.getRowCount());
-
-    //limit the columns for only the necessaries
-    //f.e, if, of the 20 products shown, the one with most images has 2 images, then we only need two extra columns
-    /*  let maxImg = 0;
-    table.getRowModel().flatRows.map((row) => {
-      const lenImg = row.original.images.length;
-      if (lenImg > maxImg) maxImg = lenImg;
-    });
-    const columns = [...defaultColumns, ...buildExtraColumns(maxImg)];
-    setColumns(columns); */
   };
 
   return (
@@ -140,7 +130,9 @@ const Images = () => {
           actions={
             <PrimaryButton
               label="Export Excel"
-              onClick={() => exportTableExcel(tableRef, columns)}
+              onClick={() =>
+                exportTableExcel(tableRef, columns, visibleColumns)
+              }
             />
           }
         >
@@ -153,6 +145,7 @@ const Images = () => {
               tableRef.current = t;
             }}
             onTableChange={handleTableChange}
+            dynamicColumns
           />
         </DataPageLayout>
       )}

@@ -98,7 +98,14 @@ const Documents = () => {
       setColumns(finalColumns);
 
       //all columns are enabled by default
-      setActiveColumns(finalColumns.map((col) => col.key));
+      setActiveColumns(
+        finalColumns
+          .filter(
+            (col) =>
+              col.key.startsWith('assets.en.') || !col.key.startsWith('assets')
+          )
+          .map((col) => col.key)
+      );
 
       //filters
       setDefaultFilters(allLang);
@@ -195,13 +202,15 @@ const Documents = () => {
       },
     ]);
 
-    //all languages are on by default
-    setAppliedFilters([
-      {
-        filterKey: 'languages',
-        values: languagesOptions,
-      },
-    ]);
+    //only english is active by default
+    const englishOption = languagesOptions.find((lang) => lang.value === 'en');
+    if (englishOption)
+      setAppliedFilters([
+        {
+          filterKey: 'languages',
+          values: [englishOption],
+        },
+      ]);
   };
 
   const handleTableChange = (table: Table<DocumentProduct>) => {
@@ -211,6 +220,10 @@ const Documents = () => {
   const clearAllFilters = () => {
     setAppliedFilters([]);
   };
+
+  useEffect(() => {
+    console.log('ACTIVE COLUMNS CHANGED: ', activeColumns, columns);
+  }, [activeColumns]);
 
   return (
     <>
@@ -223,7 +236,7 @@ const Documents = () => {
           actions={
             <PrimaryButton
               label="Export Excel"
-              onClick={() => exportTableExcel(tableRef, columns)}
+              onClick={() => exportTableExcel(tableRef, columns, activeColumns)}
             />
           }
         >
@@ -242,6 +255,7 @@ const Documents = () => {
               tableRef.current = t;
             }}
             onTableChange={handleTableChange}
+            //dynamicColumns
           />
         </DataPageLayout>
       )}
