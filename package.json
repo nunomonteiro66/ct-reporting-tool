@@ -37,7 +37,7 @@
     "@commercetools-frontend/i18n": "25.2.0",
     "@commercetools-frontend/l10n": "25.2.0",
     "@commercetools-frontend/mc-dev-authentication": "25.2.0",
-    "@commercetools-frontend/mc-scripts": "25.2.0",
+    "@commercetools-frontend/mc-scripts": "^27.1.0",
     "@commercetools-frontend/permissions": "25.2.0",
     "@commercetools-frontend/sdk": "^26.0.0",
     "@commercetools-uikit/checkbox-input": "^20.4.0",
