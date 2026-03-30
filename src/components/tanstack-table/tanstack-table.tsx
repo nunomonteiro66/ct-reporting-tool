@@ -7,13 +7,12 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  Row,
   SortingState,
   Table,
   useReactTable,
   VisibilityState,
 } from '@tanstack/react-table';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import ColumnHeader from './column-header';
 import Pagination from './pagination';
 import SearchTextInput from '@commercetools-uikit/search-text-input';
@@ -78,31 +77,45 @@ const TanstackTable = <T extends Record<string, unknown>>({
   useEffect(() => {
     setVisibleColumnKeys(visibleColumns);
   }, [visibleColumns]);
-
   const columnHelper = createColumnHelper<T>();
 
-  const newColumns = initialColumns.map((col) =>
+  const makeLeaf = (col: Column) =>
     columnHelper.accessor(
       (row) => getNestedValue(row as Record<string, unknown>, col.key),
       {
         id: col.key,
         header: Array.isArray(col.label) ? col.label.join('\n') : col.label,
-        size: 100, // default width
-        minSize: 150, // min width
-        maxSize: 1000, // max width
+        size: 100,
+        minSize: 150,
+        maxSize: 1000,
         filterFn: (row, columnId, filterValue: string[]) => {
           if (!filterValue || filterValue.length === 0) return true;
-
           const cellValue = row.getValue(columnId);
-
           const cellArray = Array.isArray(cellValue)
             ? cellValue.map(String)
             : [String(cellValue ?? '')];
-
           return filterValue.some((v) => cellArray.includes(v));
         },
       }
-    )
+    );
+
+  const buildColumn = (col: Column, parentKey = ''): any => {
+    const fullKey = parentKey ? `${parentKey}.${col.key}` : col.key;
+
+    if (col.children && col.children.length > 0) {
+      return columnHelper.group({
+        id: fullKey,
+        header: col.label,
+        columns: col.children.map((child) => buildColumn(child, fullKey)),
+      });
+    }
+
+    return makeLeaf({ ...col, key: fullKey });
+  };
+
+  const newColumns = useMemo(
+    () => initialColumns.map((col) => buildColumn(col)),
+    [initialColumns]
   );
 
   const table = useReactTable({
@@ -199,22 +212,37 @@ const TanstackTable = <T extends Record<string, unknown>>({
         <div className="overflow-x-auto h-full max-h-[calc(100vh-200px)] overflow-y-auto">
           <table
             style={{ width: table.getTotalSize() }}
-            className="border-collapse table-fixed"
+            className="border-separate table-fixed"
           >
             <thead className="sticky top-0 z-10">
               {table.getHeaderGroups().map((hg) => (
                 <tr key={hg.id}>
-                  {hg.headers.map((header) => (
-                    <ColumnHeader
-                      key={header.column.id}
-                      header={header}
-                      openFilter={openFilter}
-                      setOpenFilter={setOpenFilter}
-                      activeFilters={getActiveFilters(header.column.id)}
-                      uniqueValues={getUniqueValues(header.column.id)}
-                      onFilterSubmit={handleFilterSubmit}
-                    />
-                  ))}
+                  {hg.headers.map((header) =>
+                    header.isPlaceholder || header.column.columns.length > 0 ? (
+                      <th
+                        key={header.id}
+                        colSpan={header.colSpan}
+                        style={{ width: header.getSize() }}
+                        className="px-4 py-2 font-semibold text-center border-r-2 border-r-[#e2e8f0] bg-[#f8fafc]"
+                      >
+                        {!header.isPlaceholder &&
+                          flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                      </th>
+                    ) : (
+                      <ColumnHeader
+                        key={header.column.id}
+                        header={header}
+                        openFilter={openFilter}
+                        setOpenFilter={setOpenFilter}
+                        activeFilters={getActiveFilters(header.column.id)}
+                        uniqueValues={getUniqueValues(header.column.id)}
+                        onFilterSubmit={handleFilterSubmit}
+                      />
+                    )
+                  )}
                 </tr>
               ))}
             </thead>
