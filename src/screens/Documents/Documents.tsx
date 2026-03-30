@@ -11,6 +11,7 @@ import Filters, { FiltersProps } from '../../components/filters/filters';
 import { TAppliedFilter } from '@commercetools-uikit/filters';
 import { FilterSubmitCallbackProps } from '../../types/filter';
 import DataPageLayout from '../../layouts/data-page-layout';
+import getNestedValue from '../../utils/nested-attributes';
 
 type DocumentProduct = {
   sku: string | null | undefined;
@@ -61,6 +62,7 @@ const Documents = () => {
 
   const [loading, setLoading] = useState(true);
 
+  const [originalColumns, setOriginalColumns] = useState(defaultColumns);
   const [columns, setColumns] = useState(defaultColumns);
   const [activeColumns, setActiveColumns] = useState<string[]>([]);
 
@@ -95,17 +97,15 @@ const Documents = () => {
 
       const finalColumns = [...defaultColumns, ...extraColumns];
 
-      setColumns(finalColumns);
+      setOriginalColumns(finalColumns);
 
-      //all columns are enabled by default
-      setActiveColumns(
-        finalColumns
-          .filter(
-            (col) =>
-              col.key.startsWith('assets.en.') || !col.key.startsWith('assets')
-          )
-          .map((col) => col.key)
+      //only en is enabled by default
+      const enOnly = finalColumns.filter(
+        (col) =>
+          col.key.startsWith('assets.en.') || !col.key.startsWith('assets')
       );
+      setColumns(enOnly);
+      setActiveColumns(enOnly.map((col) => col.key));
 
       //filters
       setDefaultFilters(allLang);
@@ -159,20 +159,17 @@ const Documents = () => {
     });
   };
 
-  //active columns depend on the selected languages
+  //active columns depend on the selected languages, or if there are no documents in that language for the current search
   const changeActiveColumns = (selectedLanguages: string[]) => {
     //return only the columns that aren't assets, or that are assets of a selected language
-    const newColumns = columns
-      .filter(
-        (col) =>
-          !col.key.startsWith('assets.') ||
-          selectedLanguages.some((lang) =>
-            col.key.startsWith(`assets.${lang}.`)
-          )
-      )
-      .map((col) => col.key);
+    const newColumns = originalColumns.filter(
+      (col) =>
+        !col.key.startsWith('assets.') ||
+        selectedLanguages.some((lang) => col.key.startsWith(`assets.${lang}.`))
+    );
 
-    setActiveColumns(newColumns);
+    setActiveColumns(newColumns.map((col) => col.key));
+    setColumns(newColumns);
   };
 
   const filtersChanged: FilterSubmitCallbackProps = (key, selectedOptions) => {
@@ -214,16 +211,30 @@ const Documents = () => {
   };
 
   const handleTableChange = (table: Table<DocumentProduct>) => {
+    const data = table
+      .getFilteredRowModel()
+      .flatRows.map((row) => row.original);
+    let langs = [];
+
+    columns
+      .filter((col) => col.key.startsWith('assets.'))
+      .forEach((col) => {
+        const key = col.key;
+
+        const result = data.some((entry) => getNestedValue(entry, key));
+        if (result) {
+          langs.push(key.split('.')[1]);
+        }
+      });
+
+    console.log(langs);
+
     setTotalResults(table.getRowCount());
   };
 
   const clearAllFilters = () => {
     setAppliedFilters([]);
   };
-
-  useEffect(() => {
-    console.log('ACTIVE COLUMNS CHANGED: ', activeColumns, columns);
-  }, [activeColumns]);
 
   return (
     <>
@@ -255,7 +266,6 @@ const Documents = () => {
               tableRef.current = t;
             }}
             onTableChange={handleTableChange}
-            //dynamicColumns
           />
         </DataPageLayout>
       )}

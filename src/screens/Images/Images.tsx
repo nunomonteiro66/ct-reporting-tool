@@ -8,6 +8,7 @@ import PrimaryButton from '@commercetools-uikit/primary-button';
 import exportTableExcel from '../../components/tanstack-table/export-excel';
 import DataPageLayout from '../../layouts/data-page-layout';
 import { getProductSelectionsNames } from '../../utils/mappers/miscellaneous';
+import { Column } from '../../types/datatable-column';
 
 type ImageProduct = {
   sku: string | null | undefined;
@@ -40,7 +41,7 @@ const Images = () => {
   //table state
   const tableRef = useRef<Table<ImageProduct> | null>(null);
   const [loading, setLoading] = useState(true);
-  const [columns, setColumns] = useState(defaultColumns);
+  const [columns, setColumns] = useState<Column[]>([]);
   const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
 
   const { getAllProductsImages } = useProductsGraphql();
@@ -89,11 +90,15 @@ const Images = () => {
   };
 
   //build all the extra columns for the images
-  const buildExtraColumns = (len: number) =>
-    Array.from({ length: len }, (_, i) => [
+  const buildExtraColumns = (data: ImageProduct[]) => {
+    const len = data.length
+      ? Math.max(...data.map((map) => Object.keys(map.images).length))
+      : 0;
+    return Array.from({ length: len }, (_, i) => [
       { key: `images.${i}.name`, label: `Image ${i + 1}` },
       { key: `images.${i}.link`, label: `Image ${i + 1} link` },
     ]).flat();
+  };
 
   useEffect(() => {
     const load = async () => {
@@ -102,11 +107,7 @@ const Images = () => {
       setData(mapped);
 
       //the product with most images dictates the total columns
-      const max_images = mapped.length
-        ? Math.max(...mapped.map((map) => Object.keys(map.images).length))
-        : 0;
-
-      const columns = [...defaultColumns, ...buildExtraColumns(max_images)];
+      const columns = [...defaultColumns, ...buildExtraColumns(mapped)];
       setColumns(columns);
       setVisibleColumns(columns.map((col) => col.key));
 
@@ -116,6 +117,12 @@ const Images = () => {
   }, []);
 
   const handleTableChange = (table: Table<ImageProduct>) => {
+    setColumns([
+      ...defaultColumns,
+      ...buildExtraColumns(
+        table.getFilteredRowModel().flatRows.map((row) => row.original)
+      ),
+    ]);
     setTotalResults(table.getRowCount());
   };
 
@@ -145,7 +152,6 @@ const Images = () => {
               tableRef.current = t;
             }}
             onTableChange={handleTableChange}
-            dynamicColumns
           />
         </DataPageLayout>
       )}

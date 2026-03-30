@@ -19,6 +19,7 @@ import Pagination from './pagination';
 import SearchTextInput from '@commercetools-uikit/search-text-input';
 import { Column } from '../../types/datatable-column';
 import ColumnOrder from './column-order';
+import getNestedValue from '../../utils/nested-attributes';
 
 type TanstackTableProps<T> = {
   data: T[];
@@ -27,19 +28,6 @@ type TanstackTableProps<T> = {
   setVisibleColumns: Dispatch<SetStateAction<string[]>>;
   setTable: (t: Table<T>) => void;
   onTableChange?: (t: Table<T>) => void;
-  dynamicColumns?: boolean;
-};
-
-// Resolves dot-notation paths like "product.name" on a nested object
-const getNestedValue = (
-  obj: Record<string, unknown>,
-  path: string
-): unknown => {
-  return path.split('.').reduce<unknown>((acc, part) => {
-    if (acc && typeof acc === 'object')
-      return (acc as Record<string, unknown>)[part];
-    return undefined;
-  }, obj);
 };
 
 const TanstackTable = <T extends Record<string, unknown>>({
@@ -49,7 +37,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
   setVisibleColumns,
   setTable,
   onTableChange,
-  dynamicColumns = false,
 }: TanstackTableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -64,8 +51,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
 
   //state for the tanstacktable
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>();
-
-  const [columns, setColumns] = useState<Column[]>(initialColumns);
 
   //if visibleColumns is undefined, set all columns on
   useEffect(() => {
@@ -82,7 +67,10 @@ const TanstackTable = <T extends Record<string, unknown>>({
     if (!visibleColumnKeys) return;
     setColumnVisibility(
       Object.fromEntries(
-        columns.map((col) => [col.key, visibleColumnKeys.includes(col.key)])
+        initialColumns.map((col) => [
+          col.key,
+          visibleColumnKeys.includes(col.key),
+        ])
       )
     );
   }, [visibleColumnKeys]);
@@ -93,7 +81,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
 
   const columnHelper = createColumnHelper<T>();
 
-  const newColumns = columns.map((col) =>
+  const newColumns = initialColumns.map((col) =>
     columnHelper.accessor(
       (row) => getNestedValue(row as Record<string, unknown>, col.key),
       {
@@ -153,37 +141,12 @@ const TanstackTable = <T extends Record<string, unknown>>({
     columnResizeMode: 'onChange',
   });
 
-  //if dynamicColumns is true, hide the columns that don't have any value
-  const setColumnsDynamically = () => {
-    const currentRows = table.getRowModel().flatRows;
-
-    console.log('CHANGING DYNAMIC COLS');
-
-    const dynamicVisibility = Object.fromEntries(
-      columns.map((col) => [
-        col.key,
-        currentRows.some((row) =>
-          getNestedValue(row.original as Record<string, unknown>, col.key)
-        ),
-      ])
-    );
-
-    console.log(dynamicVisibility);
-
-    setColumnVisibility((prev) => ({
-      ...prev,
-      ...dynamicVisibility,
-    }));
-  };
-
   useEffect(() => {
     table.setPageSize(20);
     setTable(table);
   }, [table]);
 
   useEffect(() => {
-    if (dynamicColumns) setColumnsDynamically();
-
     onTableChange?.(table);
   }, [table.getRowModel()]);
 
@@ -221,7 +184,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
           onReset={() => setGlobalFilter('')}
         />
         <ColumnOrder
-          columns={columns}
+          columns={initialColumns}
           visibleColumns={visibleColumnKeys ?? []}
           setVisibleColumns={(columns: string[]) => {
             setVisibleColumnKeys(columns);
@@ -259,7 +222,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
               {table.getRowModel().rows.length === 0 ? (
                 <tr>
                   <td
-                    colSpan={columns.length}
+                    colSpan={initialColumns.length}
                     className="py-10 px-4 text-center text-[#94a3b8] text-[13px]"
                   >
                     No results found
