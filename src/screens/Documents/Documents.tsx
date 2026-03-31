@@ -227,8 +227,6 @@ const Documents = () => {
         }
       });
 
-    console.log(langs);
-
     setTotalResults(table.getRowCount());
   };
 

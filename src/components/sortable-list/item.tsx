@@ -7,7 +7,6 @@ type ItemProps = {
 };
 
 const Item = ({ id, index, column }: ItemProps) => {
-  console.log(id, index, column);
   const { ref, isDragging } = useSortable({
     id,
     index,

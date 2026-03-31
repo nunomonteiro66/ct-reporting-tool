@@ -67,10 +67,12 @@ function mapAllAttributes(
     if (variantAttr) {
       const val = variantAttr.value;
 
+      //attribute has several languages
       if (typeof val === 'object' && val !== null) {
-        value = Object.entries(val)
+        /*  value = Object.entries(val)
           .filter(([lang]) => languages.includes(lang))
-          .map(([lang, text]) => `${text} (${lang})`);
+          .map(([lang, text]) => `${text} (${lang})`); */
+        value = val;
       } else {
         //check if it should be an array (several values)
         if (String(val).includes(',')) {
@@ -81,8 +83,7 @@ function mapAllAttributes(
       // If attribute exists in product type, leave empty; else "N/A"
       value = productTypeAttrSet.has(key) ? '' : 'N/A';
     }
-
-    acc[key] = { label, value };
+    acc[key] = value;
     return acc;
   }, {} as Record<string, AttributeComplete>);
 }

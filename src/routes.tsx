@@ -3,11 +3,10 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import Spacings from '@commercetools-uikit/spacings';
 import Channels from './components/channels';
 import Welcome from './components/welcome';
-import Materials from './components/materials';
-import ProductTypes from './components/unique-product-types';
 import AllProducts from './screens/AllProducts';
 import Documents from './screens/Documents/Documents';
 import Images from './screens/Images/Images';
+import Test from './screens/Test/test';
 
 type ApplicationRoutesProps = {
   children?: ReactNode;

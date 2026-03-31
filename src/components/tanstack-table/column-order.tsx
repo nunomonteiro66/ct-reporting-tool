@@ -47,7 +47,6 @@ const ColumnOrder = ({
   }, [visibleColumns]);
 
   const handleUpdateColumns = (updatedColumns: TColumnData[]) => {
-    console.log('updatedColumns ', updatedColumns);
     const keys = updatedColumns.map((c) => c.key);
     setVisibleColumns(keys);
     setColumnOrder(keys);

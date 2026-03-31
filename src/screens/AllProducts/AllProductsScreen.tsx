@@ -33,7 +33,8 @@ const defaultColumns = [
 ].map((col) => ({ ...col, isSortable: true })) as Column[];
 
 const AllProducts = () => {
-  const { getAllProducts, getAllProductTypes } = useProductsGraphql();
+  const { getAllProducts, getAllProductTypes, getProducts } =
+    useProductsGraphql();
   const { getAllLanguagesCodes } = useProjectGraphql();
 
   const [rawData, setRawData] = useState<TProduct[]>();
@@ -59,13 +60,18 @@ const AllProducts = () => {
   useEffect(() => {
     const load = async () => {
       const productTypes = await getAllProductTypes();
-      const rawData = await getAllProducts();
+      //const rawData = await getAllProducts();
+      const rawData = (await getProducts(0, 1)).data.results; //!!!! change
       const languages = await getAllLanguagesCodes();
-
       setRawData(rawData);
       setProductTypes(productTypes);
       setLanguages(languages);
-      getAllUniqueAttributes(productTypes);
+
+      const uniqueAttrs = getAllUniqueAttributes(productTypes);
+      setUniqueAttributes(uniqueAttrs);
+
+      const finalCols = getColumnsWithAttributes(uniqueAttrs, languages);
+      setColumns(finalCols);
     };
     load();
   }, []);
@@ -83,7 +89,7 @@ const AllProducts = () => {
   }, [languages]);
 
   const getAllUniqueAttributes = (productTypes: any) => {
-    if (!productTypes || productTypes.length === 0) return;
+    if (!productTypes || productTypes.length === 0) return [];
     let { uniqueAttributesComplete } = extractUniqueAttributes(productTypes);
 
     //add keys to the attributes labels
@@ -94,23 +100,36 @@ const AllProducts = () => {
         `(${attr.value})`,
       ],
     }));
+    return uniqueAttributesComplete;
+  };
 
-    setUniqueAttributes(uniqueAttributesComplete);
-
+  const getColumnsWithAttributes = (
+    uniqueAttributesComplete: AttributeComplete[],
+    languages: string[]
+  ) => {
     //add the extra columns for the table (with the attributes)
     let newColumns = [...defaultColumns];
     uniqueAttributesComplete.forEach((attribute, index) => {
-      newColumns.push({
-        label: attribute.label,
-        key: `attributes.${attribute.value}.value`,
-        isVisible: false, //hidden by default
-        isSortable: true,
-      });
+      if (attribute.type === 'ltext')
+        newColumns.push({
+          label: attribute.label,
+          key: `attributes.${attribute.value}`,
+          isVisible: false, //hidden by default
+          isSortable: true,
+          children: languages.map((lang) => ({ key: lang, label: lang })),
+        });
+      else
+        newColumns.push({
+          label: attribute.label,
+          key: `attributes.${attribute.value}`,
+          isVisible: false, //hidden by default
+          isSortable: true,
+        });
     });
 
     //re-order the columns
     newColumns = setCorrectColumnOrder(newColumns);
-    setColumns(newColumns);
+    return newColumns;
   };
 
   //sets the order of the columns the same as the columnsOrder
