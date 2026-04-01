@@ -9,6 +9,7 @@ import { AttributeComplete } from '../../utils/mappers/map-with-attributes';
 import exportTableExcel from '../../components/tanstack-table/export-excel';
 import { MappedProduct } from '../../types/mapped-product';
 import DataPageLayout from '../../layouts/data-page-layout';
+import flattenColumns from '../../utils/flatten-columns';
 
 type OptionProps = { value: string; label: string };
 
@@ -43,8 +44,10 @@ export const DataManager = ({
 
   const [totalResults, setTotalResults] = useState<number>(0);
 
-  //set the filters config
-  //set the active columns
+  const [columnsCopy, setColumnsCopy] = useState(columns);
+
+  //set the default filters config
+  //set the default active columns
   useEffect(() => {
     //set the options for the filters
     const languagesOptions = languages.map((lang) => ({
@@ -72,7 +75,7 @@ export const DataManager = ({
     if (englishOption) filtersChanged('languages', [englishOption]);
 
     setActiveColumns(
-      columns.filter((col) => col.isVisible ?? true).map((col) => col.key)
+      columnsCopy.filter((col) => col.isVisible ?? true).map((col) => col.key)
     );
   }, []);
 
@@ -118,17 +121,33 @@ export const DataManager = ({
 
   //when the attributes filters change, replace the active columns
   const changeAttributesShown = (selectedOptions: OptionProps[]) => {
-    //remove all attributes from selected columns
+    //remove all attributes columns from active columns
     let newActiveColumns = activeColumns.filter(
       (col) => !col.startsWith('attributes.')
     );
 
-    selectedOptions.forEach((filter) => {
-      newActiveColumns.push(`attributes.${filter.value}.value`);
-    });
+    newActiveColumns = [
+      ...newActiveColumns,
+      ...selectedOptions.map((opt) => `attributes.${opt.value}`),
+    ];
 
     //reorder the active columns
     setActiveColumns(newActiveColumns);
+  };
+
+  //only keep columns with the selected languages
+  const changeLanguagesShown = (langs: string[]) => {
+    const newColumns = columns.map((col) => {
+      if (!col.children) return col;
+      return {
+        ...col,
+        children: col.children.filter((child) => langs.includes(child.key)),
+      };
+    });
+
+    console.log('OLD-NEW COLS:', columnsCopy, newColumns, activeColumns);
+
+    setColumnsCopy(newColumns);
   };
 
   const filtersChanged: SubmitCallbackProps = (key, selectedOptions) => {
@@ -139,7 +158,8 @@ export const DataManager = ({
         break;
       //sets the language(s) for the attributes values. if empty, show all
       case 'languages':
-        setLanguages(selectedOptions.map((opt) => opt.value));
+        changeLanguagesShown(selectedOptions.map((opt) => opt.value));
+        //setLanguages(selectedOptions.map((opt) => opt.value));
         break;
     }
 
@@ -165,6 +185,10 @@ export const DataManager = ({
     );
   };
 
+  useEffect(() => {
+    console.log('ACTIVE CHANGED: ', activeColumns);
+  }, [activeColumns]);
+
   return (
     <DataPageLayout
       title="Products"
@@ -184,7 +208,7 @@ export const DataManager = ({
       />
       <TanstackTable
         data={data}
-        initialColumns={columns}
+        initialColumns={columnsCopy}
         visibleColumns={activeColumns}
         setVisibleColumns={setActiveColumns}
         setTable={(t) => {

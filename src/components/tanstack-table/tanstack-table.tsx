@@ -7,6 +7,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  Header,
   SortingState,
   Table,
   useReactTable,
@@ -19,6 +20,7 @@ import SearchTextInput from '@commercetools-uikit/search-text-input';
 import { Column } from '../../types/datatable-column';
 import ColumnOrder from './column-order';
 import getNestedValue from '../../utils/nested-attributes';
+import flattenColumns from '../../utils/flatten-columns';
 
 type TanstackTableProps<T> = {
   data: T[];
@@ -43,80 +45,76 @@ const TanstackTable = <T extends Record<string, unknown>>({
   const [globalFilter, setGlobalFilter] = useState('');
 
   //states for the column order component
-  const [visibleColumnKeys, setVisibleColumnKeys] = useState<string[]>();
   const [columnOrder, setColumnOrder] = useState<ColumnOrderState>(() =>
-    initialColumns.map((col) => col.key)
+    flattenColumns(initialColumns)
   );
 
   //state for the tanstacktable
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>();
 
-  //if visibleColumns is undefined, set all columns on
   useEffect(() => {
-    if (!visibleColumns) return;
-    setVisibleColumnKeys(initialColumns.map((col) => col.key));
-    setColumnVisibility(
-      Object.fromEntries(
-        initialColumns.map((col) => [col.key, visibleColumns.includes(col.key)])
-      )
-    );
+    table.setPageSize(20);
+    setTable(table);
   }, []);
 
+  //sets the column visibility based on visibleColumns from the parent
+  //if a key in visibleColumns points to a group, all group children are shown
   useEffect(() => {
-    if (!visibleColumnKeys) return;
+    if (!visibleColumns) return;
     setColumnVisibility(
       Object.fromEntries(
-        initialColumns.map((col) => [
-          col.key,
-          visibleColumnKeys.includes(col.key),
+        flattenColumns(initialColumns).map((key) => [
+          key,
+          visibleColumns.some(
+            (visibleKey) =>
+              key === visibleKey || // exact match
+              key.startsWith(visibleKey + '.') // key is a child of visibleKey
+          ),
         ])
       )
     );
-  }, [visibleColumnKeys]);
+  }, [visibleColumns, initialColumns]);
 
-  useEffect(() => {
-    setVisibleColumnKeys(visibleColumns);
-  }, [visibleColumns]);
-  const columnHelper = createColumnHelper<T>();
+  //the columns transformed for the table
+  const newColumns = useMemo(() => {
+    const buildColumn = (col: Column, parentKey = ''): any => {
+      const columnHelper = createColumnHelper<T>();
 
-  const makeLeaf = (col: Column) =>
-    columnHelper.accessor(
-      (row) => getNestedValue(row as Record<string, unknown>, col.key),
-      {
-        id: col.key,
-        header: Array.isArray(col.label) ? col.label.join('\n') : col.label,
-        size: 100,
-        minSize: 150,
-        maxSize: 1000,
-        filterFn: (row, columnId, filterValue: string[]) => {
-          if (!filterValue || filterValue.length === 0) return true;
-          const cellValue = row.getValue(columnId);
-          const cellArray = Array.isArray(cellValue)
-            ? cellValue.map(String)
-            : [String(cellValue ?? '')];
-          return filterValue.some((v) => cellArray.includes(v));
-        },
+      const makeLeaf = (col: Column) =>
+        columnHelper.accessor(
+          (row) => getNestedValue(row as Record<string, unknown>, col.key),
+          {
+            id: col.key,
+            header: Array.isArray(col.label) ? col.label.join('\n') : col.label,
+            size: 100,
+            minSize: 150,
+            maxSize: 1000,
+            filterFn: (row, columnId, filterValue: string[]) => {
+              if (!filterValue || filterValue.length === 0) return true;
+              const cellValue = row.getValue(columnId);
+              const cellArray = Array.isArray(cellValue)
+                ? cellValue.map(String)
+                : [String(cellValue ?? '')];
+              return filterValue.some((v) => cellArray.includes(v));
+            },
+          }
+        );
+
+      const fullKey = parentKey ? `${parentKey}.${col.key}` : col.key;
+
+      if (col.children && col.children.length > 0) {
+        return columnHelper.group({
+          id: fullKey,
+          header: col.label,
+          columns: col.children.map((child) => buildColumn(child, fullKey)),
+        });
       }
-    );
 
-  const buildColumn = (col: Column, parentKey = ''): any => {
-    const fullKey = parentKey ? `${parentKey}.${col.key}` : col.key;
+      return makeLeaf({ ...col, key: fullKey });
+    };
 
-    if (col.children && col.children.length > 0) {
-      return columnHelper.group({
-        id: fullKey,
-        header: col.label,
-        columns: col.children.map((child) => buildColumn(child, fullKey)),
-      });
-    }
-
-    return makeLeaf({ ...col, key: fullKey });
-  };
-
-  const newColumns = useMemo(
-    () => initialColumns.map((col) => buildColumn(col)),
-    [initialColumns]
-  );
+    return initialColumns.map((col) => buildColumn(col));
+  }, [initialColumns, visibleColumns]);
 
   const table = useReactTable({
     data,
@@ -154,38 +152,53 @@ const TanstackTable = <T extends Record<string, unknown>>({
     columnResizeMode: 'onChange',
   });
 
-  useEffect(() => {
-    table.setPageSize(20);
-    setTable(table);
-  }, [table]);
-
+  //callback for the parent
   useEffect(() => {
     onTableChange?.(table);
   }, [table.getRowModel()]);
 
-  const getUniqueValues = (key: string): string[] => {
-    const allValues = data.flatMap((row) => {
-      const nested = getNestedValue(row as Record<string, unknown>, key);
-      if (Array.isArray(nested)) return nested.map(String);
-      return [String(nested ?? '')];
-    });
+  //component for the headers of each column. defines the filters, sorting, ...
+  const ColumnHeaderComponent = ({
+    header,
+  }: {
+    header: Header<T, unknown>;
+  }) => {
+    const getUniqueValues = (key: string): string[] => {
+      const allValues = data.flatMap((row) => {
+        const nested = getNestedValue(row as Record<string, unknown>, key);
+        if (Array.isArray(nested)) return nested.map(String);
+        return [String(nested ?? '')];
+      });
 
-    return Array.from(new Set(allValues)).sort();
-  };
-
-  const getActiveFilters = (key: string): string[] => {
-    const filter = columnFilters.find((f) => f.id === key);
-    return (filter?.value as string[]) ?? [];
-  };
-
-  const handleFilterSubmit = (columnKey: string, values: string[]) => {
-    const filters = () => {
-      const without = columnFilters.filter((f) => f.id !== columnKey);
-      if (values.length === 0) return without;
-      return [...without, { id: columnKey, value: values }];
+      return Array.from(new Set(allValues)).sort();
     };
 
-    setColumnFilters(filters());
+    const getActiveFilters = (key: string): string[] => {
+      const filter = columnFilters.find((f) => f.id === key);
+      return (filter?.value as string[]) ?? [];
+    };
+
+    const handleFilterSubmit = (columnKey: string, values: string[]) => {
+      const filters = () => {
+        const without = columnFilters.filter((f) => f.id !== columnKey);
+        if (values.length === 0) return without;
+        return [...without, { id: columnKey, value: values }];
+      };
+
+      setColumnFilters(filters());
+    };
+
+    return (
+      <ColumnHeader
+        key={header.column.id}
+        header={header}
+        openFilter={openFilter}
+        setOpenFilter={setOpenFilter}
+        activeFilters={getActiveFilters(header.column.id)}
+        uniqueValues={getUniqueValues(header.column.id)}
+        onFilterSubmit={handleFilterSubmit}
+      />
+    );
   };
 
   return (
@@ -198,11 +211,8 @@ const TanstackTable = <T extends Record<string, unknown>>({
         />
         <ColumnOrder
           columns={initialColumns}
-          visibleColumns={visibleColumnKeys ?? []}
-          setVisibleColumns={(columns: string[]) => {
-            setVisibleColumnKeys(columns);
-            if (setVisibleColumns) setVisibleColumns(columns); //parent
-          }}
+          visibleColumns={visibleColumns}
+          setVisibleColumns={setVisibleColumns}
           columnOrder={columnOrder}
           setColumnOrder={setColumnOrder}
         />
@@ -219,11 +229,12 @@ const TanstackTable = <T extends Record<string, unknown>>({
                 <tr key={hg.id}>
                   {hg.headers.map((header) =>
                     header.isPlaceholder || header.column.columns.length > 0 ? (
+                      /* this header is a group header (simple header, with no filters/sorting/...) */
                       <th
                         key={header.id}
                         colSpan={header.colSpan}
                         style={{ width: header.getSize() }}
-                        className="px-4 py-2 font-semibold text-center border-r-2 border-r-[#e2e8f0] bg-[#f8fafc]"
+                        className="px-4 py-2 font-semibold text-center border-r-2 border-r-[#e2e8f0] bg-[#f8fafc] overflow-hidden text-ellipsis"
                       >
                         {!header.isPlaceholder &&
                           flexRender(
@@ -232,15 +243,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
                           )}
                       </th>
                     ) : (
-                      <ColumnHeader
-                        key={header.column.id}
-                        header={header}
-                        openFilter={openFilter}
-                        setOpenFilter={setOpenFilter}
-                        activeFilters={getActiveFilters(header.column.id)}
-                        uniqueValues={getUniqueValues(header.column.id)}
-                        onFilterSubmit={handleFilterSubmit}
-                      />
+                      <ColumnHeaderComponent header={header} />
                     )
                   )}
                 </tr>
