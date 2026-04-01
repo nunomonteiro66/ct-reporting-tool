@@ -245,7 +245,10 @@ const Documents = () => {
           actions={
             <PrimaryButton
               label="Export Excel"
-              onClick={() => exportTableExcel(tableRef, columns, activeColumns)}
+              onClick={() => {
+                if (tableRef.current)
+                  exportTableExcel(tableRef.current, 'documents');
+              }}
             />
           }
         >

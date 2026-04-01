@@ -9,7 +9,7 @@ import { AttributeComplete } from '../../utils/mappers/map-with-attributes';
 import exportTableExcel from '../../components/tanstack-table/export-excel';
 import { MappedProduct } from '../../types/mapped-product';
 import DataPageLayout from '../../layouts/data-page-layout';
-import flattenColumns from '../../utils/flatten-columns';
+import { getCsvBlob } from 'tanstack-table-export-to-csv';
 
 type OptionProps = { value: string; label: string };
 
@@ -185,10 +185,6 @@ export const DataManager = ({
     );
   };
 
-  useEffect(() => {
-    console.log('ACTIVE CHANGED: ', activeColumns);
-  }, [activeColumns]);
-
   return (
     <DataPageLayout
       title="Products"
@@ -196,7 +192,10 @@ export const DataManager = ({
       actions={
         <PrimaryButton
           label="Export Excel"
-          onClick={() => exportTableExcel(tableRef, columns)}
+          onClick={() => {
+            if (tableRef.current)
+              exportTableExcel(tableRef.current, 'products-w-attributes');
+          }}
         />
       }
     >

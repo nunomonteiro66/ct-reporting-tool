@@ -137,9 +137,10 @@ const Images = () => {
           actions={
             <PrimaryButton
               label="Export Excel"
-              onClick={() =>
-                exportTableExcel(tableRef, columns, visibleColumns)
-              }
+              onClick={() => {
+                if (tableRef.current)
+                  exportTableExcel(tableRef.current, 'images');
+              }}
             />
           }
         >
