@@ -35,6 +35,7 @@ export const useProductsGraphql = () => {
             ? `${attr.label} [${attr.inputTip}]`
             : `${attr.label}`,
           type: attr.type.name,
+          label_locales: attr.labelAllLocales,
         })
       );
 

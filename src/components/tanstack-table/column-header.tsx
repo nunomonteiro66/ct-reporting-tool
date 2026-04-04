@@ -5,26 +5,58 @@ import {
   FilterIcon,
 } from '@commercetools-uikit/icons';
 import FilterPopover from './filter-popover';
-import { flexRender, Header } from '@tanstack/react-table';
-import { useRef } from 'react';
+import { ColumnFiltersState, flexRender, Header } from '@tanstack/react-table';
+import { Dispatch, SetStateAction, useMemo, useRef, useState } from 'react';
+import getNestedValue from '../../utils/nested-attributes';
 
 interface ColumnHeaderProps<T> {
   header: Header<T, unknown>;
-  openFilter: string | null;
-  setOpenFilter: (key: string | null) => void;
-  activeFilters: string[];
-  uniqueValues: string[];
-  onFilterSubmit: (columnKey: string, values: string[]) => void;
+  columnFilters: ColumnFiltersState;
+  setColumnFilters: Dispatch<SetStateAction<ColumnFiltersState>>;
+  data: T[];
 }
 
 const ColumnHeader = <T,>({
   header,
-  openFilter,
-  setOpenFilter,
-  activeFilters,
-  uniqueValues,
-  onFilterSubmit,
+  columnFilters,
+  setColumnFilters,
+  data,
 }: ColumnHeaderProps<T>) => {
+  const getUniqueValues = (key: string): string[] => {
+    const allValues = data.flatMap((row) => {
+      const nested = getNestedValue(row as Record<string, unknown>, key);
+      if (Array.isArray(nested)) return nested.map(String);
+      return [String(nested ?? '')];
+    });
+
+    return Array.from(new Set(allValues)).sort();
+  };
+
+  const getActiveFilters = (key: string): string[] => {
+    const filter = columnFilters.find((f) => f.id === key);
+    return (filter?.value as string[]) ?? [];
+  };
+
+  const onFilterSubmit = (columnKey: string, values: string[]) => {
+    const filters = () => {
+      const without = columnFilters.filter((f) => f.id !== columnKey);
+      if (values.length === 0) return without;
+      return [...without, { id: columnKey, value: values }];
+    };
+
+    setColumnFilters(filters());
+  };
+  const activeFilters = useMemo(
+    () => getActiveFilters(header.column.id),
+    [header, columnFilters]
+  );
+  const uniqueValues = useMemo(
+    () => getUniqueValues(header.column.id),
+    [data, header]
+  );
+
+  const [openFilter, setOpenFilter] = useState();
+
   const colKey = header.column.id;
   const isOpen = openFilter === colKey;
   const hasFilter = activeFilters.length > 0;
@@ -37,17 +69,6 @@ const ColumnHeader = <T,>({
     header.column.columnDef.header,
     header.getContext()
   );
-
-  //when the label is an array, split into multiple lines
-  /*  const headerContent = Array.isArray(renderedHeader) ? (
-    <span className="flex flex-col leading-tight">
-      {renderedHeader.map((line, i) => (
-        <span key={i}>{line}</span>
-      ))}
-    </span>
-  ) : (
-    <span className="truncate">{renderedHeader}</span>
-  ); */
 
   const headerContent = String(renderedHeader).includes('\n') ? (
     <span className="flex flex-col leading-tight">

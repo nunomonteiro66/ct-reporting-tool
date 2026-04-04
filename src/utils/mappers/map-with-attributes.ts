@@ -43,8 +43,7 @@ export function extractUniqueAttributes(productTypes: ProductType[]) {
 function mapAllAttributes(
   uniqueAttributesComplete: AttributeComplete[],
   variant: TProductVariant,
-  productType: ProductType,
-  languages: string[]
+  productType: ProductType
 ) {
   // Convert variant.attributes to a map for faster lookup
   const variantAttributesMap = Object.fromEntries(
@@ -58,7 +57,6 @@ function mapAllAttributes(
 
   return uniqueAttributesComplete.reduce((acc, uniqueAttr) => {
     const key = uniqueAttr.value as string; //its always a string ("1,2,..."), only after mapping could be an array ([1,2,3,...])
-    const label = uniqueAttr.label;
 
     let value: string | string[] = '';
 
@@ -69,9 +67,6 @@ function mapAllAttributes(
 
       //attribute has several languages
       if (typeof val === 'object' && val !== null) {
-        /*  value = Object.entries(val)
-          .filter(([lang]) => languages.includes(lang))
-          .map(([lang, text]) => `${text} (${lang})`); */
         value = val;
       } else {
         //check if it should be an array (several values)
@@ -115,8 +110,7 @@ const checkAssetType = (assets: TAsset[] = []) => {
 
 export function mapProducts(
   allProducts: TProduct[],
-  productTypes: ProductType[],
-  languages: string[]
+  productTypes: ProductType[]
 ): MappedProduct[] {
   //1º get all product types, and their respective attributes
   const { uniqueAttributesComplete } = extractUniqueAttributes(productTypes);
@@ -149,8 +143,7 @@ export function mapProducts(
         newAttributes = mapAllAttributes(
           uniqueAttributesComplete,
           variant,
-          productType,
-          languages
+          productType
         );
 
       //add the product category name

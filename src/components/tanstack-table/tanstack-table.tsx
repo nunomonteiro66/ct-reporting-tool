@@ -7,7 +7,6 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  Header,
   SortingState,
   Table,
   useReactTable,
@@ -41,7 +40,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
 }: TanstackTableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [openFilter, setOpenFilter] = useState<string | null>(null);
   const [globalFilter, setGlobalFilter] = useState('');
 
   //states for the column order component
@@ -157,50 +155,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
     onTableChange?.(table);
   }, [table.getRowModel()]);
 
-  //component for the headers of each column. defines the filters, sorting, ...
-  const ColumnHeaderComponent = ({
-    header,
-  }: {
-    header: Header<T, unknown>;
-  }) => {
-    const getUniqueValues = (key: string): string[] => {
-      const allValues = data.flatMap((row) => {
-        const nested = getNestedValue(row as Record<string, unknown>, key);
-        if (Array.isArray(nested)) return nested.map(String);
-        return [String(nested ?? '')];
-      });
-
-      return Array.from(new Set(allValues)).sort();
-    };
-
-    const getActiveFilters = (key: string): string[] => {
-      const filter = columnFilters.find((f) => f.id === key);
-      return (filter?.value as string[]) ?? [];
-    };
-
-    const handleFilterSubmit = (columnKey: string, values: string[]) => {
-      const filters = () => {
-        const without = columnFilters.filter((f) => f.id !== columnKey);
-        if (values.length === 0) return without;
-        return [...without, { id: columnKey, value: values }];
-      };
-
-      setColumnFilters(filters());
-    };
-
-    return (
-      <ColumnHeader
-        key={header.column.id}
-        header={header}
-        openFilter={openFilter}
-        setOpenFilter={setOpenFilter}
-        activeFilters={getActiveFilters(header.column.id)}
-        uniqueValues={getUniqueValues(header.column.id)}
-        onFilterSubmit={handleFilterSubmit}
-      />
-    );
-  };
-
   return (
     <div className="flex flex-col h-full">
       <div className="flex flex-col items-end">
@@ -243,7 +197,12 @@ const TanstackTable = <T extends Record<string, unknown>>({
                           )}
                       </th>
                     ) : (
-                      <ColumnHeaderComponent header={header} />
+                      <ColumnHeader
+                        header={header}
+                        data={data}
+                        columnFilters={columnFilters}
+                        setColumnFilters={setColumnFilters}
+                      />
                     )
                   )}
                 </tr>

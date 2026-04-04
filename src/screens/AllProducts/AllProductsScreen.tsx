@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import {
-  AttributeComplete,
   extractUniqueAttributes,
   mapProducts,
 } from '../../utils/mappers/map-with-attributes';
@@ -13,6 +12,7 @@ import { useProjectGraphql } from '../../hooks/use-project-connector/use-project
 import { MappedProduct } from '../../types/mapped-product';
 import { TProduct } from '../../types/generated/ctp';
 import { ProductType } from '../../types/product-type';
+import { AttributeComplete } from '../../types/attribute';
 
 const defaultColumns = [
   { key: 'key', label: 'key' },
@@ -60,8 +60,8 @@ const AllProducts = () => {
   useEffect(() => {
     const load = async () => {
       const productTypes = await getAllProductTypes();
-      //const rawData = await getAllProducts();
-      const rawData = (await getProducts(0, 1)).data.results; //!!!! change
+      const rawData = await getAllProducts();
+      //const rawData = (await getProducts(0, 1)).data.results;
       const languages = await getAllLanguagesCodes();
       setRawData(rawData);
       setProductTypes(productTypes);
@@ -82,8 +82,10 @@ const AllProducts = () => {
     if (!productTypes || !rawData || !languages) return;
 
     //map the products
-    const newProducts = mapProducts(rawData, productTypes, languages);
+    const newProducts = mapProducts(rawData, productTypes);
     setProducts(newProducts);
+
+    console.log(newProducts);
 
     setLoading(false);
   }, [languages]);
@@ -92,7 +94,7 @@ const AllProducts = () => {
     if (!productTypes || productTypes.length === 0) return [];
     let { uniqueAttributesComplete } = extractUniqueAttributes(productTypes);
 
-    //add keys to the attributes labels
+    //add keys to the attributes labels, and all localized labels
     uniqueAttributesComplete = uniqueAttributesComplete.map((attr) => ({
       ...attr,
       label: [
@@ -110,22 +112,37 @@ const AllProducts = () => {
     //add the extra columns for the table (with the attributes)
     let newColumns = [...defaultColumns];
     uniqueAttributesComplete.forEach((attribute, index) => {
-      if (attribute.type === 'ltext')
-        newColumns.push({
-          label: attribute.label,
-          key: `attributes.${attribute.value}`,
-          isVisible: false, //hidden by default
-          isSortable: true,
-          children: languages.map((lang) => ({ key: lang, label: lang })),
+      const newColEntry = {
+        label: Array.isArray(attribute.label)
+          ? attribute.label.join(' ')
+          : attribute.label,
+        key: `attributes.${attribute.value}`,
+        isVisible: false, //hidden by default
+      };
+      if (attribute.type === 'ltext') {
+        const getLabel = (lang: string) =>
+          attribute.label_locales.find((labell) => labell.locale === lang)
+            ?.value;
+
+        //the default label
+        const enLabel = getLabel('en') ?? '';
+        languages.forEach((lang) => {
+          const labelTranslated = getLabel(lang) ?? enLabel;
+
+          newColumns.push({
+            label: `${attribute.value} - ${labelTranslated} (${lang})`,
+            key: `attributes.${attribute.value}.${lang}`,
+            isVisible: false,
+          });
         });
-      else
+      } else
         newColumns.push({
-          label: attribute.label,
-          key: `attributes.${attribute.value}`,
-          isVisible: false, //hidden by default
+          ...newColEntry,
           isSortable: true,
         });
     });
+
+    console.log('NEW COLS: ', newColumns, uniqueAttributesComplete, languages);
 
     //re-order the columns
     newColumns = setCorrectColumnOrder(newColumns);

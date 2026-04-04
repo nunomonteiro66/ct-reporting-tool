@@ -19,32 +19,57 @@ const exportTableExcel = async <T,>(
 
   const headerGroups = table.getHeaderGroups();
 
-  // Add header rows
+  // Build a set of visible leaf column IDs for fast lookup
+  const visibleLeafIds = new Set(
+    headerGroups
+      .at(-1)!
+      .headers.filter((h) => h.column.getIsVisible())
+      .map((h) => h.column.id)
+  );
+
   headerGroups.forEach((group, rowIndex) => {
-    const visibleHeaders = group.headers.filter(
-      (h) => h.column.getIsVisible() || h.subHeaders.length > 0
-    );
+    const rowValues: (string | null)[] = [];
+    // Track (colIndex, colSpan) for merge operations — based on visible cols only
+    const merges: { col: number; span: number }[] = [];
 
-    worksheet.addRow(
-      visibleHeaders.map((h) => {
-        if (h.isPlaceholder) return null;
-        const header = h.column.columnDef.header;
-        return Array.isArray(header) ? header.join(' ') : (header as string);
-      })
-    );
-
-    // Style + merge group headers
     let colIndex = 1;
-    visibleHeaders.forEach((h) => {
-      if (h.colSpan > 1) {
-        worksheet.mergeCells(
-          rowIndex + 1,
-          colIndex,
-          rowIndex + 1,
-          colIndex + h.colSpan - 1
-        );
+
+    group.headers.forEach((h) => {
+      // Compute how many visible leaf columns this header actually spans
+      const visibleSpan = h.isPlaceholder
+        ? 0
+        : h.getLeafHeaders().filter((lh) => visibleLeafIds.has(lh.column.id))
+            .length;
+
+      if (visibleSpan === 0) return; // fully hidden, skip entirely
+
+      const header = h.column.columnDef.header;
+      const value = h.isPlaceholder
+        ? null
+        : Array.isArray(header)
+        ? header.join(' ')
+        : (header as string);
+
+      // adiciona a célula principal
+      rowValues.push(value);
+
+      // 🔥 CRUCIAL: preencher o resto do span
+      for (let i = 1; i < visibleSpan; i++) {
+        rowValues.push(null);
       }
-      colIndex += h.colSpan;
+
+      if (visibleSpan > 1) {
+        merges.push({ col: colIndex, span: visibleSpan });
+      }
+
+      colIndex += visibleSpan;
+    });
+
+    worksheet.addRow(rowValues);
+
+    // Apply merges using accurate visible-span positions
+    merges.forEach(({ col, span }) => {
+      worksheet.mergeCells(rowIndex + 1, col, rowIndex + 1, col + span - 1);
     });
 
     // Style header row
@@ -63,23 +88,20 @@ const exportTableExcel = async <T,>(
     });
   });
 
-  // Set column widths based on leaf columns
+  // Set column widths based on visible leaf columns
   const leafHeaders = headerGroups
     .at(-1)!
     .headers.filter((h) => h.column.getIsVisible());
 
-  leafHeaders.forEach((h, i) => {
+  leafHeaders.forEach((_, i) => {
     worksheet.getColumn(i + 1).width = 25;
   });
 
   // Add data rows
   table.getCoreRowModel().rows.forEach((row) => {
-    worksheet.addRow(
-      leafHeaders.map((h) => {
-        const cell = row.getAllCells().find((c) => c.column.id === h.column.id);
-        return sanitize(cell?.getValue());
-      })
-    );
+    const visibleCells = row.getVisibleCells();
+
+    worksheet.addRow(visibleCells.map((cell) => sanitize(cell.getValue())));
   });
 
   const buffer = await workbook.xlsx.writeBuffer();

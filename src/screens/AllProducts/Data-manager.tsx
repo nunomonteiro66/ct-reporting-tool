@@ -5,11 +5,12 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { TAppliedFilter } from '@commercetools-uikit/filters';
 import { Table } from '@tanstack/react-table';
 import { Column } from '../../types/datatable-column';
-import { AttributeComplete } from '../../utils/mappers/map-with-attributes';
 import exportTableExcel from '../../components/tanstack-table/export-excel';
 import { MappedProduct } from '../../types/mapped-product';
 import DataPageLayout from '../../layouts/data-page-layout';
-import { getCsvBlob } from 'tanstack-table-export-to-csv';
+import { AttributeComplete } from '../../types/attribute';
+import exportToCsv from 'tanstack-table-export-to-csv';
+import { Button } from '@headlessui/react';
 
 type OptionProps = { value: string; label: string };
 
@@ -45,6 +46,8 @@ export const DataManager = ({
   const [totalResults, setTotalResults] = useState<number>(0);
 
   const [columnsCopy, setColumnsCopy] = useState(columns);
+
+  const [loading, setLoading] = useState(false);
 
   //set the default filters config
   //set the default active columns
@@ -126,10 +129,16 @@ export const DataManager = ({
       (col) => !col.startsWith('attributes.')
     );
 
+    //!!!! languages are set even when the attributes dont have multiple languages, is redundant
     newActiveColumns = [
       ...newActiveColumns,
-      ...selectedOptions.map((opt) => `attributes.${opt.value}`),
+      ...selectedOptions.flatMap((opt) => [
+        `attributes.${opt.value}`,
+        ...languages.map((lang) => `attributes.${opt.value}.${lang}`),
+      ]),
     ];
+
+    console.log('NEW ACT', newActiveColumns);
 
     //reorder the active columns
     setActiveColumns(newActiveColumns);
@@ -137,17 +146,17 @@ export const DataManager = ({
 
   //only keep columns with the selected languages
   const changeLanguagesShown = (langs: string[]) => {
-    const newColumns = columns.map((col) => {
-      if (!col.children) return col;
-      return {
-        ...col,
-        children: col.children.filter((child) => langs.includes(child.key)),
-      };
+    const newColumns = columns.filter((col) => {
+      const langKey = col.key.split('.')[2];
+      return !languages.includes(langKey) || langs.includes(langKey);
     });
 
-    console.log('OLD-NEW COLS:', columnsCopy, newColumns, activeColumns);
-
     setColumnsCopy(newColumns);
+
+    //remove the old active columns
+    const newActiveCols = activeColumns.filter(
+      (actCol) => actCol.split('.')[2] != undefined
+    );
   };
 
   const filtersChanged: SubmitCallbackProps = (key, selectedOptions) => {
@@ -185,16 +194,35 @@ export const DataManager = ({
     );
   };
 
+  const handleExportToCsv = (): void => {
+    const table = tableRef.current;
+    const headers = table
+      .getHeaderGroups()
+      .map((x) => x.headers)
+      .flat();
+
+    const rows = table.getCoreRowModel().rows;
+
+    exportToCsv('persons_data', headers, rows);
+  };
+
   return (
     <DataPageLayout
       title="Products"
       totalResults={totalResults}
+      loading={loading}
       actions={
         <PrimaryButton
           label="Export Excel"
           onClick={() => {
-            if (tableRef.current)
-              exportTableExcel(tableRef.current, 'products-w-attributes');
+            if (tableRef.current) {
+              setLoading(true);
+              setTimeout(() => {
+                exportTableExcel(tableRef.current!, 'products-w-attributes');
+                setLoading(false);
+              }, 0);
+              setLoading(false);
+            }
           }}
         />
       }
