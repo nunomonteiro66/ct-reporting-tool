@@ -1,3 +1,7 @@
+import { Input } from '@headlessui/react';
+import SearchTextInput from '@commercetools-uikit/search-text-input';
+import { useEffect, useState } from 'react';
+
 type CustomDropdownProps = {
   options: string[];
   selected: string[];
@@ -16,6 +20,13 @@ const CustomDropdown = ({
   selected,
   onChange,
 }: CustomDropdownProps) => {
+  const [currentOptions, setCurrentOptions] = useState<string[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
+  useEffect(() => {
+    setCurrentOptions(options);
+  }, [options]);
+
   const toggle = (value: string) => {
     onChange(
       selected.includes(value)
@@ -24,12 +35,27 @@ const CustomDropdown = ({
     );
   };
 
+  const search = (value: string) => {
+    setSearchTerm(value);
+    setCurrentOptions(options.filter((opt) => opt.includes(value)));
+  };
+
   return (
-    <div className="flex flex-col gap-0.5 max-h-[200px] overflow-y-auto py-1">
-      {options.map((opt) => (
+    <div className="flex flex-col gap-0.5 max-h-50 overflow-y-auto py-1">
+      <SearchTextInput
+        placeholder="Search"
+        value={searchTerm}
+        onChange={(event) => search(event.target.value)}
+        onSubmit={() => {}}
+        onReset={() => {
+          setCurrentOptions(options);
+        }}
+        isCondensed
+      />
+      {currentOptions.map((opt) => (
         <label
           key={opt}
-          className="flex items-center px-3 py-[5px] text-[13px] text-[#334155] cursor-pointer rounded hover:bg-[#f0f5ff] whitespace-nowrap"
+          className="flex items-center px-3 py-1.25 text-[13px] text-[#334155] cursor-pointer rounded hover:bg-[#f0f5ff] whitespace-nowrap"
         >
           <input
             type="checkbox"
