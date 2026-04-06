@@ -24,7 +24,9 @@ query ProductDocuments($limit: Int = 500, $offset: Int = 0) {
               }
               name(acceptLanguage: "en")
               custom {
-                customFieldsRaw {
+                customFieldsRaw(
+                  includeNames: ["nkt_dOPDOCNumber", "nkt_metadata_type"]
+                ) {
                   value
                   name
                 }
