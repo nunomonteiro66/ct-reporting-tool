@@ -9,7 +9,7 @@ import exportTableExcel from '../../components/tanstack-table/export-excel';
 import { MappedProduct } from '../../types/mapped-product';
 import DataPageLayout from '../../layouts/data-page-layout';
 import { AttributeComplete } from '../../types/attribute';
-import exportToCsv from 'tanstack-table-export-to-csv';
+import { getActiveColumnsWithoutNA } from '../../utils/helpers';
 
 type OptionProps = { value: string; label: string };
 
@@ -137,7 +137,13 @@ export const DataManager = ({
       ]),
     ];
 
-    console.log('NEW ACT', newActiveColumns);
+    //remove the columns that only have N/A values
+    if (tableRef.current)
+      newActiveColumns = getActiveColumnsWithoutNA(
+        tableRef.current,
+        columnsCopy,
+        newActiveColumns
+      );
 
     //reorder the active columns
     setActiveColumns(newActiveColumns);
@@ -151,11 +157,6 @@ export const DataManager = ({
     });
 
     setColumnsCopy(newColumns);
-
-    //remove the old active columns
-    const newActiveCols = activeColumns.filter(
-      (actCol) => actCol.split('.')[2] != undefined
-    );
   };
 
   const filtersChanged: SubmitCallbackProps = (key, selectedOptions) => {
@@ -191,18 +192,6 @@ export const DataManager = ({
         .filter((col) => !col.key.startsWith('attributes'))
         .map((col) => col.key)
     );
-  };
-
-  const handleExportToCsv = (): void => {
-    const table = tableRef.current;
-    const headers = table
-      .getHeaderGroups()
-      .map((x) => x.headers)
-      .flat();
-
-    const rows = table.getCoreRowModel().rows;
-
-    exportToCsv('persons_data', headers, rows);
   };
 
   return (

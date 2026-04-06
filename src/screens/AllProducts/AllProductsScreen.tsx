@@ -59,8 +59,8 @@ const AllProducts = () => {
   useEffect(() => {
     const load = async () => {
       const productTypes = await getAllProductTypes();
-      const rawData = await getAllProducts();
-      //const rawData = (await getProducts(0, 1)).data.results;
+      //const rawData = await getAllProducts();
+      const rawData = (await getProducts(0, 1)).data.results;
       const languages = await getAllLanguagesCodes();
       setRawData(rawData);
       setProductTypes(productTypes);
