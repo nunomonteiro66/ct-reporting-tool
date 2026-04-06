@@ -27,6 +27,7 @@ const defaultColumns = [
   { key: 'image', label: 'Image' },
   { key: 'epd', label: 'EPD' },
   { key: 'dop', label: 'DOP' },
+  { key: 'doc', label: 'DOC' },
   { key: 'datasheet', label: 'Datasheet' },
 ].map((col) => ({ ...col, isSortable: true })) as Column[];
 

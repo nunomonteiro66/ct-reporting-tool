@@ -19,6 +19,7 @@ export const COLUMN_ORDER = [
   'image',
   'datasheet',
   'dop',
+  'doc',
   'epd',
   'categories',
   'selections',

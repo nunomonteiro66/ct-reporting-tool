@@ -1,16 +1,8 @@
 import { TAsset, TProduct, TProductVariant } from '../../types/generated/ctp';
 import { MappedProduct } from '../../types/mapped-product';
 import { ProductType } from '../../types/product-type';
+import { getAsset, getAssetType } from '../get-asset-type';
 import { getProductSelectionsNames } from './miscellaneous';
-
-const METADATA_TYPES = {
-  'DOP/DOC metadata type': 'dop',
-  'EPD metadata type': 'epd',
-  'Data sheet metadata type': 'datasheet',
-} as const;
-
-type MetadataTypeKey = keyof typeof METADATA_TYPES; // 'DOP/DOC metadata type' | 'EPD metadata type' | 'Data sheet metadata type'
-type MetadataKey = (typeof METADATA_TYPES)[MetadataTypeKey]; // 'dop' | 'epd' | 'datasheet'
 
 export type AttributeComplete = {
   value: string | string[];
@@ -85,8 +77,9 @@ function mapAllAttributes(
 
 //check if some of the metadata are present in the variant assets
 const checkAssetType = (assets: TAsset[] = []) => {
-  const result = {
+  const result: Record<string, string> = {
     dop: 'No',
+    doc: 'No',
     epd: 'No',
     datasheet: 'No',
   };
@@ -97,11 +90,9 @@ const checkAssetType = (assets: TAsset[] = []) => {
       Array.isArray(field.value) ? field.value[0] : field.value
     );
 
-    assetTypes.forEach((type: string) => {
-      if ((type as MetadataTypeKey) in METADATA_TYPES) {
-        const key = METADATA_TYPES[type as MetadataTypeKey];
-        result[key] = 'Yes';
-      }
+    customFieldsRaw.forEach((custom) => {
+      const type = getAssetType(custom);
+      if (type) result[type] = 'Yes';
     });
   });
 

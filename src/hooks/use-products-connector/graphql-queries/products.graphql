@@ -28,6 +28,7 @@ query Products($limit: Int = 500, $offset: Int = 0) {
               custom {
                 customFieldsRaw {
                   value
+                  name
                 }
               }
             }

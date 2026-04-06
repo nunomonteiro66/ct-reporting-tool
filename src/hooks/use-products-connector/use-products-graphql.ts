@@ -71,6 +71,21 @@ export const useProductsGraphql = () => {
     );
   }, [client]);
 
+  const getProductDocuments = useCallback(
+    async (page: number, limit: number) => {
+      const { data, loading, error } = await useGraphQLFetch<
+        TProduct,
+        'products'
+      >('products', PRODUCTS_DOCUMENTS, client, {
+        limit: limit,
+        page: page,
+      });
+
+      return { data, loading, error };
+    },
+    [client]
+  );
+
   const getAllProductsImages = useCallback(() => {
     return graphqlFetchAll<TProduct, 'products'>(
       'products',
@@ -85,6 +100,7 @@ export const useProductsGraphql = () => {
     getAllProductTypes,
     getProducts,
     getAllProductsDocuments,
+    getProductDocuments,
     getAllProductsImages,
   };
 };

@@ -1,13 +1,7 @@
-import { useCallback, useState } from "react";
-import { useApplicationContext } from "@commercetools-frontend/application-shell-connectors";
-import {
-  TProduct,
-  TProductProjection,
-  TProductProjectionSearchResult,
-} from "../../types/generated/ctp";
-import { useAsyncDispatch, actions } from "@commercetools-frontend/sdk";
-import requestHandler from "../request-handler";
-import QueryParams from "../../types/api-query";
+import { useCallback, useState } from 'react';
+import { TProductProjectionSearchResult } from '../../types/generated/ctp';
+import requestHandler from '../request-handler';
+import QueryParams from '../../types/api-query';
 
 export const useProductsAPI = () => {
   const { executeRequest, loading, error } = requestHandler();
@@ -21,7 +15,7 @@ export const useProductsAPI = () => {
     `;
 
       return executeRequest<TProductProjectionSearchResult>({
-        uri: "product-projections",
+        uri: 'product-projections',
         queryParams: {
           offset: options?.offset ?? 0,
           limit: options?.limit ?? 500,
@@ -35,7 +29,7 @@ export const useProductsAPI = () => {
   const fetchProducts = useCallback(
     (queryParams: QueryParams) =>
       executeRequest<TProductProjectionSearchResult>({
-        uri: "product-projections",
+        uri: 'product-projections',
         queryParams: queryParams,
       }),
     [executeRequest]

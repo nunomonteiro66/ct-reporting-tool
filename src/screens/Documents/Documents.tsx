@@ -12,6 +12,7 @@ import { TAppliedFilter } from '@commercetools-uikit/filters';
 import { FilterSubmitCallbackProps } from '../../types/filter';
 import DataPageLayout from '../../layouts/data-page-layout';
 import getNestedValue from '../../utils/nested-attributes';
+import { getAsset } from '../../utils/get-asset-type';
 
 type DocumentProduct = {
   sku: string | null | undefined;
@@ -49,13 +50,6 @@ const defaultAssets = [
   { key: 'epd_link', label: 'EPD link' },
 ];
 
-const typeMap = {
-  DOP000077: 'dop',
-  DOC000004: 'doc',
-  'Data sheet metadata type': 'datasheet',
-  'EPD metadata type': 'epd',
-};
-
 const Documents = () => {
   //table state
   const tableRef = useRef<Table<DocumentProduct> | null>(null);
@@ -66,7 +60,7 @@ const Documents = () => {
   const [columns, setColumns] = useState(defaultColumns);
   const [activeColumns, setActiveColumns] = useState<string[]>([]);
 
-  const { getAllProductsDocuments } = useProductsGraphql();
+  const { getAllProductsDocuments, getProductDocuments } = useProductsGraphql();
   const { getAllLanguagesCodes } = useProjectGraphql();
 
   //filters states
@@ -81,6 +75,7 @@ const Documents = () => {
     const load = async () => {
       const allLang = await getAllLanguagesCodes();
       const data = await getAllProductsDocuments();
+      //const data = (await getProductDocuments(3, 1)).data.results;
       const mapped = extractData(data);
 
       setData(mapped);
@@ -115,17 +110,6 @@ const Documents = () => {
     load();
   }, []);
 
-  const getDocumentType = (asset: TAsset) => {
-    const values = asset.custom?.customFieldsRaw?.map(
-      (field) => field.value[0] as string
-    );
-    if (values) {
-      return typeMap[
-        values.find((item) => item && item in typeMap) as keyof typeof typeMap
-      ];
-    }
-  };
-
   const extractData = (products: CTProduct[]) => {
     return products.flatMap((prod) => {
       const current = prod.masterData.current;
@@ -140,7 +124,15 @@ const Documents = () => {
             product_type_name: prodType?.name,
             categories: current?.categories.map((cat) => cat.name),
             assets: variant.assets.reduce((acc, asset) => {
-              const fileType = getDocumentType(asset);
+              const cAsset = getAsset(asset);
+              if (cAsset)
+                acc[cAsset.language] = {
+                  ...acc[cAsset.language],
+                  [`${cAsset.type}_name`]: cAsset.name ?? '',
+                  [`${cAsset.type}_link`]: cAsset.url,
+                };
+
+              /* const fileType = getDocumentType(asset);
               if (fileType) {
                 const lang = asset.tags[0].toLowerCase();
                 const link = asset.sources[0].uri;
@@ -150,7 +142,7 @@ const Documents = () => {
                   [`${fileType}_name`]: fileName ?? '',
                   [`${fileType}_link`]: link,
                 };
-              }
+              } */
               return acc;
             }, {} as Record<string, Record<string, string>>),
           };

@@ -1,4 +1,4 @@
-import { TProduct } from './product';
+import { TProduct } from './generated/ctp';
 
 export type MappedProduct = Partial<TProduct> & {
   id: string;
