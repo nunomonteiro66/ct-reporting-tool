@@ -14,6 +14,8 @@ interface ColumnHeaderProps<T> {
   columnFilters: ColumnFiltersState;
   setColumnFilters: Dispatch<SetStateAction<ColumnFiltersState>>;
   data: T[];
+  sticky?: boolean;
+  stickyLeft?: number;
 }
 
 const ColumnHeader = <T,>({
@@ -21,6 +23,8 @@ const ColumnHeader = <T,>({
   columnFilters,
   setColumnFilters,
   data,
+  sticky,
+  stickyLeft,
 }: ColumnHeaderProps<T>) => {
   const getUniqueValues = (key: string): string[] => {
     const allValues = data.flatMap((row) => {
@@ -84,8 +88,13 @@ const ColumnHeader = <T,>({
 
   return (
     <th
-      style={{ width: header.getSize() }}
-      className="px-4 py-2.5 text-left font-semibold text-[11px] tracking-[0.05em] uppercase text-[#64748b] bg-[#f8fafc] border-[#e2e8f0] whitespace-nowrap relative w-auto border-r-2 border-r-[#e2e8f0]"
+      style={{
+        width: header.getSize(),
+        position: sticky ? 'sticky' : 'relative',
+        left: sticky ? `${stickyLeft}px` : undefined,
+        zIndex: sticky ? 20 : 10,
+      }}
+      className="px-4 py-2.5 text-left font-semibold text-[11px] tracking-[0.05em] uppercase text-[#64748b] bg-[#f8fafc] border-[#e2e8f0] whitespace-nowrap relative w-auto border-r-2 border-r-[#e2e8f0] "
       onMouseDown={header.getResizeHandler()}
       onTouchStart={header.getResizeHandler()}
     >

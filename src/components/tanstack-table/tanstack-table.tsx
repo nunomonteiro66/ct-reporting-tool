@@ -159,6 +159,16 @@ const TanstackTable = <T extends Record<string, unknown>>({
     onTableChange?.(table);
   }, [table.getRowModel()]);
 
+  //helper for the sticky columns (the first 3)
+  const getStickyLeft = (index: number) => {
+    // Accumulate widths of prior sticky columns
+    // Using default column size of 100 as fallback
+    return table
+      .getVisibleLeafColumns()
+      .slice(0, index)
+      .reduce((acc, col) => acc + col.getSize(), 0);
+  };
+
   return (
     <div className="flex flex-col h-full">
       <div className="flex flex-col items-end">
@@ -185,13 +195,19 @@ const TanstackTable = <T extends Record<string, unknown>>({
             <thead className="sticky top-0 z-10">
               {table.getHeaderGroups().map((hg) => (
                 <tr key={hg.id}>
-                  {hg.headers.map((header) =>
+                  {hg.headers.map((header, index) =>
                     header.isPlaceholder || header.column.columns.length > 0 ? (
                       /* this header is a group header (simple header, with no filters/sorting/...) */
                       <th
                         key={header.id}
                         colSpan={header.colSpan}
-                        style={{ width: header.getSize() }}
+                        style={{
+                          width: header.getSize(),
+                          position: index < 3 ? 'sticky' : 'relative',
+                          left:
+                            index < 3 ? `${getStickyLeft(index)}px` : undefined,
+                          zIndex: index < 3 ? 20 : 10,
+                        }}
                         className="px-4 py-2 font-semibold text-center border-r-2 border-r-[#e2e8f0] bg-[#f8fafc] overflow-hidden text-ellipsis"
                       >
                         {!header.isPlaceholder &&
@@ -206,6 +222,10 @@ const TanstackTable = <T extends Record<string, unknown>>({
                         data={data}
                         columnFilters={columnFilters}
                         setColumnFilters={setColumnFilters}
+                        sticky={index < 3}
+                        stickyLeft={
+                          index < 3 ? getStickyLeft(index) : undefined
+                        }
                       />
                     )
                   )}
@@ -230,11 +250,19 @@ const TanstackTable = <T extends Record<string, unknown>>({
                       i % 2 === 0 ? 'bg-white' : 'bg-[#fafbfc]'
                     }`}
                   >
-                    {row.getVisibleCells().map((cell) => (
+                    {row.getVisibleCells().map((cell, colIndex) => (
                       <td
-                        style={{ width: cell.column.getSize() }}
+                        style={{
+                          width: cell.column.getSize(),
+                          position: colIndex < 3 ? 'sticky' : 'relative',
+                          left:
+                            colIndex < 3
+                              ? `${getStickyLeft(colIndex)}px`
+                              : undefined,
+                          zIndex: colIndex < 3 ? 1 : 0,
+                        }}
                         key={cell.id}
-                        className="py-2.75 px-4 text-[#334155] text-[13px] whitespace-nowrap overflow-hidden text-ellipsis max-w-65 align-middle"
+                        className="py-2.75 px-4 text-[#334155] text-[13px] whitespace-nowrap overflow-hidden text-ellipsis max-w-65 align-middle bg-inherit"
                       >
                         {flexRender(
                           cell.column.columnDef.cell,
