@@ -56,10 +56,20 @@ function mapAllAttributes(
 
     if (variantAttr) {
       const val = variantAttr.value;
+      const name = variantAttr.name;
+
+      if (name === '0000_branch_code') console.log('EL: ', variantAttr);
 
       //attribute has several languages
       if (typeof val === 'object' && val !== null) {
-        value = val;
+        //special case
+        if (variantAttr.name === '0000_branch_code') {
+          value = Object.entries(val)
+            .map(([lang, val]) => `${val} (${lang})`)
+            .join(', ');
+        } else {
+          value = val;
+        }
       } else {
         //check if it should be an array (several values)
         if (String(val).includes(',')) {

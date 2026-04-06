@@ -84,8 +84,6 @@ const AllProducts = () => {
     const newProducts = mapProducts(rawData, productTypes);
     setProducts(newProducts);
 
-    console.log(newProducts);
-
     setLoading(false);
   }, [languages]);
 
@@ -119,8 +117,9 @@ const AllProducts = () => {
         key: `attributes.${attribute.value}`,
         isVisible: false, //hidden by default
       };
-      //attribute has several values (localization): build children for each language
-      if (attribute.type === 'ltext') {
+      //attribute has several values (localization)
+      //0000_branch_code (EL) is the only exception to the localization
+      if (attribute.type === 'ltext' && attribute.value != '0000_branch_code') {
         const getLabel = (lang: string) =>
           attribute.label_locales.find((labell) => labell.locale === lang)
             ?.value;

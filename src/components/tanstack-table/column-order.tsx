@@ -56,7 +56,6 @@ const ColumnOrder = ({
     const keys = flattenColumns(updatedColumns);
     setVisibleColumns(keys);
     setColumnOrder(keys);
-    console.log(keys);
   };
 
   return (
