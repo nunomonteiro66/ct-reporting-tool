@@ -3,8 +3,14 @@ query Products($limit: Int = 500, $offset: Int = 0) {
     results {
       masterData {
         current {
-          name(locale: "en")
-          description(locale: "en")
+          nameAllLocales {
+            locale
+            value
+          }
+          descriptionAllLocales {
+            value
+            locale
+          }
           allVariants {
             sku
             attributesRaw {

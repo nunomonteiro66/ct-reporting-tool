@@ -3,7 +3,9 @@ import { TProduct } from './product';
 export type MappedProduct = Partial<TProduct> & {
   id: string;
   sku?: string;
-  attributes: Record<string, unknown>; // or refine if you know it
+  names: Record<string, string>;
+  descriptions: Record<string, string>;
+  attributes: Record<string, string>;
   image: 'Yes' | 'No';
   categories: string[];
   selections: string[];

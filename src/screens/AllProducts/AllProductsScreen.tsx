@@ -20,10 +20,8 @@ const defaultColumns = [
     key: 'sku',
     label: 'SKU',
   },
-  { key: 'masterData.current.name', label: 'Product Name' },
   { key: 'productType.key', label: 'Product Type Key' },
   { key: 'productType.name', label: 'Product Type Name' },
-  { key: 'masterData.current.description', label: 'Description' },
   { key: 'categories', label: 'Categories' },
   { key: 'selections', label: 'Product Selections' },
   { key: 'image', label: 'Image' },
@@ -70,7 +68,7 @@ const AllProducts = () => {
       const uniqueAttrs = getAllUniqueAttributes(productTypes);
       setUniqueAttributes(uniqueAttrs);
 
-      const finalCols = getColumnsWithAttributes(uniqueAttrs, languages);
+      const finalCols = buildColumns(uniqueAttrs, languages);
       setColumns(finalCols);
     };
     load();
@@ -105,20 +103,22 @@ const AllProducts = () => {
     return uniqueAttributesComplete;
   };
 
-  const getColumnsWithAttributes = (
+  //builds the final columns with all the extra fields
+  const buildColumns = (
     uniqueAttributesComplete: AttributeComplete[],
     languages: string[]
   ) => {
-    //add the extra columns for the table (with the attributes)
+    //add the extra columns for the attributes
     let newColumns = [...defaultColumns];
     uniqueAttributesComplete.forEach((attribute, index) => {
-      const newColEntry = {
+      let newColEntry = {
         label: Array.isArray(attribute.label)
           ? attribute.label.join(' ')
           : attribute.label,
         key: `attributes.${attribute.value}`,
         isVisible: false, //hidden by default
       };
+      //attribute has several values (localization): build children for each language
       if (attribute.type === 'ltext') {
         const getLabel = (lang: string) =>
           attribute.label_locales.find((labell) => labell.locale === lang)
@@ -126,7 +126,7 @@ const AllProducts = () => {
 
         //the default label
         const enLabel = getLabel('en') ?? '';
-        languages.forEach((lang) => {
+        const children = languages.map((lang) => {
           const labelTranslated = getLabel(lang) ?? enLabel;
 
           newColumns.push({
@@ -134,7 +134,17 @@ const AllProducts = () => {
             key: `attributes.${attribute.value}.${lang}`,
             isVisible: false,
           });
+
+          /* return {
+            key: lang,
+            label: lang.toUpperCase(),
+          }; */
         });
+
+        /* newColEntry = {
+          ...newColEntry,
+          children: children,
+        }; */
       } else
         newColumns.push({
           ...newColEntry,
@@ -142,7 +152,27 @@ const AllProducts = () => {
         });
     });
 
-    console.log('NEW COLS: ', newColumns, uniqueAttributesComplete, languages);
+    //add all the extra columns for the locales (names, descriptions)
+    languages.forEach((lang) => {
+      newColumns.push({
+        key: `names.${lang}`,
+        label: `Product Name (${lang})`,
+      });
+
+      newColumns.push({
+        key: `descriptions.${lang}`,
+        label: `Description (${lang})`,
+      });
+    });
+
+    /* newColumns.push({
+      key: 'names',
+      label: 'Product Names',
+      children: languages.map((lang) => ({
+        key: lang,
+        label: lang.toUpperCase(),
+      })),
+    }); */
 
     //re-order the columns
     newColumns = setCorrectColumnOrder(newColumns);
@@ -155,9 +185,23 @@ const AllProducts = () => {
       COLUMN_ORDER.map((key, index) => [key, index])
     );
 
+    const getOrderIndex = (key: string) => {
+      if (!key) return;
+
+      const index = orderIndex.get(key);
+      if (index === undefined) {
+        const keyArray = key.split('.');
+        keyArray.pop();
+        const newKey = keyArray.join('.');
+
+        return getOrderIndex(newKey);
+      }
+      return index;
+    };
+
     return [...columns].sort((a, b) => {
-      const indexA = orderIndex.get(a.key) ?? Infinity;
-      const indexB = orderIndex.get(b.key) ?? Infinity;
+      const indexA = getOrderIndex(a.key) ?? Infinity;
+      const indexB = getOrderIndex(b.key) ?? Infinity;
       return indexA - indexB;
     });
   };

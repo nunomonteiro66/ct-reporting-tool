@@ -122,6 +122,24 @@ export function mapProducts(
 
     if (!product) return [];
 
+    //get all names from all locales
+    const names = product.nameAllLocales.reduce(
+      (acc, nameL) => ({
+        ...acc,
+        [nameL.locale]: nameL.value,
+      }),
+      {}
+    );
+
+    //get all descriptions for all locales
+    const descriptions = product.nameAllLocales.reduce(
+      (acc, descL) => ({
+        ...acc,
+        [descL.locale]: descL.value,
+      }),
+      {}
+    );
+
     //get the product type (with all attributes) for the product type
     const productType = productTypes.find(
       (type) => type.product_type_value === (productProductType?.key ?? '')
@@ -165,6 +183,8 @@ export function mapProducts(
 
       return {
         ...productRaw,
+        names: names,
+        descriptions: descriptions,
         id: productRaw.id + Math.random(), //some keys get repeated (causes errors in the table)
         sku: variant.sku ?? '',
         attributes: newAttributes,

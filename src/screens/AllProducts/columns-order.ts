@@ -1,7 +1,7 @@
 export const COLUMN_ORDER = [
   'key',
   'sku',
-  'masterData.current.name',
+  'names',
   'productType.key',
   'productType.name',
   'attributes.544_number_of_group_of_product',
@@ -25,7 +25,7 @@ export const COLUMN_ORDER = [
   'attributes.1867_sap_characteristic_znkt_millca_standard_length',
   'attributes.0000_length',
   'attributes.0000_drum_type',
-  'masterData.current.description',
+  'descriptions',
   'attributes.0000_application',
   'attributes.0000_application_2',
   'attributes.0000_sales_unit',

@@ -10,7 +10,6 @@ import { MappedProduct } from '../../types/mapped-product';
 import DataPageLayout from '../../layouts/data-page-layout';
 import { AttributeComplete } from '../../types/attribute';
 import exportToCsv from 'tanstack-table-export-to-csv';
-import { Button } from '@headlessui/react';
 
 type OptionProps = { value: string; label: string };
 
@@ -147,7 +146,7 @@ export const DataManager = ({
   //only keep columns with the selected languages
   const changeLanguagesShown = (langs: string[]) => {
     const newColumns = columns.filter((col) => {
-      const langKey = col.key.split('.')[2];
+      const langKey = col.key.split('.').at(-1) ?? '';
       return !languages.includes(langKey) || langs.includes(langKey);
     });
 
