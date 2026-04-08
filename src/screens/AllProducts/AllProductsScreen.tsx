@@ -126,25 +126,15 @@ const AllProducts = () => {
 
         //the default label
         const enLabel = getLabel('en') ?? '';
-        const children = languages.map((lang) => {
+        languages.forEach((lang) => {
           const labelTranslated = getLabel(lang) ?? enLabel;
 
           newColumns.push({
-            label: `${attribute.value} - ${labelTranslated} (${lang})`,
+            label: `${labelTranslated} (${attribute.value}) (${lang})`,
             key: `attributes.${attribute.value}.${lang}`,
             isVisible: false,
           });
-
-          /* return {
-            key: lang,
-            label: lang.toUpperCase(),
-          }; */
         });
-
-        /* newColEntry = {
-          ...newColEntry,
-          children: children,
-        }; */
       } else
         newColumns.push({
           ...newColEntry,
@@ -164,15 +154,6 @@ const AllProducts = () => {
         label: `Description (${lang})`,
       });
     });
-
-    /* newColumns.push({
-      key: 'names',
-      label: 'Product Names',
-      children: languages.map((lang) => ({
-        key: lang,
-        label: lang.toUpperCase(),
-      })),
-    }); */
 
     //re-order the columns
     newColumns = setCorrectColumnOrder(newColumns);

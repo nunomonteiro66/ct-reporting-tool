@@ -37,7 +37,9 @@ const CustomDropdown = ({
 
   const search = (value: string) => {
     setSearchTerm(value);
-    setCurrentOptions(options.filter((opt) => opt.includes(value)));
+    setCurrentOptions(
+      options.filter((opt) => opt.toLowerCase().includes(value.toLowerCase()))
+    );
   };
 
   return (

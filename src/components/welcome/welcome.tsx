@@ -8,7 +8,6 @@ import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import messages from './messages';
 import styles from './welcome.module.css';
-import WebDeveloperSvg from './web-developer.svg';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 
 type TWrapWithProps = {

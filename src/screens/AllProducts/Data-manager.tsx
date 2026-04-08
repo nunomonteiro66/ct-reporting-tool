@@ -150,6 +150,7 @@ export const DataManager = ({
   };
 
   //only keep columns with the selected languages
+  //from the active columns, show the same ones but with new languages (for example, productName (en) also needs productName (pl), ...)
   const changeLanguagesShown = (langs: string[]) => {
     const newColumns = columns.filter((col) => {
       const langKey = col.key.split('.').at(-1) ?? '';
@@ -157,27 +158,51 @@ export const DataManager = ({
     });
 
     setColumnsCopy(newColumns);
-  };
 
+    //returns the key without the language
+    //f.e: productName.en -> productName | attributes.0000.pl -> attributes.0000
+    const getKeyWithoutLanguage = (key: string) => {
+      const splitted = key.split('.');
+      return splitted.splice(0, splitted.length - 1).join('.');
+    };
+
+    //change the active columns
+    const newActiveColumns = [
+      ...new Set(
+        activeColumns.flatMap((act) => {
+          const lang = act.split('.').at(-1);
+          if (lang && languages.includes(lang)) {
+            const activeKeyWithoutLang = getKeyWithoutLanguage(act);
+            const columns = newColumns.filter((newCol) => {
+              const columnKeyWithoutLang = getKeyWithoutLanguage(newCol.key);
+              return columnKeyWithoutLang === activeKeyWithoutLang;
+            });
+            return columns.map((col) => col.key);
+          }
+          return act;
+        })
+      ),
+    ];
+
+    setActiveColumns(newActiveColumns);
+  };
   const filtersChanged: SubmitCallbackProps = (key, selectedOptions) => {
     switch (key) {
       case 'attributes':
-        //when attributes change, change the columns shown
         changeAttributesShown(selectedOptions);
         break;
-      //sets the language(s) for the attributes values. if empty, show all
       case 'languages':
         changeLanguagesShown(selectedOptions.map((opt) => opt.value));
-        //setLanguages(selectedOptions.map((opt) => opt.value));
         break;
     }
 
-    setAppliedFilters((prev) => [
-      ...prev.filter((f) => f.filterKey !== key),
+    const newAppliedFilters = [
+      ...appliedFilters.filter((f) => f.filterKey !== key),
       { filterKey: key, values: selectedOptions },
-    ]);
-  };
+    ];
 
+    setAppliedFilters(newAppliedFilters);
+  };
   const handleTableChange = (table: Table<MappedProduct>) => {
     setTotalResults(table.getRowCount());
   };

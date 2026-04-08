@@ -98,9 +98,8 @@ const exportTableExcel = async <T,>(
   });
 
   // Add data rows
-  table.getRowModel().rows.forEach((row) => {
+  table.getPrePaginationRowModel().rows.forEach((row) => {
     const visibleCells = row.getVisibleCells();
-
     worksheet.addRow(visibleCells.map((cell) => sanitize(cell.getValue())));
   });
 

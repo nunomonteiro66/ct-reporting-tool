@@ -58,8 +58,6 @@ function mapAllAttributes(
       const val = variantAttr.value;
       const name = variantAttr.name;
 
-      if (name === '0000_branch_code') console.log('EL: ', variantAttr);
-
       //attribute has several languages
       if (typeof val === 'object' && val !== null) {
         //special case
