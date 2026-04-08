@@ -98,7 +98,7 @@ const exportTableExcel = async <T,>(
   });
 
   // Add data rows
-  table.getCoreRowModel().rows.forEach((row) => {
+  table.getRowModel().rows.forEach((row) => {
     const visibleCells = row.getVisibleCells();
 
     worksheet.addRow(visibleCells.map((cell) => sanitize(cell.getValue())));
