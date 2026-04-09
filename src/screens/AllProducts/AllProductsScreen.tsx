@@ -59,14 +59,14 @@ const AllProducts = () => {
   useEffect(() => {
     const load = async () => {
       const productTypes = await getAllProductTypes();
-      //const rawData = await getAllProducts();
-      const rawData = (
+      const rawData = await getAllProducts();
+      /* const rawData = (
         await getProducts(0, 10, [
           '160001057B0100',
           '172105070C0100',
           '17210521B0100',
         ])
-      ).data.results;
+      ).data.results; */
       const languages = await getAllLanguagesCodes();
       setRawData(rawData);
       setProductTypes(productTypes);
