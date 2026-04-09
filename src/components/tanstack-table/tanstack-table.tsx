@@ -183,16 +183,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
     onTableChange?.(table);
   }, [table.getRowModel()]);
 
-  //helper for the sticky columns (the first 3)
-  const getStickyLeft = (index: number) => {
-    // Accumulate widths of prior sticky columns
-    // Using default column size of 100 as fallback
-    return table
-      .getVisibleLeafColumns()
-      .slice(0, index)
-      .reduce((acc, col) => acc + col.getSize(), 0);
-  };
-
   return (
     <div className="flex flex-col h-full">
       <div className="flex flex-col items-end">
@@ -225,7 +215,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
                       <th
                         key={header.id}
                         colSpan={header.colSpan}
-                        //style={{ width: header.getSize() }}
+                        style={{ width: header.getSize() }}
                         //style={{ ...getCommonPinningStyles(header.column) }}
                         className="px-4 py-2 font-semibold text-center border-r-2 border-r-[#e2e8f0] overflow-hidden text-ellipsis bg-white"
                       >
@@ -268,7 +258,9 @@ const TanstackTable = <T extends Record<string, unknown>>({
                     {row.getVisibleCells().map((cell, colIndex) => (
                       <td
                         //style={{ width: cell.column.getSize() }}
-                        style={{ ...getCommonPinningStyles(cell.column) }}
+                        style={{
+                          ...getCommonPinningStyles(cell.column),
+                        }}
                         key={cell.id}
                         className="py-2.75 px-4 text-[#334155] text-[13px] whitespace-nowrap overflow-hidden text-ellipsis max-w-65 align-middle bg-white"
                       >
