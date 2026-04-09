@@ -13,8 +13,17 @@ import {
   Table,
   useReactTable,
   VisibilityState,
+  Column as TColumn,
+  ColumnPinningState,
 } from '@tanstack/react-table';
-import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
+import {
+  CSSProperties,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import ColumnHeader from './column-header';
 import Pagination from './pagination';
 import SearchTextInput from '@commercetools-uikit/search-text-input';
@@ -22,6 +31,7 @@ import { Column } from '../../types/datatable-column';
 import ColumnOrder from './column-order';
 import getNestedValue from '../../utils/nested-attributes';
 import flattenColumns from '../../utils/flatten-columns';
+import getCommonPinningStyles from './column-pin';
 
 type TanstackTableProps<T> = {
   data: T[];
@@ -52,6 +62,10 @@ const TanstackTable = <T extends Record<string, unknown>>({
   //state for the tanstacktable
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>();
 
+  //state for the pinned columns
+  //default is the first three columns
+  const [columnPinning, setColumnPinning] = useState<ColumnPinningState>({});
+
   useEffect(() => {
     table.setPageSize(20);
     setTable(table);
@@ -61,18 +75,27 @@ const TanstackTable = <T extends Record<string, unknown>>({
   //if a key in visibleColumns points to a group, all group children are shown
   useEffect(() => {
     if (!visibleColumns) return;
-    setColumnVisibility(
-      Object.fromEntries(
-        flattenColumns(initialColumns).map((key) => [
-          key,
-          visibleColumns.some(
-            (visibleKey) =>
-              key === visibleKey || // exact match
-              key.startsWith(visibleKey + '.') // key is a child of visibleKey
-          ),
-        ])
-      )
+
+    const columnVisibility = Object.fromEntries(
+      flattenColumns(initialColumns).map((key) => [
+        key,
+        visibleColumns.some(
+          (visibleKey) =>
+            key === visibleKey || // exact match
+            key.startsWith(visibleKey + '.') // key is a child of visibleKey
+        ),
+      ])
     );
+
+    setColumnVisibility(columnVisibility);
+
+    //set the pinned columns as the first three
+    setColumnPinning({
+      left: Object.entries(columnVisibility)
+        .filter(([, visible]) => visible)
+        .slice(0, 3)
+        .map(([key]) => key),
+    });
   }, [visibleColumns, initialColumns]);
 
   //the columns transformed for the table
@@ -125,6 +148,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
       columnVisibility,
       globalFilter,
       columnOrder,
+      columnPinning,
     },
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
@@ -201,8 +225,9 @@ const TanstackTable = <T extends Record<string, unknown>>({
                       <th
                         key={header.id}
                         colSpan={header.colSpan}
-                        style={{ width: header.getSize() }}
-                        className="px-4 py-2 font-semibold text-center border-r-2 border-r-[#e2e8f0] bg-[#f8fafc] overflow-hidden text-ellipsis"
+                        //style={{ width: header.getSize() }}
+                        //style={{ ...getCommonPinningStyles(header.column) }}
+                        className="px-4 py-2 font-semibold text-center border-r-2 border-r-[#e2e8f0] overflow-hidden text-ellipsis bg-white"
                       >
                         {!header.isPlaceholder &&
                           flexRender(
@@ -242,9 +267,10 @@ const TanstackTable = <T extends Record<string, unknown>>({
                   >
                     {row.getVisibleCells().map((cell, colIndex) => (
                       <td
-                        style={{ width: cell.column.getSize() }}
+                        //style={{ width: cell.column.getSize() }}
+                        style={{ ...getCommonPinningStyles(cell.column) }}
                         key={cell.id}
-                        className="py-2.75 px-4 text-[#334155] text-[13px] whitespace-nowrap overflow-hidden text-ellipsis max-w-65 align-middle"
+                        className="py-2.75 px-4 text-[#334155] text-[13px] whitespace-nowrap overflow-hidden text-ellipsis max-w-65 align-middle bg-white"
                       >
                         {flexRender(
                           cell.column.columnDef.cell,
