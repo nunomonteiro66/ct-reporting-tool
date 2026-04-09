@@ -49,13 +49,14 @@ export const useProductsGraphql = () => {
   }, [client]);
 
   const getProducts = useCallback(
-    async (page: number, limit: number) => {
+    async (page: number, limit: number, skus?: string[], id?: string) => {
       const { data, loading, error } = await useGraphQLFetch<
         TProduct,
         'products'
       >('products', PRODUCTS_QUERY, client, {
         limit: limit,
         page: page,
+        query: skus ? { skus } : {},
       });
 
       return { data, loading, error };

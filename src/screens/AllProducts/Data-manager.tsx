@@ -9,7 +9,7 @@ import exportTableExcel from '../../components/tanstack-table/export-excel';
 import { MappedProduct } from '../../types/mapped-product';
 import DataPageLayout from '../../layouts/data-page-layout';
 import { AttributeComplete } from '../../types/attribute';
-import { getActiveColumnsWithoutNA } from '../../utils/helpers';
+import { getActiveColumnsWithoutNA, isColumnOnlyNA } from '../../utils/helpers';
 
 type OptionProps = { value: string; label: string };
 
@@ -82,6 +82,7 @@ export const DataManager = ({
   }, []);
 
   //change filters when active columns change
+  //also hide columns that only have "N/A"
   useEffect(() => {
     const attributesOptions = filtersConfig.find(
       (filter) => filter.filterKey === 'attributes'
@@ -92,7 +93,7 @@ export const DataManager = ({
       .filter((col) => col.startsWith('attributes'))
       .map((col) => col.split('.')[1]);
 
-    const newActiveColumns = attributesOptions.filter((attr) =>
+    let newActiveColumns = attributesOptions.filter((attr) =>
       activeColumnsAttributes.includes(attr.value)
     );
 
@@ -121,6 +122,16 @@ export const DataManager = ({
     });
   }, [activeColumns]);
 
+  //returns an array of the active columns, without the columns that only have "N/A"
+  const getColumnsKeysWithoutNA = (activeColumns: string[]) => {
+    //hide the columns that only have N/A values
+    if (tableRef.current)
+      return activeColumns.filter(
+        (colKey) => !isColumnOnlyNA(tableRef.current!, colKey)
+      );
+    return [];
+  };
+
   //when the attributes filters change, replace the active columns
   const changeAttributesShown = (selectedOptions: OptionProps[]) => {
     //remove all attributes columns from active columns
@@ -128,64 +139,38 @@ export const DataManager = ({
       (col) => !col.startsWith('attributes.')
     );
 
-    //!!!! languages are set even when the attributes dont have multiple languages, is redundant
     newActiveColumns = [
       ...newActiveColumns,
-      ...selectedOptions.flatMap((opt) => [
-        `attributes.${opt.value}`,
-        ...languages.map((lang) => `attributes.${opt.value}.${lang}`),
-      ]),
+      ...selectedOptions.flatMap((opt) => [`attributes.${opt.value}`]),
     ];
 
-    //remove the columns that only have N/A values
-    if (tableRef.current)
-      newActiveColumns = getActiveColumnsWithoutNA(
-        tableRef.current,
-        columnsCopy,
-        newActiveColumns
-      );
+    //hide the columns that only have N/A values
+    newActiveColumns = getColumnsKeysWithoutNA(newActiveColumns);
 
-    //reorder the active columns
     setActiveColumns(newActiveColumns);
   };
 
-  //only keep columns with the selected languages
-  //from the active columns, show the same ones but with new languages (for example, productName (en) also needs productName (pl), ...)
+  //only keep children with the selected languages
   const changeLanguagesShown = (langs: string[]) => {
-    const newColumns = columns.filter((col) => {
-      const langKey = col.key.split('.').at(-1) ?? '';
-      return !languages.includes(langKey) || langs.includes(langKey);
-    });
+    let newColumns: Column[] = [];
+
+    //no language selected, remove all columns with children
+    if (langs.length === 0) {
+      newColumns = columns.filter((col) => !col.children);
+    } else {
+      newColumns = columns.map((col) => {
+        if (!col.children) return col;
+
+        return {
+          ...col,
+          children: col.children.filter((child) => langs.includes(child.key)),
+        };
+      });
+    }
 
     setColumnsCopy(newColumns);
-
-    //returns the key without the language
-    //f.e: productName.en -> productName | attributes.0000.pl -> attributes.0000
-    const getKeyWithoutLanguage = (key: string) => {
-      const splitted = key.split('.');
-      return splitted.splice(0, splitted.length - 1).join('.');
-    };
-
-    //change the active columns
-    const newActiveColumns = [
-      ...new Set(
-        activeColumns.flatMap((act) => {
-          const lang = act.split('.').at(-1);
-          if (lang && languages.includes(lang)) {
-            const activeKeyWithoutLang = getKeyWithoutLanguage(act);
-            const columns = newColumns.filter((newCol) => {
-              const columnKeyWithoutLang = getKeyWithoutLanguage(newCol.key);
-              return columnKeyWithoutLang === activeKeyWithoutLang;
-            });
-            return columns.map((col) => col.key);
-          }
-          return act;
-        })
-      ),
-    ];
-
-    setActiveColumns(newActiveColumns);
   };
+
   const filtersChanged: SubmitCallbackProps = (key, selectedOptions) => {
     switch (key) {
       case 'attributes':
@@ -205,6 +190,9 @@ export const DataManager = ({
   };
   const handleTableChange = (table: Table<MappedProduct>) => {
     setTotalResults(table.getRowCount());
+
+    //check if any column can be hidden (columns with only N/A)
+    setActiveColumns((prev) => getColumnsKeysWithoutNA(prev));
   };
 
   const clearAllFilters = () => {
@@ -212,11 +200,14 @@ export const DataManager = ({
     setLanguages([]);
 
     // reset columns
-    setActiveColumns(
+    changeAttributesShown([]);
+    changeLanguagesShown([]);
+
+    /* setActiveColumns(
       columns
-        .filter((col) => !col.key.startsWith('attributes'))
+        .filter((col) => !col.key.startsWith('attributes') && !col.children) //since all languages are removed, no children should be visible
         .map((col) => col.key)
-    );
+    ); */
   };
 
   return (

@@ -23,7 +23,12 @@ export async function useGraphQLFetch<T, K extends string>(
   keyword: K,
   QUERY: DocumentNode,
   client: ApolloClient<object>,
-  options?: { limit: number; page: number; context?: Record<string, any> }
+  options?: {
+    limit: number;
+    page: number;
+    context?: Record<string, any>;
+    query?: Record<string, any>;
+  }
 ) {
   /* const { data, loading, error } = useQuery<ResultType<K, PaginatedResult<T>>>(
     QUERY,
@@ -43,7 +48,11 @@ export async function useGraphQLFetch<T, K extends string>(
 
   const { data, loading, error } = await client.query({
     query: QUERY,
-    variables: { limit: limit, offset: page * limit },
+    variables: {
+      limit: limit,
+      offset: page * limit,
+      ...(options?.query ?? {}),
+    },
     context: options?.context ?? {
       target: GRAPHQL_TARGETS.COMMERCETOOLS_PLATFORM,
     },

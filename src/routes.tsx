@@ -6,7 +6,7 @@ import Welcome from './components/welcome';
 import AllProducts from './screens/AllProducts';
 import Documents from './screens/Documents/Documents';
 import Images from './screens/Images/Images';
-import Test from './screens/Test/Test';
+import Test from './screens/Test/test';
 
 type ApplicationRoutesProps = {
   children?: ReactNode;

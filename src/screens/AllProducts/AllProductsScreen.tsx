@@ -59,8 +59,14 @@ const AllProducts = () => {
   useEffect(() => {
     const load = async () => {
       const productTypes = await getAllProductTypes();
-      const rawData = await getAllProducts();
-      //const rawData = (await getProducts(0, 1)).data.results;
+      //const rawData = await getAllProducts();
+      const rawData = (
+        await getProducts(0, 10, [
+          '160001057B0100',
+          '172105070C0100',
+          '17210521B0100',
+        ])
+      ).data.results;
       const languages = await getAllLanguagesCodes();
       setRawData(rawData);
       setProductTypes(productTypes);
@@ -81,8 +87,10 @@ const AllProducts = () => {
     if (!productTypes || !rawData || !languages) return;
 
     //map the products
-    const newProducts = mapProducts(rawData, productTypes);
+    const newProducts = mapProducts(rawData, productTypes, languages);
     setProducts(newProducts);
+
+    console.log(newProducts);
 
     setLoading(false);
   }, [languages]);
@@ -126,14 +134,17 @@ const AllProducts = () => {
 
         //the default label
         const enLabel = getLabel('en') ?? '';
-        languages.forEach((lang) => {
-          const labelTranslated = getLabel(lang) ?? enLabel;
-
-          newColumns.push({
-            label: `${labelTranslated} (${attribute.value}) (${lang})`,
-            key: `attributes.${attribute.value}.${lang}`,
-            isVisible: false,
-          });
+        newColumns.push({
+          label: `${enLabel} (${attribute.value})`,
+          key: `attributes.${attribute.value}`,
+          isVisible: false,
+          children: languages.map((lang) => {
+            const labelTranslated = getLabel(lang) ?? enLabel;
+            return {
+              label: `${labelTranslated} (${lang})`,
+              key: lang,
+            };
+          }),
         });
       } else
         newColumns.push({
@@ -143,17 +154,27 @@ const AllProducts = () => {
     });
 
     //add all the extra columns for the locales (names, descriptions)
-    languages.forEach((lang) => {
-      newColumns.push({
-        key: `names.${lang}`,
-        label: `Product Name (${lang})`,
-      });
+    const extraColumns = [
+      {
+        key: 'names',
+        label: 'Product Name',
+      },
+      {
+        key: 'descriptions',
+        label: 'Descriptions',
+      },
+    ];
 
+    extraColumns.forEach((col) =>
       newColumns.push({
-        key: `descriptions.${lang}`,
-        label: `Description (${lang})`,
-      });
-    });
+        key: col.key,
+        label: col.label,
+        children: languages.map((lang) => ({
+          key: lang,
+          label: `${col.label} (${lang.toUpperCase()})`,
+        })),
+      })
+    );
 
     //re-order the columns
     newColumns = setCorrectColumnOrder(newColumns);

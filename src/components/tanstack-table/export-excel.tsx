@@ -19,57 +19,41 @@ const exportTableExcel = async <T,>(
 
   const headerGroups = table.getHeaderGroups();
 
-  // Build a set of visible leaf column IDs for fast lookup
-  const visibleLeafIds = new Set(
-    headerGroups
-      .at(-1)!
-      .headers.filter((h) => h.column.getIsVisible())
-      .map((h) => h.column.id)
-  );
-
   headerGroups.forEach((group, rowIndex) => {
-    const rowValues: (string | null)[] = [];
-    // Track (colIndex, colSpan) for merge operations — based on visible cols only
+    const rowsHeaders: Array<string | null> = [];
     const merges: { col: number; span: number }[] = [];
 
-    let colIndex = 1;
-
-    group.headers.forEach((h) => {
-      // Compute how many visible leaf columns this header actually spans
-      const visibleSpan = h.isPlaceholder
-        ? 0
-        : h.getLeafHeaders().filter((lh) => visibleLeafIds.has(lh.column.id))
-            .length;
-
-      if (visibleSpan === 0) return; // fully hidden, skip entirely
-
-      const header = h.column.columnDef.header;
-      const value = h.isPlaceholder
-        ? null
-        : Array.isArray(header)
-        ? header.join(' ')
-        : (header as string);
-
-      // adiciona a célula principal
-      rowValues.push(value);
-
-      // 🔥 CRUCIAL: preencher o resto do span
-      for (let i = 1; i < visibleSpan; i++) {
-        rowValues.push(null);
+    //allows to correctly keep track of the column index
+    //for example, if an header has 3 colspan, then the second header is going to be index=0+3=3
+    let currentColIndex = 0;
+    group.headers.forEach((header) => {
+      if (header.isPlaceholder) {
+        rowsHeaders.push(null);
+        currentColIndex++;
+        return;
       }
 
-      if (visibleSpan > 1) {
-        merges.push({ col: colIndex, span: visibleSpan });
+      const label = String(header.column.columnDef.header);
+      const colSpan = header.colSpan;
+
+      //rowsHeaders.push(label);
+      rowsHeaders[currentColIndex] = label;
+
+      if (colSpan > 1) {
+        merges.push({
+          col: currentColIndex,
+          span: colSpan,
+        });
       }
 
-      colIndex += visibleSpan;
+      currentColIndex += colSpan;
     });
 
-    worksheet.addRow(rowValues);
+    worksheet.addRow(rowsHeaders);
 
     // Apply merges using accurate visible-span positions
     merges.forEach(({ col, span }) => {
-      worksheet.mergeCells(rowIndex + 1, col, rowIndex + 1, col + span - 1);
+      worksheet.mergeCells(rowIndex + 1, col + 1, rowIndex + 1, col + span);
     });
 
     // Style header row

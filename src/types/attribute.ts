@@ -9,7 +9,7 @@ type LabelLocale = {
 };
 
 export type AttributeComplete = {
-  value: string | string[];
+  value: string | string[] | Record<string, unknown>;
   label: string | string[]; //in case we want the label to be in several lines
   type: string;
   label_locales: LabelLocale[];

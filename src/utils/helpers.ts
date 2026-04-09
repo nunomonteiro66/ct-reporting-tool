@@ -1,11 +1,19 @@
-import { Table } from '@tanstack/react-table';
+import { Header, Table } from '@tanstack/react-table';
 import { Column } from '../types/datatable-column';
 
 //checks if the column doesn't have any values
-const isColumnOnlyNA = <T>(table: Table<T>, columnId: string) => {
+export const isColumnOnlyNA = <T>(table: Table<T>, columnId: string) => {
+  const columnDef = table.getColumn(columnId);
+
+  if (!columnDef || columnDef.columns.length > 0) {
+    const childColumnsIds = columnDef?.columns.map((col) => col.id);
+    return childColumnsIds?.some((child) => isColumnOnlyNA(table, child));
+  }
+
   const values = [
     ...(table.getColumn(columnId)?.getFacetedUniqueValues().keys() ?? []),
   ];
+
   return values.length === 1 && values[0] === 'N/A';
 };
 
@@ -16,12 +24,5 @@ export const getActiveColumnsWithoutNA = <T>(
   columns: Column[],
   activeColumns: string[]
 ) => {
-  //because of the languages filter, sometimes the activeColumns array has non existing columns
-  //(for example: name.da doesn't exist if the languages are only set for en)
-  const currentColumns = columns.map((col) => col.key);
-  const existingActiveColumns = activeColumns.filter((actCol) =>
-    currentColumns.includes(actCol)
-  );
-
-  return existingActiveColumns.filter((col) => !isColumnOnlyNA(table, col));
+  return activeColumns.filter((col) => !isColumnOnlyNA(table, col));
 };

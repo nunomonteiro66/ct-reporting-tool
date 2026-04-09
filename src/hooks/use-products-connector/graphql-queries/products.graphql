@@ -1,5 +1,5 @@
-query Products($limit: Int = 500, $offset: Int = 0) {
-  products(limit: $limit, offset: $offset) {
+query Products($limit: Int = 500, $offset: Int = 0, $skus: [String!]) {
+  products(limit: $limit, offset: $offset, skus: $skus) {
     results {
       masterData {
         current {

@@ -201,13 +201,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
                       <th
                         key={header.id}
                         colSpan={header.colSpan}
-                        style={{
-                          width: header.getSize(),
-                          position: index < 3 ? 'sticky' : 'relative',
-                          left:
-                            index < 3 ? `${getStickyLeft(index)}px` : undefined,
-                          zIndex: index < 3 ? 20 : 10,
-                        }}
+                        style={{ width: header.getSize() }}
                         className="px-4 py-2 font-semibold text-center border-r-2 border-r-[#e2e8f0] bg-[#f8fafc] overflow-hidden text-ellipsis"
                       >
                         {!header.isPlaceholder &&
@@ -222,10 +216,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
                         data={data}
                         columnFilters={columnFilters}
                         setColumnFilters={setColumnFilters}
-                        sticky={index < 3}
-                        stickyLeft={
-                          index < 3 ? getStickyLeft(index) : undefined
-                        }
                       />
                     )
                   )}
@@ -252,17 +242,9 @@ const TanstackTable = <T extends Record<string, unknown>>({
                   >
                     {row.getVisibleCells().map((cell, colIndex) => (
                       <td
-                        style={{
-                          width: cell.column.getSize(),
-                          position: colIndex < 3 ? 'sticky' : 'relative',
-                          left:
-                            colIndex < 3
-                              ? `${getStickyLeft(colIndex)}px`
-                              : undefined,
-                          zIndex: colIndex < 3 ? 1 : 0,
-                        }}
+                        style={{ width: cell.column.getSize() }}
                         key={cell.id}
-                        className="py-2.75 px-4 text-[#334155] text-[13px] whitespace-nowrap overflow-hidden text-ellipsis max-w-65 align-middle bg-inherit"
+                        className="py-2.75 px-4 text-[#334155] text-[13px] whitespace-nowrap overflow-hidden text-ellipsis max-w-65 align-middle"
                       >
                         {flexRender(
                           cell.column.columnDef.cell,
