@@ -15,6 +15,7 @@ query ProductDocuments($limit: Int = 500, $offset: Int = 0) {
             name(acceptLanguage: "en")
           }
           allVariants {
+            key
             sku
             assets {
               tags

@@ -24,11 +24,11 @@ type ImageProduct = {
 };
 
 const defaultColumns = [
+  { key: 'key', label: 'Key' },
   {
     key: 'sku',
     label: 'SKU',
   },
-  { key: 'key', label: 'Key' },
   { key: 'product_name', label: 'Product Name' },
   { key: 'type', label: 'Type' },
   { key: 'product_type_key', label: 'Product Type Key' },

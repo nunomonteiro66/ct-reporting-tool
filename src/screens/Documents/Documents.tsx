@@ -26,6 +26,10 @@ type DocumentProduct = {
 
 const defaultColumns = [
   {
+    key: 'key',
+    label: 'Key',
+  },
+  {
     key: 'sku',
     label: 'SKU',
   },
@@ -117,6 +121,7 @@ const Documents = () => {
       return (
         prod.masterData.current?.allVariants.map((variant) => {
           return {
+            key: variant.key,
             sku: variant.sku,
             product_name: current?.name,
             type: variant.attributesRaw[0]?.value ?? '',
