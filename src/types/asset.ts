@@ -4,5 +4,5 @@ export type Asset = {
   url: string;
   name: string;
   type?: AssetType;
-  language: string;
+  languages: string[];
 };

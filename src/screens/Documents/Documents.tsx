@@ -83,6 +83,12 @@ const Documents = () => {
       const mapped = extractData(data);
 
       setData(mapped);
+
+      console.log(
+        'MAPPED FINAL: sku=120189012: ',
+        mapped.find((prod) => prod.key === '120189012')
+      );
+
       //add extra columns for the assets
       const extraColumns: typeof defaultColumns = [];
       allLang.forEach((lang) => {
@@ -130,13 +136,14 @@ const Documents = () => {
             categories: current?.categories.map((cat) => cat.name),
             assets: variant.assets.reduce((acc, asset) => {
               const cAsset = getAsset(asset);
-              if (cAsset)
-                acc[cAsset.language] = {
-                  ...acc[cAsset.language],
-                  [`${cAsset.type}_name`]: cAsset.name ?? '',
-                  [`${cAsset.type}_link`]: cAsset.url,
-                };
-
+              if (cAsset) {
+                cAsset.languages.map((lang) => {
+                  acc[lang.toLowerCase()] = {
+                    [`${cAsset.type}_name`]: cAsset.name ?? '',
+                    [`${cAsset.type}_link`]: cAsset.url,
+                  };
+                });
+              }
               /* const fileType = getDocumentType(asset);
               if (fileType) {
                 const lang = asset.tags[0].toLowerCase();

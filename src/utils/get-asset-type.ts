@@ -43,12 +43,14 @@ export const getAsset = (asset: TAsset): Asset | undefined => {
   if (!assetType) return;
   const name = asset.name;
   const url = asset.sources[0].uri;
-  const language = asset.tags[0].toLowerCase();
+
+  //some files are bilingual
+  const languages = asset.tags;
 
   return {
     name: name ?? '',
     url: url,
-    language: language,
+    languages: languages,
     type: assetType!,
   };
 };
