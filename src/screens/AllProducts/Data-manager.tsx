@@ -9,7 +9,8 @@ import exportTableExcel from '../../components/tanstack-table/export-excel';
 import { MappedProduct } from '../../types/mapped-product';
 import DataPageLayout from '../../layouts/data-page-layout';
 import { AttributeComplete } from '../../types/attribute';
-import { getActiveColumnsWithoutNA, isColumnOnlyNA } from '../../utils/helpers';
+import { isColumnOnlyNA } from '../../utils/helpers';
+import { Category } from '../../types/category';
 
 type OptionProps = { value: string; label: string };
 
@@ -24,6 +25,7 @@ type DataManagerProps = {
   uniqueAttributes: AttributeComplete[];
   languages: string[];
   setLanguages: Dispatch<SetStateAction<string[]>>;
+  categories: Category[];
 };
 
 export const DataManager = ({
@@ -32,6 +34,7 @@ export const DataManager = ({
   uniqueAttributes,
   languages,
   setLanguages,
+  categories,
 }: DataManagerProps) => {
   //table state
   const tableRef = useRef<Table<MappedProduct> | null>(null);
@@ -69,6 +72,15 @@ export const DataManager = ({
         filterKey: 'languages',
         label: 'Languages',
         options: languagesOptions,
+      },
+      {
+        filterKey: 'categories',
+        label: 'Categories',
+        options: categories.map((cat) => ({
+          label:
+            (cat.parent ? `${cat.parent.name} > ${cat.name}` : cat.name) ?? '',
+          value: cat.key ?? '',
+        })),
       },
     ]);
 
@@ -133,7 +145,7 @@ export const DataManager = ({
   };
 
   //when the attributes filters change, replace the active columns
-  const changeAttributesShown = (selectedOptions: OptionProps[]) => {
+  const changeAttributesShown = (selectedAttributes: string[]) => {
     //remove all attributes columns from active columns
     let newActiveColumns = activeColumns.filter(
       (col) => !col.startsWith('attributes.')
@@ -141,7 +153,7 @@ export const DataManager = ({
 
     newActiveColumns = [
       ...newActiveColumns,
-      ...selectedOptions.flatMap((opt) => [`attributes.${opt.value}`]),
+      ...selectedAttributes.flatMap((opt) => [`attributes.${opt}`]),
     ];
 
     //hide the columns that only have N/A values
@@ -171,13 +183,34 @@ export const DataManager = ({
     setColumnsCopy(newColumns);
   };
 
+  const changeAttributesByCategory = (selectedOptions: OptionProps[]) => {
+    console.log('SELECTED OPTION FOR CAT: ', selectedOptions);
+    const keys = selectedOptions.map((opt) => opt.value);
+
+    //get the categories
+    const selectedCategories = categories.filter((cat) =>
+      keys.includes(cat.key ?? '')
+    );
+
+    const newAttributesKeys = [
+      ...new Set(
+        selectedCategories.flatMap((cat) => cat.facetAttributeKeys ?? [])
+      ),
+    ];
+
+    changeAttributesShown(newAttributesKeys);
+  };
+
   const filtersChanged: SubmitCallbackProps = (key, selectedOptions) => {
     switch (key) {
       case 'attributes':
-        changeAttributesShown(selectedOptions);
+        changeAttributesShown(selectedOptions.map((opt) => opt.value));
         break;
       case 'languages':
         changeLanguagesShown(selectedOptions.map((opt) => opt.value));
+        break;
+      case 'categories':
+        changeAttributesByCategory(selectedOptions);
         break;
     }
 
@@ -188,6 +221,7 @@ export const DataManager = ({
 
     setAppliedFilters(newAppliedFilters);
   };
+
   const handleTableChange = (table: Table<MappedProduct>) => {
     setTotalResults(table.getRowCount());
 

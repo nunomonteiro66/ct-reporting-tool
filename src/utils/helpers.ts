@@ -16,13 +16,3 @@ export const isColumnOnlyNA = <T>(table: Table<T>, columnId: string) => {
 
   return values.length === 1 && values[0] === 'N/A';
 };
-
-//check if filters caused a column to be redundant (only have 'N/A' for all values)
-//if this is the case, hide the column
-export const getActiveColumnsWithoutNA = <T>(
-  table: Table<T>,
-  columns: Column[],
-  activeColumns: string[]
-) => {
-  return activeColumns.filter((col) => !isColumnOnlyNA(table, col));
-};

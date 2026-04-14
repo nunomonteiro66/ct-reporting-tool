@@ -1,7 +1,8 @@
-import { TCategory } from "./generated/ctp";
+import { TCategory } from './generated/ctp';
 
-type AncestorName = Pick<TCategory, "name">;
+type PickedCategory = Pick<TCategory, 'key' | 'name'>;
 
-export type CategoryNames = Pick<TCategory, "id" | "name"> & {
-  ancestors: AncestorName[];
+export type Category = PickedCategory & {
+  facetAttributeKeys?: string[];
+  parent?: PickedCategory;
 };

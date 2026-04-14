@@ -13,6 +13,9 @@ import { MappedProduct } from '../../types/mapped-product';
 import { TProduct } from '../../types/generated/ctp';
 import { ProductType } from '../../types/product-type';
 import { AttributeComplete } from '../../types/attribute';
+import { useCategoriesGraphql } from '../../hooks/use-categories-connector/use-categories-graphql';
+import { mapCategories } from '../../utils/mappers/map-categories';
+import { Category } from '../../types/category';
 
 const defaultColumns = [
   { key: 'key', label: 'key' },
@@ -35,9 +38,11 @@ const AllProducts = () => {
   const { getAllProducts, getAllProductTypes, getProducts } =
     useProductsGraphql();
   const { getAllLanguagesCodes } = useProjectGraphql();
+  const { getAllCategories } = useCategoriesGraphql();
 
   const [rawData, setRawData] = useState<TProduct[]>();
   const [productTypes, setProductTypes] = useState<ProductType[]>();
+  const [categories, setCategories] = useState<Category[]>();
 
   //products shown in the page (with filters)
   //will always be a slice of the allProducts
@@ -59,8 +64,8 @@ const AllProducts = () => {
   useEffect(() => {
     const load = async () => {
       const productTypes = await getAllProductTypes();
-      const rawData = await getAllProducts();
-      /* const rawData = (
+      //const rawData = await getAllProducts();
+      const rawData = (
         await getProducts(0, 10, [
           '160001057B0100',
           '172105070C0100',
@@ -68,9 +73,19 @@ const AllProducts = () => {
         ])
       ).data.results;
       const languages = await getAllLanguagesCodes();
+
+      //get the categories and map the facet keys (assigned attributes)
+      const categories = (await getAllCategories()).map((category) => ({
+        ...category,
+        facetAttributeKeys: category.custom?.customFieldsRaw
+          ? String(category.custom?.customFieldsRaw[0].value).split(':')
+          : undefined,
+      })) as Category[];
+
       setRawData(rawData);
       setProductTypes(productTypes);
       setLanguages(languages);
+      setCategories(categories);
 
       const uniqueAttrs = getAllUniqueAttributes(productTypes);
       setUniqueAttributes(uniqueAttrs);
@@ -220,6 +235,7 @@ const AllProducts = () => {
             uniqueAttributes={uniqueAttributes}
             languages={languages}
             setLanguages={setLanguages}
+            categories={categories}
           />
         </>
       )}
