@@ -77,21 +77,20 @@ const Documents = () => {
 
   useEffect(() => {
     const load = async () => {
-      const allLang = await getAllLanguagesCodes();
       const data = await getAllProductsDocuments();
       //const data = (await getProductDocuments(3, 1)).data.results;
       const mapped = extractData(data);
 
       setData(mapped);
 
-      console.log(
-        'MAPPED FINAL: sku=120189012: ',
-        mapped.find((prod) => prod.key === '120189012')
-      );
+      //get all the possible languages (from the mapped documents)
+      const allLangs = [
+        ...new Set(mapped.flatMap((product) => Object.keys(product.assets))),
+      ];
 
       //add extra columns for the assets
       const extraColumns: typeof defaultColumns = [];
-      allLang.forEach((lang) => {
+      allLangs.forEach((lang) => {
         defaultAssets.forEach((asset) => {
           extraColumns.push({
             key: `assets.${lang}.${asset.key}`,
@@ -113,7 +112,7 @@ const Documents = () => {
       setActiveColumns(enOnly.map((col) => col.key));
 
       //filters
-      setDefaultFilters(allLang);
+      setDefaultFilters(allLangs);
 
       setLoading(false);
     };
