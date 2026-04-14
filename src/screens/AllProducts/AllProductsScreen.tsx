@@ -66,7 +66,7 @@ const AllProducts = () => {
           '172105070C0100',
           '17210521B0100',
         ])
-      ).data.results; */
+      ).data.results;
       const languages = await getAllLanguagesCodes();
       setRawData(rawData);
       setProductTypes(productTypes);
@@ -117,7 +117,7 @@ const AllProducts = () => {
   ) => {
     //add the extra columns for the attributes
     let newColumns = [...defaultColumns];
-    uniqueAttributesComplete.forEach((attribute, index) => {
+    uniqueAttributesComplete.forEach((attribute) => {
       let newColEntry = {
         label: Array.isArray(attribute.label)
           ? attribute.label.join(' ')

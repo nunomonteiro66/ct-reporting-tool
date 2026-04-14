@@ -13,17 +13,9 @@ import {
   Table,
   useReactTable,
   VisibilityState,
-  Column as TColumn,
   ColumnPinningState,
 } from '@tanstack/react-table';
-import {
-  CSSProperties,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import ColumnHeader from './column-header';
 import Pagination from './pagination';
 import SearchTextInput from '@commercetools-uikit/search-text-input';
@@ -32,6 +24,7 @@ import ColumnOrder from './column-order';
 import getNestedValue from '../../utils/nested-attributes';
 import flattenColumns from '../../utils/flatten-columns';
 import getCommonPinningStyles from './column-pin';
+import ColumnFiltersTags from './column-filters-tags';
 
 type TanstackTableProps<T> = {
   data: T[];
@@ -184,7 +177,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
   }, [table.getRowModel()]);
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full gap-2">
       <div className="flex flex-col items-end">
         <SearchTextInput
           value={globalFilter ?? ''}
@@ -199,6 +192,15 @@ const TanstackTable = <T extends Record<string, unknown>>({
           setColumnOrder={setColumnOrder}
         />
       </div>
+      <ColumnFiltersTags
+        columns={table.getAllLeafColumns().map((leaf) => ({
+          key: leaf.columnDef.id ?? '',
+          label: String(leaf.columnDef.header),
+        }))}
+        //columns={initialColumns}
+        columnFilters={columnFilters}
+        setColumnFilters={setColumnFilters}
+      />
 
       <div className="font-sans text-[13px] text-[#1a2027] border border-[#e2e8f0] rounded-md overflow-visible shadow-sm bg-white h-full">
         <div className="overflow-x-auto h-full max-h-[calc(100vh-200px)] overflow-y-auto">
@@ -209,7 +211,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
             <thead className="sticky top-0 z-10">
               {table.getHeaderGroups().map((hg) => (
                 <tr key={hg.id}>
-                  {hg.headers.map((header, index) =>
+                  {hg.headers.map((header) =>
                     header.isPlaceholder || header.column.columns.length > 0 ? (
                       /* this header is a group header (simple header, with no filters/sorting/...) */
                       <th
@@ -255,9 +257,8 @@ const TanstackTable = <T extends Record<string, unknown>>({
                       i % 2 === 0 ? 'bg-white' : 'bg-[#fafbfc]'
                     }`}
                   >
-                    {row.getVisibleCells().map((cell, colIndex) => (
+                    {row.getVisibleCells().map((cell) => (
                       <td
-                        //style={{ width: cell.column.getSize() }}
                         style={{
                           ...getCommonPinningStyles(cell.column),
                         }}

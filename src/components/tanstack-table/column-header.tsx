@@ -56,7 +56,7 @@ const ColumnHeader = <T extends Record<string, unknown>>({
     [data, header]
   );
 
-  const [openFilter, setOpenFilter] = useState();
+  const [openFilter, setOpenFilter] = useState<string | null>();
 
   const colKey = header.column.id;
   const isOpen = openFilter === colKey;
@@ -85,7 +85,6 @@ const ColumnHeader = <T extends Record<string, unknown>>({
 
   return (
     <th
-      //style={{ width: header.getSize() }}
       style={{
         ...getCommonPinningStyles(header.column),
       }}

@@ -2,7 +2,7 @@ import { AttributeComplete } from '../../types/attribute';
 import { TAsset, TProduct, TProductVariant } from '../../types/generated/ctp';
 import { MappedProduct } from '../../types/mapped-product';
 import { ProductType } from '../../types/product-type';
-import { getAsset, getAssetType } from '../get-asset-type';
+import { getAssetType } from '../get-asset-type';
 import { getProductSelectionsNames } from './miscellaneous';
 
 //extract all unique attributes, regardless of product type
@@ -51,67 +51,56 @@ function mapAllAttributes(
 
     const variantAttr = variantAttributesMap[key];
 
+    //variant has value for this attribute
     if (variantAttr) {
       const val = variantAttr.value;
 
-      //attribute has several languages
+      //localization
       if (typeof val === 'object' && val !== null) {
-        //special case
-        if (variantAttr.name === '0000_branch_code') {
-          value = Object.entries(val)
-            .map(([lang, val]) => `${val} (${lang})`)
-            .join(', ');
-        } else {
-          value = val;
-        }
+        value =
+          variantAttr.name === '0000_branch_code'
+            ? Object.entries(val)
+                .map(([lang, v]) => `${v} (${lang})`)
+                .join(', ')
+            : val;
       } else {
-        //check if it should be an array (several values)
-        if (String(val).includes(',')) {
-          value = String(val).split(',');
-        } else value = val ?? '';
+        value = val;
       }
     } else {
-      // If attribute exists in product type, leave empty; else "N/A"
-      value = productTypeAttrSet.has(key) ? '' : 'N/A';
-      if (
-        uniqueAttr.type === 'ltext' &&
-        uniqueAttr.value != '0000_branch_code'
-      ) {
-        //fill all the language positions with "N/A"
-        value = productTypeAttrSet.has(key)
-          ? ''
-          : languages.reduce((acc, lang) => {
-              acc[lang] = 'N/A';
-              return acc;
-            }, {});
-      } else {
-        // If attribute exists in product type, leave empty; else "N/A"
-        value = productTypeAttrSet.has(key) ? '' : 'N/A';
-      }
+      const isBranchCode =
+        uniqueAttr.type === 'ltext' && uniqueAttr.value !== '0000_branch_code';
+      const isEmpty = productTypeAttrSet.has(key);
+
+      value = isEmpty
+        ? ''
+        : isBranchCode
+        ? languages.reduce<Record<string, string>>(
+            (acc, lang) => ({ ...acc, [lang]: 'N/A' }),
+            {}
+          )
+        : 'N/A';
     }
     acc[key] = value;
     return acc;
-  }, {} as Record<string, AttributeComplete>);
+  }, {} as Record<string, string | Record<string, unknown>>);
 }
 
+type AssetFields = Pick<MappedProduct, 'dop' | 'epd' | 'datasheet'>;
+
 //check if some of the metadata are present in the variant assets
-const checkAssetType = (assets: TAsset[] = []) => {
-  const result: Record<string, string> = {
+const checkAssetType = (assets: TAsset[] = []): AssetFields => {
+  const result = {
     dop: 'No',
     doc: 'No',
     epd: 'No',
     datasheet: 'No',
-  };
+  } as AssetFields;
 
   assets.forEach((asset) => {
     const customFieldsRaw = asset.custom?.customFieldsRaw ?? [];
-    const assetTypes = customFieldsRaw.map((field) =>
-      Array.isArray(field.value) ? field.value[0] : field.value
-    );
-
     customFieldsRaw.forEach((custom) => {
       const type = getAssetType(custom);
-      if (type) result[type] = 'Yes';
+      if (type && type in result) result[type as keyof AssetFields] = 'Yes';
     });
   });
 
@@ -134,7 +123,7 @@ export function mapProducts(
     if (!product) return [];
 
     //get all names from all locales
-    const names = product.nameAllLocales.reduce(
+    const names = product.nameAllLocales.reduce<Record<string, string>>(
       (acc, nameL) => ({
         ...acc,
         [nameL.locale]: nameL.value,
@@ -143,13 +132,14 @@ export function mapProducts(
     );
 
     //get all descriptions for all locales
-    const descriptions = product.descriptionAllLocales?.reduce(
-      (acc, descL) => ({
-        ...acc,
-        [descL.locale]: descL.value,
-      }),
-      {}
-    );
+    const descriptions =
+      product.descriptionAllLocales?.reduce<Record<string, string>>(
+        (acc, descL) => ({
+          ...acc,
+          [descL.locale]: descL.value,
+        }),
+        {}
+      ) ?? {};
 
     //get the product type (with all attributes) for the product type
     const productType = productTypes.find(
