@@ -134,10 +134,13 @@ const Documents = () => {
       setOriginalColumns(finalColumns);
 
       //only en is enabled by default
-      changeActiveColumns(finalColumns, ['en']);
+      changeLanguageColumns(finalColumns, ['en']);
 
       //filters
       setDefaultFilters(allLangs);
+
+      //all types are enabled by default
+      setActiveColumns(finalColumns.map((col) => col.key));
 
       setLoading(false);
     };
@@ -181,7 +184,7 @@ const Documents = () => {
   };
 
   //active columns depend on the selected languages, or if there are no documents in that language for the current search
-  const changeActiveColumns = (
+  const changeLanguageColumns = (
     columns: Column[],
     selectedLanguages: string[]
   ) => {
@@ -203,21 +206,32 @@ const Documents = () => {
           !col.key.startsWith('assets.') ||
           (col.children && col.children.length > 0)
       );
-
-    console.log('NEW COLUMNS ARE: ', newColumns);
-
-    setActiveColumns(newColumns.map((col) => col.key));
+    //setActiveColumns(newColumns.map((col) => col.key));
     setColumns(newColumns);
+  };
+
+  const changeActiveTypes = (selectedTypes: string[]) => {
+    setActiveColumns((prev) =>
+      originalColumns
+        .map((col) => col.key)
+        .filter(
+          (col) =>
+            !col.startsWith('assets.') ||
+            selectedTypes.includes(col.split('.')[1])
+        )
+    );
   };
 
   const filtersChanged: FilterSubmitCallbackProps = (key, selectedOptions) => {
     switch (key) {
       case 'languages':
-        changeActiveColumns(
+        changeLanguageColumns(
           originalColumns,
           selectedOptions.map((opt) => opt.value)
         );
         break;
+      case 'types':
+        changeActiveTypes(selectedOptions.map((opt) => opt.value));
     }
 
     setAppliedFilters((prev) => [
@@ -238,9 +252,18 @@ const Documents = () => {
         label: 'Languages',
         options: languagesOptions,
       },
+      {
+        filterKey: 'types',
+        label: 'Document types',
+        options: defaultAssets.map((asset) => ({
+          value: asset.key,
+          label: asset.label,
+        })),
+      },
     ]);
 
     //only english is active by default
+    //all document types are active by default
     const englishOption = languagesOptions.find((lang) => lang.value === 'en');
     if (englishOption)
       setAppliedFilters([
@@ -248,31 +271,23 @@ const Documents = () => {
           filterKey: 'languages',
           values: [englishOption],
         },
+        {
+          filterKey: 'types',
+          values: defaultAssets.map((asset) => ({
+            value: asset.key,
+            label: asset.label,
+          })),
+        },
       ]);
   };
 
   const handleTableChange = (table: Table<DocumentProduct>) => {
-    /* const data = table
-      .getFilteredRowModel()
-      .flatRows.map((row) => row.original);
-    let langs = [];
-
-    columns
-      .filter((col) => col.key.startsWith('assets.'))
-      .forEach((col) => {
-        const key = col.key;
-
-        const result = data.some((entry) => getNestedValue(entry, key));
-        if (result) {
-          langs.push(key.split('.')[1]);
-        }
-      }); */
-
     setTotalResults(table.getRowCount());
   };
 
   const clearAllFilters = () => {
-    setAppliedFilters([]);
+    filtersChanged('languages', []);
+    filtersChanged('types', []);
   };
 
   return (
