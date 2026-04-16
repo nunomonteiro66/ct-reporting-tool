@@ -48,9 +48,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
   const [globalFilter, setGlobalFilter] = useState('');
 
   //states for the column order component
-  const [columnOrder, setColumnOrder] = useState<ColumnOrderState>(() =>
-    flattenColumns(initialColumns)
-  );
+  const [columnOrder, setColumnOrder] = useState<ColumnOrderState>([]);
 
   //state for the tanstacktable
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>();
@@ -80,7 +78,11 @@ const TanstackTable = <T extends Record<string, unknown>>({
       ])
     );
 
+    console.log(columnVisibility);
+
     setColumnVisibility(columnVisibility);
+
+    setColumnOrder(visibleColumns);
 
     //set the pinned columns as the first three
     setColumnPinning({
@@ -197,7 +199,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
           key: leaf.columnDef.id ?? '',
           label: String(leaf.columnDef.header),
         }))}
-        //columns={initialColumns}
         columnFilters={columnFilters}
         setColumnFilters={setColumnFilters}
       />

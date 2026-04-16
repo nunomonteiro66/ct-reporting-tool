@@ -45,15 +45,15 @@ const ColumnOrder = ({
     });
 
   const selectedColumns = sortByColumnOrder(
-    columns.filter((c) => isColumnVisible(c))
+    columns.filter((c) => visibleColumns.includes(c.key))
   );
-
   const hiddenColumns = sortByColumnOrder(
-    columns.filter((c) => !isColumnVisible(c))
+    columns.filter((c) => !visibleColumns.includes(c.key))
   );
 
   const handleUpdateColumns = (updatedColumns: TColumnData[]) => {
-    const keys = flattenColumns(updatedColumns);
+    //const keys = flattenColumns(updatedColumns);
+    const keys = updatedColumns.map((col) => col.key);
     setVisibleColumns(keys);
     setColumnOrder(keys);
   };

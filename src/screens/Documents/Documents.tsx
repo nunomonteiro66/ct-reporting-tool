@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Children, useEffect, useRef, useState } from 'react';
 import { useProductsGraphql } from '../../hooks/use-products-connector/use-products-graphql';
 import { TProduct as CTProduct, TAsset } from '../../types/generated/ctp';
 import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
@@ -13,6 +13,7 @@ import { FilterSubmitCallbackProps } from '../../types/filter';
 import DataPageLayout from '../../layouts/data-page-layout';
 import getNestedValue from '../../utils/nested-attributes';
 import { getAsset } from '../../utils/get-asset-type';
+import { Column } from '../../types/datatable-column';
 
 type DocumentProduct = {
   sku: string | null | undefined;
@@ -24,7 +25,7 @@ type DocumentProduct = {
   assets: Record<string, Record<string, string>>;
 };
 
-const defaultColumns = [
+const defaultColumns: Column[] = [
   {
     key: 'key',
     label: 'Key',
@@ -40,7 +41,7 @@ const defaultColumns = [
   { key: 'categories', label: 'Product categories' },
 ];
 
-const defaultAssets = [
+/* const defaultAssets = [
   { key: 'datasheet_name', label: 'Datasheet' },
   { key: 'datasheet_link', label: 'Datasheet link' },
 
@@ -52,6 +53,30 @@ const defaultAssets = [
 
   { key: 'epd_name', label: 'EPD' },
   { key: 'epd_link', label: 'EPD link' },
+]; */
+
+/* const defaultAssets = [
+  {
+    key: 'datasheet',
+    label: 'Datasheet',
+    children: [
+      {
+        key: 'en',
+        label: 'EN',
+        children: [
+          { key: 'name', label: 'Name' },
+          { key: 'link', label: 'Link' },
+        ],
+      },
+    ],
+  },
+]; */
+
+const defaultAssets = [
+  { key: 'datasheet', label: 'Datasheet' },
+  { key: 'dop', label: 'DOP' },
+  { key: 'doc', label: 'DOC' },
+  { key: 'epd', label: 'EPD' },
 ];
 
 const Documents = () => {
@@ -65,7 +90,6 @@ const Documents = () => {
   const [activeColumns, setActiveColumns] = useState<string[]>([]);
 
   const { getAllProductsDocuments, getProductDocuments } = useProductsGraphql();
-  const { getAllLanguagesCodes } = useProjectGraphql();
 
   //filters states
   const [appliedFilters, setAppliedFilters] = useState<TAppliedFilter[]>([]);
@@ -78,38 +102,39 @@ const Documents = () => {
   useEffect(() => {
     const load = async () => {
       const data = await getAllProductsDocuments();
-      //const data = (await getProductDocuments(3, 1)).data.results;
       const mapped = extractData(data);
 
       setData(mapped);
 
       //get all the possible languages (from the mapped documents)
       const allLangs = [
-        ...new Set(mapped.flatMap((product) => Object.keys(product.assets))),
+        ...new Set(
+          mapped.flatMap((product) =>
+            Object.values(product.assets).flatMap((asset) => Object.keys(asset))
+          )
+        ),
       ];
 
       //add extra columns for the assets
-      const extraColumns: typeof defaultColumns = [];
-      allLangs.forEach((lang) => {
-        defaultAssets.forEach((asset) => {
-          extraColumns.push({
-            key: `assets.${lang}.${asset.key}`,
-            label: `${asset.label} (${lang.toUpperCase()})`,
-          });
-        });
-      });
+      const extraColumns: Column[] = defaultAssets.map((asset) => ({
+        key: `assets.${asset.key}`,
+        label: asset.label,
+        children: allLangs.map((lang) => ({
+          key: lang,
+          label: lang.toUpperCase(),
+          children: [
+            { key: 'name', label: 'Name' },
+            { key: 'link', label: 'Link' },
+          ],
+        })),
+      }));
 
       const finalColumns = [...defaultColumns, ...extraColumns];
 
       setOriginalColumns(finalColumns);
 
       //only en is enabled by default
-      const enOnly = finalColumns.filter(
-        (col) =>
-          col.key.startsWith('assets.en.') || !col.key.startsWith('assets')
-      );
-      setColumns(enOnly);
-      setActiveColumns(enOnly.map((col) => col.key));
+      changeActiveColumns(finalColumns, ['en']);
 
       //filters
       setDefaultFilters(allLangs);
@@ -136,26 +161,19 @@ const Documents = () => {
             assets: variant.assets.reduce((acc, asset) => {
               const cAsset = getAsset(asset);
               if (cAsset) {
-                cAsset.languages.map((lang) => {
-                  acc[lang.toLowerCase()] = {
-                    [`${cAsset.type}_name`]: cAsset.name ?? '',
-                    [`${cAsset.type}_link`]: cAsset.url,
-                  };
-                });
+                acc[cAsset.type ?? ''] = cAsset.languages.reduce(
+                  (acc2, lang) => {
+                    acc2[lang.toLowerCase()] = {
+                      name: cAsset.name,
+                      link: cAsset.url,
+                    };
+                    return acc2;
+                  },
+                  {} as Record<string, { name: string; link: string }>
+                );
               }
-              /* const fileType = getDocumentType(asset);
-              if (fileType) {
-                const lang = asset.tags[0].toLowerCase();
-                const link = asset.sources[0].uri;
-                const fileName = asset.name;
-                acc[lang] = {
-                  ...acc[lang],
-                  [`${fileType}_name`]: fileName ?? '',
-                  [`${fileType}_link`]: link,
-                };
-              } */
               return acc;
-            }, {} as Record<string, Record<string, string>>),
+            }, {} as Record<string, Record<string, { name: string; link: string }>>),
           };
         }) ?? []
       );
@@ -163,13 +181,30 @@ const Documents = () => {
   };
 
   //active columns depend on the selected languages, or if there are no documents in that language for the current search
-  const changeActiveColumns = (selectedLanguages: string[]) => {
+  const changeActiveColumns = (
+    columns: Column[],
+    selectedLanguages: string[]
+  ) => {
     //return only the columns that aren't assets, or that are assets of a selected language
-    const newColumns = originalColumns.filter(
-      (col) =>
-        !col.key.startsWith('assets.') ||
-        selectedLanguages.some((lang) => col.key.startsWith(`assets.${lang}.`))
-    );
+    const newColumns = columns
+      .map((col) => {
+        if (col.key.startsWith('assets.')) {
+          return {
+            ...col,
+            children: col.children?.filter((child) =>
+              selectedLanguages.includes(child.key)
+            ),
+          };
+        }
+        return col;
+      })
+      .filter(
+        (col) =>
+          !col.key.startsWith('assets.') ||
+          (col.children && col.children.length > 0)
+      );
+
+    console.log('NEW COLUMNS ARE: ', newColumns);
 
     setActiveColumns(newColumns.map((col) => col.key));
     setColumns(newColumns);
@@ -178,7 +213,10 @@ const Documents = () => {
   const filtersChanged: FilterSubmitCallbackProps = (key, selectedOptions) => {
     switch (key) {
       case 'languages':
-        changeActiveColumns(selectedOptions.map((opt) => opt.value));
+        changeActiveColumns(
+          originalColumns,
+          selectedOptions.map((opt) => opt.value)
+        );
         break;
     }
 
@@ -214,7 +252,7 @@ const Documents = () => {
   };
 
   const handleTableChange = (table: Table<DocumentProduct>) => {
-    const data = table
+    /* const data = table
       .getFilteredRowModel()
       .flatRows.map((row) => row.original);
     let langs = [];
@@ -228,7 +266,7 @@ const Documents = () => {
         if (result) {
           langs.push(key.split('.')[1]);
         }
-      });
+      }); */
 
     setTotalResults(table.getRowCount());
   };
