@@ -46,7 +46,7 @@ export async function useGraphQLFetch<T, K extends string>(
   const limit = options?.limit ?? 500;
   const page = options?.page ?? 0;
 
-  const { data, loading, error } = await client.query({
+  const { data, loading, error } = await client.query<Record<K, T>>({
     query: QUERY,
     variables: {
       limit: limit,
@@ -58,7 +58,7 @@ export async function useGraphQLFetch<T, K extends string>(
     },
   });
 
-  return { data: data ? data[keyword] : [], loading, error };
+  return { data: data ? (data[keyword] as T) : null, loading, error };
 }
 
 export async function graphqlFetchAll<T, K extends string>(

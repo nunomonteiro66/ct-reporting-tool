@@ -1,5 +1,5 @@
-query ProductDocuments($limit: Int = 500, $offset: Int = 0) {
-  products(limit: $limit, offset: $offset) {
+query ProductDocuments($limit: Int = 500, $offset: Int = 0, $skus: [String!]) {
+  products(limit: $limit, offset: $offset, skus: $skus) {
     count
     offset
     total
@@ -8,6 +8,7 @@ query ProductDocuments($limit: Int = 500, $offset: Int = 0) {
         key
         name
       }
+
       masterData {
         current {
           name(acceptLanguage: "en")
@@ -37,6 +38,18 @@ query ProductDocuments($limit: Int = 500, $offset: Int = 0) {
               name
               value
             }
+          }
+        }
+      }
+
+      productSelectionRefs {
+        results {
+          productSelection {
+            name(locale: "en")
+            key
+          }
+          variantSelection {
+            skus
           }
         }
       }

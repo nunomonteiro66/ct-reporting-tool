@@ -3,7 +3,10 @@ import { TAsset, TProduct, TProductVariant } from '../../types/generated/ctp';
 import { MappedProduct } from '../../types/mapped-product';
 import { ProductType } from '../../types/product-type';
 import { getAssetType } from '../get-asset-type';
-import { getProductSelectionsNames } from './miscellaneous';
+import {
+  getProductSelections,
+  getProductSelectionsNames,
+} from './miscellaneous';
 
 //extract all unique attributes, regardless of product type
 export function extractUniqueAttributes(productTypes: ProductType[]) {
@@ -177,14 +180,9 @@ export function mapProducts(
         .filter((c): c is string => Boolean(c));
 
       //add the product selections
-      const selections = getProductSelectionsNames(
-        productRaw.productSelectionRefs.results
-          .filter((res) => {
-            const selectionVariantSkus = res.variantSelection?.skus;
-            if (!selectionVariantSkus) return true;
-            return selectionVariantSkus.some((sku) => sku === variant.sku);
-          })
-          .map((res) => res.productSelection?.name ?? '')
+      const selections = getProductSelections(
+        productRaw.productSelectionRefs.results,
+        variant.sku ?? ''
       );
 
       return {

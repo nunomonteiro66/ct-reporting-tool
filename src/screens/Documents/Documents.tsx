@@ -1,19 +1,21 @@
-import { Children, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useProductsGraphql } from '../../hooks/use-products-connector/use-products-graphql';
-import { TProduct as CTProduct, TAsset } from '../../types/generated/ctp';
+import { TProduct as CTProduct } from '../../types/generated/ctp';
 import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
 import TanstackTable from '../../components/tanstack-table/tanstack-table';
 import { Table } from '@tanstack/react-table';
-import { useProjectGraphql } from '../../hooks/use-project-connector/use-project-graphql';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import exportTableExcel from '../../components/tanstack-table/export-excel';
 import Filters, { FiltersProps } from '../../components/filters/filters';
 import { TAppliedFilter } from '@commercetools-uikit/filters';
 import { FilterSubmitCallbackProps } from '../../types/filter';
 import DataPageLayout from '../../layouts/data-page-layout';
-import getNestedValue from '../../utils/nested-attributes';
 import { getAsset } from '../../utils/get-asset-type';
 import { Column } from '../../types/datatable-column';
+import {
+  getProductSelections,
+  getProductSelectionsNames,
+} from '../../utils/mappers/miscellaneous';
 
 type DocumentProduct = {
   sku: string | null | undefined;
@@ -39,6 +41,7 @@ const defaultColumns: Column[] = [
   { key: 'product_type_key', label: 'Product Type Key' },
   { key: 'product_type_name', label: 'Product Type Name' },
   { key: 'categories', label: 'Product categories' },
+  { key: 'selections', label: 'Product Selections' },
 ];
 
 /* const defaultAssets = [
@@ -161,6 +164,11 @@ const Documents = () => {
             product_type_key: prodType?.key,
             product_type_name: prodType?.name,
             categories: current?.categories.map((cat) => cat.name),
+            //add the product selections
+            selections: getProductSelections(
+              prod.productSelectionRefs.results,
+              variant.sku ?? ''
+            ),
             assets: variant.assets.reduce((acc, asset) => {
               const cAsset = getAsset(asset);
               if (cAsset) {

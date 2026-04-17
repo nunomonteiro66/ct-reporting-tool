@@ -6,6 +6,7 @@ import PRODUCTS_IMAGES from './graphql-queries/product-images.graphql';
 import { useCallback } from 'react';
 import { graphqlFetchAll, useGraphQLFetch } from '../graphql-fetch-all';
 import { TProduct } from '../../types/generated/ctp';
+import { TCtpProductQueryResult } from '@commercetools/composable-commerce-test-data/dist/declarations/src/graphql-types';
 
 export const useProductsGraphql = () => {
   const client = useApolloClient();
@@ -68,18 +69,20 @@ export const useProductsGraphql = () => {
     return graphqlFetchAll<TProduct, 'products'>(
       'products',
       PRODUCTS_DOCUMENTS,
-      client
+      client,
+      { limit: 50 }
     );
   }, [client]);
 
   const getProductDocuments = useCallback(
-    async (page: number, limit: number) => {
+    async (page: number, limit: number, skus?: string[]) => {
       const { data, loading, error } = await useGraphQLFetch<
-        TProduct,
+        TCtpProductQueryResult,
         'products'
       >('products', PRODUCTS_DOCUMENTS, client, {
         limit: limit,
         page: page,
+        query: skus ? { skus } : {},
       });
 
       return { data, loading, error };
