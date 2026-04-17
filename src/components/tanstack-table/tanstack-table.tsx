@@ -33,6 +33,7 @@ type TanstackTableProps<T> = {
   setVisibleColumns: Dispatch<SetStateAction<string[]>>;
   setTable: (t: Table<T>) => void;
   onTableChange?: (t: Table<T>) => void;
+  numberColsPinned?: number; //the first n columns are pinned (sticky). defaul is 3
 };
 
 const TanstackTable = <T extends Record<string, unknown>>({
@@ -42,6 +43,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
   setVisibleColumns,
   setTable,
   onTableChange,
+  numberColsPinned = 3,
 }: TanstackTableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -78,8 +80,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
       ])
     );
 
-    console.log(columnVisibility);
-
     setColumnVisibility(columnVisibility);
 
     setColumnOrder(visibleColumns);
@@ -88,7 +88,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
     setColumnPinning({
       left: Object.entries(columnVisibility)
         .filter(([, visible]) => visible)
-        .slice(0, 3)
+        .slice(0, numberColsPinned)
         .map(([key]) => key),
     });
   }, [visibleColumns, initialColumns]);

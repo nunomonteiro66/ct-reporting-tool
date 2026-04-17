@@ -12,10 +12,8 @@ import { FilterSubmitCallbackProps } from '../../types/filter';
 import DataPageLayout from '../../layouts/data-page-layout';
 import { getAsset } from '../../utils/get-asset-type';
 import { Column } from '../../types/datatable-column';
-import {
-  getProductSelections,
-  getProductSelectionsNames,
-} from '../../utils/mappers/miscellaneous';
+import { getProductSelections } from '../../utils/mappers/miscellaneous';
+import { Asset } from '../../types/asset';
 
 type DocumentProduct = {
   sku: string | null | undefined;
@@ -24,7 +22,9 @@ type DocumentProduct = {
   product_type_key: string | null | undefined;
   product_type_name: string | undefined;
   categories: (string | null | undefined)[] | undefined;
-  assets: Record<string, Record<string, string>>;
+  assets: Record<string, Record<string, { name: string; link: string }>>;
+  selections: string[];
+  revision: string;
 };
 
 const defaultColumns: Column[] = [
@@ -37,43 +37,13 @@ const defaultColumns: Column[] = [
     label: 'SKU',
   },
   { key: 'product_name', label: 'Product Name' },
+  { key: 'revision', label: 'Document Revision' },
   { key: 'type', label: 'Type' },
   { key: 'product_type_key', label: 'Product Type Key' },
   { key: 'product_type_name', label: 'Product Type Name' },
   { key: 'categories', label: 'Product categories' },
   { key: 'selections', label: 'Product Selections' },
 ];
-
-/* const defaultAssets = [
-  { key: 'datasheet_name', label: 'Datasheet' },
-  { key: 'datasheet_link', label: 'Datasheet link' },
-
-  { key: 'dop_name', label: 'DOP' },
-  { key: 'dop_link', label: 'DOP link' },
-
-  { key: 'doc_name', label: 'DOC' },
-  { key: 'doc_link', label: 'DOC link' },
-
-  { key: 'epd_name', label: 'EPD' },
-  { key: 'epd_link', label: 'EPD link' },
-]; */
-
-/* const defaultAssets = [
-  {
-    key: 'datasheet',
-    label: 'Datasheet',
-    children: [
-      {
-        key: 'en',
-        label: 'EN',
-        children: [
-          { key: 'name', label: 'Name' },
-          { key: 'link', label: 'Link' },
-        ],
-      },
-    ],
-  },
-]; */
 
 const defaultAssets = [
   { key: 'datasheet', label: 'Datasheet' },
@@ -105,7 +75,9 @@ const Documents = () => {
   useEffect(() => {
     const load = async () => {
       const data = await getAllProductsDocuments();
-      const mapped = extractData(data);
+      /* const data = (await getProductDocuments(0, 1, ['172547020D1000'])).data
+        ?.results; */
+      const mapped = extractData(data as CTProduct[]);
 
       setData(mapped);
 
@@ -155,8 +127,18 @@ const Documents = () => {
       const current = prod.masterData.current;
       const prodType = prod.productType;
       return (
-        prod.masterData.current?.allVariants.map((variant) => {
-          return {
+        prod.masterData.current?.allVariants.flatMap((variant) => {
+          //assets organized by revision number
+          const assets = variant.assets.reduce((acc, asset) => {
+            const mapped = getAsset(asset);
+            if (!mapped) return acc;
+
+            const revNum = mapped.revisionNumber ?? 1; //files without revision number have only one revision, ergo 1
+            acc[revNum] = [...(acc[revNum] ?? []), mapped];
+            return acc;
+          }, {} as Record<number, Asset[]>);
+
+          return Object.entries(assets).map(([revisionNumber, assets]) => ({
             key: variant.key,
             sku: variant.sku,
             product_name: current?.name,
@@ -169,23 +151,22 @@ const Documents = () => {
               prod.productSelectionRefs.results,
               variant.sku ?? ''
             ),
-            assets: variant.assets.reduce((acc, asset) => {
-              const cAsset = getAsset(asset);
-              if (cAsset) {
-                acc[cAsset.type ?? ''] = cAsset.languages.reduce(
-                  (acc2, lang) => {
-                    acc2[lang.toLowerCase()] = {
-                      name: cAsset.name,
-                      link: cAsset.url,
-                    };
-                    return acc2;
-                  },
-                  {} as Record<string, { name: string; link: string }>
-                );
-              }
+            revision: revisionNumber,
+            assets: assets.reduce((acc, asset) => {
+              const type = asset.type ?? '';
+              acc[type] = {
+                ...acc[type],
+                ...asset.languages.reduce((acc2, lang) => {
+                  acc2[lang.toLowerCase()] = {
+                    name: asset.name,
+                    link: asset.url,
+                  };
+                  return acc2;
+                }, {} as Record<string, { name: string; link: string; revision?: number }>),
+              };
               return acc;
             }, {} as Record<string, Record<string, { name: string; link: string }>>),
-          };
+          }));
         }) ?? []
       );
     });
@@ -331,6 +312,7 @@ const Documents = () => {
               tableRef.current = t;
             }}
             onTableChange={handleTableChange}
+            numberColsPinned={4}
           />
         </DataPageLayout>
       )}

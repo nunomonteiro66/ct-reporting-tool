@@ -35,12 +35,28 @@ export const getAssetType = (
     : undefined;
 };
 
-export const getAsset = (asset: TAsset): Asset | undefined => {
-  const assetType = asset.custom?.customFieldsRaw
-    ?.map((custom) => getAssetType(custom))
-    .find((c): c is AssetType => c !== undefined);
+export const getAssetRevision = (attributesRaw: TRawCustomField) => {
+  if (attributesRaw.name === 'nkt_revisiononlyDOPDOC') {
+    const stringNum = String(attributesRaw.value[0]);
+    const splitted = stringNum.split('.')[1];
+    return Number(splitted);
+  }
+  return;
+};
 
-  if (!assetType) return;
+export const getAsset = (asset: TAsset): Asset | undefined => {
+  const customFieldsRaw = asset.custom?.customFieldsRaw;
+
+  const assetMapped = customFieldsRaw?.reduce((acc, custom) => {
+    const type = getAssetType(custom);
+    const revision = getAssetRevision(custom);
+
+    if (type) acc['type'] = type;
+    if (revision) acc['revision'] = revision;
+
+    return acc;
+  }, {} as { type?: AssetType; revision?: number });
+
   const name = asset.name;
   const url = asset.sources[0].uri;
 
@@ -51,6 +67,7 @@ export const getAsset = (asset: TAsset): Asset | undefined => {
     name: name ?? '',
     url: url,
     languages: languages,
-    type: assetType!,
+    type: assetMapped?.type,
+    revisionNumber: assetMapped?.revision,
   };
 };

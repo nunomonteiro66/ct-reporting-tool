@@ -5,4 +5,5 @@ export type Asset = {
   name: string;
   type?: AssetType;
   languages: string[];
+  revisionNumber?: number;
 };
