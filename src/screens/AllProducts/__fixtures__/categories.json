@@ -1,0 +1,332 @@
+{
+    "data": {
+        "categories": {
+            "__typename": "CategoryQueryResult",
+            "results": [
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:92_cross_section:91_number_of_cores:842_colour_of_sheath:14_material_of_conductor:1607_cpr_classification:0000_length:1867_sap_characteristic_znkt_millca_standard_length:0000_drum_type:18_shape_of_conductor:15_voltage_u:1296_voltage_uo"
+                            }
+                        ]
+                    },
+                    "key": "lv-1KvCables",
+                    "name": "1 kV cables",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "low-voltage",
+                        "name": "Low-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:92_cross_section:91_number_of_cores:842_colour_of_sheath:14_material_of_conductor:1607_cpr_classification:0000_length:1867_sap_characteristic_znkt_millca_standard_length:0000_drum_type:18_shape_of_conductor:15_voltage_u:1296_voltage_uo"
+                            }
+                        ]
+                    },
+                    "key": "lv-buildingWires",
+                    "name": "Building wires",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "low-voltage",
+                        "name": "Low-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:92_cross_section:91_number_of_cores:842_colour_of_sheath:14_material_of_conductor:1607_cpr_classification:0000_length:1867_sap_characteristic_znkt_millca_standard_length:0000_drum_type:18_shape_of_conductor:15_voltage_u:1296_voltage_uo"
+                            }
+                        ]
+                    },
+                    "key": "lv-controlCables",
+                    "name": "Control cables",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "low-voltage",
+                        "name": "Low-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:92_cross_section:91_number_of_cores:842_colour_of_sheath:14_material_of_conductor:1607_cpr_classification:0000_length:1867_sap_characteristic_znkt_millca_standard_length:0000_drum_type:18_shape_of_conductor:15_voltage_u:1296_voltage_uo"
+                            }
+                        ]
+                    },
+                    "key": "lv-flexibleCables",
+                    "name": "Flexible cables",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "low-voltage",
+                        "name": "Low-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:92_cross_section:91_number_of_cores:842_colour_of_sheath:14_material_of_conductor:1607_cpr_classification:0000_length:1867_sap_characteristic_znkt_millca_standard_length:0000_drum_type:18_shape_of_conductor:15_voltage_u:1296_voltage_uo"
+                            }
+                        ]
+                    },
+                    "key": "lv-firePerformanceCables",
+                    "name": "Fire performance cables",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "low-voltage",
+                        "name": "Low-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:92_cross_section:91_number_of_cores:842_colour_of_sheath:14_material_of_conductor:1607_cpr_classification:0000_length:1867_sap_characteristic_znkt_millca_standard_length:0000_drum_type:18_shape_of_conductor:15_voltage_u:1296_voltage_uo"
+                            }
+                        ]
+                    },
+                    "key": "mv-universalCables",
+                    "name": "Universal cables",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "medium-voltage",
+                        "name": "Medium-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:92_cross_section:91_number_of_cores:842_colour_of_sheath:14_material_of_conductor:1607_cpr_classification:0000_length:1867_sap_characteristic_znkt_millca_standard_length:0000_drum_type:18_shape_of_conductor:15_voltage_u:1296_voltage_uo"
+                            }
+                        ]
+                    },
+                    "key": "mv-mediumVoltageCables",
+                    "name": "Medium-voltage cables",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "medium-voltage",
+                        "name": "Medium-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:92_cross_section:91_number_of_cores:842_colour_of_sheath:14_material_of_conductor:1607_cpr_classification:0000_length:1867_sap_characteristic_znkt_millca_standard_length:0000_drum_type:18_shape_of_conductor:15_voltage_u:1296_voltage_uo"
+                            }
+                        ]
+                    },
+                    "key": "lv-telecomEnergyCables",
+                    "name": "Telecom energy cables",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "low-voltage",
+                        "name": "Low-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:15_voltage_u:1296_voltage_uo:92_cross_section:91_number_of_cores:661_no_of_cores_and_cross_section:14_material_of_conductor:1000_material_insulation"
+                            }
+                        ]
+                    },
+                    "key": "lv-overhead",
+                    "name": "Overhead",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "low-voltage",
+                        "name": "Low-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:15_voltage_u:1296_voltage_uo:92_cross_section:91_number_of_cores:661_no_of_cores_and_cross_section:14_material_of_conductor:1000_material_insulation:esp_mechanical_protection:1001_material_sheath:842_colour_of_sheath:1607_cpr_classification"
+                            }
+                        ]
+                    },
+                    "key": "lv-underground",
+                    "name": "Underground",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "low-voltage",
+                        "name": "Low-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:15_voltage_u:1296_voltage_uo:92_cross_section:91_number_of_cores:14_material_of_conductor:1000_material_insulation:1429_type_of_semiconductive_layer_over_insulation:1427_type_of_screen:1428_material_of_screen:22_cross_section_of_screen:esp_mechanical_protection:1001_material_sheath:842_colour_of_sheath:1607_cpr_classification"
+                            }
+                        ]
+                    },
+                    "key": "mv-mediumVoltageCables-ES",
+                    "name": "Medium-voltage cables",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "medium-voltage",
+                        "name": "Medium-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:15_voltage_u:1296_voltage_uo:2450_electric_current_type:92_cross_section:91_number_of_cores:14_material_of_conductor:1001_material_sheath:842_colour_of_sheath:1607_cpr_classification"
+                            }
+                        ]
+                    },
+                    "key": "lv-photovoltaic",
+                    "name": "Photovoltaic",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "low-voltage",
+                        "name": "Low-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "7_type:15_voltage_u:1296_voltage_uo:92_cross_section:14_material_of_conductor:1000_material_insulation:1427_type_of_screen:1428_material_of_screen:esp_mechanical_protection:1001_material_sheath:1607_cpr_classification"
+                            }
+                        ]
+                    },
+                    "key": "hv-highVoltageCables",
+                    "name": "High-voltage cables",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "high-voltage",
+                        "name": "High-voltage"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "esp_greased:92_cross_section:esp_core_material"
+                            }
+                        ]
+                    },
+                    "key": "acsr",
+                    "name": "Steel reinforced ACSR conductors",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "overhead-lines",
+                        "name": "Overhead lines & Conductors"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "esp_greased:92_cross_section:esp_core_material:esp_al_alloy_type"
+                            }
+                        ]
+                    },
+                    "key": "aacsr",
+                    "name": "Steel reinforced AACSR conductors",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "overhead-lines",
+                        "name": "Overhead lines & Conductors"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "esp_greased:92_cross_section:73_number_of_wires_of_conductor:esp_al_alloy_type"
+                            }
+                        ]
+                    },
+                    "key": "aaac",
+                    "name": "AAAC conductors",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "overhead-lines",
+                        "name": "Overhead lines & Conductors"
+                    }
+                },
+                {
+                    "__typename": "Category",
+                    "custom": {
+                        "__typename": "CustomFieldsType",
+                        "customFieldsRaw": [
+                            {
+                                "__typename": "RawCustomField",
+                                "value": "esp_number_of_fibers:esp_type_of_fiber:92_cross_section"
+                            }
+                        ]
+                    },
+                    "key": "opgw",
+                    "name": "Optical power ground wire OPGW",
+                    "parent": {
+                        "__typename": "Category",
+                        "key": "overhead-lines",
+                        "name": "Overhead lines & Conductors"
+                    }
+                }
+            ]
+        }
+    }
+}

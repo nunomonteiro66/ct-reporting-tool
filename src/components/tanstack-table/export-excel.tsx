@@ -5,7 +5,7 @@ import { Table } from '@tanstack/react-table';
 const sanitize = (value: unknown) => {
   if (value === '' || value === undefined || value === null) return null;
   if (Array.isArray(value))
-    return value.length === 1 ? String(value[0]) : value.join(', ');
+    return value.length === 1 ? String(value[0]) : value.join(',');
   if (typeof value === 'object') return JSON.stringify(value);
   return value;
 };

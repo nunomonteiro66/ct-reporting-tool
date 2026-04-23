@@ -33,8 +33,10 @@
     "@commercetools-frontend/assets": "25.2.0",
     "@commercetools-frontend/babel-preset-mc-app": "25.2.0",
     "@commercetools-frontend/constants": "25.2.0",
+    "@commercetools-frontend/cypress": "^27.4.0",
     "@commercetools-frontend/eslint-config-mc-app": "25.2.0",
     "@commercetools-frontend/i18n": "25.2.0",
+    "@commercetools-frontend/jest-preset-mc-app": "^27.4.2",
     "@commercetools-frontend/l10n": "25.2.0",
     "@commercetools-frontend/mc-dev-authentication": "25.2.0",
     "@commercetools-frontend/mc-scripts": "^27.1.0",
@@ -104,6 +106,7 @@
   "devDependencies": {
     "@graphql-eslint/eslint-plugin": "^4.4.0",
     "@next/eslint-plugin-next": "^15.4.6",
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/postcss": "^4.2.1",
     "cross-env": "^10.1.0",
     "eslint": "^8.57.0",

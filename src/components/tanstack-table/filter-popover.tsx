@@ -60,6 +60,7 @@ const FilterPopover = ({
       ref={ref}
       style={{ top: pos.top, left: pos.left }}
       className="fixed z-9999 bg-white border border-[#e2e8f0] rounded-md shadow-[0_4px_16px_rgba(0,0,0,0.1)] w-55 flex flex-col overflow-hidden"
+      id="filter-popover"
     >
       {/* Header */}
       <div className="flex items-center justify-between px-3 pt-2 pb-1 border-b border-[#f1f5f9]">

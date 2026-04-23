@@ -47,7 +47,8 @@ const Pagination = <T extends Record<string, unknown>>({
             }}
             className="w-14 text-center border border-[#e2e8f0] rounded px-2 py-1 text-[13px]"
           />
-          of {table.getPageCount().toLocaleString()}
+          of{' '}
+          <span id="total-pages">{table.getPageCount().toLocaleString()}</span>
         </div>
 
         <Button

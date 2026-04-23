@@ -15,7 +15,7 @@ export type FiltersProps = {
   options: OptionProps[];
 };
 
-const Filters = ({
+const FiltersComponent = ({
   appliedFilters,
   filtersConfig,
   submitCallback,
@@ -108,4 +108,4 @@ const Filters = ({
   );
 };
 
-export default Filters;
+export default FiltersComponent;

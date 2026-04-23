@@ -3,10 +3,7 @@ import { TAsset, TProduct, TProductVariant } from '../../types/generated/ctp';
 import { MappedProduct } from '../../types/mapped-product';
 import { ProductType } from '../../types/product-type';
 import { getAssetType } from '../get-asset-type';
-import {
-  getProductSelections,
-  getProductSelectionsNames,
-} from './miscellaneous';
+import { getProductSelections } from './miscellaneous';
 
 //extract all unique attributes, regardless of product type
 export function extractUniqueAttributes(productTypes: ProductType[]) {
@@ -21,6 +18,23 @@ export function extractUniqueAttributes(productTypes: ProductType[]) {
       if (!uniqueAttributesValuesSet.has(attr.value)) {
         uniqueAttributesValuesSet.add(attr.value);
         uniqueAttributesComplete.push(attr);
+      } else {
+        //some product types have more translations
+        const current = uniqueAttributesComplete.find(
+          (attribute) => attribute.value === attr.value
+        );
+        if (current)
+          attr.label_locales.forEach((newLocale) => {
+            //only add locales that don't exist
+            if (
+              !current.label_locales.some(
+                (locale) => locale.locale === newLocale.locale
+              ) &&
+              newLocale.value != ''
+            ) {
+              current.label_locales.push(newLocale);
+            }
+          });
       }
     });
   });

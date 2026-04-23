@@ -1,20 +1,24 @@
 import LoadingSpinner from '../components/loading-spinner/loading-spinner';
+import { useTableContext } from '../screens/AllProducts/context';
 
 type DataPageLayoutProps = {
   title: string;
-  totalResults?: number;
-  loading?: boolean;
+  /* totalResults?: number;
+  loading?: boolean; */
   actions?: React.ReactNode;
   children: React.ReactNode;
 };
 
 const DataPageLayout = ({
   title,
-  totalResults,
-  loading = false,
+  /* totalResults,
+  loading = false, */
   actions,
   children,
 }: DataPageLayoutProps) => {
+  const {
+    state: { totalResults, loading },
+  } = useTableContext();
   return (
     <>
       {loading ? (
@@ -26,7 +30,9 @@ const DataPageLayout = ({
             <div className="flex items-center gap-4">
               <h1 className="text-2xl font-semibold">{title}</h1>
               {totalResults !== undefined && (
-                <p className="text-sm text-gray-500">{totalResults} results</p>
+                <p className="text-sm text-gray-500">
+                  <span id="total-results">{totalResults}</span> results
+                </p>
               )}
             </div>
           </div>

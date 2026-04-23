@@ -23,5 +23,5 @@ const renderApp = (options: Partial<TRenderAppWithReduxOptions> = {}) => {
 
 it('should render welcome page', async () => {
   renderApp();
-  await screen.findByText('Develop applications for the Merchant Center');
+  await screen.findByText('Reporting Tool for the Merchant Center');
 });

@@ -1,6 +1,5 @@
 import {
   ColumnFiltersState,
-  ColumnOrderState,
   createColumnHelper,
   flexRender,
   getCoreRowModel,
@@ -16,41 +15,44 @@ import {
   ColumnPinningState,
 } from '@tanstack/react-table';
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
-import ColumnHeader from './column-header';
 import Pagination from './pagination';
-import SearchTextInput from '@commercetools-uikit/search-text-input';
 import { Column } from '../../types/datatable-column';
-import ColumnOrder from './column-order';
 import getNestedValue from '../../utils/nested-attributes';
-import flattenColumns from '../../utils/flatten-columns';
+import { flattenColumnKeys, flattenColumns } from '../../utils/flatten-columns';
 import getCommonPinningStyles from './column-pin';
+import ColumnHeader from './column-header';
 import ColumnFiltersTags from './column-filters-tags';
+import { orderColumnsByKeys } from '../../utils/sorting';
+import { getColumnsKeysWithoutNA } from '../../utils/helpers';
+import { WarningMessage } from '@commercetools-uikit/messages';
 
 type TanstackTableProps<T> = {
   data: T[];
-  initialColumns: Column[];
+  columns: Column[];
   visibleColumns: string[];
-  setVisibleColumns: Dispatch<SetStateAction<string[]>>;
-  setTable: (t: Table<T>) => void;
+  //setVisibleColumns: Dispatch<SetStateAction<string[]>>;
+  columnOrder: string[];
+  //setColumnOrder: (value: string[]) => void;
+  setTable: Dispatch<SetStateAction<Table<T> | null>>;
   onTableChange?: (t: Table<T>) => void;
   numberColsPinned?: number; //the first n columns are pinned (sticky). defaul is 3
+  globalFilter: string;
 };
 
 const TanstackTable = <T extends Record<string, unknown>>({
   data,
-  initialColumns,
+  columns,
   visibleColumns,
-  setVisibleColumns,
+  columnOrder,
   setTable,
   onTableChange,
   numberColsPinned = 3,
+  globalFilter,
 }: TanstackTableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [globalFilter, setGlobalFilter] = useState('');
 
-  //states for the column order component
-  const [columnOrder, setColumnOrder] = useState<ColumnOrderState>([]);
+  const [naCols, setNacols] = useState(0); //number of attribute columns that are hidden because they only have N/A values
 
   //state for the tanstacktable
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>();
@@ -58,6 +60,26 @@ const TanstackTable = <T extends Record<string, unknown>>({
   //state for the pinned columns
   //default is the first three columns
   const [columnPinning, setColumnPinning] = useState<ColumnPinningState>({});
+
+  //checks if a column has only N/A values
+  //if it has, hide and show a message
+  const checkColumnsNA = () => {
+    if (!table) return;
+    const visibleWithoutNA = getColumnsKeysWithoutNA(visibleColumns, table);
+    setNacols(visibleColumns.length - visibleWithoutNA.length);
+    changeColumnVisibility(visibleWithoutNA);
+  };
+
+  const changeColumnVisibility = (visibleColumns: string[]) => {
+    let columnVisibility = Object.fromEntries(
+      flattenColumnKeys(columns).map((key) => [
+        key,
+        visibleColumns.some((visibleKey) => key === visibleKey),
+      ])
+    );
+
+    setColumnVisibility(columnVisibility);
+  };
 
   useEffect(() => {
     table.setPageSize(20);
@@ -69,29 +91,23 @@ const TanstackTable = <T extends Record<string, unknown>>({
   useEffect(() => {
     if (!visibleColumns) return;
 
-    const columnVisibility = Object.fromEntries(
-      flattenColumns(initialColumns).map((key) => [
-        key,
-        visibleColumns.some(
-          (visibleKey) =>
-            key === visibleKey || // exact match
-            key.startsWith(visibleKey + '.') // key is a child of visibleKey
-        ),
-      ])
+    changeColumnVisibility(visibleColumns);
+
+    //first: sort columns by new order
+    //second: slice with only the x first columns
+    //third: flatten the columns (in case one of the columns has children, all the children are pinned)
+    const pinnedCols = flattenColumnKeys(
+      orderColumnsByKeys(columns, visibleColumns).slice(0, numberColsPinned)
     );
 
-    setColumnVisibility(columnVisibility);
-
-    setColumnOrder(visibleColumns);
-
-    //set the pinned columns as the first three
     setColumnPinning({
-      left: Object.entries(columnVisibility)
-        .filter(([, visible]) => visible)
-        .slice(0, numberColsPinned)
-        .map(([key]) => key),
+      left: pinnedCols,
     });
-  }, [visibleColumns, initialColumns]);
+  }, [visibleColumns, columns, columnOrder]);
+
+  useEffect(() => {
+    const newVisible = getColumnsKeysWithoutNA(visibleColumns, table);
+  }, [visibleColumns]);
 
   //the columns transformed for the table
   const newColumns = useMemo(() => {
@@ -131,8 +147,8 @@ const TanstackTable = <T extends Record<string, unknown>>({
       return makeLeaf({ ...col, key: fullKey });
     };
 
-    return initialColumns.map((col) => buildColumn(col));
-  }, [initialColumns, visibleColumns]);
+    return columns.map((col) => buildColumn(col));
+  }, [columns]);
 
   const table = useReactTable({
     data,
@@ -143,18 +159,18 @@ const TanstackTable = <T extends Record<string, unknown>>({
       columnVisibility,
       globalFilter,
       columnOrder,
-      columnPinning,
+      //columnPinning,
     },
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
-    onColumnOrderChange: setColumnOrder,
+    //onColumnOrderChange: setColumnOrder,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    onGlobalFilterChange: setGlobalFilter,
+    //onGlobalFilterChange: setGlobalFilter,
     globalFilterFn: (row, columnId, filterValue: string) => {
       if (!filterValue || filterValue.trim() === '') return true;
       const value = String(row.getValue(columnId)).toLowerCase();
@@ -173,36 +189,26 @@ const TanstackTable = <T extends Record<string, unknown>>({
     columnResizeMode: 'onChange',
   });
 
-  //callback for the parent
+  //callback when the table data changes (f.e, when filtering in the columns)
+  //or when the visible columns changes
   useEffect(() => {
     onTableChange?.(table);
-  }, [table.getRowModel()]);
+  }, [table.getRowModel().rows]);
+
+  useEffect(() => {
+    checkColumnsNA();
+  }, [visibleColumns, columnFilters, table.getAllColumns(), globalFilter]);
 
   return (
-    <div className="flex flex-col h-full gap-2">
-      <div className="flex flex-col items-end">
-        <SearchTextInput
-          value={globalFilter ?? ''}
-          onSubmit={(e) => setGlobalFilter(e)}
-          onReset={() => setGlobalFilter('')}
-        />
-        <ColumnOrder
-          columns={initialColumns}
-          visibleColumns={visibleColumns}
-          setVisibleColumns={setVisibleColumns}
-          columnOrder={columnOrder}
-          setColumnOrder={setColumnOrder}
-        />
-      </div>
+    <>
+      {naCols != 0 && (
+        <WarningMessage>Hidden {naCols} attribute columns</WarningMessage>
+      )}
       <ColumnFiltersTags
-        columns={table.getAllLeafColumns().map((leaf) => ({
-          key: leaf.columnDef.id ?? '',
-          label: String(leaf.columnDef.header),
-        }))}
+        columns={flattenColumns(columns)}
         columnFilters={columnFilters}
         setColumnFilters={setColumnFilters}
       />
-
       <div className="font-sans text-[13px] text-[#1a2027] border border-[#e2e8f0] rounded-md overflow-visible shadow-sm bg-white h-full">
         <div className="overflow-x-auto h-full max-h-[calc(100vh-200px)] overflow-y-auto">
           <table
@@ -217,6 +223,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
                       /* this header is a group header (simple header, with no filters/sorting/...) */
                       <th
                         key={header.id}
+                        id={header.column.id}
                         colSpan={header.colSpan}
                         style={{ width: header.getSize() }}
                         //style={{ ...getCommonPinningStyles(header.column) }}
@@ -244,7 +251,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
               {table.getRowModel().rows.length === 0 ? (
                 <tr>
                   <td
-                    colSpan={initialColumns.length}
+                    colSpan={columns.length}
                     className="py-10 px-4 text-center text-[#94a3b8] text-[13px]"
                   >
                     No results found
@@ -283,7 +290,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
       <div className="mt-2">
         <Pagination table={table} />
       </div>
-    </div>
+    </>
   );
 };
 

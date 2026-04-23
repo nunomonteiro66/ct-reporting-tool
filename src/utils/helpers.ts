@@ -16,3 +16,14 @@ export const isColumnOnlyNA = <T>(table: Table<T>, columnId: string) => {
 
   return values.length === 1 && values[0] === 'N/A';
 };
+
+//returns an array of the active columns, without the columns that only have "N/A"
+export const getColumnsKeysWithoutNA = <T>(
+  activeColumns: string[],
+  table: Table<T>
+) => {
+  //hide the columns that only have N/A values
+  if (table)
+    return activeColumns.filter((colKey) => !isColumnOnlyNA(table, colKey));
+  return [];
+};

@@ -6,7 +6,9 @@ import TanstackTable from '../../components/tanstack-table/tanstack-table';
 import { Table } from '@tanstack/react-table';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import exportTableExcel from '../../components/tanstack-table/export-excel';
-import Filters, { FiltersProps } from '../../components/filters/filters';
+import FiltersComponent, {
+  FiltersProps,
+} from '../../components/filters/filters';
 import { TAppliedFilter } from '@commercetools-uikit/filters';
 import { FilterSubmitCallbackProps } from '../../types/filter';
 import DataPageLayout from '../../layouts/data-page-layout';
@@ -297,7 +299,7 @@ const Documents = () => {
             />
           }
         >
-          <Filters
+          <FiltersComponent
             appliedFilters={appliedFilters}
             filtersConfig={filtersConfig}
             submitCallback={filtersChanged}

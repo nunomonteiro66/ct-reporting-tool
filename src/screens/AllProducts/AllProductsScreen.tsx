@@ -4,9 +4,7 @@ import {
   mapProducts,
 } from '../../utils/mappers/map-with-attributes';
 import { useProductsGraphql } from '../../hooks/use-products-connector/use-products-graphql';
-import { COLUMN_ORDER } from './columns-order';
 import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
-import { DataManager } from './Data-manager';
 import { Column } from '../../types/datatable-column';
 import { useProjectGraphql } from '../../hooks/use-project-connector/use-project-graphql';
 import { MappedProduct } from '../../types/mapped-product';
@@ -14,8 +12,15 @@ import { TProduct } from '../../types/generated/ctp';
 import { ProductType } from '../../types/product-type';
 import { AttributeComplete } from '../../types/attribute';
 import { useCategoriesGraphql } from '../../hooks/use-categories-connector/use-categories-graphql';
-import { mapCategories } from '../../utils/mappers/map-categories';
 import { Category } from '../../types/category';
+import { useTableContext } from './context';
+import PrimaryButton from '@commercetools-uikit/primary-button';
+import DataPageLayout from '../../layouts/data-page-layout';
+import exportTableExcel from '../../components/tanstack-table/export-excel';
+import Filters from './Filters';
+import CustomDataTable from '../../components/tanstack-table/custom-data-table';
+import { orderColumnsByKeys } from '../../utils/sorting';
+import { COLUMN_ORDER } from './columns-order';
 
 const defaultColumns = [
   { key: 'key', label: 'key' },
@@ -35,6 +40,11 @@ const defaultColumns = [
 ].map((col) => ({ ...col, isSortable: true })) as Column[];
 
 const AllProducts = () => {
+  const {
+    state: { loading, table },
+    actions: { setColumns, setLoading, setVisibleColumns, setColumnOrder },
+  } = useTableContext();
+
   const { getAllProducts, getAllProductTypes, getProducts } =
     useProductsGraphql();
   const { getAllLanguagesCodes } = useProjectGraphql();
@@ -48,52 +58,55 @@ const AllProducts = () => {
   //will always be a slice of the allProducts
   const [products, setProducts] = useState<MappedProduct[]>([]);
 
-  const [columns, setColumns] = useState<Column[]>([]);
-
-  const [loading, setLoading] = useState(true);
-
   const [uniqueAttributes, setUniqueAttributes] = useState<AttributeComplete[]>(
     []
   );
-
   //language codes (pt, en, ...)
   //defines the language of the attributes values
   const [languages, setLanguages] = useState<string[]>([]);
 
   //fetch the product types, the data and the languages codes
+  //build the columns and map all the data
+  const loadData = async () => {
+    const productTypes = await getAllProductTypes();
+
+    const rawData = await getAllProducts();
+    //const rawData = (await getProducts(0, 10)).data.results;
+    const languages = await getAllLanguagesCodes();
+
+    //get the categories and map the facet keys (assigned attributes)
+    const categories = (await getAllCategories()).map((category) => ({
+      ...category,
+      facetAttributeKeys: category.custom?.customFieldsRaw
+        ? String(category.custom?.customFieldsRaw[0].value).split(':')
+        : undefined,
+    })) as Category[];
+
+    setRawData(rawData);
+    setProductTypes(productTypes);
+    setLanguages(languages);
+    setCategories(categories);
+
+    const uniqueAttrs = getAllUniqueAttributes(productTypes);
+    setUniqueAttributes(uniqueAttrs);
+
+    const finalCols = buildColumns(uniqueAttrs, languages);
+    setColumns(finalCols);
+
+    //set default visible columns (parents only)
+    setVisibleColumns(
+      finalCols.filter((col) => col.isVisible !== false).map((col) => col.key)
+    );
+
+    //set default column order
+    setColumnOrder(
+      orderColumnsByKeys(finalCols, COLUMN_ORDER).map((col) => col.key)
+    );
+  };
+
   useEffect(() => {
-    const load = async () => {
-      const productTypes = await getAllProductTypes();
-      const rawData = await getAllProducts();
-      /* const rawData = (
-        await getProducts(0, 10, [
-          '160001057B0100',
-          '172105070C0100',
-          '17210521B0100',
-        ])
-      ).data.results; */
-      const languages = await getAllLanguagesCodes();
-
-      //get the categories and map the facet keys (assigned attributes)
-      const categories = (await getAllCategories()).map((category) => ({
-        ...category,
-        facetAttributeKeys: category.custom?.customFieldsRaw
-          ? String(category.custom?.customFieldsRaw[0].value).split(':')
-          : undefined,
-      })) as Category[];
-
-      setRawData(rawData);
-      setProductTypes(productTypes);
-      setLanguages(languages);
-      setCategories(categories);
-
-      const uniqueAttrs = getAllUniqueAttributes(productTypes);
-      setUniqueAttributes(uniqueAttrs);
-
-      const finalCols = buildColumns(uniqueAttrs, languages);
-      setColumns(finalCols);
-    };
-    load();
+    setLoading(true);
+    loadData();
   }, []);
 
   //maps the raw data into usable data (mapped data)
@@ -104,8 +117,6 @@ const AllProducts = () => {
     //map the products
     const newProducts = mapProducts(rawData, productTypes, languages);
     setProducts(newProducts);
-
-    console.log(newProducts);
 
     setLoading(false);
   }, [languages]);
@@ -131,7 +142,7 @@ const AllProducts = () => {
     languages: string[]
   ) => {
     //add the extra columns for the attributes
-    let newColumns = [...defaultColumns];
+    const newColumns = [...defaultColumns];
     uniqueAttributesComplete.forEach((attribute) => {
       let newColEntry = {
         label: Array.isArray(attribute.label)
@@ -150,7 +161,7 @@ const AllProducts = () => {
         //the default label
         const enLabel = getLabel('en') ?? '';
         newColumns.push({
-          label: `${enLabel} (${attribute.value})`,
+          label: `${attribute.value}`,
           key: `attributes.${attribute.value}`,
           isVisible: false,
           children: languages.map((lang) => {
@@ -191,36 +202,9 @@ const AllProducts = () => {
       })
     );
 
-    //re-order the columns
-    newColumns = setCorrectColumnOrder(newColumns);
+    console.log('NEW COLS: ', newColumns);
+
     return newColumns;
-  };
-
-  //sets the order of the columns the same as the columnsOrder
-  const setCorrectColumnOrder = (columns: Column[]) => {
-    const orderIndex = new Map<string, number>(
-      COLUMN_ORDER.map((key, index) => [key, index])
-    );
-
-    const getOrderIndex = (key: string) => {
-      if (!key) return;
-
-      const index = orderIndex.get(key);
-      if (index === undefined) {
-        const keyArray = key.split('.');
-        keyArray.pop();
-        const newKey = keyArray.join('.');
-
-        return getOrderIndex(newKey);
-      }
-      return index;
-    };
-
-    return [...columns].sort((a, b) => {
-      const indexA = getOrderIndex(a.key) ?? Infinity;
-      const indexB = getOrderIndex(b.key) ?? Infinity;
-      return indexA - indexB;
-    });
   };
 
   return (
@@ -229,14 +213,32 @@ const AllProducts = () => {
         <LoadingSpinner scale="L" />
       ) : (
         <>
-          <DataManager
-            data={products}
-            columns={columns}
-            uniqueAttributes={uniqueAttributes}
-            languages={languages}
-            setLanguages={setLanguages}
-            categories={categories}
-          />
+          <DataPageLayout
+            title="Products"
+            actions={
+              <PrimaryButton
+                label="Export Excel"
+                onClick={() => {
+                  if (table) {
+                    setLoading(true);
+                    setTimeout(() => {
+                      exportTableExcel(table, 'products-w-attributes');
+                      setLoading(false);
+                    }, 0);
+                    setLoading(false);
+                  }
+                }}
+              />
+            }
+          >
+            <Filters
+              categories={categories ?? []}
+              languages={languages}
+              uniqueAttributes={uniqueAttributes}
+            />
+
+            <CustomDataTable data={products} />
+          </DataPageLayout>
         </>
       )}
     </>

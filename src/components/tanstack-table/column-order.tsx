@@ -2,16 +2,16 @@ import {
   ColumnSettingsManager,
   TColumnData,
 } from '@commercetools-uikit/data-table-manager';
-import { useEffect, useState } from 'react';
-import { Column } from '../../types/datatable-column';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { Button } from '@headlessui/react';
 import { ColumnsIcon } from '@commercetools-uikit/icons';
-import flattenColumns from '../../utils/flatten-columns';
+import { TColumn } from '@commercetools-uikit/data-table';
+import { orderColumnsByKeys } from '../../utils/sorting';
 
 type ColumnOrderProps = {
-  columns: Column[];
+  columns: TColumn[];
   visibleColumns: string[];
-  setVisibleColumns: any;
+  setVisibleColumns: (values: string[]) => void;
   columnOrder: string[];
   setColumnOrder: any;
 };
@@ -25,47 +25,30 @@ const ColumnOrder = ({
 }: ColumnOrderProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const isColumnVisible = (col: Column): boolean => {
-    const keys = flattenColumns([col]);
-    return keys.some((k) => visibleColumns.includes(k));
-  };
+  const sortedColumns = orderColumnsByKeys(columns, columnOrder);
 
-  const sortByColumnOrder = (cols: Column[]) =>
-    [...cols].sort((a, b) => {
-      // For grouped columns, use the first flattened child key to find position
-      const getOrder = (col: Column) => {
-        const keys = flattenColumns([col]);
-        const positions = keys
-          .map((k) => columnOrder.indexOf(k))
-          .filter((i) => i !== -1);
-        return positions.length > 0 ? Math.min(...positions) : Infinity;
-      };
-
-      return getOrder(a) - getOrder(b);
-    });
-
-  const selectedColumns = sortByColumnOrder(
-    columns.filter((c) => visibleColumns.includes(c.key))
+  const selectedColumns = sortedColumns.filter((c) =>
+    visibleColumns.includes(c.key)
   );
-  const hiddenColumns = sortByColumnOrder(
-    columns.filter((c) => !visibleColumns.includes(c.key))
+
+  const hiddenColumns = sortedColumns.filter(
+    (c) => !visibleColumns.includes(c.key)
   );
 
   const handleUpdateColumns = (updatedColumns: TColumnData[]) => {
-    //const keys = flattenColumns(updatedColumns);
-    const keys = updatedColumns.map((col) => col.key);
-    setVisibleColumns(keys);
-    setColumnOrder(keys);
+    const newKeys = updatedColumns.map((col) => col.key);
+    setVisibleColumns(newKeys);
+    setColumnOrder(newKeys);
   };
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>
+      <Button onClick={() => setIsOpen(true)} id="column-orderer-button">
         <ColumnsIcon />
       </Button>
       {isOpen && (
         <ColumnSettingsManager
-          selectedColumns={selectedColumns}
+          selectedColumns={selectedColumns} //this component only sees the key and lable (ignores the children)
           availableColumns={hiddenColumns}
           onUpdateColumns={handleUpdateColumns}
           onClose={() => setIsOpen(false)}
