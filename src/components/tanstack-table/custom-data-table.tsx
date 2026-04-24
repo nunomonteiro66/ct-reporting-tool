@@ -1,5 +1,5 @@
 import { Table } from '@tanstack/react-table';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import TanstackTable from './tanstack-table';
 import SearchTextInput from '@commercetools-uikit/search-text-input';
 import ColumnOrder from './column-order';
@@ -35,14 +35,26 @@ const CustomDataTable = <T extends Record<string, unknown>>({
     [visibleColumns, selectedLanguages]
   );
 
+  //leaf columns order
   const fullColumnOrder = useMemo(
     () => flattenColumnKeys(orderColumnsByKeys(columns, columnOrder)),
     [columnOrder]
   );
 
+  //pinned leaf columns
+  const pinnedColumns = useMemo(
+    () =>
+      flattenColumnKeys(orderColumnsByKeys(columns, columnOrder).slice(0, 3)),
+    [columnOrder, visibleColumns]
+  );
+
   const handleTableChange = (table: Table<T>) => {
     setTotalResults(table.getRowCount());
   };
+
+  useEffect(() => {
+    console.log('PINNED CHANGED: ', pinnedColumns);
+  }, [pinnedColumns]);
 
   return (
     <div className="flex flex-col h-full gap-2">
@@ -69,6 +81,7 @@ const CustomDataTable = <T extends Record<string, unknown>>({
         setTable={setTable}
         onTableChange={handleTableChange}
         globalFilter={globalFilter}
+        pinnedColumns={pinnedColumns}
       />
     </div>
   );

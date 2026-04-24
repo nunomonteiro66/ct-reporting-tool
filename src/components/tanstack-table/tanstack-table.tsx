@@ -22,7 +22,7 @@ import { flattenColumnKeys, flattenColumns } from '../../utils/flatten-columns';
 import getCommonPinningStyles from './column-pin';
 import ColumnHeader from './column-header';
 import ColumnFiltersTags from './column-filters-tags';
-import { orderColumnsByKeys } from '../../utils/sorting';
+import { orderColumnsByKeys, sortByKeyOrder } from '../../utils/sorting';
 import { getColumnsKeysWithoutNA } from '../../utils/helpers';
 import { WarningMessage } from '@commercetools-uikit/messages';
 
@@ -37,6 +37,7 @@ type TanstackTableProps<T> = {
   onTableChange?: (t: Table<T>) => void;
   numberColsPinned?: number; //the first n columns are pinned (sticky). defaul is 3
   globalFilter: string;
+  pinnedColumns: string[];
 };
 
 const TanstackTable = <T extends Record<string, unknown>>({
@@ -48,6 +49,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
   onTableChange,
   numberColsPinned = 3,
   globalFilter,
+  pinnedColumns,
 }: TanstackTableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -93,15 +95,8 @@ const TanstackTable = <T extends Record<string, unknown>>({
 
     changeColumnVisibility(visibleColumns);
 
-    //first: sort columns by new order
-    //second: slice with only the x first columns
-    //third: flatten the columns (in case one of the columns has children, all the children are pinned)
-    const pinnedCols = flattenColumnKeys(
-      orderColumnsByKeys(columns, visibleColumns).slice(0, numberColsPinned)
-    );
-
     setColumnPinning({
-      left: pinnedCols,
+      left: pinnedColumns,
     });
   }, [visibleColumns, columns, columnOrder]);
 
@@ -159,7 +154,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
       columnVisibility,
       globalFilter,
       columnOrder,
-      //columnPinning,
+      columnPinning,
     },
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
@@ -225,7 +220,10 @@ const TanstackTable = <T extends Record<string, unknown>>({
                         key={header.id}
                         id={header.column.id}
                         colSpan={header.colSpan}
-                        style={{ width: header.getSize() }}
+                        style={{
+                          ...getCommonPinningStyles(header.column, header),
+                          width: header.getSize(),
+                        }}
                         //style={{ ...getCommonPinningStyles(header.column) }}
                         className="px-4 py-2 font-semibold text-center border-r-2 border-r-[#e2e8f0] overflow-hidden text-ellipsis bg-white"
                       >

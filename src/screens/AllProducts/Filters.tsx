@@ -59,8 +59,9 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
       },
     ]);
 
+    //!!!!!!!!!!
     const defaultOptions = languagesOptions.filter((lang) =>
-      selectedLanguages.includes(lang.value)
+      ['en', 'pt', 'sv'].includes(lang.value)
     );
     if (defaultOptions) filtersChanged('languages', defaultOptions);
   }, []);

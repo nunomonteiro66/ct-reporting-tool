@@ -88,7 +88,7 @@ const ColumnHeader = <T extends Record<string, unknown>>({
   return (
     <th
       style={{
-        ...getCommonPinningStyles(header.column),
+        ...getCommonPinningStyles(header.column, header),
       }}
       className="px-4 py-2.5 text-left font-semibold text-[11px] tracking-[0.05em] uppercase text-[#64748b] bg-[#f8fafc] border-[#e2e8f0] whitespace-nowrap relative w-auto border-r-2 border-r-[#e2e8f0]"
       onMouseDown={header.getResizeHandler()}

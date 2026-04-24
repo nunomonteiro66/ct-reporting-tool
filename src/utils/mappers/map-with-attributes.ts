@@ -214,3 +214,93 @@ export function mapProducts(
     });
   });
 }
+
+export async function mapProductsParallel(
+  allProducts: TProduct[],
+  productTypes: ProductType[],
+  languages: string[],
+  chunkSize: number = 200
+): Promise<MappedProduct[]> {
+  const { uniqueAttributesComplete } = extractUniqueAttributes(productTypes);
+  const chunks = chunkArray(allProducts, chunkSize);
+  const results: MappedProduct[][] = [];
+
+  for (const chunk of chunks) {
+    // Yield to the browser between chunks to keep UI responsive
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    const mapped = chunk.flatMap((productRaw) => {
+      const product = productRaw.masterData.current;
+      const productProductType = productRaw.productType;
+      if (!product) return [];
+
+      const names = product.nameAllLocales.reduce<Record<string, string>>(
+        (acc, nameL) => ({ ...acc, [nameL.locale]: nameL.value }),
+        {}
+      );
+
+      const descriptions =
+        product.descriptionAllLocales?.reduce<Record<string, string>>(
+          (acc, descL) => ({ ...acc, [descL.locale]: descL.value }),
+          {}
+        ) ?? {};
+
+      const productType = productTypes.find(
+        (type) => type.product_type_value === (productProductType?.key ?? '')
+      );
+
+      return product.allVariants.map((variant) => {
+        let hasImage: 'Yes' | 'No' = 'No';
+        if (variant.images && variant.images.length > 0) hasImage = 'Yes';
+
+        const assets = checkAssetType(variant.assets ?? []);
+
+        let newAttributes = {};
+        if (productType)
+          newAttributes = mapAllAttributes(
+            uniqueAttributesComplete,
+            variant,
+            productType,
+            languages
+          );
+
+        const categories = product.categories
+          .map((category) =>
+            category.parent
+              ? `${category.parent.name} > ${category.name}`
+              : category.name
+          )
+          .filter((c): c is string => Boolean(c));
+
+        const selections = getProductSelections(
+          productRaw.productSelectionRefs.results,
+          variant.sku ?? ''
+        );
+
+        return {
+          ...productRaw,
+          names,
+          descriptions,
+          id: productRaw.id + Math.random(),
+          sku: variant.sku ?? '',
+          attributes: newAttributes,
+          image: hasImage,
+          categories,
+          selections,
+          ...assets,
+        };
+      });
+    });
+
+    results.push(mapped);
+  }
+
+  return results.flat();
+}
+
+// helper
+function chunkArray<T>(array: T[], size: number): T[][] {
+  return Array.from({ length: Math.ceil(array.length / size) }, (_, i) =>
+    array.slice(i * size, i * size + size)
+  );
+}

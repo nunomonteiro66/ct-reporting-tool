@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   extractUniqueAttributes,
   mapProducts,
+  mapProductsParallel,
 } from '../../utils/mappers/map-with-attributes';
 import { useProductsGraphql } from '../../hooks/use-products-connector/use-products-graphql';
 import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
@@ -21,6 +22,7 @@ import Filters from './Filters';
 import CustomDataTable from '../../components/tanstack-table/custom-data-table';
 import { orderColumnsByKeys } from '../../utils/sorting';
 import { COLUMN_ORDER } from './columns-order';
+import fs from 'fs';
 
 const defaultColumns = [
   { key: 'key', label: 'key' },
@@ -68,14 +70,17 @@ const AllProducts = () => {
   //fetch the product types, the data and the languages codes
   //build the columns and map all the data
   const loadData = async () => {
-    const productTypes = await getAllProductTypes();
-
-    const rawData = await getAllProducts();
-    //const rawData = (await getProducts(0, 10)).data.results;
-    const languages = await getAllLanguagesCodes();
+    const [productTypes, rawData, languages, rawCategories] = await Promise.all(
+      [
+        getAllProductTypes(),
+        getAllProducts(),
+        getAllLanguagesCodes(),
+        getAllCategories(),
+      ]
+    );
 
     //get the categories and map the facet keys (assigned attributes)
-    const categories = (await getAllCategories()).map((category) => ({
+    const categories = rawCategories.map((category) => ({
       ...category,
       facetAttributeKeys: category.custom?.customFieldsRaw
         ? String(category.custom?.customFieldsRaw[0].value).split(':')
@@ -114,9 +119,24 @@ const AllProducts = () => {
   useEffect(() => {
     if (!productTypes || !rawData || !languages) return;
 
+    const mapRemainingProducts = async () => {
+      const newProducts = await mapProductsParallel(
+        rawData.slice(20),
+        productTypes,
+        languages
+      );
+      setProducts((prev) => [...prev, ...newProducts]);
+    };
+
     //map the products
-    const newProducts = mapProducts(rawData, productTypes, languages);
-    setProducts(newProducts);
+    const mappedProducts = mapProducts(
+      rawData.slice(0, 20),
+      productTypes,
+      languages
+    );
+    setProducts(mappedProducts);
+
+    mapRemainingProducts();
 
     setLoading(false);
   }, [languages]);
@@ -201,8 +221,6 @@ const AllProducts = () => {
         })),
       })
     );
-
-    console.log('NEW COLS: ', newColumns);
 
     return newColumns;
   };

@@ -19,18 +19,17 @@ export const orderColumnsByKeys = <T extends { key: string }>(
     columnsOrder.map((key, index) => [key, index])
   );
 
-  const getOrderIndex = (key: string) => {
-    if (!key) return;
+  const getOrderIndex = (key: string): number | undefined => {
+    if (!key) return undefined; // base case — stop recursion
 
     const index = orderIndex.get(key);
-    if (index === undefined) {
-      const keyArray = key.split('.');
-      keyArray.pop();
-      const newKey = keyArray.join('.');
+    if (index !== undefined) return index;
 
-      return getOrderIndex(newKey);
-    }
-    return index;
+    // strip last segment and try parent key
+    const lastDot = key.lastIndexOf('.');
+    if (lastDot === -1) return undefined; // no more segments to strip
+
+    return getOrderIndex(key.slice(0, lastDot));
   };
 
   return [...columns].sort((a, b) => {
