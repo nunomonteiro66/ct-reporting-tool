@@ -66,10 +66,6 @@ const CustomDataTable = <T extends Record<string, unknown>>({
     }));
   };
 
-  useEffect(() => {
-    console.log('full visible cols: ', fullVisibleColumns);
-  }, [fullVisibleColumns]);
-
   return (
     <div className="flex flex-col h-full gap-2">
       <div className="flex flex-col items-end">
