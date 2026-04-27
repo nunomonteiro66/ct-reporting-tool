@@ -1,0 +1,14417 @@
+export const rawData = [
+  {
+    masterData: {
+      current: {
+        nameAllLocales: [
+          {
+            locale: 'fr',
+            value: 'N2XY-J 5x120 SM',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'cs',
+            value: 'N2XY-J 5x120 SM',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'de',
+            value: 'N2XY-J 5x120 SM',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'en',
+            value: 'N2XY-J 5x120 SM',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'pl',
+            value: 'N2XY-J 5x120 SM',
+            __typename: 'LocalizedString',
+          },
+        ],
+        descriptionAllLocales: [
+          {
+            value: 'Power cables 1 kV',
+            locale: 'en',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: '1 kV silové kabely',
+            locale: 'cs',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: 'Starkstromkabel 1 kV',
+            locale: 'de',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: 'Kable elektroenergetyczne 1 kV',
+            locale: 'pl',
+            __typename: 'LocalizedString',
+          },
+        ],
+        allVariants: [
+          {
+            sku: '112180103',
+            attributesRaw: [
+              {
+                name: '1001_material_sheath',
+                value: {
+                  en: 'PVC',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '28_weight',
+                value: 6.2,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '96_norm_standard',
+                value: 'VDE 0276-603 5G-2',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1607_cpr_classification',
+                value: {
+                  en: 'Eca',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants_status',
+                value: '1411-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '9_diameter',
+                value: 43.9,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '835_rated_voltage_uo_u',
+                value: '0,6/1',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '631_minimal_storage_temperature',
+                value: '-35',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '720_rohs',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  cs: 'ano',
+                  da: 'ja',
+                  pl: 'tak',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '92_cross_section',
+                value: 120,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_country_specific',
+                value: 'AT, BA, BG, CZ, DE, EE, HR, HU, LT, LV, PL, RO, SI, SK',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '627_test_voltage',
+                value: '4 (AC)',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '628_maximal_short_circuit_temperature',
+                value: '250',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '14_material_of_conductor',
+                value: {
+                  en: 'Cu',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants',
+                value: '1411 - Kladno',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '656_uv_stability',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  cs: 'ano',
+                  da: 'ja',
+                  pl: 'tak',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '629_temperature_range',
+                value: {
+                  en: 'from -35 up to 90',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '635_self_extinguishing_of_one_cable',
+                value: {
+                  fr: 'C2 SELON LA NF C 32-070',
+                  en: 'IEC 60332-1-2',
+                  de: 'VDE 0482-332-1-2',
+                  cs: 'ČSN EN 60332-1-2',
+                  pl: 'PN-EN 60332-1-2',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_base_uom',
+                value: {
+                  fi: 'm',
+                  no: 'm',
+                  en: 'm',
+                  cs: 'm',
+                  da: 'm',
+                  pl: 'm',
+                  fr: 'm',
+                  sk: 'm',
+                  sv: 'm',
+                  de: 'm',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '7_type',
+                value: 'N2XY',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1867_sap_characteristic_znkt_millca_standard_length',
+                value: {
+                  fr: 'personnalisé',
+                  en: 'custom',
+                  sv: 'kundspecifik',
+                  da: 'brugerdefineret',
+                  pl: 'możliwe cięcie',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '23_specification',
+                value: {
+                  en: 'BD',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '15_voltage_u',
+                value: 1,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '643_maximal_operating_conductor_temperature',
+                value: '90',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '18_shape_of_conductor',
+                value: 'SM',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '91_number_of_cores',
+                value: '5',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1000_material_insulation',
+                value: 'XLPE (VPE)',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_org_status',
+                value: '1410-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_orgs',
+                value: '1410-NKT Czech Republic',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1296_voltage_uo',
+                value: 0.6,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '630_minimal_temperature_for_laying_and_manipulation',
+                value: '-5',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '544_number_of_group_of_product',
+                value: '12180',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '842_colour_of_sheath',
+                value: {
+                  fi: 'musta',
+                  no: 'svart',
+                  fr: 'noir',
+                  en: 'black',
+                  cs: 'černá',
+                  da: 'sort',
+                  pl: 'czarny',
+                  sv: 'svart',
+                  de: 'schwarz',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '721_reach',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  cs: 'ano',
+                  da: 'ja',
+                  pl: 'tak',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application_2',
+                value: {
+                  de: 'Die Verarbeitung dieses Produkts darf nur durch eine Elektrofachkraft erfolgen. Das Produkt wurde entsprechend anerkannter Normen entwickelt. Es sind die jeweils gültigen Installationsvorschriften anzuwenden.',
+                  en: 'Installation of the product should only be carried out by personnel trained and qualified for electrical works. The product is designed according to recognized standards. Applicable rules of installation must be applied at all times.',
+                  pl: 'Niniejsze wyroby mogą być instalowane wyłącznie przez osoby posiadające niezbędne wykształcenie i uprawnienia w zakresie prac elektroinstalacyjnych. Konstrukcja tych wyrobów jest zgodna ze wskazanymi normami przedmiotowymi. W trakcie prac instalacyjnych wymagane jest stosowanie się do obowiązujących przepisów w tym zakresie.',
+                  cs: 'Instalace tohoto  výrobku smí  provádět  pouze osoby  s elektrotechnickou kvalifikací. Výrobek je  vyvinut podle platných norem.  Instalace  musí  být provedena v souladu s právě  platnými předpisy.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_barcode_ean_code',
+                value: '8591462152618',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '632_colour_of_insulation',
+                value: {
+                  en: 'HD 308 S2',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '49_colour_identification_of_cores',
+                value: {
+                  en: 'J',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '719_certificate',
+                value: {
+                  en: 'EZÚ; VDE',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1252_declaration_of_conformity_ue_ce',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  cs: 'ano',
+                  da: 'ja',
+                  pl: 'tak',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application',
+                value: {
+                  de: 'Die Kabel sind für die feste Verlegung in Innenräumen, im Freien, in Erde und in Beton geeignet.',
+                  en: 'Cables are designed for fixed installation, indoors and outdoors, in the ground and in concrete.',
+                  pl: 'Kable przeznaczone do układania na stałe, wewnątrz oraz na zewnątrz pomieszczeń, bezpośrednio w gruncie oraz betonie.',
+                  cs: 'Kabely jsou určeny pro pevné uložení ve vnitřních a venkovních prostorách, v zemi, v betonu.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '853_operating_cond_temperature_max',
+                value: '90',
+                __typename: 'RawProductAttribute',
+              },
+            ],
+            images: [],
+            assets: [
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/gws0lvgosx/pdf/N2XYDOPDOP000077SLRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/sjakekflkv/pdf/N2XYDOPDOP000077SKRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/kkmrpsjqbv/pdf/N2XYDOPDOP000077PLRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 56,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/fvmjgfsxdc/pdf/N2XYDOPDOP000077LVRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/lzdzzbll8e/pdf/N2XYDOPDOP000077LTRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/7gtig0ceig/pdf/N2XYDOPDOP000077HURev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/v2yc7spmic/pdf/N2XYDOPDOP000077HRRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/zf5o5syjhz/pdf/N2XYDOPDOP000077FRRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/d3w3fbshwy/pdf/N2XYDOPDOP000077ETRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/h5c8if8p5u/pdf/N2XYDOPDOP000077ENRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/wgjemasntg/pdf/N2XYDOPDOP000077DERev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/iiot7udowf/pdf/N2XYDOPDOP000077DARev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/gkwzuuyxhf/pdf/N2XYDOPDOP000077CSRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000077'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/34tuqrdcog/pdf/NA2XY_N2XYEUDOCDOC000004SLRev04.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 04'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/9fzoeqq2ph/pdf/NA2XY_N2XYEUDOCDOC000004SKRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/h557ugzyuj/pdf/NA2XY_N2XYEUDOCDOC000004PLRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/otcloniizr/pdf/NA2XY_N2XYEUDOCDOC000004LVRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/dxzrkrrrda/pdf/NA2XY_N2XYEUDOCDOC000004LTRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/lnftmjzd9n/pdf/NA2XY_N2XYEUDOCDOC000004HURev04.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 04'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/dmcco8hawb/pdf/NA2XY_N2XYEUDOCDOC000004HRRev04.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 04'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/jfhnvwxmgf/pdf/NA2XY_N2XYEUDOCDOC000004FRRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/r7ssauawyc/pdf/NA2XY_N2XYEUDOCDOC000004ETRev04.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 04'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/mojwnqn3hv/pdf/NA2XY_N2XYEUDOCDOC000004ENRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/nwzk1zm9ue/pdf/NA2XY_N2XYEUDOCDOC000004DERev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/axfzdju3jx/pdf/NA2XY_N2XYEUDOCDOC000004DARev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/qdwg5xqmyg/pdf/NA2XY_N2XYEUDOCDOC000004CSRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XY', 'NA2XY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+            ],
+            __typename: 'ProductVariant',
+          },
+        ],
+        categories: [
+          {
+            name: '1 kV cables',
+            parent: {
+              name: 'Low-voltage',
+              __typename: 'Category',
+            },
+            __typename: 'Category',
+          },
+        ],
+        __typename: 'ProductData',
+      },
+      __typename: 'ProductCatalogData',
+    },
+    id: '9fb88c65-2d3e-4200-a418-be1fb77b51a4',
+    key: '112180103',
+    productType: {
+      id: 'c4217d0b-d3dd-4dcf-81a7-a0d1e3a418c0',
+      key: '12180',
+      name: 'N2XY',
+      __typename: 'ProductTypeDefinition',
+    },
+    productSelectionRefs: {
+      results: [
+        {
+          productSelection: {
+            name: 'Global product selection',
+            key: 'Global-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['112180103'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+        {
+          productSelection: {
+            name: 'Czech_Republic product selection',
+            key: 'Czech_Republic-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['112180103'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+      ],
+      __typename: 'SelectionOfProductQueryResult',
+    },
+    __typename: 'Product',
+  },
+  {
+    masterData: {
+      current: {
+        nameAllLocales: [
+          {
+            locale: 'fr',
+            value: 'NAYY-J 3x120/70 SM/SM',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'cs',
+            value: 'NAYY-J 3x120/70 SM/SM',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'de',
+            value: 'NAYY-J 3x120/70 SM/SM',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'en',
+            value: 'NAYY-J 3x120/70 SM/SM',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'pl',
+            value: 'NAYY-J 3x120/70 SM/SM',
+            __typename: 'LocalizedString',
+          },
+        ],
+        descriptionAllLocales: [
+          {
+            value: 'Power cables 1 kV',
+            locale: 'en',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: '1 kV silové kabely',
+            locale: 'cs',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: 'Starkstromkabel 1 kV',
+            locale: 'de',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: 'Kable elektroenergetyczne 1 kV',
+            locale: 'pl',
+            __typename: 'LocalizedString',
+          },
+        ],
+        allVariants: [
+          {
+            sku: '110192064',
+            attributesRaw: [
+              {
+                name: '28_weight',
+                value: 2.54,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '96_norm_standard',
+                value: 'VDE 0276-603 3G-2',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1607_cpr_classification',
+                value: {
+                  en: 'Eca',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants_status',
+                value: '1411-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '9_diameter',
+                value: 41.4,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '835_rated_voltage_uo_u',
+                value: '0,6/1',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '661_no_of_cores_and_cross_section',
+                value: '3x120+70',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '61_thickness_nominal_insulation',
+                value: '1,6/1,4',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '720_rohs',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  cs: 'ano',
+                  da: 'ja',
+                  pl: 'tak',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '349_diameter_height_of_conductor',
+                value: '11,6/10,9',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '62_thickness_nominal_sheath',
+                value: '2,3',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_country_specific',
+                value: 'AT, BA, BG, CZ, DE, EE, HR, HU, LT, LV, PL, RO, SI, SK',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '627_test_voltage',
+                value: '4 (AC)',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '651_current_carrying_capacity_single_cable_in_ground',
+                value: 250,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1001_material_sheath',
+                value: {
+                  en: 'PVC',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '483_weight_informative',
+                value: 2544,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '628_maximal_short_circuit_temperature',
+                value: '160 (≤300 mm²); 140 (>300 mm²)',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '14_material_of_conductor',
+                value: {
+                  en: 'Al',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants',
+                value: '1411 - Kladno',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '656_uv_stability',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  cs: 'ano',
+                  da: 'ja',
+                  pl: 'tak',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '629_temperature_range',
+                value: {
+                  en: 'from -35 up to 70',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '635_self_extinguishing_of_one_cable',
+                value: {
+                  fr: 'C2 SELON LA NF C 32-070',
+                  en: 'IEC 60332-1-2',
+                  de: 'VDE 0482-332-1-2',
+                  cs: 'ČSN EN 60332-1-2',
+                  pl: 'PN-EN 60332-1-2',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_base_uom',
+                value: {
+                  fi: 'm',
+                  no: 'm',
+                  en: 'm',
+                  cs: 'm',
+                  da: 'm',
+                  pl: 'm',
+                  fr: 'm',
+                  sk: 'm',
+                  sv: 'm',
+                  de: 'm',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '647_minimal_radius_of_bend',
+                value: '497',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '653_inductivity',
+                value: 0.23,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '7_type',
+                value: 'NAYY',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1867_sap_characteristic_znkt_millca_standard_length',
+                value: {
+                  fr: 'personnalisé',
+                  en: 'custom',
+                  sv: 'kundspecifik',
+                  da: 'brugerdefineret',
+                  pl: 'możliwe cięcie',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '650_current_carrying_capacity_single_cable_in_air',
+                value: 230,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '15_voltage_u',
+                value: 1,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '643_maximal_operating_conductor_temperature',
+                value: '70',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '18_shape_of_conductor',
+                value: 'SM',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '91_number_of_cores',
+                value: '3,5',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1000_material_insulation',
+                value: 'PVC',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_org_status',
+                value: '1410-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '631_minimal_storage_temperature',
+                value: '-35',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '657_diameter_informative',
+                value: '41',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '88_cross_section_of_reduced_conductor',
+                value: 70,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '63_max_effective_resistance_conductor_at_20_c',
+                value: '0,253/0,443',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_orgs',
+                value: '1410-NKT Czech Republic',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1296_voltage_uo',
+                value: 0.6,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '630_minimal_temperature_for_laying_and_manipulation',
+                value: '-5',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '544_number_of_group_of_product',
+                value: '10192',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '842_colour_of_sheath',
+                value: {
+                  fi: 'musta',
+                  no: 'svart',
+                  fr: 'noir',
+                  en: 'black',
+                  cs: 'černá',
+                  da: 'sort',
+                  pl: 'czarny',
+                  sv: 'svart',
+                  de: 'schwarz',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '721_reach',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  cs: 'ano',
+                  da: 'ja',
+                  pl: 'tak',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application_2',
+                value: {
+                  de: 'Die Verarbeitung dieses Produkts darf nur durch eine Elektrofachkraft erfolgen. Das Produkt wurde entsprechend anerkannter Normen entwickelt. Es sind die jeweils gültigen Installationsvorschriften anzuwenden.',
+                  en: 'Installation of the product should only be carried out by personnel trained and qualified for electrical works. The product is designed according to recognized standards. Applicable rules of installation must be applied at all times.',
+                  pl: 'Niniejsze wyroby mogą być instalowane wyłącznie przez osoby posiadające niezbędne wykształcenie i uprawnienia w zakresie prac elektroinstalacyjnych. Konstrukcja tych wyrobów jest zgodna ze wskazanymi normami przedmiotowymi. W trakcie prac instalacyjnych wymagane jest stosowanie się do obowiązujących przepisów w tym zakresie.',
+                  cs: 'Instalace tohoto  výrobku smí  provádět  pouze osoby  s elektrotechnickou kvalifikací. Výrobek je  vyvinut podle platných norem.  Instalace  musí  být provedena v souladu s právě  platnými předpisy.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_barcode_ean_code',
+                value: '8591462037519',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '92_cross_section',
+                value: 120,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '648_short_circuit_current_1s',
+                value: 9.13,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '718_max_permitted_pulling_force',
+                value: 12900,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '632_colour_of_insulation',
+                value: {
+                  en: 'HD 308 S2',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '49_colour_identification_of_cores',
+                value: {
+                  en: 'J',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '719_certificate',
+                value: {
+                  en: 'EZÚ; VDE',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1252_declaration_of_conformity_ue_ce',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  cs: 'ano',
+                  da: 'ja',
+                  pl: 'tak',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application',
+                value: {
+                  de: 'Die Kabel sind für die feste Verlegung in Innenräumen, im Freien, in Erde und in Beton geeignet.',
+                  en: 'Cables are designed for fixed installation, indoors and outdoors, in the ground and in concrete.',
+                  pl: 'Kable przeznaczone do układania na stałe, wewnątrz oraz na zewnątrz pomieszczeń, bezpośrednio w gruncie oraz betonie.',
+                  cs: 'Kabely jsou určeny pro pevné uložení ve vnitřních a venkovních prostorách, v zemi, v betonu.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '853_operating_cond_temperature_max',
+                value: '70',
+                __typename: 'RawProductAttribute',
+              },
+            ],
+            images: [],
+            assets: [
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/le7enmyjiv/pdf/NAYY_NYYEUDOCDOC000001SLRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/t17ohp0qui/pdf/NAYY_NYYEUDOCDOC000001SKRev09.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 09'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/oj19tss8oz/pdf/NAYY_NYYEUDOCDOC000001PLRev10.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 10'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/cof0xswl7p/pdf/NAYY_NYYEUDOCDOC000001LVRev09.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 09'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/rtwfyeyek3/pdf/NAYY_NYYEUDOCDOC000001LTRev09.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 09'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/tvyqagh1se/pdf/NAYY_NYYEUDOCDOC000001HURev09.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 09'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/1azq3nrbqe/pdf/NAYY_NYYEUDOCDOC000001HRRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/twryo9hv9v/pdf/NAYY_NYYEUDOCDOC000001FRRev09.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 09'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/r8zpiscynu/pdf/NAYY_NYYEUDOCDOC000001ETRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/mqu0m5rmo7/pdf/NAYY_NYYEUDOCDOC000001DERev10.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 10'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/zzibntkk1o/pdf/NAYY_NYYEUDOCDOC000001DARev09.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 09'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/eoxhsjg9wq/pdf/NAYY_NYYEUDOCDOC000001CSRev10.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 10'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/6pj7oxohnw/pdf/Datasheet_NAYY_DE_10192.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 284,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1 kV cables'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/v73okrfz5n/pdf/Datasheet_NAYY_PL_10192.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 284,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1 kV cables'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/yzfihwlezy/pdf/Datasheet_NAYY_CS_10192.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 282,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1 kV cables'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/wakjro9k3x/pdf/Datasheet_NAYY_EN_10192.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 280,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1 kV cables'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY 0,6/1 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/1ywdrupamh/pdf/NAYY_NYYEUDOCDOC000001SLRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/pjtlw6ymyg/pdf/NAYY_NYYEUDOCDOC000001SKRev10.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 10'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/kah37mfezg/pdf/NAYY_NYYEUDOCDOC000001PLRev11.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 11'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/xvc7uwkqab/pdf/NAYY_NYYEUDOCDOC000001LVRev10.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 10'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/uniwymtogw/pdf/NAYY_NYYEUDOCDOC000001LTRev10.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 10'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/dwncueucza/pdf/NAYY_NYYEUDOCDOC000001HURev10.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 10'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/ce2xoupy3o/pdf/NAYY_NYYEUDOCDOC000001HRRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/lfnxf6dq6q/pdf/NAYY_NYYEUDOCDOC000001FRRev10.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 10'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/brn5yozdv0/pdf/NAYY_NYYEUDOCDOC000001ETRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/0jjsv5ypde/pdf/NAYY_NYYEUDOCDOC000001ENRev11.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 11'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/lb94ph5hvd/pdf/NAYY_NYYEUDOCDOC000001DERev11.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 11'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/igonmvlnhj/pdf/NAYY_NYYEUDOCDOC000001DARev10.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 10'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/oejtnq1lix/pdf/NAYY_NYYEUDOCDOC000001CSRev11.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 11'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/o02gqj4k9a/pdf/NAYY_NYYEUDOCDOC000001ENRev10.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY', 'NYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 10'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/tyunj5bmmm/pdf/NAYYDOPDOP000001PLRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 56,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/1o8xicztns/pdf/NAYYDOPDOP000001SLRev04.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 98,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 04'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/btkeaanrsp/pdf/NAYYDOPDOP000001SKRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 100,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/txyitgjvot/pdf/NAYYDOPDOP000001LVRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 101,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/r87mrzdmzu/pdf/NAYYDOPDOP000001LTRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/dsk48hvmsv/pdf/NAYYDOPDOP000001HURev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 98,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/xcswageaht/pdf/NAYYDOPDOP000001HRRev04.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 04'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/islmbeaxsp/pdf/NAYYDOPDOP000001FRRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 91,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/9o1za1r35u/pdf/NAYYDOPDOP000001ETRev04.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 89,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 04'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/o1lkv1rjeu/pdf/NAYYDOPDOP000001ENRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 90,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/2ttbvfhqkt/pdf/NAYYDOPDOP000001DERev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 93,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/s9maokefvp/pdf/NAYYDOPDOP000001DARev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 90,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/f09ybplsqc/pdf/NAYYDOPDOP000001CSRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 100,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NAYY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000001'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+            ],
+            __typename: 'ProductVariant',
+          },
+        ],
+        categories: [
+          {
+            name: '1 kV cables',
+            parent: {
+              name: 'Low-voltage',
+              __typename: 'Category',
+            },
+            __typename: 'Category',
+          },
+        ],
+        __typename: 'ProductData',
+      },
+      __typename: 'ProductCatalogData',
+    },
+    id: 'bebafd3b-4a3c-4500-9b0a-497cbf6d0d7a',
+    key: '110192064',
+    productType: {
+      id: 'dd1932f0-c1f5-4f63-a59b-2d31ef3e0929',
+      key: '10192',
+      name: 'NAYY',
+      __typename: 'ProductTypeDefinition',
+    },
+    productSelectionRefs: {
+      results: [
+        {
+          productSelection: {
+            name: 'Global product selection',
+            key: 'Global-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['110192064'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+        {
+          productSelection: {
+            name: 'Czech_Republic product selection',
+            key: 'Czech_Republic-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['110192064'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+      ],
+      __typename: 'SelectionOfProductQueryResult',
+    },
+    __typename: 'Product',
+  },
+  {
+    masterData: {
+      current: {
+        nameAllLocales: [
+          {
+            locale: 'fr',
+            value: 'NA2XS(FL)2Y 1x1000 RM/35 18/30kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'cs',
+            value: 'NA2XS(FL)2Y 1x1000 RM/35 18/30kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'de',
+            value: 'NA2XS(FL)2Y 1x1000 RM/35 18/30kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'en',
+            value: 'NA2XS(FL)2Y 1x1000 RM/35 18/30kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'pl',
+            value: 'NA2XS(FL)2Y 1x1000 RM/35 18/30kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'sv',
+            value: 'NA2XS(FL)2Y 1x1000 RM/35 18/30kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'da',
+            value: 'NA2XS(FL)2Y 1x1000 RM/35 18/30kV',
+            __typename: 'LocalizedString',
+          },
+        ],
+        descriptionAllLocales: null,
+        allVariants: [
+          {
+            sku: '120317013',
+            attributesRaw: [
+              {
+                name: '14_material_of_conductor',
+                value: {
+                  en: 'Al',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '28_weight',
+                value: 5.3,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '96_norm_standard',
+                value: 'VDE 0276-620',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants',
+                value: '1412 - Velké Meziříčí',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_base_uom',
+                value: {
+                  fi: 'm',
+                  no: 'm',
+                  en: 'm',
+                  da: 'm',
+                  fr: 'm',
+                  sk: 'm',
+                  sv: 'm',
+                  de: 'm',
+                  pl: 'm',
+                  cs: 'm',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1607_cpr_classification',
+                value: {
+                  en: 'Fca',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants_status',
+                value: '1412-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '9_diameter',
+                value: 65.7,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1428_material_of_screen',
+                value: {
+                  en: 'Cu',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_barcode_ean_code',
+                value: '8590225327010',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '92_cross_section',
+                value: 1000,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_country_specific',
+                value: 'AT, BA, BG, CZ, DE, EE, HR, HU, LT, LV, PL, RO, SI, SK',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1427_type_of_screen',
+                value: {
+                  en: 'Wires',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1001_material_sheath',
+                value: {
+                  en: 'PE',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '7_type',
+                value: 'NA2XS(FL)2Y',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1867_sap_characteristic_znkt_millca_standard_length',
+                value: {
+                  da: 'brugerdefineret',
+                  en: 'custom',
+                  sv: 'kundspecifik',
+                  fr: 'personnalisé',
+                  pl: 'możliwe cięcie',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '23_specification',
+                value: {
+                  en: '-',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '15_voltage_u',
+                value: 30,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '18_shape_of_conductor',
+                value: 'RM',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '91_number_of_cores',
+                value: '1',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '22_cross_section_of_screen',
+                value: '35',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '835_rated_voltage_uo_u',
+                value: '18/30',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1000_material_insulation',
+                value: 'XLPE (VPE)',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_org_status',
+                value: '1410-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_orgs',
+                value: '1410-NKT Czech Republic',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1296_voltage_uo',
+                value: 18,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '544_number_of_group_of_product',
+                value: '20317',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '842_colour_of_sheath',
+                value: {
+                  en: 'black',
+                  cs: 'černá',
+                  da: 'sort',
+                  de: 'schwarz',
+                  fi: 'musta',
+                  fr: 'noir',
+                  no: 'svart',
+                  pl: 'czarny',
+                  sv: 'svart',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '719_certificate',
+                value: {
+                  en: 'VDE',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '853_operating_cond_temperature_max',
+                value: '90',
+                __typename: 'RawProductAttribute',
+              },
+            ],
+            images: [],
+            assets: [
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/axobmhepvi/pdf/NA2XSFL2Y_XRUHAKXS_1830_kVDOPDOP000150PLRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: ['yes'],
+                      name: 'nkt_notonwebsite',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: 56,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 18/30 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 18/30 kV'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000150'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/zbiprbcu0y/pdf/NA2XSFL2Y_1830_kVDOPDOP000150SKRev02.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 108,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 18/30 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 18/30 kV'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 02'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000150'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/kwoi7thvxn/pdf/NA2XSFL2Y_1830_kVDOPDOP000150ENRev02.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 100,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 18/30 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 18/30 kV'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 02'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000150'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/jdke3p7s9x/pdf/NA2XSFL2Y_1830_kVDOPDOP000150DERev02.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 101,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 18/30 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 18/30 kV'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 02'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000150'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/kuthktbjko/pdf/NA2XSFL2Y_1830_kVDOPDOP000150CSRev02.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 107,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 18/30 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 18/30 kV'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 02'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000150'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+            ],
+            __typename: 'ProductVariant',
+          },
+        ],
+        categories: [
+          {
+            name: 'Medium-voltage cables',
+            parent: {
+              name: 'Medium-voltage',
+              __typename: 'Category',
+            },
+            __typename: 'Category',
+          },
+        ],
+        __typename: 'ProductData',
+      },
+      __typename: 'ProductCatalogData',
+    },
+    id: '830b3bc5-b299-4500-aff5-bc90c9ca63cc',
+    key: '120317013',
+    productType: {
+      id: 'e5cda968-bd1e-4ff4-b993-27bcfa818d19',
+      key: '20317',
+      name: 'NA2XS(FL)2Y 18/30 kV',
+      __typename: 'ProductTypeDefinition',
+    },
+    productSelectionRefs: {
+      results: [
+        {
+          productSelection: {
+            name: 'Global product selection',
+            key: 'Global-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['120317013'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+        {
+          productSelection: {
+            name: 'Czech_Republic product selection',
+            key: 'Czech_Republic-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['120317013'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+      ],
+      __typename: 'SelectionOfProductQueryResult',
+    },
+    __typename: 'Product',
+  },
+  {
+    masterData: {
+      current: {
+        nameAllLocales: [
+          {
+            locale: 'fr',
+            value: '1-CYKY-J 3x70+50 SM/SM',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'cs',
+            value: '1-CYKY-J 3x70+50 SM/SM',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'de',
+            value: '1-CYKY-J 3x70+50 SM/SM',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'en',
+            value: '1-CYKY-J 3x70+50 SM/SM',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'pl',
+            value: '1-CYKY-J 3x70+50 SM/SM',
+            __typename: 'LocalizedString',
+          },
+        ],
+        descriptionAllLocales: [
+          {
+            value: 'Power cables 1 kV',
+            locale: 'en',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: '1 kV silové kabely',
+            locale: 'cs',
+            __typename: 'LocalizedString',
+          },
+        ],
+        allVariants: [
+          {
+            sku: '112183017',
+            attributesRaw: [
+              {
+                name: '28_weight',
+                value: 2.97,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '96_norm_standard',
+                value: 'TP-KK-133/01',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1607_cpr_classification',
+                value: {
+                  en: 'Eca',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants_status',
+                value: '1411-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '9_diameter',
+                value: 30.8,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '835_rated_voltage_uo_u',
+                value: '0,6/1',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '661_no_of_cores_and_cross_section',
+                value: '3x70+50',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '61_thickness_nominal_insulation',
+                value: '1,4',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '720_rohs',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  cs: 'ano',
+                  da: 'ja',
+                  pl: 'tak',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '349_diameter_height_of_conductor',
+                value: '9,2/8,8',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '62_thickness_nominal_sheath',
+                value: '2,0',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_country_specific',
+                value: 'BA, BG, CZ, EE, HR, HU, LT, LV, RO, SI, SK',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '627_test_voltage',
+                value: '4 (AC)',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '651_current_carrying_capacity_single_cable_in_ground',
+                value: 239,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1001_material_sheath',
+                value: {
+                  en: 'PVC',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '483_weight_informative',
+                value: 2967,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '628_maximal_short_circuit_temperature',
+                value: '160 (≤300 mm²); 140 (>300 mm²)',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '14_material_of_conductor',
+                value: {
+                  en: 'Cu',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants',
+                value: '1411 - Kladno',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '656_uv_stability',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  cs: 'ano',
+                  da: 'ja',
+                  pl: 'tak',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '629_temperature_range',
+                value: {
+                  en: 'from -35 up to 70',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '635_self_extinguishing_of_one_cable',
+                value: {
+                  fr: 'C2 SELON LA NF C 32-070',
+                  en: 'IEC 60332-1-2',
+                  de: 'VDE 0482-332-1-2',
+                  cs: 'ČSN EN 60332-1-2',
+                  pl: 'PN-EN 60332-1-2',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_base_uom',
+                value: {
+                  fi: 'm',
+                  no: 'm',
+                  en: 'm',
+                  cs: 'm',
+                  da: 'm',
+                  pl: 'm',
+                  fr: 'm',
+                  sk: 'm',
+                  sv: 'm',
+                  de: 'm',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '647_minimal_radius_of_bend',
+                value: '370',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '653_inductivity',
+                value: 0.24,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '7_type',
+                value: '1-CYKY',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1867_sap_characteristic_znkt_millca_standard_length',
+                value: {
+                  fr: 'personnalisé',
+                  en: 'custom',
+                  sv: 'kundspecifik',
+                  da: 'brugerdefineret',
+                  pl: 'możliwe cięcie',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '23_specification',
+                value: {
+                  en: 'FM',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '650_current_carrying_capacity_single_cable_in_air',
+                value: 207,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '15_voltage_u',
+                value: 1,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '643_maximal_operating_conductor_temperature',
+                value: '70',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '18_shape_of_conductor',
+                value: 'SM',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '91_number_of_cores',
+                value: '3,5',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1000_material_insulation',
+                value: 'PVC',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_org_status',
+                value: '1410-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '631_minimal_storage_temperature',
+                value: '-35',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '657_diameter_informative',
+                value: '31',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '88_cross_section_of_reduced_conductor',
+                value: 50,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '63_max_effective_resistance_conductor_at_20_c',
+                value: '0,268/0,387',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_orgs',
+                value: '1410-NKT Czech Republic',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1296_voltage_uo',
+                value: 0.6,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '630_minimal_temperature_for_laying_and_manipulation',
+                value: '-5',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '544_number_of_group_of_product',
+                value: '12183',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '842_colour_of_sheath',
+                value: {
+                  fi: 'musta',
+                  no: 'svart',
+                  fr: 'noir',
+                  en: 'black',
+                  cs: 'černá',
+                  da: 'sort',
+                  pl: 'czarny',
+                  sv: 'svart',
+                  de: 'schwarz',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '721_reach',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  cs: 'ano',
+                  da: 'ja',
+                  pl: 'tak',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application_2',
+                value: {
+                  en: 'Installation of the product should only be carried out by personnel trained and qualified for electrical works. The product is designed according to recognized standards. Applicable rules of installation must be applied at all times.',
+                  cs: 'Instalace tohoto  výrobku smí  provádět  pouze osoby  s elektrotechnickou kvalifikací. Výrobek je  vyvinut podle platných norem.  Instalace  musí  být provedena v souladu s právě  platnými předpisy.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_barcode_ean_code',
+                value: '8591462017993',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '92_cross_section',
+                value: 70,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '648_short_circuit_current_1s',
+                value: 8.04,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '718_max_permitted_pulling_force',
+                value: 13000,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '632_colour_of_insulation',
+                value: {
+                  en: 'HD 308 S2',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '49_colour_identification_of_cores',
+                value: {
+                  en: 'J',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '719_certificate',
+                value: {
+                  en: 'EZÚ',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1252_declaration_of_conformity_ue_ce',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  cs: 'ano',
+                  da: 'ja',
+                  pl: 'tak',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application',
+                value: {
+                  en: 'Cables are designed for fixed installation, indoors and outdoors, in the ground and in concrete.',
+                  cs: 'Kabely jsou určeny pro pevné uložení ve vnitřních a venkovních prostorách, v zemi, v betonu.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '853_operating_cond_temperature_max',
+                value: '70',
+                __typename: 'RawProductAttribute',
+              },
+            ],
+            images: [],
+            assets: [
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/cc9ra3ugi4/pdf/Datasheet_1_CYKY_CS_12183.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 272,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1 kV cables'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/8jrd6r1lmn/pdf/Datasheet_1_CYKY_EN_12183.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 271,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1 kV cables'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/lint8y8fm7/pdf/1-AYKY_1-CYKYEUDOCDOC000010SLRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 81,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000010'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/udc2i5leoo/pdf/1-AYKY_1-CYKYEUDOCDOC000010SKRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000010'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/zp63cf28gu/pdf/1-AYKY_1-CYKYEUDOCDOC000010LVRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000010'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/uwitw1p36e/pdf/1-AYKY_1-CYKYEUDOCDOC000010LTRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000010'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/nt51mf0kxl/pdf/1-AYKY_1-CYKYEUDOCDOC000010HURev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000010'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/v68swxy6hb/pdf/1-AYKY_1-CYKYEUDOCDOC000010HRRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000010'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/g6xoxmm9df/pdf/1-AYKY_1-CYKYEUDOCDOC000010FRRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000010'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/svzodmdovm/pdf/1-AYKY_1-CYKYEUDOCDOC000010ETRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000010'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/nyifmzwlls/pdf/1-AYKY_1-CYKYEUDOCDOC000010ENRev09.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 09'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000010'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/t28am4uupc/pdf/1-AYKY_1-CYKYEUDOCDOC000010DERev09.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 09'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000010'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/hzvfzpfmnu/pdf/1-AYKY_1-CYKYEUDOCDOC000010DARev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 84,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000010'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/vojt6rfeoc/pdf/1-AYKY_1-CYKYEUDOCDOC000010CSRev09.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-AYKY', '1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 09'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000010'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/3mzik79gue/pdf/1-CYKYDOPDOP000059SLRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 98,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000059'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/gmvknymggp/pdf/1-CYKYDOPDOP000059SKRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 100,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000059'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/ezfefbpavb/pdf/1-CYKYDOPDOP000059LVRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 101,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000059'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/na4cf7wtsf/pdf/1-CYKYDOPDOP000059LTRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000059'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/6k9ehq9nmg/pdf/1-CYKYDOPDOP000059HURev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 98,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000059'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/vykkkq4vrg/pdf/1-CYKYDOPDOP000059HRRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000059'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/pvylwn8le0/pdf/1-CYKYDOPDOP000059FRRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 90,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000059'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/z36xrzbups/pdf/1-CYKYDOPDOP000059ETRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 89,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000059'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/5zutdetjze/pdf/1-CYKYDOPDOP000059DARev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 90,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000059'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/psygt3i1hf/pdf/1-CYKYDOPDOP000059DERev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 93,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000059'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/1wwolch08g/pdf/1-CYKYDOPDOP000059CSRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 100,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000059'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/cuatntqaqd/pdf/1-CYKYDOPDOP000059ENRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 90,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1-CYKY'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000059'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+            ],
+            __typename: 'ProductVariant',
+          },
+        ],
+        categories: [
+          {
+            name: '1 kV cables',
+            parent: {
+              name: 'Low-voltage',
+              __typename: 'Category',
+            },
+            __typename: 'Category',
+          },
+        ],
+        __typename: 'ProductData',
+      },
+      __typename: 'ProductCatalogData',
+    },
+    id: '6d15038d-8410-4700-9e2b-cf014e62cc3c',
+    key: '112183017',
+    productType: {
+      id: 'c0d5aad3-5776-4e13-b65d-3d218ac5e284',
+      key: '12183',
+      name: '1-CYKY',
+      __typename: 'ProductTypeDefinition',
+    },
+    productSelectionRefs: {
+      results: [
+        {
+          productSelection: {
+            name: 'Global product selection',
+            key: 'Global-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['112183017'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+        {
+          productSelection: {
+            name: 'Czech_Republic product selection',
+            key: 'Czech_Republic-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['112183017'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+      ],
+      __typename: 'SelectionOfProductQueryResult',
+    },
+    __typename: 'Product',
+  },
+  {
+    masterData: {
+      current: {
+        nameAllLocales: [
+          {
+            locale: 'fr',
+            value: 'N2XSY 1x50 RM/16 6/10kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'cs',
+            value: 'N2XSY 1x50 RM/16 6/10kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'de',
+            value: 'N2XSY 1x50 RM/16 6/10kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'en',
+            value: 'N2XSY 1x50 RM/16 6/10kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'pl',
+            value: 'N2XSY 1x50 RM/16 6/10kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'sv',
+            value: 'N2XSY 1x50 RM/16 6/10kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'da',
+            value: 'N2XSY 1x50 RM/16 6/10kV',
+            __typename: 'LocalizedString',
+          },
+        ],
+        descriptionAllLocales: [
+          {
+            value: 'Medium voltage power cables',
+            locale: 'en',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: 'Silové kabely pro vysoké napětí',
+            locale: 'cs',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: 'Mittelspannungskabel',
+            locale: 'de',
+            __typename: 'LocalizedString',
+          },
+        ],
+        allVariants: [
+          {
+            sku: '122300002',
+            attributesRaw: [
+              {
+                name: '28_weight',
+                value: 1.03,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '96_norm_standard',
+                value: 'VDE 0276-620',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '669_short_circuit_current_of_screening',
+                value: 3.2,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1607_cpr_classification',
+                value: {
+                  en: 'Eca',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants_status',
+                value: '1412-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '9_diameter',
+                value: 24.9,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '661_no_of_cores_and_cross_section',
+                value: '1x50/16',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '61_thickness_nominal_insulation',
+                value: '3,4',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '720_rohs',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  da: 'ja',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                  pl: 'tak',
+                  cs: 'ano',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1247_cable_inductance_on_air_side_by_side',
+                value: 0.6,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1427_type_of_screen',
+                value: {
+                  en: 'Wires',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1001_material_sheath',
+                value: {
+                  en: 'PVC',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '483_weight_informative',
+                value: 1049,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '628_maximal_short_circuit_temperature',
+                value: '250',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '14_material_of_conductor',
+                value: {
+                  en: 'Cu',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants',
+                value: '1412 - Velké Meziříčí',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '656_uv_stability',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  da: 'ja',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                  pl: 'tak',
+                  cs: 'ano',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '629_temperature_range',
+                value: {
+                  en: 'from -35 up to 90',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '635_self_extinguishing_of_one_cable',
+                value: {
+                  en: '-',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_base_uom',
+                value: {
+                  fi: 'm',
+                  no: 'm',
+                  en: 'm',
+                  da: 'm',
+                  fr: 'm',
+                  sk: 'm',
+                  sv: 'm',
+                  de: 'm',
+                  pl: 'm',
+                  cs: 'm',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1245_cable_inductance_in_trefoil',
+                value: 0.42,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '647_minimal_radius_of_bend',
+                value: '377',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1295_pulling_force_allowed',
+                value: 2.5,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '7_type',
+                value: 'N2XSY',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1867_sap_characteristic_znkt_millca_standard_length',
+                value: {
+                  da: 'brugerdefineret',
+                  en: 'custom',
+                  sv: 'kundspecifik',
+                  fr: 'personnalisé',
+                  pl: 'możliwe cięcie',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '23_specification',
+                value: {
+                  en: '-',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '15_voltage_u',
+                value: 10,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '643_maximal_operating_conductor_temperature',
+                value: '90',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '18_shape_of_conductor',
+                value: 'RM',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '91_number_of_cores',
+                value: '1',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '733_current_carrying_capacity_in_ground_flat',
+                value: 249,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '22_cross_section_of_screen',
+                value: '16',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '835_rated_voltage_uo_u',
+                value: '6/10',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '87_diameter_of_conductor',
+                value: 8.2,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1000_material_insulation',
+                value: 'XLPE (VPE)',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_org_status',
+                value: '1410-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '657_diameter_informative',
+                value: '25',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1428_material_of_screen',
+                value: {
+                  en: 'Cu',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '732_current_carrying_capacity_in_ground_trefoil',
+                value: 220,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '631_minimal_storage_temperature',
+                value: '-25',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '63_max_effective_resistance_conductor_at_20_c',
+                value: '0,387',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_orgs',
+                value: '1410-NKT Czech Republic',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1296_voltage_uo',
+                value: 6,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '630_minimal_temperature_for_laying_and_manipulation',
+                value: '-5',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '544_number_of_group_of_product',
+                value: '22300',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1019_nominal_thickness_of_sheath',
+                value: '2,1',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '842_colour_of_sheath',
+                value: {
+                  en: 'red',
+                  cs: 'červený',
+                  da: 'rød',
+                  de: 'rot',
+                  fi: 'punainen',
+                  fr: 'rouge',
+                  no: 'rød',
+                  pl: 'czerwony',
+                  sv: 'röd',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '721_reach',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  da: 'ja',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                  pl: 'tak',
+                  cs: 'ano',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application_2',
+                value: {
+                  de: 'Die Verarbeitung dieses Produkts darf nur durch eine Elektrofachkraft erfolgen. Das Produkt wurde entsprechend anerkannter Normen entwickelt. Es sind die jeweils gültigen Installationsvorschriften anzuwenden.',
+                  en: 'Installation of the product should only be carried out by personnel trained and qualified for electrical works. The product is designed according to recognized standards. Applicable rules of installation must be applied at all times.',
+                  cs: 'Instalace tohoto  výrobku smí  provádět  pouze osoby  s elektrotechnickou kvalifikací. Výrobek je  vyvinut podle platných norem.  Instalace  musí  být provedena v souladu s právě  platnými předpisy.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_barcode_ean_code',
+                value: '8590225139132',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '92_cross_section',
+                value: 50,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '648_short_circuit_current_1s',
+                value: 7.1,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '652_capacity',
+                value: 0.24,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '683_current_carrying_capacity_in_air_trefoil',
+                value: 238,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '684_current_carrying_capacity_in_air_flat',
+                value: 282,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '632_colour_of_insulation',
+                value: {
+                  fi: 'luonnollinen',
+                  no: 'naturlig',
+                  fr: 'naturelle',
+                  en: 'natural',
+                  da: 'naturlig',
+                  sv: 'naturlig',
+                  de: 'natürliche',
+                  pl: 'naturalny',
+                  cs: 'přírodní',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1256_diameter_over_insulation_inf',
+                value: 16.2,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '719_certificate',
+                value: {
+                  en: 'VDE',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1252_declaration_of_conformity_ue_ce',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  da: 'ja',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                  pl: 'tak',
+                  cs: 'ano',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application',
+                value: {
+                  de: 'Die Kabel sind für die feste Verlegung in Innenräumen, im Freien, in Erde und in Kabelkanälen geeignet.',
+                  en: 'Cables are designed for fixed installation in the ground, in the air, into building blocks and into pipes made of non-magnetic material.',
+                  cs: 'Kabely v tomto základním provedení jsou určeny pro pevné uložení v zemi, na vzduchu, do tvárnic, do trubek z nemagnetického materiálu.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '853_operating_cond_temperature_max',
+                value: '90',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_country_specific',
+                value: 'AT, BA, BG, CZ, DE, EE, HR, HU, LT, LV, RO, SI, SK',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1251_maximal_voltage',
+                value: '12',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1248_cable_inductance_in_ground_side_by_side',
+                value: 0.71,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '627_test_voltage',
+                value: '21',
+                __typename: 'RawProductAttribute',
+              },
+            ],
+            images: [],
+            assets: [
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/0eld7q5zvs/pdf/Datasheet_N2XSY_6_10_kV_CS_22300.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 299,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XSY 6/10 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Medium Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['MV cables'],
+                      name: 'nkt_mediumVoltageSub',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/fxkctkynrf/pdf/Datasheet_N2XSY_6_10_kV_EN_22300.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 296,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XSY 6/10 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Medium Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['MV cables'],
+                      name: 'nkt_mediumVoltageSub',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/ispimvl9go/pdf/N2XSY_YHKXS_610_kVDOPDOP000222PLRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: ['yes'],
+                      name: 'nkt_notonwebsite',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: 56,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XSY 6/10 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XSY 6/10 kV'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000222'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/huwha9hvkz/pdf/N2XSY_610_kVDOPDOP000222ENRev03.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 100,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XSY 6/10 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XSY 6/10 kV'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 03'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000222'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/wdwxi2yh61/pdf/N2XSY_610_kVDOPDOP000222SKRev03.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 108,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XSY 6/10 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XSY 6/10 kV'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 03'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000222'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/bmscm745vi/pdf/N2XSY_610_kVDOPDOP000222DERev03.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 101,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XSY 6/10 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XSY 6/10 kV'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 03'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000222'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/e46by9cs2i/pdf/N2XSY_610_kVDOPDOP000222CSRev03.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 107,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XSY 6/10 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['N2XSY 6/10 kV'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 03'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000222'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+            ],
+            __typename: 'ProductVariant',
+          },
+        ],
+        categories: [
+          {
+            name: 'Medium-voltage cables',
+            parent: {
+              name: 'Medium-voltage',
+              __typename: 'Category',
+            },
+            __typename: 'Category',
+          },
+        ],
+        __typename: 'ProductData',
+      },
+      __typename: 'ProductCatalogData',
+    },
+    id: 'cb3e1168-ca16-4c00-916c-0e387b4a2f2f',
+    key: '122300002',
+    productType: {
+      id: '2b14e957-c2c0-48d5-b0ad-61b057bbaa36',
+      key: '22300',
+      name: 'N2XSY 6/10 kV',
+      __typename: 'ProductTypeDefinition',
+    },
+    productSelectionRefs: {
+      results: [
+        {
+          productSelection: {
+            name: 'Global product selection',
+            key: 'Global-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['122300002'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+        {
+          productSelection: {
+            name: 'Czech_Republic product selection',
+            key: 'Czech_Republic-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['122300002'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+      ],
+      __typename: 'SelectionOfProductQueryResult',
+    },
+    __typename: 'Product',
+  },
+  {
+    masterData: {
+      current: {
+        nameAllLocales: [
+          {
+            locale: 'fr',
+            value: 'NA2XS(FL)2Y 1x630 RM/35 12/20kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'cs',
+            value: 'NA2XS(FL)2Y 1x630 RM/35 12/20kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'de',
+            value: 'NA2XS(FL)2Y 1x630 RM/35 12/20kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'en',
+            value: 'NA2XS(FL)2Y 1x630 RM/35 12/20kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'pl',
+            value: 'NA2XS(FL)2Y 1x630 RM/35 12/20kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'sv',
+            value: 'NA2XS(FL)2Y 1x630 RM/35 12/20kV',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'da',
+            value: 'NA2XS(FL)2Y 1x630 RM/35 12/20kV',
+            __typename: 'LocalizedString',
+          },
+        ],
+        descriptionAllLocales: [
+          {
+            value: 'Medium voltage power cables',
+            locale: 'en',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: 'Silové kabely pro vysoké napětí',
+            locale: 'cs',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: 'Mittelspannungskabel',
+            locale: 'de',
+            __typename: 'LocalizedString',
+          },
+        ],
+        allVariants: [
+          {
+            sku: '120311010',
+            attributesRaw: [
+              {
+                name: '28_weight',
+                value: 3.32,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '96_norm_standard',
+                value: 'VDE 0276-620',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '669_short_circuit_current_of_screening',
+                value: 7,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1607_cpr_classification',
+                value: {
+                  en: 'Fca',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '9_diameter',
+                value: 51.6,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '661_no_of_cores_and_cross_section',
+                value: '1x630/35',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '61_thickness_nominal_insulation',
+                value: '5,5',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '720_rohs',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  da: 'ja',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                  pl: 'tak',
+                  cs: 'ano',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1247_cable_inductance_on_air_side_by_side',
+                value: 0.45,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1427_type_of_screen',
+                value: {
+                  en: 'Wires',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1001_material_sheath',
+                value: {
+                  en: 'PE',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '483_weight_informative',
+                value: 3327,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '628_maximal_short_circuit_temperature',
+                value: '250',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '14_material_of_conductor',
+                value: {
+                  en: 'Al',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants',
+                value: '1412 - Velké Meziříčí',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '656_uv_stability',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  da: 'ja',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                  pl: 'tak',
+                  cs: 'ano',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '629_temperature_range',
+                value: {
+                  en: 'from -35 up to 90',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '635_self_extinguishing_of_one_cable',
+                value: {
+                  en: '-',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_base_uom',
+                value: {
+                  fi: 'm',
+                  no: 'm',
+                  en: 'm',
+                  da: 'm',
+                  fr: 'm',
+                  sk: 'm',
+                  sv: 'm',
+                  de: 'm',
+                  pl: 'm',
+                  cs: 'm',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1245_cable_inductance_in_trefoil',
+                value: 0.29,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '647_minimal_radius_of_bend',
+                value: '774',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1295_pulling_force_allowed',
+                value: 18.9,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '7_type',
+                value: 'NA2XS(FL)2Y',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1867_sap_characteristic_znkt_millca_standard_length',
+                value: {
+                  da: 'brugerdefineret',
+                  en: 'custom',
+                  sv: 'kundspecifik',
+                  fr: 'personnalisé',
+                  pl: 'możliwe cięcie',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '23_specification',
+                value: {
+                  en: '-',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants_status',
+                value: '1412-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1860_declaration_of_conformity',
+                value: {
+                  en: '',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '15_voltage_u',
+                value: 20,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '643_maximal_operating_conductor_temperature',
+                value: '90',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '18_shape_of_conductor',
+                value: 'RM',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '91_number_of_cores',
+                value: '1',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '733_current_carrying_capacity_in_ground_flat',
+                value: 668,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '22_cross_section_of_screen',
+                value: '35',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '835_rated_voltage_uo_u',
+                value: '12/20',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '87_diameter_of_conductor',
+                value: 30.2,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1000_material_insulation',
+                value: 'XLPE (VPE)',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_org_status',
+                value: '1410-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '657_diameter_informative',
+                value: '52',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1428_material_of_screen',
+                value: {
+                  en: 'Cu',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '732_current_carrying_capacity_in_ground_trefoil',
+                value: 705,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '631_minimal_storage_temperature',
+                value: '-35',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '63_max_effective_resistance_conductor_at_20_c',
+                value: '0,0469',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_orgs',
+                value: '1410-NKT Czech Republic',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1296_voltage_uo',
+                value: 12,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '630_minimal_temperature_for_laying_and_manipulation',
+                value: '-20',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '544_number_of_group_of_product',
+                value: '20311',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1019_nominal_thickness_of_sheath',
+                value: '2,1',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '842_colour_of_sheath',
+                value: {
+                  en: 'black',
+                  cs: 'černá',
+                  da: 'sort',
+                  de: 'schwarz',
+                  fi: 'musta',
+                  fr: 'noir',
+                  no: 'svart',
+                  pl: 'czarny',
+                  sv: 'svart',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '721_reach',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  da: 'ja',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                  pl: 'tak',
+                  cs: 'ano',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application_2',
+                value: {
+                  de: 'Die Verarbeitung dieses Produkts darf nur durch eine Elektrofachkraft erfolgen. Das Produkt wurde entsprechend anerkannter Normen entwickelt. Es sind die jeweils gültigen Installationsvorschriften anzuwenden.',
+                  en: 'Installation of the product should only be carried out by personnel trained and qualified for electrical works. The product is designed according to recognized standards. Applicable rules of installation must be applied at all times.',
+                  cs: 'Instalace tohoto  výrobku smí  provádět  pouze osoby  s elektrotechnickou kvalifikací. Výrobek je  vyvinut podle platných norem.  Instalace  musí  být provedena v souladu s právě  platnými předpisy.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_barcode_ean_code',
+                value: '8590225304189',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '92_cross_section',
+                value: 630,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '648_short_circuit_current_1s',
+                value: 59.6,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '652_capacity',
+                value: 0.44,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '683_current_carrying_capacity_in_air_trefoil',
+                value: 883,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '684_current_carrying_capacity_in_air_flat',
+                value: 933,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '632_colour_of_insulation',
+                value: {
+                  fi: 'luonnollinen',
+                  no: 'naturlig',
+                  fr: 'naturelle',
+                  en: 'natural',
+                  da: 'naturlig',
+                  sv: 'naturlig',
+                  de: 'natürliche',
+                  pl: 'naturalny',
+                  cs: 'přírodní',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1256_diameter_over_insulation_inf',
+                value: 42.4,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '719_certificate',
+                value: {
+                  en: 'VDE, EZÚ',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1252_declaration_of_conformity_ue_ce',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  da: 'ja',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                  pl: 'tak',
+                  cs: 'ano',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application',
+                value: {
+                  de: 'Die Kabel sind für die feste Verlegung in Innenräumen, im Freien, in Erde und in Kabelkanälen geeignet.',
+                  en: 'Cables are designed for fixed installation in the ground, in the air, into building blocks and into pipes made of non-magnetic material.',
+                  cs: 'Kabely v tomto provedení jsou určeny pro pevné uložení v zemi, na vzduchu, do tvárnic, do trubek z nemagnetického materiálu.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '853_operating_cond_temperature_max',
+                value: '90',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_country_specific',
+                value: 'AT, BA, BG, CZ, DE, EE, HR, HU, LT, LV, PL, RO, SI, SK',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1251_maximal_voltage',
+                value: '24',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1248_cable_inductance_in_ground_side_by_side',
+                value: 0.48,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '627_test_voltage',
+                value: '42',
+                __typename: 'RawProductAttribute',
+              },
+            ],
+            images: [],
+            assets: [
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/mbzquqs8ti/pdf/Datasheet_NA2XS_FL_2Y_12_20_kV_CS_20311.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 310,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 12/20 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Medium Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['MV cables'],
+                      name: 'nkt_mediumVoltageSub',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/g6e7qonakz/pdf/Datasheet_NA2XS_FL_2Y_12_20_kV_EN_20311.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 308,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 12/20 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Medium Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['MV cables'],
+                      name: 'nkt_mediumVoltageSub',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/ehhnh68v2i/pdf/NA2XSFL2Y_XRUHAKXS_1220_kVDOPDOP000149PLRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: ['yes'],
+                      name: 'nkt_notonwebsite',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: 56,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 12/20 kV'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['NA2XS(FL)2Y 12/20 kV'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000149'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+            ],
+            __typename: 'ProductVariant',
+          },
+        ],
+        categories: [
+          {
+            name: 'Medium-voltage cables',
+            parent: {
+              name: 'Medium-voltage',
+              __typename: 'Category',
+            },
+            __typename: 'Category',
+          },
+        ],
+        __typename: 'ProductData',
+      },
+      __typename: 'ProductCatalogData',
+    },
+    id: '59f27b97-c51e-4c00-afa3-c973011728d1',
+    key: '120311010',
+    productType: {
+      id: 'fc74e2fc-b038-4ee0-8eea-0af4adb5828c',
+      key: '20311',
+      name: 'NA2XS(FL)2Y 12/20 kV',
+      __typename: 'ProductTypeDefinition',
+    },
+    productSelectionRefs: {
+      results: [
+        {
+          productSelection: {
+            name: 'Global product selection',
+            key: 'Global-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['120311010'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+        {
+          productSelection: {
+            name: 'Czech_Republic product selection',
+            key: 'Czech_Republic-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['120311010'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+      ],
+      __typename: 'SelectionOfProductQueryResult',
+    },
+    __typename: 'Product',
+  },
+  {
+    masterData: {
+      current: {
+        nameAllLocales: [
+          {
+            locale: 'fr',
+            value: 'H07V-K 1G16 yellow/green',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'cs',
+            value: 'H07V-K 1G16 Z/ZL',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'de',
+            value: 'H07V-K 1G16 gruen/gelb',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'en',
+            value: 'H07V-K 1G16 yellow/green',
+            __typename: 'LocalizedString',
+          },
+          {
+            locale: 'pl',
+            value: 'H07V-K 1G16 zielono-żółta',
+            __typename: 'LocalizedString',
+          },
+        ],
+        descriptionAllLocales: [
+          {
+            value: 'One core installation cables',
+            locale: 'en',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: 'Jednožilové instalační kabely',
+            locale: 'cs',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: 'Einzeladerleitungen',
+            locale: 'de',
+            __typename: 'LocalizedString',
+          },
+          {
+            value: 'Jednożyłowe przewody elektroenergetyczne',
+            locale: 'pl',
+            __typename: 'LocalizedString',
+          },
+        ],
+        allVariants: [
+          {
+            sku: '160001076D1000',
+            attributesRaw: [
+              {
+                name: '1001_material_sheath',
+                value: {
+                  en: 'None',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '28_weight',
+                value: 0.17,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '96_norm_standard',
+                value: 'PN-EN-50525-2-31',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1607_cpr_classification',
+                value: {
+                  en: 'Eca',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants_status',
+                value: '1511-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '9_diameter',
+                value: 7.2,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '835_rated_voltage_uo_u',
+                value: '0,45/0,75',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '631_minimal_storage_temperature',
+                value: '-30',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '720_rohs',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  da: 'ja',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                  pl: 'tak',
+                  cs: 'ano',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '92_cross_section',
+                value: 16,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_drum_type',
+                value: {
+                  da: 'trætromle',
+                  en: 'wooden drum',
+                  sv: 'trätrumma',
+                  fr: 'touret bois',
+                  pl: 'bęben drewniany',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_country_specific',
+                value:
+                  'AT, BA, BE, BG, CZ, DE, DK, EE, FI, FO, FR, HR, HU, IS, LT, LU, LV, NL, NO, PL, RO, SE, SI, SK',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '627_test_voltage',
+                value: '2,5 (AC)',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '628_maximal_short_circuit_temperature',
+                value: '160',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '14_material_of_conductor',
+                value: {
+                  en: 'Cu',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants',
+                value: '1511 - Warszowice',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '656_uv_stability',
+                value: {
+                  fi: 'ei',
+                  no: 'nei',
+                  en: 'no',
+                  da: 'nej',
+                  fr: 'non',
+                  sk: 'nie',
+                  sv: 'nej',
+                  de: 'nein',
+                  pl: 'nie',
+                  cs: 'ne',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '629_temperature_range',
+                value: {
+                  en: 'from -30 up to 70',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '635_self_extinguishing_of_one_cable',
+                value: {
+                  fr: 'C2 SELON LA NF C 32-070',
+                  en: 'IEC 60332-1-2',
+                  de: 'VDE 0482-332-1-2',
+                  pl: 'PN-EN 60332-1-2',
+                  cs: 'ČSN EN 60332-1-2',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_base_uom',
+                value: {
+                  fi: 'm',
+                  no: 'm',
+                  en: 'm',
+                  da: 'm',
+                  fr: 'm',
+                  sk: 'm',
+                  sv: 'm',
+                  de: 'm',
+                  pl: 'm',
+                  cs: 'm',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '7_type',
+                value: 'H07V-K',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1867_sap_characteristic_znkt_millca_standard_length',
+                value: {
+                  da: 'fast',
+                  en: 'fixed',
+                  sv: 'fast',
+                  fr: 'fixe',
+                  pl: 'odcinek standardowy',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '15_voltage_u',
+                value: 0.75,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '643_maximal_operating_conductor_temperature',
+                value: '70',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '18_shape_of_conductor',
+                value: 'RF',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '91_number_of_cores',
+                value: '1',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1000_material_insulation',
+                value: 'PVC',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_org_status',
+                value: '1510-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_length',
+                value: 1000,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_orgs',
+                value: '1510-NKT Poland',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1296_voltage_uo',
+                value: 0.45,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '630_minimal_temperature_for_laying_and_manipulation',
+                value: '5',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '544_number_of_group_of_product',
+                value: '60001',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '842_colour_of_sheath',
+                value: {
+                  en: 'none',
+                  pl: 'brak',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '721_reach',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  da: 'ja',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                  pl: 'tak',
+                  cs: 'ano',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application_2',
+                value: {
+                  de: 'Die Verarbeitung dieses Produkts darf nur durch eine Elektrofachkraft erfolgen. Das Produkt wurde entsprechend anerkannter Normen entwickelt. Es sind die jeweils gültigen Installationsvorschriften anzuwenden.',
+                  en: 'Installation of the product should only be carried out by personnel trained and qualified for electrical works. The product is designed according to recognized standards. Applicable rules of installation must be applied at all times.',
+                  pl: 'Niniejsze wyroby mogą być instalowane wyłącznie przez osoby posiadające niezbędne wykształcenie i uprawnienia w zakresie prac elektroinstalacyjnych. Konstrukcja tych wyrobów jest zgodna ze wskazanymi normami przedmiotowymi. W trakcie prac instalacyjnych wymagane jest stosowanie się do obowiązujących przepisów w tym zakresie.',
+                  cs: 'Instalace tohoto  výrobku smí  provádět  pouze osoby  s elektrotechnickou kvalifikací. Výrobek je  vyvinut podle platných norem.  Instalace  musí  být provedena v souladu s právě  platnými předpisy.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_barcode_ean_code',
+                value: '5907802044483',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '632_colour_of_insulation',
+                value: {
+                  en: 'HD 308 S2',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '49_colour_identification_of_cores',
+                value: {
+                  en: 'yellow/green',
+                  de: 'grün/gelb',
+                  da: 'GUL/GRØN',
+                  pl: 'zielono-żółta',
+                  cs: 'zelená/žlutá',
+                  fr: 'vert/jaune',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '719_certificate',
+                value: {
+                  en: 'EZÚ',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1252_declaration_of_conformity_ue_ce',
+                value: {
+                  fi: 'kyllä',
+                  no: 'ja',
+                  en: 'yes',
+                  da: 'ja',
+                  fr: 'oui',
+                  sk: 'áno',
+                  sv: 'ja',
+                  de: 'ja',
+                  pl: 'tak',
+                  cs: 'ano',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application',
+                value: {
+                  de: 'Die Kabel sind für die Verlegung in Rohren auf und unter Putz, sowie in geschlossenen Installationskanälen und für innere Verdrahtung von Geräten, Schalt- und Verteileranlagen geeignet.',
+                  en: 'Cables are designed for installation on the surface or in pipes or similar closed systems. For fixed installation inside devices and lighting accessories. Suitable for fixed protected installations, lighting systems, control devices and for signalization and control circuits.',
+                  pl: 'Przewody do instalowania w powietrzu (mocowane do powierzchni elementów nośnych) w rurach/listwach instalacyjnych, do układania na stałe w obudowach elektroinstalacyjnych, np. obudowach źródeł światła, do zastosowań w zabezpieczonych mechanicznie obwodach do zasilania źródeł światła, urządzeń kontrolnych, obwodów kontrolnych i sygnalizacyjnych. Zastosowanie zgodnie z odrębnymi przepisami.',
+                  cs: 'Kabely jsou určeny pro instalace na povrchu nebo v instalačních trubkách nebo v podobných uzavřených systémech. Pro pevné uložení uvnitř zařízení a pro světelné příslušenství. Vhodné pro pevné chráněné instalace, pro osvětlení a ovládací zařízení a pro signalizační nebo kontrolní obvody. Používání musí být v souladu s ČSN 34 7402.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '853_operating_cond_temperature_max',
+                value: '70',
+                __typename: 'RawProductAttribute',
+              },
+            ],
+            images: [
+              {
+                url: 'https://nkt.widen.net/content/qtwyayu3gl/png/NKT_LV_H07V-K_1G16_RF_yellow-green_horz.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                label: 'Image of H07V-K',
+                __typename: 'Image',
+              },
+              {
+                url: 'https://nkt.widen.net/content/na8tszn1jm/png/NKT_LV_H07V-K_1G16_RF_yellow-green_D.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                label: 'Image of H07V-K',
+                __typename: 'Image',
+              },
+              {
+                url: 'https://nkt.widen.net/content/hvdzlh3jvh/png/NKT_LV_H07V-K_1G16_RF_yellow-green.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                label: 'Image of H07V-K',
+                __typename: 'Image',
+              },
+            ],
+            assets: [
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/ci0otwamir/pdf/H07V-KDOPDOP000401LVRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 87,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/mqkcocr8wr/pdf/H07V-KDOPDOP000401LTRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/ezbvtfbbey/pdf/H07V-KDOPDOP000401HURev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 96,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/7nlw1bpgi3/pdf/H07V-KDOPDOP000401ETRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/d0cjdvjzaw/pdf/H07V-KDOPDOP000401DERev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/2ujsovpzth/pdf/H07V-KDOPDOP000075PLRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 56,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/yfoxhuswve/pdf/Datasheet_H07V_K_PL_60001.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 229,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/xf9ent7qwa/pdf/H07V-KDOPDOP000401ENRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 80,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/vnzcbtoual/pdf/H07V-KEUDOCDOC001004ENRev02.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 02'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC001004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/wgzrkxxjzc/pdf/H07V-KDOPDOP000401CSRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/gpf9y5uz3p/pdf/H07V-KEUDOCDOC001004CSRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 87,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC001004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/zqviw2r0mv/pdf/Datasheet_H07V_K_DE_60001.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 228,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/xxmooi2yjx/pdf/Datasheet_H07V_K_CS_60001.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 226,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/c4yfxdjy4f/pdf/Datasheet_H07V_K_EN_60001.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 224,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/qtwyayu3gl/png/NKT_LV_H07V-K_1G16_RF_yellow-green_horz.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: ['yes'],
+                      name: 'nkt_notonwebsite',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: 1440,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1'],
+                      name: 'nkt_imageOrder',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Distribution'],
+                      name: 'nkt_businessline',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Product illustration type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/na8tszn1jm/png/NKT_LV_H07V-K_1G16_RF_yellow-green_D.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: ['yes'],
+                      name: 'nkt_notonwebsite',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: 1356,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['0'],
+                      name: 'nkt_imageOrder',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Distribution'],
+                      name: 'nkt_businessline',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Product illustration type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/hvdzlh3jvh/png/NKT_LV_H07V-K_1G16_RF_yellow-green.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: ['yes'],
+                      name: 'nkt_notonwebsite',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: 1138,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['2'],
+                      name: 'nkt_imageOrder',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Distribution'],
+                      name: 'nkt_businessline',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Product illustration type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/tn848x4nxm/pdf/H07V-KEUDOCDOC001004PLRev02.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 02'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC001004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/3fw3gltybt/pdf/H07V-K_H07V-REUDOCDOC000027SLRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 81,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/po8pkhdmmw/pdf/H07V-K_H07V-REUDOCDOC000027SKRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/jw0kird3un/pdf/H07V-K_H07V-REUDOCDOC000027PLRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/cgkcthbrb2/pdf/H07V-K_H07V-REUDOCDOC000027LVRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/yi1mmdffy1/pdf/H07V-K_H07V-REUDOCDOC000027LTRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/dbx4ga4fk6/pdf/H07V-K_H07V-REUDOCDOC000027HURev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/hjo2mp8sjg/pdf/H07V-K_H07V-REUDOCDOC000027HRRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/mzvnvwmtkj/pdf/H07V-K_H07V-REUDOCDOC000027FRRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 81,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/z0u7mrxxf2/pdf/H07V-K_H07V-REUDOCDOC000027ETRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 80,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/moufcv6s9n/pdf/H07V-K_H07V-REUDOCDOC000027ENRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/fzcz4u6zud/pdf/H07V-K_H07V-REUDOCDOC000027DERev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/pymtzvxput/pdf/H07V-K_H07V-REUDOCDOC000027DARev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/zkhphhkios/pdf/H07V-K_H07V-REUDOCDOC000027CSRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 81,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/fpoiapurr0/pdf/H07V-KDOPDOP000401PLRev04.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 54,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 04'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/f1ivjlbub0/pdf/H07V-KDOPDOP000075SLRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 97,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/na1j25fzyz/pdf/H07V-KDOPDOP000075SKRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 100,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/caitwuzjef/pdf/H07V-KDOPDOP000075LVRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 101,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/fazfqq2wfg/pdf/H07V-KDOPDOP000075LTRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/kojlmv2is9/pdf/H07V-KDOPDOP000075HURev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 98,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/rc2yqwurrp/pdf/H07V-KDOPDOP000075HRRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/e9a6naqszj/pdf/H07V-KDOPDOP000075FRRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 90,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/wmjlciyoke/pdf/H07V-KDOPDOP000075ETRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 88,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/6lzshrzeqz/pdf/H07V-KDOPDOP000075DARev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 90,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/gxkbwyh2mo/pdf/H07V-KDOPDOP000075DERev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 92,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/iv53c2zmeb/pdf/H07V-KDOPDOP000075CSRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/cxhp3dchnm/pdf/H07V-KDOPDOP000075ENRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 89,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+            ],
+            __typename: 'ProductVariant',
+          },
+          {
+            sku: '160001076C0100',
+            attributesRaw: [
+              {
+                name: '1001_material_sheath',
+                value: {
+                  en: 'None',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '28_weight',
+                value: 0.17,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '96_norm_standard',
+                value: 'PN-EN-50525-2-31',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1607_cpr_classification',
+                value: {
+                  en: 'Eca',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants_status',
+                value: '1411-GA, 1511-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '9_diameter',
+                value: 7.2,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '835_rated_voltage_uo_u',
+                value: '0,45/0,75',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '631_minimal_storage_temperature',
+                value: '-30',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '720_rohs',
+                value: {
+                  fr: 'oui',
+                  cs: 'ano',
+                  de: 'ja',
+                  en: 'yes',
+                  sk: 'áno',
+                  fi: 'kyllä',
+                  no: 'ja',
+                  pl: 'tak',
+                  sv: 'ja',
+                  da: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '92_cross_section',
+                value: 16,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_drum_type',
+                value: {
+                  fr: 'bobine',
+                  en: 'coil',
+                  pl: 'krążek',
+                  sv: 'ring',
+                  da: 'ring',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_country_specific',
+                value:
+                  'AT, BA, BE, BG, CZ, DE, DK, EE, FI, FO, FR, HR, HU, IS, LT, LU, LV, NL, NO, PL, RO, SE, SI, SK',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '627_test_voltage',
+                value: '2,5 (AC)',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '628_maximal_short_circuit_temperature',
+                value: '160',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '14_material_of_conductor',
+                value: {
+                  en: 'Cu',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants',
+                value: '1411 - Kladno, 1511 - Warszowice',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '656_uv_stability',
+                value: {
+                  fr: 'non',
+                  cs: 'ne',
+                  de: 'nein',
+                  en: 'no',
+                  sk: 'nie',
+                  fi: 'ei',
+                  no: 'nei',
+                  pl: 'nie',
+                  sv: 'nej',
+                  da: 'nej',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '629_temperature_range',
+                value: {
+                  en: 'from -30 up to 70',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '635_self_extinguishing_of_one_cable',
+                value: {
+                  fr: 'C2 SELON LA NF C 32-070',
+                  cs: 'ČSN EN 60332-1-2',
+                  de: 'VDE 0482-332-1-2',
+                  en: 'IEC 60332-1-2',
+                  pl: 'PN-EN 60332-1-2',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_base_uom',
+                value: {
+                  fr: 'm',
+                  cs: 'm',
+                  de: 'm',
+                  en: 'm',
+                  sk: 'm',
+                  fi: 'm',
+                  no: 'm',
+                  pl: 'm',
+                  sv: 'm',
+                  da: 'm',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '7_type',
+                value: 'H07V-K',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1867_sap_characteristic_znkt_millca_standard_length',
+                value: {
+                  fr: 'fixe',
+                  en: 'fixed',
+                  pl: 'odcinek standardowy',
+                  sv: 'fast',
+                  da: 'fast',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '15_voltage_u',
+                value: 0.75,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '643_maximal_operating_conductor_temperature',
+                value: '70',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '18_shape_of_conductor',
+                value: 'RF',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '91_number_of_cores',
+                value: '1',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1000_material_insulation',
+                value: 'PVC',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_org_status',
+                value: '1410-GA, 1510-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_length',
+                value: 100,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_orgs',
+                value: '1410-NKT Czech Republic, 1510-NKT Poland',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1296_voltage_uo',
+                value: 0.45,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '630_minimal_temperature_for_laying_and_manipulation',
+                value: '5',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '544_number_of_group_of_product',
+                value: '60001',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '842_colour_of_sheath',
+                value: {
+                  en: 'none',
+                  pl: 'brak',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '721_reach',
+                value: {
+                  fr: 'oui',
+                  cs: 'ano',
+                  de: 'ja',
+                  en: 'yes',
+                  sk: 'áno',
+                  fi: 'kyllä',
+                  no: 'ja',
+                  pl: 'tak',
+                  sv: 'ja',
+                  da: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application_2',
+                value: {
+                  cs: 'Instalace tohoto  výrobku smí  provádět  pouze osoby  s elektrotechnickou kvalifikací. Výrobek je  vyvinut podle platných norem.  Instalace  musí  být provedena v souladu s právě  platnými předpisy.',
+                  de: 'Die Verarbeitung dieses Produkts darf nur durch eine Elektrofachkraft erfolgen. Das Produkt wurde entsprechend anerkannter Normen entwickelt. Es sind die jeweils gültigen Installationsvorschriften anzuwenden.',
+                  en: 'Installation of the product should only be carried out by personnel trained and qualified for electrical works. The product is designed according to recognized standards. Applicable rules of installation must be applied at all times.',
+                  pl: 'Niniejsze wyroby mogą być instalowane wyłącznie przez osoby posiadające niezbędne wykształcenie i uprawnienia w zakresie prac elektroinstalacyjnych. Konstrukcja tych wyrobów jest zgodna ze wskazanymi normami przedmiotowymi. W trakcie prac instalacyjnych wymagane jest stosowanie się do obowiązujących przepisów w tym zakresie.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_barcode_ean_code',
+                value: '5907802046043',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '632_colour_of_insulation',
+                value: {
+                  en: 'HD 308 S2',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '49_colour_identification_of_cores',
+                value: {
+                  fr: 'vert/jaune',
+                  cs: 'zelená/žlutá',
+                  de: 'grün/gelb',
+                  da: 'GUL/GRØN',
+                  en: 'yellow/green',
+                  pl: 'zielono-żółta',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '719_certificate',
+                value: {
+                  en: 'EZÚ',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1252_declaration_of_conformity_ue_ce',
+                value: {
+                  fr: 'oui',
+                  cs: 'ano',
+                  de: 'ja',
+                  en: 'yes',
+                  sk: 'áno',
+                  fi: 'kyllä',
+                  no: 'ja',
+                  pl: 'tak',
+                  sv: 'ja',
+                  da: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application',
+                value: {
+                  cs: 'Kabely jsou určeny pro instalace na povrchu nebo v instalačních trubkách nebo v podobných uzavřených systémech. Pro pevné uložení uvnitř zařízení a pro světelné příslušenství. Vhodné pro pevné chráněné instalace, pro osvětlení a ovládací zařízení a pro signalizační nebo kontrolní obvody. Používání musí být v souladu s ČSN 34 7402.',
+                  de: 'Die Kabel sind für die Verlegung in Rohren auf und unter Putz, sowie in geschlossenen Installationskanälen und für innere Verdrahtung von Geräten, Schalt- und Verteileranlagen geeignet.',
+                  en: 'Cables are designed for installation on the surface or in pipes or similar closed systems. For fixed installation inside devices and lighting accessories. Suitable for fixed protected installations, lighting systems, control devices and for signalization and control circuits.',
+                  pl: 'Przewody do instalowania w powietrzu (mocowane do powierzchni elementów nośnych) w rurach/listwach instalacyjnych, do układania na stałe w obudowach elektroinstalacyjnych, np. obudowach źródeł światła, do zastosowań w zabezpieczonych mechanicznie obwodach do zasilania źródeł światła, urządzeń kontrolnych, obwodów kontrolnych i sygnalizacyjnych. Zastosowanie zgodnie z odrębnymi przepisami.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '853_operating_cond_temperature_max',
+                value: '70',
+                __typename: 'RawProductAttribute',
+              },
+            ],
+            images: [
+              {
+                url: 'https://nkt.widen.net/content/qtwyayu3gl/png/NKT_LV_H07V-K_1G16_RF_yellow-green_horz.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                label: 'Image of H07V-K',
+                __typename: 'Image',
+              },
+              {
+                url: 'https://nkt.widen.net/content/hvdzlh3jvh/png/NKT_LV_H07V-K_1G16_RF_yellow-green.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                label: 'Image of H07V-K',
+                __typename: 'Image',
+              },
+              {
+                url: 'https://nkt.widen.net/content/mxbsqncjdf/png/NKT_LV_H07V-K_1G16_RF_yellow-green_C.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                label: 'Image of H07V-K',
+                __typename: 'Image',
+              },
+            ],
+            assets: [
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/ci0otwamir/pdf/H07V-KDOPDOP000401LVRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 87,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/mqkcocr8wr/pdf/H07V-KDOPDOP000401LTRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/ezbvtfbbey/pdf/H07V-KDOPDOP000401HURev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 96,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/7nlw1bpgi3/pdf/H07V-KDOPDOP000401ETRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/d0cjdvjzaw/pdf/H07V-KDOPDOP000401DERev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/2ujsovpzth/pdf/H07V-KDOPDOP000075PLRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 56,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/yfoxhuswve/pdf/Datasheet_H07V_K_PL_60001.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 229,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/xf9ent7qwa/pdf/H07V-KDOPDOP000401ENRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 80,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/vnzcbtoual/pdf/H07V-KEUDOCDOC001004ENRev02.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 02'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC001004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/wgzrkxxjzc/pdf/H07V-KDOPDOP000401CSRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/gpf9y5uz3p/pdf/H07V-KEUDOCDOC001004CSRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 87,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC001004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/zqviw2r0mv/pdf/Datasheet_H07V_K_DE_60001.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 228,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/xxmooi2yjx/pdf/Datasheet_H07V_K_CS_60001.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 226,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/c4yfxdjy4f/pdf/Datasheet_H07V_K_EN_60001.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 224,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/qtwyayu3gl/png/NKT_LV_H07V-K_1G16_RF_yellow-green_horz.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: ['yes'],
+                      name: 'nkt_notonwebsite',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: 1440,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1'],
+                      name: 'nkt_imageOrder',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Distribution'],
+                      name: 'nkt_businessline',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Product illustration type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/hvdzlh3jvh/png/NKT_LV_H07V-K_1G16_RF_yellow-green.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: ['yes'],
+                      name: 'nkt_notonwebsite',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: 1138,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['2'],
+                      name: 'nkt_imageOrder',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Distribution'],
+                      name: 'nkt_businessline',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Product illustration type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/mxbsqncjdf/png/NKT_LV_H07V-K_1G16_RF_yellow-green_C.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: ['yes'],
+                      name: 'nkt_notonwebsite',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: 940,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['0'],
+                      name: 'nkt_imageOrder',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Distribution'],
+                      name: 'nkt_businessline',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Product illustration type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/tn848x4nxm/pdf/H07V-KEUDOCDOC001004PLRev02.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 02'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC001004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/3fw3gltybt/pdf/H07V-K_H07V-REUDOCDOC000027SLRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 81,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/po8pkhdmmw/pdf/H07V-K_H07V-REUDOCDOC000027SKRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/jw0kird3un/pdf/H07V-K_H07V-REUDOCDOC000027PLRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/cgkcthbrb2/pdf/H07V-K_H07V-REUDOCDOC000027LVRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/yi1mmdffy1/pdf/H07V-K_H07V-REUDOCDOC000027LTRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/dbx4ga4fk6/pdf/H07V-K_H07V-REUDOCDOC000027HURev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/hjo2mp8sjg/pdf/H07V-K_H07V-REUDOCDOC000027HRRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/mzvnvwmtkj/pdf/H07V-K_H07V-REUDOCDOC000027FRRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 81,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/z0u7mrxxf2/pdf/H07V-K_H07V-REUDOCDOC000027ETRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 80,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/moufcv6s9n/pdf/H07V-K_H07V-REUDOCDOC000027ENRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/fzcz4u6zud/pdf/H07V-K_H07V-REUDOCDOC000027DERev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/pymtzvxput/pdf/H07V-K_H07V-REUDOCDOC000027DARev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/zkhphhkios/pdf/H07V-K_H07V-REUDOCDOC000027CSRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 81,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/fpoiapurr0/pdf/H07V-KDOPDOP000401PLRev04.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 54,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 04'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/f1ivjlbub0/pdf/H07V-KDOPDOP000075SLRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 97,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/na1j25fzyz/pdf/H07V-KDOPDOP000075SKRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 100,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/caitwuzjef/pdf/H07V-KDOPDOP000075LVRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 101,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/fazfqq2wfg/pdf/H07V-KDOPDOP000075LTRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/kojlmv2is9/pdf/H07V-KDOPDOP000075HURev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 98,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/rc2yqwurrp/pdf/H07V-KDOPDOP000075HRRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/e9a6naqszj/pdf/H07V-KDOPDOP000075FRRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 90,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/wmjlciyoke/pdf/H07V-KDOPDOP000075ETRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 88,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/6lzshrzeqz/pdf/H07V-KDOPDOP000075DARev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 90,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/gxkbwyh2mo/pdf/H07V-KDOPDOP000075DERev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 92,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/iv53c2zmeb/pdf/H07V-KDOPDOP000075CSRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/cxhp3dchnm/pdf/H07V-KDOPDOP000075ENRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 89,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+            ],
+            __typename: 'ProductVariant',
+          },
+          {
+            sku: '160001076S0500',
+            attributesRaw: [
+              {
+                name: '1001_material_sheath',
+                value: {
+                  en: 'None',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '28_weight',
+                value: 0.17,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '96_norm_standard',
+                value: 'PN-EN-50525-2-31',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1607_cpr_classification',
+                value: {
+                  en: 'Eca',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants_status',
+                value: '1511-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '9_diameter',
+                value: 7.2,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '835_rated_voltage_uo_u',
+                value: '0,45/0,75',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '631_minimal_storage_temperature',
+                value: '-30',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '720_rohs',
+                value: {
+                  fr: 'oui',
+                  cs: 'ano',
+                  de: 'ja',
+                  en: 'yes',
+                  sk: 'áno',
+                  fi: 'kyllä',
+                  no: 'ja',
+                  pl: 'tak',
+                  sv: 'ja',
+                  da: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '92_cross_section',
+                value: 16,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_drum_type',
+                value: {
+                  fr: 'touret contreplaqué',
+                  en: 'plywood drum',
+                  pl: 'bęben sklejkowy',
+                  sv: 'plywoodtrumma',
+                  da: 'krydsfinertromle',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_country_specific',
+                value:
+                  'AT, BA, BE, BG, CZ, DE, DK, EE, FI, FO, FR, HR, HU, IS, LT, LU, LV, NL, NO, PL, RO, SE, SI, SK',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '627_test_voltage',
+                value: '2,5 (AC)',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '628_maximal_short_circuit_temperature',
+                value: '160',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '14_material_of_conductor',
+                value: {
+                  en: 'Cu',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_plants',
+                value: '1511 - Warszowice',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '656_uv_stability',
+                value: {
+                  fr: 'non',
+                  cs: 'ne',
+                  de: 'nein',
+                  en: 'no',
+                  sk: 'nie',
+                  fi: 'ei',
+                  no: 'nei',
+                  pl: 'nie',
+                  sv: 'nej',
+                  da: 'nej',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '629_temperature_range',
+                value: {
+                  en: 'from -30 up to 70',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '635_self_extinguishing_of_one_cable',
+                value: {
+                  fr: 'C2 SELON LA NF C 32-070',
+                  cs: 'ČSN EN 60332-1-2',
+                  de: 'VDE 0482-332-1-2',
+                  en: 'IEC 60332-1-2',
+                  pl: 'PN-EN 60332-1-2',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_base_uom',
+                value: {
+                  fr: 'm',
+                  cs: 'm',
+                  de: 'm',
+                  en: 'm',
+                  sk: 'm',
+                  fi: 'm',
+                  no: 'm',
+                  pl: 'm',
+                  sv: 'm',
+                  da: 'm',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '7_type',
+                value: 'H07V-K',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1867_sap_characteristic_znkt_millca_standard_length',
+                value: {
+                  fr: 'fixe',
+                  en: 'fixed',
+                  pl: 'odcinek standardowy',
+                  sv: 'fast',
+                  da: 'fast',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '15_voltage_u',
+                value: 0.75,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '643_maximal_operating_conductor_temperature',
+                value: '70',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '18_shape_of_conductor',
+                value: 'RF',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '91_number_of_cores',
+                value: '1',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1000_material_insulation',
+                value: 'PVC',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_org_status',
+                value: '1510-GA',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_length',
+                value: 500,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_sales_orgs',
+                value: '1510-NKT Poland',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1296_voltage_uo',
+                value: 0.45,
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '630_minimal_temperature_for_laying_and_manipulation',
+                value: '5',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '544_number_of_group_of_product',
+                value: '60001',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '842_colour_of_sheath',
+                value: {
+                  en: 'none',
+                  pl: 'brak',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '721_reach',
+                value: {
+                  fr: 'oui',
+                  cs: 'ano',
+                  de: 'ja',
+                  en: 'yes',
+                  sk: 'áno',
+                  fi: 'kyllä',
+                  no: 'ja',
+                  pl: 'tak',
+                  sv: 'ja',
+                  da: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application_2',
+                value: {
+                  cs: 'Instalace tohoto  výrobku smí  provádět  pouze osoby  s elektrotechnickou kvalifikací. Výrobek je  vyvinut podle platných norem.  Instalace  musí  být provedena v souladu s právě  platnými předpisy.',
+                  de: 'Die Verarbeitung dieses Produkts darf nur durch eine Elektrofachkraft erfolgen. Das Produkt wurde entsprechend anerkannter Normen entwickelt. Es sind die jeweils gültigen Installationsvorschriften anzuwenden.',
+                  en: 'Installation of the product should only be carried out by personnel trained and qualified for electrical works. The product is designed according to recognized standards. Applicable rules of installation must be applied at all times.',
+                  pl: 'Niniejsze wyroby mogą być instalowane wyłącznie przez osoby posiadające niezbędne wykształcenie i uprawnienia w zakresie prac elektroinstalacyjnych. Konstrukcja tych wyrobów jest zgodna ze wskazanymi normami przedmiotowymi. W trakcie prac instalacyjnych wymagane jest stosowanie się do obowiązujących przepisów w tym zakresie.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_barcode_ean_code',
+                value: '5907802046050',
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '632_colour_of_insulation',
+                value: {
+                  en: 'HD 308 S2',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '49_colour_identification_of_cores',
+                value: {
+                  fr: 'vert/jaune',
+                  cs: 'zelená/žlutá',
+                  de: 'grün/gelb',
+                  da: 'GUL/GRØN',
+                  en: 'yellow/green',
+                  pl: 'zielono-żółta',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '719_certificate',
+                value: {
+                  en: 'EZÚ',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '1252_declaration_of_conformity_ue_ce',
+                value: {
+                  fr: 'oui',
+                  cs: 'ano',
+                  de: 'ja',
+                  en: 'yes',
+                  sk: 'áno',
+                  fi: 'kyllä',
+                  no: 'ja',
+                  pl: 'tak',
+                  sv: 'ja',
+                  da: 'ja',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '0000_application',
+                value: {
+                  cs: 'Kabely jsou určeny pro instalace na povrchu nebo v instalačních trubkách nebo v podobných uzavřených systémech. Pro pevné uložení uvnitř zařízení a pro světelné příslušenství. Vhodné pro pevné chráněné instalace, pro osvětlení a ovládací zařízení a pro signalizační nebo kontrolní obvody. Používání musí být v souladu s ČSN 34 7402.',
+                  de: 'Die Kabel sind für die Verlegung in Rohren auf und unter Putz, sowie in geschlossenen Installationskanälen und für innere Verdrahtung von Geräten, Schalt- und Verteileranlagen geeignet.',
+                  en: 'Cables are designed for installation on the surface or in pipes or similar closed systems. For fixed installation inside devices and lighting accessories. Suitable for fixed protected installations, lighting systems, control devices and for signalization and control circuits.',
+                  pl: 'Przewody do instalowania w powietrzu (mocowane do powierzchni elementów nośnych) w rurach/listwach instalacyjnych, do układania na stałe w obudowach elektroinstalacyjnych, np. obudowach źródeł światła, do zastosowań w zabezpieczonych mechanicznie obwodach do zasilania źródeł światła, urządzeń kontrolnych, obwodów kontrolnych i sygnalizacyjnych. Zastosowanie zgodnie z odrębnymi przepisami.',
+                },
+                __typename: 'RawProductAttribute',
+              },
+              {
+                name: '853_operating_cond_temperature_max',
+                value: '70',
+                __typename: 'RawProductAttribute',
+              },
+            ],
+            images: [
+              {
+                url: 'https://nkt.widen.net/content/qtwyayu3gl/png/NKT_LV_H07V-K_1G16_RF_yellow-green_horz.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                label: 'Image of H07V-K',
+                __typename: 'Image',
+              },
+              {
+                url: 'https://nkt.widen.net/content/hvdzlh3jvh/png/NKT_LV_H07V-K_1G16_RF_yellow-green.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                label: 'Image of H07V-K',
+                __typename: 'Image',
+              },
+            ],
+            assets: [
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/ci0otwamir/pdf/H07V-KDOPDOP000401LVRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 87,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/mqkcocr8wr/pdf/H07V-KDOPDOP000401LTRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/ezbvtfbbey/pdf/H07V-KDOPDOP000401HURev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 96,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/7nlw1bpgi3/pdf/H07V-KDOPDOP000401ETRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/d0cjdvjzaw/pdf/H07V-KDOPDOP000401DERev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/2ujsovpzth/pdf/H07V-KDOPDOP000075PLRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 56,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/yfoxhuswve/pdf/Datasheet_H07V_K_PL_60001.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 229,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/xf9ent7qwa/pdf/H07V-KDOPDOP000401ENRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 80,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/vnzcbtoual/pdf/H07V-KEUDOCDOC001004ENRev02.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 02'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC001004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/wgzrkxxjzc/pdf/H07V-KDOPDOP000401CSRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/gpf9y5uz3p/pdf/H07V-KEUDOCDOC001004CSRev01.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 87,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 01'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC001004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/zqviw2r0mv/pdf/Datasheet_H07V_K_DE_60001.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 228,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/xxmooi2yjx/pdf/Datasheet_H07V_K_CS_60001.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 226,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/c4yfxdjy4f/pdf/Datasheet_H07V_K_EN_60001.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 224,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Design conform'],
+                      name: 'nkt_brandingstatus',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Data sheet metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/qtwyayu3gl/png/NKT_LV_H07V-K_1G16_RF_yellow-green_horz.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: ['yes'],
+                      name: 'nkt_notonwebsite',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: 1440,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['1'],
+                      name: 'nkt_imageOrder',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Distribution'],
+                      name: 'nkt_businessline',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Product illustration type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/hvdzlh3jvh/png/NKT_LV_H07V-K_1G16_RF_yellow-green.png?position=c&color=ffffffff&quality=80&u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: ['yes'],
+                      name: 'nkt_notonwebsite',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: 1138,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['2'],
+                      name: 'nkt_imageOrder',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Building wires'],
+                      name: 'nkt_lowvoltsub',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Distribution'],
+                      name: 'nkt_businessline',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Product illustration type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Low Voltage'],
+                      name: 'nkt_productcategory',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/tn848x4nxm/pdf/H07V-KEUDOCDOC001004PLRev02.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 82,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 02'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC001004'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/3fw3gltybt/pdf/H07V-K_H07V-REUDOCDOC000027SLRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 81,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/po8pkhdmmw/pdf/H07V-K_H07V-REUDOCDOC000027SKRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/jw0kird3un/pdf/H07V-K_H07V-REUDOCDOC000027PLRev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/cgkcthbrb2/pdf/H07V-K_H07V-REUDOCDOC000027LVRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/yi1mmdffy1/pdf/H07V-K_H07V-REUDOCDOC000027LTRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/dbx4ga4fk6/pdf/H07V-K_H07V-REUDOCDOC000027HURev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 85,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/hjo2mp8sjg/pdf/H07V-K_H07V-REUDOCDOC000027HRRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/mzvnvwmtkj/pdf/H07V-K_H07V-REUDOCDOC000027FRRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 81,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/z0u7mrxxf2/pdf/H07V-K_H07V-REUDOCDOC000027ETRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 80,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/moufcv6s9n/pdf/H07V-K_H07V-REUDOCDOC000027ENRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/fzcz4u6zud/pdf/H07V-K_H07V-REUDOCDOC000027DERev08.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 86,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 08'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/pymtzvxput/pdf/H07V-K_H07V-REUDOCDOC000027DARev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 83,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/zkhphhkios/pdf/H07V-K_H07V-REUDOCDOC000027CSRev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 81,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K', 'H07V-R'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOC000027'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/fpoiapurr0/pdf/H07V-KDOPDOP000401PLRev04.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 54,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 04'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000401'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/f1ivjlbub0/pdf/H07V-KDOPDOP000075SLRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 97,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/na1j25fzyz/pdf/H07V-KDOPDOP000075SKRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 100,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/caitwuzjef/pdf/H07V-KDOPDOP000075LVRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 101,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/fazfqq2wfg/pdf/H07V-KDOPDOP000075LTRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/kojlmv2is9/pdf/H07V-KDOPDOP000075HURev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 98,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/rc2yqwurrp/pdf/H07V-KDOPDOP000075HRRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/e9a6naqszj/pdf/H07V-KDOPDOP000075FRRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 90,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/wmjlciyoke/pdf/H07V-KDOPDOP000075ETRev05.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 88,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 05'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/6lzshrzeqz/pdf/H07V-KDOPDOP000075DARev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 90,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/gxkbwyh2mo/pdf/H07V-KDOPDOP000075DERev07.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 92,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 07'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/iv53c2zmeb/pdf/H07V-KDOPDOP000075CSRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 99,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+              {
+                sources: [
+                  {
+                    uri: 'https://nkt.widen.net/content/cxhp3dchnm/pdf/H07V-KDOPDOP000075ENRev06.pdf?u=egze6y',
+                    __typename: 'AssetSource',
+                  },
+                ],
+                custom: {
+                  customFieldsRaw: [
+                    {
+                      value: 89,
+                      name: 'nkt_size_in_kbytes',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_nameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP/DOC metadata type'],
+                      name: 'nkt_metadata_type',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['H07V-K'],
+                      name: 'nkt_dOPnameofproduct',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['Rev. 06'],
+                      name: 'nkt_revisiononlyDOPDOC',
+                      __typename: 'RawCustomField',
+                    },
+                    {
+                      value: ['DOP000075'],
+                      name: 'nkt_dOPDOCNumber',
+                      __typename: 'RawCustomField',
+                    },
+                  ],
+                  __typename: 'CustomFieldsType',
+                },
+                __typename: 'Asset',
+              },
+            ],
+            __typename: 'ProductVariant',
+          },
+        ],
+        categories: [
+          {
+            name: 'Building wires',
+            parent: {
+              name: 'Low-voltage',
+              __typename: 'Category',
+            },
+            __typename: 'Category',
+          },
+        ],
+        __typename: 'ProductData',
+      },
+      __typename: 'ProductCatalogData',
+    },
+    id: '040420ae-7397-4001-8178-73f1acb23062',
+    key: '160001076',
+    productType: {
+      id: '33b85be8-4612-49a3-a6be-9462b2d9c873',
+      key: '60001',
+      name: 'H07V-K',
+      __typename: 'ProductTypeDefinition',
+    },
+    productSelectionRefs: {
+      results: [
+        {
+          productSelection: {
+            name: 'Global product selection',
+            key: 'Global-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['160001076D1000', '160001076C0100', '160001076S0500'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+        {
+          productSelection: {
+            name: 'Czech_Republic product selection',
+            key: 'Czech_Republic-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['160001076C0100'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+        {
+          productSelection: {
+            name: 'France product selection',
+            key: 'France-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: null,
+          __typename: 'SelectionOfProduct',
+        },
+        {
+          productSelection: {
+            name: 'Poland product selection',
+            key: 'Poland-product-selection',
+            __typename: 'ProductSelection',
+          },
+          variantSelection: {
+            skus: ['160001076D1000', '160001076C0100', '160001076S0500'],
+            __typename: 'ProductVariantSelectionIncludeOnly',
+          },
+          __typename: 'SelectionOfProduct',
+        },
+      ],
+      __typename: 'SelectionOfProductQueryResult',
+    },
+    __typename: 'Product',
+  },
+];

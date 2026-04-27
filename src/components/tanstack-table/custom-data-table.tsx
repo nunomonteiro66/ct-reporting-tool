@@ -1,7 +1,6 @@
-import { Table } from '@tanstack/react-table';
+import { Row, Table } from '@tanstack/react-table';
 import { useEffect, useMemo, useState } from 'react';
-import TanstackTable from './tanstack-table';
-import SearchTextInput from '@commercetools-uikit/search-text-input';
+import TanstackTable, { GlobalFilter } from './tanstack-table';
 import ColumnOrder from './column-order';
 import {
   flattenColumnKeys,
@@ -9,6 +8,8 @@ import {
 } from '../../utils/flatten-columns';
 import { useTableContext } from '../../screens/AllProducts/context';
 import { orderColumnsByKeys } from '../../utils/sorting';
+import Switch from '../switch';
+import SelectableSearchInput from '@commercetools-uikit/selectable-search-input';
 
 type CustomDataTableProps<T> = {
   data: T[];
@@ -21,8 +22,6 @@ const CustomDataTable = <T extends Record<string, unknown>>({
     state: { columns, visibleColumns, columnOrder, selectedLanguages, table },
     actions: { setTotalResults, setVisibleColumns, setColumnOrder, setTable },
   } = useTableContext();
-
-  const [globalFilter, setGlobalFilter] = useState('');
 
   //visible columns keys with the children
   //only set visible the children with selected language
@@ -52,18 +51,60 @@ const CustomDataTable = <T extends Record<string, unknown>>({
     setTotalResults(table.getRowCount());
   };
 
+  const globalFilter = table?.getState().globalFilter ?? {
+    text: '',
+    value: '',
+    exactMatch: false,
+  };
+
+  //can be used to only change one, or several fields
+  const setGlobalFilter = (newGlobalFilter: Partial<GlobalFilter>) => {
+    if (!table) return;
+    table.setGlobalFilter((prev: GlobalFilter) => ({
+      ...prev,
+      ...newGlobalFilter,
+    }));
+  };
+
   useEffect(() => {
-    console.log('PINNED CHANGED: ', pinnedColumns);
-  }, [pinnedColumns]);
+    console.log('full visible cols: ', fullVisibleColumns);
+  }, [fullVisibleColumns]);
 
   return (
     <div className="flex flex-col h-full gap-2">
       <div className="flex flex-col items-end">
-        <SearchTextInput
-          value={globalFilter ?? ''}
-          onSubmit={(e) => setGlobalFilter(e)}
-          onReset={() => setGlobalFilter('')}
-        />
+        <div className="flex w-full gap-4 z-20">
+          <Switch
+            onChange={(value) => {
+              setGlobalFilter({ exactMatch: value });
+            }}
+            label="Exact Match"
+          />
+          {/* <SearchBar value={globalFilter} onSubmit={setGlobalFilter} /> */}
+          {/* <SearchTextInput
+            value={globalFilter ?? ''}
+            onSubmit={(e) => setGlobalFilter(e)}
+            onReset={() => setGlobalFilter('')}
+          /> */}
+
+          <SelectableSearchInput
+            options={[
+              { value: '', label: 'All Columns' },
+              ...columns.map((col) => ({
+                value: col.key,
+                label: col.label,
+              })),
+            ]}
+            value={{
+              text: globalFilter.text,
+              option: globalFilter.value,
+            }}
+            onSubmit={(e) => {
+              console.log('SETTTING GLOBAL FILTER: ', e);
+              setGlobalFilter({ text: e.text, value: e.option });
+            }}
+          />
+        </div>
         <ColumnOrder
           columns={columns}
           visibleColumns={visibleColumns}
@@ -80,7 +121,6 @@ const CustomDataTable = <T extends Record<string, unknown>>({
         columnOrder={fullColumnOrder}
         setTable={setTable}
         onTableChange={handleTableChange}
-        globalFilter={globalFilter}
         pinnedColumns={pinnedColumns}
       />
     </div>

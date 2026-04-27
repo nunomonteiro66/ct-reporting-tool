@@ -1,5 +1,8 @@
 import { mapProducts, mapProductsParallel } from '../map-with-attributes';
-import { expected, languages, productTypes, rawData } from './test-data';
+import { rawData } from '../../../../test-data/raw-data';
+import { productTypes } from '../../../../test-data/product-types';
+import { languages } from '../../../../test-data/languages';
+import { expected } from '../../../../test-data/mapped';
 
 const removeId = (data) => data.map((d) => ({ ...d, id: '' }));
 

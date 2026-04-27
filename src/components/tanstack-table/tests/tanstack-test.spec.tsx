@@ -27,7 +27,6 @@ describe('Table reflects the data correctly', () => {
         visibleColumns={['a', 'b.b-a', 'b.b-b', 'c']}
         columnOrder={['a', 'c', 'b.b-b']}
         setTable={mockSetTable}
-        globalFilter=""
         pinnedColumns={[]}
       />
     );

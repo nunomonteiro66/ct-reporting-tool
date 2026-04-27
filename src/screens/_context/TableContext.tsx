@@ -36,19 +36,38 @@ interface TableContextType<T> {
 export function createTableContext<T>() {
   const TableContext = createContext<TableContextType<T> | null>(null);
 
-  function TableProvider({ children }: { children: React.ReactNode }) {
-    const [totalResults, setTotalResults] = useState(0);
-    const [columns, setColumns] = useState<Column[]>([]);
-    const [loading, setLoading] = useState(false);
-    const [columnOrder, setColumnOrder] = useState<string[]>([]);
-    const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
-    const [appliedFilters, setAppliedFilters] = useState<TAppliedFilter[]>([]);
-    const [filtersConfig, setFiltersConfig] = useState<FiltersProps[]>([]);
-    const [selectedLanguages, setSelectedLanguages] = useState<string[]>([
-      'en',
-    ]);
-
-    const [table, setTable] = useState<Table<T> | null>(null);
+  function TableProvider({
+    children,
+    initialState,
+  }: {
+    children: React.ReactNode;
+    initialState?: Partial<TableState<T>>;
+  }) {
+    const [totalResults, setTotalResults] = useState(
+      initialState?.totalResults ?? 0
+    );
+    const [columns, setColumns] = useState<Column[]>(
+      initialState?.columns ?? []
+    );
+    const [loading, setLoading] = useState(initialState?.loading ?? false);
+    const [columnOrder, setColumnOrder] = useState<string[]>(
+      initialState?.columnOrder ?? []
+    );
+    const [visibleColumns, setVisibleColumns] = useState<string[]>(
+      initialState?.visibleColumns ?? []
+    );
+    const [appliedFilters, setAppliedFilters] = useState<TAppliedFilter[]>(
+      initialState?.appliedFilters ?? []
+    );
+    const [filtersConfig, setFiltersConfig] = useState<FiltersProps[]>(
+      initialState?.filtersConfig ?? []
+    );
+    const [selectedLanguages, setSelectedLanguages] = useState<string[]>(
+      initialState?.selectedLanguages ?? ['en']
+    );
+    const [table, setTable] = useState<Table<T> | null>(
+      initialState?.table ?? null
+    );
 
     const state: TableState<T> = {
       totalResults,

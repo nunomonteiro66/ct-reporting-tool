@@ -13,6 +13,7 @@ import {
   useReactTable,
   VisibilityState,
   ColumnPinningState,
+  Row,
 } from '@tanstack/react-table';
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import Pagination from './pagination';
@@ -22,7 +23,6 @@ import { flattenColumnKeys, flattenColumns } from '../../utils/flatten-columns';
 import getCommonPinningStyles from './column-pin';
 import ColumnHeader from './column-header';
 import ColumnFiltersTags from './column-filters-tags';
-import { orderColumnsByKeys, sortByKeyOrder } from '../../utils/sorting';
 import { getColumnsKeysWithoutNA } from '../../utils/helpers';
 import { WarningMessage } from '@commercetools-uikit/messages';
 
@@ -35,9 +35,20 @@ type TanstackTableProps<T> = {
   //setColumnOrder: (value: string[]) => void;
   setTable: Dispatch<SetStateAction<Table<T> | null>>;
   onTableChange?: (t: Table<T>) => void;
-  numberColsPinned?: number; //the first n columns are pinned (sticky). defaul is 3
-  globalFilter: string;
   pinnedColumns: string[];
+  /* globalSearchFn: (
+    row: Row<T>,
+    columnId: string,
+    filterValue: string
+  ) => boolean; */
+};
+
+//text: search term
+//value: column to filter by (if undefined, use all)
+export type GlobalFilter = {
+  text: string;
+  value?: string;
+  exactMatch: boolean;
 };
 
 const TanstackTable = <T extends Record<string, unknown>>({
@@ -47,12 +58,16 @@ const TanstackTable = <T extends Record<string, unknown>>({
   columnOrder,
   setTable,
   onTableChange,
-  numberColsPinned = 3,
-  globalFilter,
   pinnedColumns,
-}: TanstackTableProps<T>) => {
+}: /* globalSearchFn, */
+TanstackTableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+
+  const [globalFilter, setGlobalFilter] = useState<GlobalFilter>({
+    text: '',
+    exactMatch: false,
+  });
 
   const [naCols, setNacols] = useState(0); //number of attribute columns that are hidden because they only have N/A values
 
@@ -100,10 +115,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
     });
   }, [visibleColumns, columns, columnOrder]);
 
-  useEffect(() => {
-    const newVisible = getColumnsKeysWithoutNA(visibleColumns, table);
-  }, [visibleColumns]);
-
   //the columns transformed for the table
   const newColumns = useMemo(() => {
     const buildColumn = (col: Column, parentKey = ''): any => {
@@ -145,6 +156,35 @@ const TanstackTable = <T extends Record<string, unknown>>({
     return columns.map((col) => buildColumn(col));
   }, [columns]);
 
+  const globalSearchFn = (
+    row: Row<T>,
+    columnId: string,
+    filterValue: GlobalFilter
+  ) => {
+    if (!filterValue || filterValue.text.trim() === '') return true;
+    if (filterValue.value && filterValue.value != columnId) return false;
+    const rowValue = String(row.getValue(columnId));
+
+    const searchTerm = filterValue.text.trim();
+    const exactMatch = filterValue.exactMatch;
+
+    if (searchTerm.includes(',')) {
+      const filterArray = searchTerm
+        .split(',')
+        .map((f) => f.trim())
+        .filter(Boolean);
+
+      return filterArray.some((filter) =>
+        exactMatch
+          ? rowValue === filter
+          : rowValue.toLowerCase().includes(filter.toLowerCase())
+      );
+    }
+    return exactMatch
+      ? rowValue === searchTerm
+      : rowValue.toLowerCase().includes(searchTerm.toLowerCase());
+  };
+
   const table = useReactTable({
     data,
     columns: newColumns,
@@ -159,27 +199,14 @@ const TanstackTable = <T extends Record<string, unknown>>({
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
     //onColumnOrderChange: setColumnOrder,
-    onSortingChange: setSorting,
+    //onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    //onGlobalFilterChange: setGlobalFilter,
-    globalFilterFn: (row, columnId, filterValue: string) => {
-      if (!filterValue || filterValue.trim() === '') return true;
-      const value = String(row.getValue(columnId)).toLowerCase();
-
-      if (filterValue.includes(',')) {
-        const filterArray = filterValue
-          .split(',')
-          .map((f) => f.trim().toLowerCase())
-          .filter(Boolean);
-
-        return filterArray.some((filter) => value.includes(filter));
-      }
-      return value.includes(filterValue.toLowerCase());
-    },
+    onGlobalFilterChange: setGlobalFilter,
+    globalFilterFn: globalSearchFn,
     enableColumnResizing: true,
     columnResizeMode: 'onChange',
   });
