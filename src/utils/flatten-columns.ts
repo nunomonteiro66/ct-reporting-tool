@@ -33,20 +33,25 @@ export const flattenColumnKeys = (cols: Column[], parentKey = ''): string[] => {
 export const flattenColumnKeysByLanguage = (
   cols: Column[],
   languages: string[],
-  parentKey = ''
+  parentKey = '',
+  depth = 0
 ): string[] => {
   return cols.flatMap((col) => {
     const fullKey = parentKey ? `${parentKey}.${col.key}` : col.key;
 
-    if (parentKey != '' && !languages.includes(col.key)) return [];
+    // Only filter by language at depth 1 (direct children of root)
+    if (depth === 1 && !languages.includes(col.key)) return [];
 
     if (col.children && col.children.length > 0) {
-      return flattenColumnKeysByLanguage(col.children, languages, fullKey);
+      return flattenColumnKeysByLanguage(
+        col.children,
+        languages,
+        fullKey,
+        depth + 1
+      );
     }
-
     return [fullKey];
   });
 };
-
 export const flattenColumns = (cols: Column[]) =>
   cols.flatMap((col) => [col, ...(col.children ?? [])]);

@@ -1,27 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useProductsGraphql } from '../../hooks/use-products-connector/use-products-graphql';
 import { TProduct as CTProduct } from '../../types/generated/ctp';
 import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
-import TanstackTable from '../../components/tanstack-table/tanstack-table';
 import { Table } from '@tanstack/react-table';
 import PrimaryButton from '@commercetools-uikit/primary-button';
-import exportTableExcel from '../../components/tanstack-table/export-excel';
+import exportTableExcel, {
+  exportTableExcelManually,
+} from '../../components/tanstack-table/export-excel';
 import DataPageLayout from '../../layouts/data-page-layout';
 import { getProductSelectionsNames } from '../../utils/mappers/miscellaneous';
-import { Column } from '../../types/datatable-column';
-
-type ImageProduct = {
-  sku: string | null | undefined;
-  type: Record<string, unknown>;
-  product_type_key: string | null | undefined;
-  product_type_name: string | undefined;
-  categories: (string | null | undefined)[] | undefined;
-  images: {
-    name: string;
-    link: string;
-    order: number;
-  }[];
-};
+import CustomDataTable from '../../components/tanstack-table/custom-data-table';
+import { useTableContext } from './context';
+import { ImageProduct } from '../../types/images';
 
 const defaultColumns = [
   { key: 'key', label: 'Key' },
@@ -38,18 +28,21 @@ const defaultColumns = [
 ];
 
 const Images = () => {
-  //table state
-  const tableRef = useRef<Table<ImageProduct> | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [columns, setColumns] = useState<Column[]>([]);
-  const [visibleColumns, setVisibleColumns] = useState<string[]>([]);
+  const {
+    state: {
+      columns,
+      loading,
+      visibleColumns,
+      totalResults,
+      table,
+      pagination,
+    },
+    actions: { setColumns, setLoading, setVisibleColumns, setTotalResults },
+  } = useTableContext();
 
   const { getAllProductsImages } = useProductsGraphql();
 
   const [data, setData] = useState<ImageProduct[]>([]);
-
-  //total results after filtering
-  const [totalResults, setTotalResults] = useState<number>(0);
 
   const extractData = (products: CTProduct[]) => {
     return products.flatMap((prod) => {
@@ -116,15 +109,42 @@ const Images = () => {
     load();
   }, []);
 
-  const handleTableChange = (table: Table<ImageProduct>) => {
-    setColumns([
-      ...defaultColumns,
-      ...buildExtraColumns(
-        table.getFilteredRowModel().flatRows.map((row) => row.original)
-      ),
-    ]);
-    setTotalResults(table.getRowCount());
+  const isColumnOnlyEmpty = (table, columnId: string) => {
+    const columnDef = table.getColumn(columnId);
+
+    if (!columnDef || columnDef.columns.length > 0) {
+      const childColumnIds = columnDef?.columns.map((col) => col.id);
+      return childColumnIds?.some((child) => isColumnOnlyEmpty(table, child));
+    }
+
+    // uses only current page rows
+    const rows = table.getPaginationRowModel().rows;
+    const values = rows.map((row) => row.getValue(columnId));
+
+    return (
+      values.length === 0 ||
+      values.every((v) => v === null || v === undefined || v === '')
+    );
   };
+
+  const getColumnsKeysNonEmpty = (activeColumns: string[], table) => {
+    if (table)
+      return activeColumns.filter(
+        (colKey) => !isColumnOnlyEmpty(table, colKey)
+      );
+    return [];
+  };
+
+  useEffect(() => {
+    const nonEmptyAssets = getColumnsKeysNonEmpty(
+      visibleColumns.filter((col) => col.startsWith('images')),
+      table
+    );
+    setVisibleColumns((prev) => [
+      ...prev.filter((col) => !col.startsWith('images')),
+      ...nonEmptyAssets,
+    ]);
+  }, [pagination]);
 
   return (
     <>
@@ -133,27 +153,31 @@ const Images = () => {
       ) : (
         <DataPageLayout
           title="Images"
+          loading={loading}
           totalResults={totalResults}
           actions={
             <PrimaryButton
               label="Export Excel"
               onClick={() => {
-                if (tableRef.current)
-                  exportTableExcel(tableRef.current, 'images');
+                if (table) {
+                  setLoading(true);
+                  //reapply all columns
+                  setTimeout(() => {
+                    exportTableExcelManually(
+                      table,
+                      'products-images',
+                      columns.map((col) => col.key)
+                    );
+                    setLoading(false);
+                  }, 0);
+
+                  setLoading(false);
+                }
               }}
             />
           }
         >
-          <TanstackTable
-            data={data}
-            initialColumns={columns}
-            visibleColumns={visibleColumns}
-            setVisibleColumns={setVisibleColumns}
-            setTable={(t) => {
-              tableRef.current = t;
-            }}
-            onTableChange={handleTableChange}
-          />
+          <CustomDataTable data={data} useContext={useTableContext} />
         </DataPageLayout>
       )}
     </>

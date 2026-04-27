@@ -1,6 +1,7 @@
 import ExcelJS from 'exceljs';
 import { saveAs } from 'file-saver';
 import { Table } from '@tanstack/react-table';
+import { Column } from '../../types/datatable-column';
 
 const sanitize = (value: unknown) => {
   if (value === '' || value === undefined || value === null) return null;
@@ -17,7 +18,7 @@ const exportTableExcel = async <T,>(
   const workbook = new ExcelJS.Workbook();
   const worksheet = workbook.addWorksheet('Sheet1');
 
-  const headerGroups = table.getHeaderGroups();
+  let headerGroups = table.getHeaderGroups();
 
   headerGroups.forEach((group, rowIndex) => {
     const rowsHeaders: Array<string | null> = [];
@@ -27,6 +28,7 @@ const exportTableExcel = async <T,>(
     //for example, if an header has 3 colspan, then the second header is going to be index=0+3=3
     let currentColIndex = 0;
     group.headers.forEach((header) => {
+      //header is empty
       if (header.isPlaceholder) {
         rowsHeaders.push(null);
         currentColIndex++;
@@ -36,7 +38,6 @@ const exportTableExcel = async <T,>(
       const label = String(header.column.columnDef.header);
       const colSpan = header.colSpan;
 
-      //rowsHeaders.push(label);
       rowsHeaders[currentColIndex] = label;
 
       if (colSpan > 1) {
@@ -96,4 +97,58 @@ const exportTableExcel = async <T,>(
   );
 };
 
+export const exportTableExcelManually = async <T,>(
+  table: Table<T>,
+  fileName = 'data.xlsx',
+  columnIds?: string[]
+) => {
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet('Sheet1');
+
+  // get all leaf columns, filtered by columnIds if provided
+  const allLeafColumns = table
+    .getAllLeafColumns()
+    .filter((col) =>
+      columnIds ? columnIds.includes(col.id) : col.getIsVisible()
+    );
+
+  // build headers manually from leaf columns
+  const headerRow = allLeafColumns.map((col) => String(col.columnDef.header));
+  worksheet.addRow(headerRow);
+
+  // style header
+  const row = worksheet.getRow(1);
+  row.font = { bold: true };
+  row.alignment = { horizontal: 'center' };
+  row.eachCell((cell) => {
+    cell.fill = {
+      type: 'pattern',
+      pattern: 'solid',
+      fgColor: { argb: 'FFE2E8F0' },
+    };
+    cell.border = {
+      bottom: { style: 'thin', color: { argb: 'FFCBD5E1' } },
+    };
+  });
+
+  // set column widths
+  allLeafColumns.forEach((_, i) => {
+    worksheet.getColumn(i + 1).width = 25;
+  });
+
+  // add data rows
+  table.getPrePaginationRowModel().rows.forEach((row) => {
+    worksheet.addRow(
+      allLeafColumns.map((col) => sanitize(row.getValue(col.id)))
+    );
+  });
+
+  const buffer = await workbook.xlsx.writeBuffer();
+  saveAs(
+    new Blob([buffer], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    }),
+    fileName
+  );
+};
 export default exportTableExcel;

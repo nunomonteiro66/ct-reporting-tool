@@ -6,22 +6,37 @@ import {
   flattenColumnKeys,
   flattenColumnKeysByLanguage,
 } from '../../utils/flatten-columns';
-import { useTableContext } from '../../screens/AllProducts/context';
 import { orderColumnsByKeys } from '../../utils/sorting';
 import Switch from '../switch';
 import SelectableSearchInput from '@commercetools-uikit/selectable-search-input';
+import { TableContextType } from '../../types/table-context';
 
 type CustomDataTableProps<T> = {
   data: T[];
+  useContext: () => TableContextType<T>;
 };
 
 const CustomDataTable = <T extends Record<string, unknown>>({
   data,
+  useContext,
 }: CustomDataTableProps<T>) => {
   const {
-    state: { columns, visibleColumns, columnOrder, selectedLanguages, table },
-    actions: { setTotalResults, setVisibleColumns, setColumnOrder, setTable },
-  } = useTableContext();
+    state: {
+      columns,
+      visibleColumns,
+      columnOrder,
+      selectedLanguages,
+      table,
+      pagination,
+    },
+    actions: {
+      setTotalResults,
+      setVisibleColumns,
+      setColumnOrder,
+      setTable,
+      setPagination,
+    },
+  } = useContext();
 
   //visible columns keys with the children
   //only set visible the children with selected language
@@ -96,7 +111,6 @@ const CustomDataTable = <T extends Record<string, unknown>>({
               option: globalFilter.value,
             }}
             onSubmit={(e) => {
-              console.log('SETTTING GLOBAL FILTER: ', e);
               setGlobalFilter({ text: e.text, value: e.option });
             }}
           />
@@ -118,6 +132,8 @@ const CustomDataTable = <T extends Record<string, unknown>>({
         setTable={setTable}
         onTableChange={handleTableChange}
         pinnedColumns={pinnedColumns}
+        pagination={pagination}
+        setPagination={setPagination}
       />
     </div>
   );

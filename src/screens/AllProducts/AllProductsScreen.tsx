@@ -22,7 +22,6 @@ import Filters from './Filters';
 import CustomDataTable from '../../components/tanstack-table/custom-data-table';
 import { orderColumnsByKeys } from '../../utils/sorting';
 import { COLUMN_ORDER } from './columns-order';
-import fs from 'fs';
 
 const defaultColumns = [
   { key: 'key', label: 'key' },
@@ -43,7 +42,7 @@ const defaultColumns = [
 
 const AllProducts = () => {
   const {
-    state: { loading, table },
+    state: { loading, table, totalResults },
     actions: { setColumns, setLoading, setVisibleColumns, setColumnOrder },
   } = useTableContext();
 
@@ -233,6 +232,8 @@ const AllProducts = () => {
         <>
           <DataPageLayout
             title="Products"
+            loading={loading}
+            totalResults={totalResults}
             actions={
               <PrimaryButton
                 label="Export Excel"
@@ -255,7 +256,7 @@ const AllProducts = () => {
               uniqueAttributes={uniqueAttributes}
             />
 
-            <CustomDataTable data={products} />
+            <CustomDataTable data={products} useContext={useTableContext} />
           </DataPageLayout>
         </>
       )}

@@ -1,24 +1,20 @@
 import LoadingSpinner from '../components/loading-spinner/loading-spinner';
-import { useTableContext } from '../screens/AllProducts/context';
 
 type DataPageLayoutProps = {
   title: string;
-  /* totalResults?: number;
-  loading?: boolean; */
+  totalResults?: number;
+  loading?: boolean;
   actions?: React.ReactNode;
   children: React.ReactNode;
 };
 
 const DataPageLayout = ({
   title,
-  /* totalResults,
-  loading = false, */
+  totalResults,
+  loading = false,
   actions,
   children,
 }: DataPageLayoutProps) => {
-  const {
-    state: { totalResults, loading },
-  } = useTableContext();
   return (
     <>
       {loading ? (

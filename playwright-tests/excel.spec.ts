@@ -69,7 +69,6 @@ test('check extracted excel headers', async ({ page }) => {
   //check headers
   let actual = normalizeRow(excelContent[1], headers.length);
   let expected = normalizeRow(headers);
-  console.log('Second: ', actual, expected);
   expect(actual).toEqual(expected);
 });
 
@@ -110,7 +109,6 @@ test('check extracted excel', async ({ page }) => {
   //check headers
   let actual = normalizeRow(excelContent[1], headers.length);
   let expected = normalizeRow(headers);
-  console.log('Second: ', actual, expected);
   expect(actual).toEqual(expected);
 
   //check the first paginated data
@@ -128,6 +126,5 @@ test('check extracted excel', async ({ page }) => {
     tableDataNormalized.push(rowData);
   }
 
-  console.log('Third: ', excelDataNormalized, tableDataNormalized);
   expect(excelDataNormalized).toEqual(tableDataNormalized);
 });

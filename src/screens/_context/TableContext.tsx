@@ -2,36 +2,12 @@ import { createContext, useContext, useRef, useState } from 'react';
 import { Column } from '../../types/datatable-column';
 import { TAppliedFilter } from '@commercetools-uikit/filters';
 import { FiltersProps } from '../../components/filters/filters';
-import { Table } from '@tanstack/react-table';
-
-interface TableState<T> {
-  totalResults: number;
-  columns: Column[];
-  loading: boolean;
-  columnOrder: string[];
-  visibleColumns: string[];
-  appliedFilters: TAppliedFilter[];
-  filtersConfig: FiltersProps[];
-  selectedLanguages: string[];
-  table: Table<T> | null;
-}
-
-interface TableActions<T> {
-  setTotalResults: React.Dispatch<React.SetStateAction<number>>;
-  setColumns: React.Dispatch<React.SetStateAction<Column[]>>;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setColumnOrder: React.Dispatch<React.SetStateAction<string[]>>;
-  setVisibleColumns: React.Dispatch<React.SetStateAction<string[]>>;
-  setAppliedFilters: React.Dispatch<React.SetStateAction<TAppliedFilter[]>>;
-  setFiltersConfig: React.Dispatch<React.SetStateAction<FiltersProps[]>>;
-  setSelectedLanguages: React.Dispatch<React.SetStateAction<string[]>>;
-  setTable: (table: Table<T>) => void;
-}
-
-interface TableContextType<T> {
-  state: TableState<T>;
-  actions: TableActions<T>;
-}
+import { PaginationState, Table } from '@tanstack/react-table';
+import {
+  TableActions,
+  TableContextType,
+  TableState,
+} from '../../types/table-context';
 
 export function createTableContext<T>() {
   const TableContext = createContext<TableContextType<T> | null>(null);
@@ -65,6 +41,10 @@ export function createTableContext<T>() {
     const [selectedLanguages, setSelectedLanguages] = useState<string[]>(
       initialState?.selectedLanguages ?? ['en']
     );
+    const [pagination, setPagination] = useState<PaginationState>({
+      pageIndex: 0,
+      pageSize: 20,
+    });
     const [table, setTable] = useState<Table<T> | null>(
       initialState?.table ?? null
     );
@@ -78,6 +58,7 @@ export function createTableContext<T>() {
       appliedFilters,
       filtersConfig,
       selectedLanguages,
+      pagination,
       table,
     };
 
@@ -90,6 +71,7 @@ export function createTableContext<T>() {
       setAppliedFilters,
       setFiltersConfig,
       setSelectedLanguages,
+      setPagination,
       setTable,
     };
 

@@ -2,32 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import { useProductsGraphql } from '../../hooks/use-products-connector/use-products-graphql';
 import { TProduct as CTProduct } from '../../types/generated/ctp';
 import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
-import TanstackTable from '../../components/tanstack-table/tanstack-table';
-import { Table } from '@tanstack/react-table';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import exportTableExcel from '../../components/tanstack-table/export-excel';
-import FiltersComponent, {
-  FiltersProps,
-} from '../../components/filters/filters';
-import { TAppliedFilter } from '@commercetools-uikit/filters';
-import { FilterSubmitCallbackProps } from '../../types/filter';
 import DataPageLayout from '../../layouts/data-page-layout';
 import { getAsset } from '../../utils/get-asset-type';
 import { Column } from '../../types/datatable-column';
 import { getProductSelections } from '../../utils/mappers/miscellaneous';
 import { Asset } from '../../types/asset';
-
-type DocumentProduct = {
-  sku: string | null | undefined;
-  product_name: string | null | undefined;
-  type: Record<string, unknown>;
-  product_type_key: string | null | undefined;
-  product_type_name: string | undefined;
-  categories: (string | null | undefined)[] | undefined;
-  assets: Record<string, Record<string, { name: string; link: string }>>;
-  selections: string[];
-  revision: string;
-};
+import CustomDataTable from '../../components/tanstack-table/custom-data-table';
+import Filters from './Filters';
+import { useTableContext } from './context';
+import { DocumentProduct } from '../../types/documents';
 
 const defaultColumns: Column[] = [
   {
@@ -55,27 +40,20 @@ const defaultAssets = [
 ];
 
 const Documents = () => {
-  //table state
-  const tableRef = useRef<Table<DocumentProduct> | null>(null);
-
-  const [loading, setLoading] = useState(true);
-
-  const [originalColumns, setOriginalColumns] = useState(defaultColumns);
-  const [columns, setColumns] = useState(defaultColumns);
-  const [activeColumns, setActiveColumns] = useState<string[]>([]);
+  const {
+    state: { loading, table },
+    actions: { setColumns, setVisibleColumns, setLoading },
+  } = useTableContext();
 
   const { getAllProductsDocuments, getProductDocuments } = useProductsGraphql();
 
-  //filters states
-  const [appliedFilters, setAppliedFilters] = useState<TAppliedFilter[]>([]);
-  const [filtersConfig, setFiltersConfig] = useState<FiltersProps[]>([]);
-
   const [data, setData] = useState<DocumentProduct[]>([]);
 
-  const [totalResults, setTotalResults] = useState<number>(0);
+  const [languages, setLanguages] = useState<string[]>([]);
 
   useEffect(() => {
     const load = async () => {
+      setLoading(true);
       const data = await getAllProductsDocuments();
       /* const data = (await getProductDocuments(0, 1, ['172547020D1000'])).data
         ?.results; */
@@ -91,6 +69,7 @@ const Documents = () => {
           )
         ),
       ];
+      setLanguages(allLangs);
 
       //add extra columns for the assets
       const extraColumns: Column[] = defaultAssets.map((asset) => ({
@@ -108,16 +87,13 @@ const Documents = () => {
 
       const finalColumns = [...defaultColumns, ...extraColumns];
 
-      setOriginalColumns(finalColumns);
+      setColumns(finalColumns);
 
       //only en is enabled by default
-      changeLanguageColumns(finalColumns, ['en']);
-
-      //filters
-      setDefaultFilters(allLangs);
+      //changeLanguageColumns(finalColumns, ['en']);
 
       //all types are enabled by default
-      setActiveColumns(finalColumns.map((col) => col.key));
+      setVisibleColumns(finalColumns.map((col) => col.key));
 
       setLoading(false);
     };
@@ -201,86 +177,6 @@ const Documents = () => {
     setColumns(newColumns);
   };
 
-  const changeActiveTypes = (selectedTypes: string[]) => {
-    setActiveColumns((prev) =>
-      originalColumns
-        .map((col) => col.key)
-        .filter(
-          (col) =>
-            !col.startsWith('assets.') ||
-            selectedTypes.includes(col.split('.')[1])
-        )
-    );
-  };
-
-  const filtersChanged: FilterSubmitCallbackProps = (key, selectedOptions) => {
-    switch (key) {
-      case 'languages':
-        changeLanguageColumns(
-          originalColumns,
-          selectedOptions.map((opt) => opt.value)
-        );
-        break;
-      case 'types':
-        changeActiveTypes(selectedOptions.map((opt) => opt.value));
-    }
-
-    setAppliedFilters((prev) => [
-      ...prev.filter((f) => f.filterKey !== key),
-      { filterKey: key, values: selectedOptions },
-    ]);
-  };
-
-  const setDefaultFilters = (languages: string[]) => {
-    const languagesOptions = languages.map((lang) => ({
-      label: lang,
-      value: lang,
-    }));
-
-    setFiltersConfig([
-      {
-        filterKey: 'languages',
-        label: 'Languages',
-        options: languagesOptions,
-      },
-      {
-        filterKey: 'types',
-        label: 'Document types',
-        options: defaultAssets.map((asset) => ({
-          value: asset.key,
-          label: asset.label,
-        })),
-      },
-    ]);
-
-    //only english is active by default
-    //all document types are active by default
-    const englishOption = languagesOptions.find((lang) => lang.value === 'en');
-    if (englishOption)
-      setAppliedFilters([
-        {
-          filterKey: 'languages',
-          values: [englishOption],
-        },
-        {
-          filterKey: 'types',
-          values: defaultAssets.map((asset) => ({
-            value: asset.key,
-            label: asset.label,
-          })),
-        },
-      ]);
-  };
-
-  const handleTableChange = (table: Table<DocumentProduct>) => {
-    setTotalResults(table.getRowCount());
-  };
-
-  const clearAllFilters = () => {
-    filtersChanged('languages', []);
-    filtersChanged('types', []);
-  };
-
   return (
     <>
       {loading ? (
@@ -288,34 +184,24 @@ const Documents = () => {
       ) : (
         <DataPageLayout
           title="Documents"
-          totalResults={totalResults}
           actions={
             <PrimaryButton
               label="Export Excel"
               onClick={() => {
-                if (tableRef.current)
-                  exportTableExcel(tableRef.current, 'documents');
+                if (table) {
+                  setLoading(true);
+                  setTimeout(() => {
+                    exportTableExcel(table, 'products-documents');
+                    setLoading(false);
+                  }, 0);
+                  setLoading(false);
+                }
               }}
             />
           }
         >
-          <FiltersComponent
-            appliedFilters={appliedFilters}
-            filtersConfig={filtersConfig}
-            submitCallback={filtersChanged}
-            clearAllCallback={clearAllFilters}
-          />
-          <TanstackTable
-            data={data}
-            initialColumns={columns}
-            visibleColumns={activeColumns}
-            setVisibleColumns={setActiveColumns}
-            setTable={(t) => {
-              tableRef.current = t;
-            }}
-            onTableChange={handleTableChange}
-            numberColsPinned={4}
-          />
+          <Filters languages={languages} defaultAssets={defaultAssets} />
+          <CustomDataTable data={data} useContext={useTableContext} />
         </DataPageLayout>
       )}
     </>

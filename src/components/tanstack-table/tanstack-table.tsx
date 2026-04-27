@@ -14,6 +14,7 @@ import {
   VisibilityState,
   ColumnPinningState,
   Row,
+  PaginationState,
 } from '@tanstack/react-table';
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import Pagination from './pagination';
@@ -36,6 +37,8 @@ type TanstackTableProps<T> = {
   setTable: Dispatch<SetStateAction<Table<T> | null>>;
   onTableChange?: (t: Table<T>) => void;
   pinnedColumns: string[];
+  pagination: PaginationState;
+  setPagination: Dispatch<SetStateAction<PaginationState>>;
   /* globalSearchFn: (
     row: Row<T>,
     columnId: string,
@@ -59,6 +62,8 @@ const TanstackTable = <T extends Record<string, unknown>>({
   setTable,
   onTableChange,
   pinnedColumns,
+  pagination,
+  setPagination,
 }: /* globalSearchFn, */
 TanstackTableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -99,7 +104,6 @@ TanstackTableProps<T>) => {
   };
 
   useEffect(() => {
-    table.setPageSize(20);
     setTable(table);
   }, []);
 
@@ -195,6 +199,7 @@ TanstackTableProps<T>) => {
       globalFilter,
       columnOrder,
       columnPinning,
+      pagination,
     },
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
@@ -207,6 +212,7 @@ TanstackTableProps<T>) => {
     getPaginationRowModel: getPaginationRowModel(),
     onGlobalFilterChange: setGlobalFilter,
     globalFilterFn: globalSearchFn,
+    onPaginationChange: setPagination,
     enableColumnResizing: true,
     columnResizeMode: 'onChange',
   });

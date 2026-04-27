@@ -3,6 +3,10 @@ import FiltersComponent from '../../components/filters/filters';
 import { Category } from '../../types/category';
 import { useTableContext } from './context';
 import { AttributeComplete } from '../../types/attribute';
+import {
+  changeLanguagesShown,
+  getEnglishOption,
+} from '../helpers/common-filters';
 
 type OptionProps = { value: string; label: string };
 
@@ -19,7 +23,7 @@ type FiltersProps = {
 
 const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
   const {
-    state: { appliedFilters, filtersConfig, visibleColumns, selectedLanguages },
+    state: { appliedFilters, filtersConfig, visibleColumns },
     actions: {
       setAppliedFilters,
       setFiltersConfig,
@@ -59,7 +63,6 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
       },
     ]);
 
-    //!!!!!!!!!!
     const defaultOptions = languagesOptions.filter(
       (lang) => lang.value === 'en'
     );
@@ -79,21 +82,6 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
     ];
     setVisibleColumns(newActiveColumns);
   };
-
-  //only keep children with the selected languages
-  const changeLanguagesShown = (langs: string[]) => {
-    //no language selected, set english as default
-    if (langs.length === 0) {
-      setSelectedLanguages(['en']);
-    } else {
-      setSelectedLanguages(langs);
-    }
-  };
-
-  const getEnglishOption = () =>
-    filtersConfig
-      .find((filter) => filter.filterKey === 'languages')
-      ?.options.find((opt) => opt.value === 'en');
 
   const changeAttributesByCategory = (selectedOptions: OptionProps[]) => {
     const keys = selectedOptions.map((opt) => opt.value);
@@ -120,10 +108,13 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
         break;
       case 'languages':
         if (selected.length === 0) {
-          const enOption = getEnglishOption();
+          const enOption = getEnglishOption(filtersConfig);
           if (enOption) selected = [enOption];
         }
-        changeLanguagesShown(selected.map((opt) => opt.value));
+        changeLanguagesShown(
+          selected.map((opt) => opt.value),
+          setSelectedLanguages
+        );
         break;
       case 'categories':
         changeAttributesByCategory(selected);
@@ -146,8 +137,11 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
           changeAttributesShown([]);
           break;
         case 'languages':
-          const enOption = getEnglishOption();
-          changeLanguagesShown(enOption ? [enOption.value] : []);
+          const enOption = getEnglishOption(filtersConfig);
+          changeLanguagesShown(
+            enOption ? [enOption.value] : [],
+            setSelectedLanguages
+          );
           break;
         case 'categories':
           changeAttributesByCategory([]);
@@ -158,7 +152,7 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
     setAppliedFilters(
       filtersConfig.map((config) => {
         if (config.filterKey === 'languages') {
-          const enOption = getEnglishOption();
+          const enOption = getEnglishOption(filtersConfig);
           return {
             filterKey: config.filterKey,
             values: enOption ? [enOption] : [],
