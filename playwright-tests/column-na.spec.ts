@@ -10,7 +10,6 @@ test('column-na', async ({ page }) => {
 
   await removeAllColumnsExceptKey(page);
 
-  await page.getByRole('button', { name: 'Close' }).click();
   await page.getByRole('button', { name: 'Filters' }).click();
   await page.getByRole('button', { name: 'Add filter' }).click();
   await page.getByRole('option', { name: 'Attributes' }).click();
@@ -32,13 +31,13 @@ test('column-na', async ({ page }) => {
     .click();
 
   await expect(page.getByText('Hidden 1 attribute columns')).toBeVisible();
-  await checkTableHeaders(page, ['key1']);
+  await checkTableHeaders(page, ['key']);
 
   //remove the column filter
   await page.getByRole('button', { name: 'Remove', exact: true }).click();
 
   await expect(page.getByText('Hidden 1 attribute columns')).not.toBeVisible();
-  await checkTableHeaders(page, ['key', 'EAN (0000_barcode_ean_code)']);
+  await checkTableHeaders(page, ['key', 'attributes.0000_barcode_ean_code']);
 });
 
 //this ids should have N/A in this attributes, therefore the columns need to be hidden

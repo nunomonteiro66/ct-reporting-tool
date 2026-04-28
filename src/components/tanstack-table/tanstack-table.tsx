@@ -291,6 +291,7 @@ TanstackTableProps<T>) => {
                 table.getRowModel().rows.map((row, i) => (
                   <tr
                     key={row.id}
+                    id={`row-${row.id}`}
                     className={`transition-colors duration-100 border-b border-[#f1f5f9] hover:bg-[#f0f5ff] ${
                       i % 2 === 0 ? 'bg-white' : 'bg-[#fafbfc]'
                     }`}
@@ -301,6 +302,7 @@ TanstackTableProps<T>) => {
                           ...getCommonPinningStyles(cell.column),
                         }}
                         key={cell.id}
+                        id={cell.id}
                         className="py-2.75 px-4 text-[#334155] text-[13px] whitespace-nowrap overflow-hidden text-ellipsis max-w-65 align-middle bg-white"
                       >
                         {flexRender(

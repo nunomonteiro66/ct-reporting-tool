@@ -9,4 +9,5 @@ module.exports = {
   testPathIgnorePatterns: ['/node_modules/', '/playwright-tests/', '/playwright/'],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  
 };

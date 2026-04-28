@@ -107,6 +107,7 @@ const ColumnHeader = <T extends Record<string, unknown>>({
         <span
           className="flex items-center text-[#94a3b8] shrink-0 cursor-pointer"
           onClick={header.column.getToggleSortingHandler()}
+          data-testid={`sorting-${header.id}`}
         >
           {sorted === 'asc' ? (
             <ArrowUpIcon color="neutral60" size="small" />
@@ -124,6 +125,7 @@ const ColumnHeader = <T extends Record<string, unknown>>({
             e.stopPropagation();
             setOpenFilter(isOpen ? null : colKey);
           }}
+          data-testid={`column-filter-${header.id}`}
         >
           <FilterIcon
             size="small"

@@ -22,6 +22,7 @@ import Filters from './Filters';
 import CustomDataTable from '../../components/tanstack-table/custom-data-table';
 import { orderColumnsByKeys } from '../../utils/sorting';
 import { COLUMN_ORDER } from './columns-order';
+import { expected } from '../../../test-data/mapped';
 
 const defaultColumns = [
   { key: 'key', label: 'key' },
@@ -43,7 +44,13 @@ const defaultColumns = [
 const AllProducts = () => {
   const {
     state: { loading, table, totalResults },
-    actions: { setColumns, setLoading, setVisibleColumns, setColumnOrder },
+    actions: {
+      setColumns,
+      setLoading,
+      setVisibleColumns,
+      setColumnOrder,
+      setAppliedFilters,
+    },
   } = useTableContext();
 
   const { getAllProducts, getAllProductTypes, getProducts } =

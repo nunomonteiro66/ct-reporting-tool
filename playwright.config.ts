@@ -42,6 +42,7 @@ export default defineConfig({
     },
     {
       name: 'tests',
+      testDir: './playwright-tests',
       use: {
         storageState: 'auth.json',
       },

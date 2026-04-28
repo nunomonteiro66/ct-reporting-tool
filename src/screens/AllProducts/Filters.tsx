@@ -63,6 +63,12 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
       },
     ]);
 
+    if (appliedFilters) {
+      appliedFilters.forEach((filter) => {
+        filtersChanged(filter.filterKey, filter.values);
+      }, []);
+    }
+
     const defaultOptions = languagesOptions.filter(
       (lang) => lang.value === 'en'
     );
@@ -98,6 +104,8 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
     ];
 
     changeAttributesShown(newAttributesKeys);
+
+    return newAttributesKeys;
   };
 
   const filtersChanged: SubmitCallbackProps = (key, selectedOptions) => {
