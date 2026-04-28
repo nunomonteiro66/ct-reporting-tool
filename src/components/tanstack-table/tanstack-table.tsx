@@ -66,7 +66,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
   setPagination,
 }: /* globalSearchFn, */
 TanstackTableProps<T>) => {
-  const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const [globalFilter, setGlobalFilter] = useState<GlobalFilter>({
@@ -77,7 +76,7 @@ TanstackTableProps<T>) => {
   const [naCols, setNacols] = useState(0); //number of attribute columns that are hidden because they only have N/A values
 
   //state for the tanstacktable
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>();
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
   //state for the pinned columns
   //default is the first three columns
@@ -193,7 +192,6 @@ TanstackTableProps<T>) => {
     data,
     columns: newColumns,
     state: {
-      sorting,
       columnFilters,
       columnVisibility,
       globalFilter,
@@ -204,7 +202,6 @@ TanstackTableProps<T>) => {
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
     //onColumnOrderChange: setColumnOrder,
-    //onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -272,6 +269,7 @@ TanstackTableProps<T>) => {
                         data={data}
                         columnFilters={columnFilters}
                         setColumnFilters={setColumnFilters}
+                        key={`header-component-${header.id}`}
                       />
                     )
                   )}
@@ -280,10 +278,11 @@ TanstackTableProps<T>) => {
             </thead>
             <tbody>
               {table.getRowModel().rows.length === 0 ? (
-                <tr>
+                <tr key="no-results">
                   <td
                     colSpan={columns.length}
                     className="py-10 px-4 text-center text-[#94a3b8] text-[13px]"
+                    key="no-results-cell"
                   >
                     No results found
                   </td>

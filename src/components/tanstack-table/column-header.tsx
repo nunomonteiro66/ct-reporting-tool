@@ -147,7 +147,6 @@ const ColumnHeader = <T extends Record<string, unknown>>({
           onSubmit={onFilterSubmit}
           onClose={() => setOpenFilter(null)}
           anchorEl={filterRef.current}
-          id="filterPopover"
         />
       )}
 

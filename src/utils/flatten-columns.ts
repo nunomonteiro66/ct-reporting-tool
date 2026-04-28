@@ -53,5 +53,10 @@ export const flattenColumnKeysByLanguage = (
     return [fullKey];
   });
 };
-export const flattenColumns = (cols: Column[]) =>
-  cols.flatMap((col) => [col, ...(col.children ?? [])]);
+export const flattenColumns = (cols: Column[], parentKey = '') =>
+  cols.flatMap((col) => {
+    const fullKey = parentKey ? `${parentKey}.${col.key}` : col.key;
+    if (col.children && col.children.length > 0)
+      return flattenColumns(col.children, fullKey);
+    return { ...col, key: fullKey };
+  });
