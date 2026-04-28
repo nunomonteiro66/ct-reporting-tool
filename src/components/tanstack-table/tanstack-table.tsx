@@ -15,6 +15,8 @@ import {
   ColumnPinningState,
   Row,
   PaginationState,
+  ColumnDef,
+  ColumnSizingState,
 } from '@tanstack/react-table';
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import Pagination from './pagination';
@@ -82,6 +84,8 @@ TanstackTableProps<T>) => {
   //default is the first three columns
   const [columnPinning, setColumnPinning] = useState<ColumnPinningState>({});
 
+  const [columnSizing, setColumnSizing] = useState<ColumnSizingState>({});
+
   //checks if a column has only N/A values
   //if it has, hide and show a message
   const checkColumnsNA = () => {
@@ -116,7 +120,45 @@ TanstackTableProps<T>) => {
     setColumnPinning({
       left: pinnedColumns,
     });
-  }, [visibleColumns, columns, columnOrder]);
+
+    const pinnedGroupedHeaders = columns.filter(
+      (col) =>
+        col.children &&
+        col.children.some((child) =>
+          pinnedColumns.includes(`${col.key}.${child.key}`)
+        )
+    );
+
+    // columnSizing shape: { "group.child": 120, "group.child2": 200, ... }
+    const updatedColumnSizing = { ...columnSizing };
+
+    pinnedGroupedHeaders.forEach((col) => {
+      // Get only the pinned children of this group
+      const pinnedChildren = col.children.filter((child) =>
+        pinnedColumns.includes(`${col.key}.${child.key}`)
+      );
+
+      // Find the max width among pinned children from columnSizing
+      const maxWidth = Math.max(
+        ...pinnedChildren.map((child) => {
+          const id = `${col.key}.${child.key}`;
+          return columnSizing[id] ?? child.minSize ?? 150; // fallback to minSize or default
+        })
+      );
+
+      // Apply max width to ALL children in this group
+      col.children.forEach((child) => {
+        const id = `${col.key}.${child.key}`;
+        updatedColumnSizing[id] = maxWidth;
+      });
+    });
+
+    setColumnSizing(updatedColumnSizing);
+  }, [visibleColumns, columns, columnOrder, pinnedColumns]);
+
+  /* useEffect(() => {
+    setColumnSizing({});
+  }, [columnOrder, columnVisibility]); */
 
   //the columns transformed for the table
   const newColumns = useMemo(() => {
@@ -156,7 +198,7 @@ TanstackTableProps<T>) => {
       return makeLeaf({ ...col, key: fullKey });
     };
 
-    return columns.map((col) => buildColumn(col));
+    return columns.map((col) => buildColumn(col)) as ColumnDef<T, any>[];
   }, [columns]);
 
   const globalSearchFn = (
@@ -198,6 +240,7 @@ TanstackTableProps<T>) => {
       columnOrder,
       columnPinning,
       pagination,
+      columnSizing,
     },
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
@@ -212,6 +255,7 @@ TanstackTableProps<T>) => {
     onPaginationChange: setPagination,
     enableColumnResizing: true,
     columnResizeMode: 'onChange',
+    onColumnSizingChange: setColumnSizing,
   });
 
   //callback when the table data changes (f.e, when filtering in the columns)
@@ -223,6 +267,37 @@ TanstackTableProps<T>) => {
   useEffect(() => {
     checkColumnsNA();
   }, [visibleColumns, columnFilters, table.getAllColumns(), globalFilter]);
+
+  /* useEffect(() => {
+    if (!visibleColumns) return;
+
+    changeColumnVisibility(visibleColumns);
+    setColumnPinning({ left: pinnedColumns });
+
+    setColumnSizing((prevSizing) => {
+      const newSizing = { ...prevSizing };
+
+      const normalizeGroup = (col: Column) => {
+        if (!col.children?.length) return;
+
+        const childKeys = flattenColumnKeys(col.children);
+        const hasNewColumn = childKeys.some((key) => !(key in prevSizing));
+
+        // If any child is new, reset ALL siblings to 150px
+        if (hasNewColumn) {
+          childKeys.forEach((key) => {
+            newSizing[key] = 150;
+          });
+        }
+
+        col.children.forEach(normalizeGroup);
+      };
+
+      columns.forEach(normalizeGroup);
+      console.log('SETTING NEW SIZES', newSizing);
+      return newSizing;
+    });
+  }, [visibleColumns, columns, columnOrder, pinnedColumns]); */
 
   return (
     <>
@@ -238,7 +313,7 @@ TanstackTableProps<T>) => {
         <div className="overflow-x-auto h-full max-h-[calc(100vh-200px)] overflow-y-auto">
           <table
             style={{ width: table.getTotalSize() }}
-            className="border-separate table-fixed"
+            className="border-collapse table-fixed"
           >
             <thead className="sticky top-0 z-10">
               {table.getHeaderGroups().map((hg) => (
@@ -252,9 +327,8 @@ TanstackTableProps<T>) => {
                         colSpan={header.colSpan}
                         style={{
                           ...getCommonPinningStyles(header.column, header),
-                          width: header.getSize(),
+                          //width: header.getSize(),
                         }}
-                        //style={{ ...getCommonPinningStyles(header.column) }}
                         className="px-4 py-2 font-semibold text-center border-r-2 border-r-[#e2e8f0] overflow-hidden text-ellipsis bg-white"
                       >
                         {!header.isPlaceholder &&

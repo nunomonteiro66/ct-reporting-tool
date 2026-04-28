@@ -14,6 +14,11 @@ export const getCommonPinningStyles = <T extends Record<string, unknown>>(
   // Use header.getStart() for accurate position on placeholder/group headers
   // Fall back to column.getStart() for body cells
   const leftOffset = header ? header.getStart('left') : column.getStart('left');
+  const rightOffset = header
+    ? header.getStart('right')
+    : column.getStart('right');
+
+  const width = header ? header.getSize() : column.getSize();
 
   return {
     boxShadow: isLastLeftPinnedColumn
@@ -22,10 +27,10 @@ export const getCommonPinningStyles = <T extends Record<string, unknown>>(
       ? '4px 0 4px -4px gray inset'
       : undefined,
     left: isPinned === 'left' ? `${leftOffset}px` : undefined,
-    right: isPinned === 'right' ? `${column.getAfter('right')}px` : undefined,
+    right: isPinned === 'right' ? `${rightOffset}px` : undefined,
     opacity: isPinned ? 0.95 : 1,
     position: isPinned ? 'sticky' : 'relative',
-    width: column.getSize(),
+    width: width,
     zIndex: isPinned ? 1 : 0,
   };
 };
