@@ -8,4 +8,5 @@ export type Column = {
   renderItem?: (row: TRow) => ReactElement;
   isVisible?: boolean;
   children?: Column[];
+  disableFilter?: boolean;
 };

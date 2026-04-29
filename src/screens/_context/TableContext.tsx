@@ -32,9 +32,10 @@ export function createTableContext<T>() {
     const [visibleColumns, setVisibleColumns] = useState<string[]>(
       initialState?.visibleColumns ?? []
     );
-    const [appliedFilters, setAppliedFilters] = useState<TAppliedFilter[]>(
-      initialState?.appliedFilters ?? []
-    );
+    const [appliedFilters, setAppliedFilters] = useState<
+      Record<string, string[]>
+    >(initialState?.appliedFilters ?? {});
+
     const [filtersConfig, setFiltersConfig] = useState<FiltersProps[]>(
       initialState?.filtersConfig ?? []
     );

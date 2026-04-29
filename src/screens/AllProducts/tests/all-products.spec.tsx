@@ -45,8 +45,6 @@ describe('All Products Tests', () => {
       return [...headers].map((h) => h.textContent?.trim());
     });
 
-    console.log('HEADERS: ', result);
-
     fs.writeFileSync(
       'test-output.html',
       `<html><body>${container.innerHTML}</body></html>`

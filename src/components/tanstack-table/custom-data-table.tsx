@@ -68,40 +68,6 @@ const CustomDataTable = <T extends Record<string, unknown>>({
       return { ...col, children: [en] };
     });
 
-    console.log('PINNED: ', flattenColumnKeys(finalCols));
-
-    return flattenColumnKeys(finalCols);
-  }, [columnOrder, visibleColumns]);
-
-  //pinned leaf columns
-  const pinnedColumns2 = useMemo(() => {
-    const pinned = orderColumnsByKeys(columns, columnOrder).slice(0, 3);
-
-    const finalCols = pinned.map((col) => {
-      if (!col.children) return col;
-
-      //extract only the en child column
-      let en =
-        col.children.find((child) => child.key === 'en') ?? col.children[0];
-
-      //column with only the en
-      const newCol = { ...col, children: [en] };
-
-      //remove the en from the original column
-      const colWithoutEn = {
-        ...col,
-        children: col.children.filter((child) => child.key != en.key),
-      };
-
-      /* setColumnsShow((prev) => [
-        ...prev.filter((prev) => prev.key != col.key),
-        newCol,
-        colWithoutEn,
-      ]); */
-
-      return { ...col, children: [en] };
-    });
-
     return flattenColumnKeys(finalCols);
   }, [columnOrder, visibleColumns]);
 

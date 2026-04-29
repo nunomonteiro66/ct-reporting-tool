@@ -3,9 +3,10 @@ import UIFilters, {
   TAppliedFilter,
   TFilterConfiguration,
 } from '@commercetools-uikit/filters';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, Dispatch, SetStateAction } from 'react';
 import PrimaryButton from '@commercetools-uikit/primary-button';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
+import { TAppliedFilterValue } from '@commercetools-uikit/filters/dist/declarations/src/filter-menu';
 
 type OptionProps = { value: string; label: string };
 
@@ -21,84 +22,89 @@ const FiltersComponent = ({
   submitCallback,
   clearAllCallback,
 }: {
-  appliedFilters: TAppliedFilter[];
+  appliedFilters: Record<string, string[]>;
   filtersConfig: FiltersProps[];
-  submitCallback: (key: string, selectedOptions: OptionProps[]) => void;
+  submitCallback: (key: string, selectedOptions: string[]) => void;
   clearAllCallback: () => void;
 }) => {
+  //checked boxes (pending of apply)
   const [pendingSelections, setPendingSelections] = useState<
     Record<string, string[]>
   >({});
 
   useEffect(() => {
-    const initialState: Record<string, string[]> = {};
-
-    appliedFilters.forEach((filter) => {
-      initialState[filter.filterKey] =
-        (filter.values as OptionProps[]).map((v) => v.value) || [];
-    });
-
-    setPendingSelections(initialState);
+    setPendingSelections({ ...appliedFilters });
   }, [appliedFilters]);
 
-  const filters: TFilterConfiguration[] = useMemo(() => {
-    return filtersConfig.map((config) => {
-      const selected = pendingSelections[config.filterKey] || [];
+  //applied filters converted to the CT filter component
+  const ctAppliedFilters: TAppliedFilter[] = Object.entries(appliedFilters).map(
+    ([key, values]) => {
+      const ctValues = filtersConfig
+        .find((config) => config.filterKey === key)
+        ?.options.filter((opt) => values.includes(opt.value));
 
-      const setSelected = (values: string[]) =>
-        setPendingSelections((prev) => ({
-          ...prev,
-          [config.filterKey]: values,
-        }));
+      return { filterKey: key, values: ctValues ?? [] };
+    }
+  );
 
-      const onSubmit = () => {
-        const selectedOptions = config.options.filter((opt) =>
-          selected.includes(opt.value)
-        );
-        submitCallback(config.filterKey, selectedOptions);
-      };
+  useEffect(() => {}, [ctAppliedFilters]);
 
-      const applyAll = () => {
-        const allValues = config.options.map((opt) => opt.value);
-        setSelected(allValues);
-        submitCallback(config.filterKey, config.options);
-      };
+  const filters: TFilterConfiguration[] = filtersConfig.map((config) => {
+    const selected = pendingSelections[config.filterKey] || [];
 
-      const onClear = () => {
-        setSelected([]);
-        submitCallback(config.filterKey, []);
-      };
+    const setSelected = (values: string[]) => {
+      setPendingSelections((prev) => ({
+        ...prev,
+        [config.filterKey]: values,
+      }));
+    };
 
-      return {
-        key: config.filterKey,
-        label: config.label,
-        filterMenuConfiguration: {
-          renderMenuBody: () => (
-            <SelectInput
-              value={selected}
-              appearance="filter"
-              options={config.options}
-              optionStyle="checkbox"
-              onChange={(e) => setSelected(e.target.value as string[])}
-              isMulti
-            />
-          ),
-          onClearRequest: onClear,
-          renderApplyButton: () => (
-            <div className="flex gap-4">
-              <PrimaryButton label="Apply" onClick={onSubmit} />
-              <SecondaryButton label="Apply All" onClick={applyAll} />
-            </div>
-          ),
-        },
-      };
-    });
-  }, [filtersConfig, pendingSelections, submitCallback]);
+    const onSubmit = () => {
+      submitCallback(config.filterKey, selected);
+    };
+
+    const applyAll = () => {
+      const allValues = config.options.map((opt) => opt.value);
+      setSelected(allValues);
+      submitCallback(config.filterKey, allValues);
+    };
+
+    const onClear = () => {
+      setSelected([]);
+      submitCallback(config.filterKey, []);
+    };
+
+    return {
+      key: config.filterKey,
+      label: config.label,
+      filterMenuConfiguration: {
+        renderMenuBody: () => (
+          <SelectInput
+            value={selected}
+            appearance="filter"
+            options={config.options}
+            optionStyle="checkbox"
+            onChange={(e) => setSelected(e.target.value as string[])}
+            isMulti
+            onFocus={() => setSelected(appliedFilters[config.filterKey])}
+            controlShouldRenderValue
+          />
+        ),
+        onClearRequest: onClear,
+        renderApplyButton: () => (
+          <div className="flex gap-4">
+            <PrimaryButton label="Apply" onClick={onSubmit} />
+            <SecondaryButton label="Apply All" onClick={applyAll} />
+          </div>
+        ),
+      },
+    };
+  });
 
   return (
     <UIFilters
       filters={filters}
-      appliedFilters={appliedFilters}
+      appliedFilters={ctAppliedFilters}
       onClearAllRequest={() => {
         setPendingSelections({});
         clearAllCallback();

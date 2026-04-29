@@ -118,21 +118,23 @@ const ColumnHeader = <T extends Record<string, unknown>>({
           )}
         </span>
 
-        <span
-          ref={filterRef}
-          className="flex items-center text-[#94a3b8] shrink-0 cursor-pointer"
-          onClick={(e) => {
-            e.stopPropagation();
-            setOpenFilter(isOpen ? null : colKey);
-          }}
-          data-testid={`column-filter-${header.id}`}
-        >
-          <FilterIcon
-            size="small"
-            color={hasFilter ? 'primary' : 'neutral60'}
-            id="column-filter"
-          />
-        </span>
+        {header.column.getCanFilter() && (
+          <span
+            ref={filterRef}
+            className="flex items-center text-[#94a3b8] shrink-0 cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpenFilter(isOpen ? null : colKey);
+            }}
+            data-testid={`column-filter-${header.id}`}
+          >
+            <FilterIcon
+              size="small"
+              color={hasFilter ? 'primary' : 'neutral60'}
+              id="column-filter"
+            />
+          </span>
+        )}
 
         {hasFilter && (
           <span className="inline-flex items-center justify-center min-w-4 h-4 rounded-full bg-blue-500 text-white text-[10px] font-bold px-1">

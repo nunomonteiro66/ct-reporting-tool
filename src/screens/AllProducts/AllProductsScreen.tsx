@@ -32,7 +32,7 @@ const defaultColumns = [
   },
   { key: 'productType.key', label: 'Product Type Key' },
   { key: 'productType.name', label: 'Product Type Name' },
-  { key: 'categories', label: 'Categories' },
+  { key: 'categories', label: 'Categories', disableFilter: true },
   { key: 'selections', label: 'Product Selections' },
   { key: 'image', label: 'Image' },
   { key: 'epd', label: 'EPD' },
@@ -91,6 +91,7 @@ const AllProducts = () => {
       facetAttributeKeys: category.custom?.customFieldsRaw
         ? String(category.custom?.customFieldsRaw[0].value).split(':')
         : undefined,
+      name: `${category.parent?.name} > ${category.name}`,
     })) as Category[];
 
     setRawData(rawData);
@@ -142,7 +143,7 @@ const AllProducts = () => {
     );
     setProducts(mappedProducts);
 
-    mapRemainingProducts();
+    //mapRemainingProducts();
 
     setLoading(false);
   }, [languages]);
@@ -246,12 +247,7 @@ const AllProducts = () => {
                 label="Export Excel"
                 onClick={() => {
                   if (table) {
-                    setLoading(true);
-                    setTimeout(() => {
-                      exportTableExcel(table, 'products-w-attributes');
-                      setLoading(false);
-                    }, 0);
-                    setLoading(false);
+                    exportTableExcel(table, 'products-w-attributes');
                   }
                 }}
               />

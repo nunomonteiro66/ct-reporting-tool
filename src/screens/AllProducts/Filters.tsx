@@ -3,17 +3,9 @@ import FiltersComponent from '../../components/filters/filters';
 import { Category } from '../../types/category';
 import { useTableContext } from './context';
 import { AttributeComplete } from '../../types/attribute';
-import {
-  changeLanguagesShown,
-  getEnglishOption,
-} from '../helpers/common-filters';
+import { changeLanguagesShown } from '../helpers/common-filters';
 
-type OptionProps = { value: string; label: string };
-
-type SubmitCallbackProps = (
-  key: string,
-  selectedOptions: OptionProps[]
-) => void;
+type SubmitCallbackProps = (key: string, selectedOptions: string[]) => void;
 
 type FiltersProps = {
   categories: Category[];
@@ -23,7 +15,7 @@ type FiltersProps = {
 
 const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
   const {
-    state: { appliedFilters, filtersConfig, visibleColumns },
+    state: { appliedFilters, filtersConfig, visibleColumns, table },
     actions: {
       setAppliedFilters,
       setFiltersConfig,
@@ -56,24 +48,36 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
         filterKey: 'categories',
         label: 'Categories',
         options: categories.map((cat) => ({
-          label:
-            (cat.parent ? `${cat.parent.name} > ${cat.name}` : cat.name) ?? '',
+          label: cat.name ?? '',
           value: cat.key ?? '',
         })),
       },
     ]);
 
     if (appliedFilters) {
-      appliedFilters.forEach((filter) => {
-        filtersChanged(filter.filterKey, filter.values);
+      Object.entries(appliedFilters).forEach(([key, values]) => {
+        filtersChanged(key, values);
       }, []);
     }
 
-    const defaultOptions = languagesOptions.filter(
-      (lang) => lang.value === 'en'
-    );
-    if (defaultOptions) filtersChanged('languages', defaultOptions);
+    const defaultOptions = ['en'];
+    filtersChanged('languages', defaultOptions);
   }, []);
+
+  //if the column "categories changed in the column, change it also in here"
+  /* useEffect(() => {
+    const categoriesFilters = table
+      ?.getState()
+      .columnFilters.find((filter) => filter.id === 'categories');
+    if (!categoriesFilters) return;
+
+    console.log('Setting: ', categoriesFilters);
+
+    setAppliedFilters((prev) => {
+      prev['categories'] = categoriesFilters.value as string[];
+      return prev;
+    });
+  }, [table?.getState().columnFilters]); */
 
   //when the attributes filters change, replace the active columns
   const changeAttributesShown = (selectedAttributes: string[]) => {
@@ -89,13 +93,27 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
     setVisibleColumns(newActiveColumns);
   };
 
-  const changeAttributesByCategory = (selectedOptions: OptionProps[]) => {
-    const keys = selectedOptions.map((opt) => opt.value);
-
+  const changeAttributesByCategory = (selectedOptions: string[]) => {
     //get the categories
     const selectedCategories = categories.filter((cat) =>
-      keys.includes(cat.key ?? '')
+      selectedOptions.includes(cat.key ?? '')
     );
+
+    //table uses category names from both the parent and child
+    /* const selectedCategoriesLabels = selectedCategories.map((cat) => cat.name);
+
+    table?.setColumnFilters((prev) => {
+      const existingCategoriesFilters = prev.find(
+        (filter) => filter.id === 'categories'
+      );
+      if (existingCategoriesFilters) {
+        (existingCategoriesFilters.value as Array<unknown>).push(
+          selectedCategoriesLabels
+        );
+        return prev;
+      }
+      return [...prev, { id: 'categories', value: selectedCategoriesLabels }];
+    }); */
 
     const newAttributesKeys = [
       ...new Set(
@@ -103,72 +121,51 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
       ),
     ];
 
-    changeAttributesShown(newAttributesKeys);
-
     return newAttributesKeys;
   };
 
-  const filtersChanged: SubmitCallbackProps = (key, selectedOptions) => {
+  const handleFilterChange = (key: string, selectedOptions: string[]) => {
     let selected = selectedOptions;
+    let newAppliedFilters: Record<string, string[]> = {};
     switch (key) {
       case 'attributes':
-        changeAttributesShown(selected.map((opt) => opt.value));
+        changeAttributesShown(selected);
         break;
       case 'languages':
         if (selected.length === 0) {
-          const enOption = getEnglishOption(filtersConfig);
-          if (enOption) selected = [enOption];
+          selected = ['en'];
         }
-        changeLanguagesShown(
-          selected.map((opt) => opt.value),
-          setSelectedLanguages
-        );
+        changeLanguagesShown(selected, setSelectedLanguages);
         break;
       case 'categories':
-        changeAttributesByCategory(selected);
+        const newAttributes = changeAttributesByCategory(selected);
+        changeAttributesShown(newAttributes);
+        newAppliedFilters['attributes'] = newAttributes;
         break;
     }
 
-    const newAppliedFilters = [
-      ...appliedFilters.filter((f) => f.filterKey !== key),
-      { filterKey: key, values: selected },
-    ];
+    newAppliedFilters[key] = selected;
 
-    setAppliedFilters(newAppliedFilters);
+    return newAppliedFilters;
+  };
+
+  const filtersChanged: SubmitCallbackProps = (key, selectedOptions) => {
+    setAppliedFilters({
+      ...appliedFilters,
+      ...handleFilterChange(key, selectedOptions),
+    });
   };
 
   const clearAllFilters = () => {
-    filtersConfig.forEach((config) => {
-      // still need to trigger the side effects (changeAttributesShown, etc.)
-      switch (config.filterKey) {
-        case 'attributes':
-          changeAttributesShown([]);
-          break;
-        case 'languages':
-          const enOption = getEnglishOption(filtersConfig);
-          changeLanguagesShown(
-            enOption ? [enOption.value] : [],
-            setSelectedLanguages
-          );
-          break;
-        case 'categories':
-          changeAttributesByCategory([]);
-          break;
-      }
-    });
-
-    setAppliedFilters(
-      filtersConfig.map((config) => {
-        if (config.filterKey === 'languages') {
-          const enOption = getEnglishOption(filtersConfig);
-          return {
-            filterKey: config.filterKey,
-            values: enOption ? [enOption] : [],
-          };
-        }
-        return { filterKey: config.filterKey, values: [] };
-      })
+    const newFilters = filtersConfig.reduce(
+      (acc, filter) => ({
+        ...acc,
+        ...handleFilterChange(filter.filterKey, []),
+      }),
+      {} as Record<string, string[]>
     );
+
+    setAppliedFilters(newFilters);
   };
 
   return (

@@ -8,7 +8,6 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  SortingState,
   Table,
   useReactTable,
   VisibilityState,
@@ -148,6 +147,7 @@ TanstackTableProps<T>) => {
                 : [String(cellValue ?? '')];
               return filterValue.some((v) => cellArray.includes(v));
             },
+            enableColumnFilter: !col.disableFilter,
           }
         );
 
@@ -163,8 +163,6 @@ TanstackTableProps<T>) => {
 
       return makeLeaf({ ...col, key: fullKey });
     };
-
-    console.log('BUILDING COLS: ', pinnedColumns, columnPinning, columns);
 
     return columns.map((col) => buildColumn(col)) as ColumnDef<T, any>[];
   }, [columns, columnPinning]);
@@ -197,10 +195,6 @@ TanstackTableProps<T>) => {
       ? rowValue === searchTerm
       : rowValue.toLowerCase().includes(searchTerm.toLowerCase());
   };
-
-  useEffect(() => {
-    console.log('COL FIL: ', columnFilters);
-  }, [columnFilters]);
 
   const table = useReactTable({
     data,
@@ -239,37 +233,6 @@ TanstackTableProps<T>) => {
   useEffect(() => {
     checkColumnsNA();
   }, [visibleColumns, columnFilters, table.getAllColumns(), globalFilter]);
-
-  /* useEffect(() => {
-    if (!visibleColumns) return;
-
-    changeColumnVisibility(visibleColumns);
-    setColumnPinning({ left: pinnedColumns });
-
-    setColumnSizing((prevSizing) => {
-      const newSizing = { ...prevSizing };
-
-      const normalizeGroup = (col: Column) => {
-        if (!col.children?.length) return;
-
-        const childKeys = flattenColumnKeys(col.children);
-        const hasNewColumn = childKeys.some((key) => !(key in prevSizing));
-
-        // If any child is new, reset ALL siblings to 150px
-        if (hasNewColumn) {
-          childKeys.forEach((key) => {
-            newSizing[key] = 150;
-          });
-        }
-
-        col.children.forEach(normalizeGroup);
-      };
-
-      columns.forEach(normalizeGroup);
-      console.log('SETTING NEW SIZES', newSizing);
-      return newSizing;
-    });
-  }, [visibleColumns, columns, columnOrder, pinnedColumns]); */
 
   return (
     <>

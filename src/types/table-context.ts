@@ -9,7 +9,7 @@ export interface TableState<T> {
   loading: boolean;
   columnOrder: string[];
   visibleColumns: string[];
-  appliedFilters: TAppliedFilter[];
+  appliedFilters: Record<string, string[]>;
   filtersConfig: FiltersProps[];
   selectedLanguages: string[];
   pagination: PaginationState;
@@ -22,7 +22,9 @@ export interface TableActions<T> {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setColumnOrder: React.Dispatch<React.SetStateAction<string[]>>;
   setVisibleColumns: React.Dispatch<React.SetStateAction<string[]>>;
-  setAppliedFilters: React.Dispatch<React.SetStateAction<TAppliedFilter[]>>;
+  setAppliedFilters: React.Dispatch<
+    React.SetStateAction<Record<string, string[]>>
+  >;
   setFiltersConfig: React.Dispatch<React.SetStateAction<FiltersProps[]>>;
   setSelectedLanguages: React.Dispatch<React.SetStateAction<string[]>>;
   setPagination: React.Dispatch<React.SetStateAction<PaginationState>>;
