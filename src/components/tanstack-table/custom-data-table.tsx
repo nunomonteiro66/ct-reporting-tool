@@ -38,6 +38,8 @@ const CustomDataTable = <T extends Record<string, unknown>>({
     },
   } = useContext();
 
+  const [columnsShow, setColumnsShow] = useState(columns);
+
   //visible columns keys with the children
   //only set visible the children with selected language
   const fullVisibleColumns = useMemo(
@@ -55,12 +57,53 @@ const CustomDataTable = <T extends Record<string, unknown>>({
     [columnOrder]
   );
 
+  const pinnedColumns = useMemo(() => {
+    const pinned = orderColumnsByKeys(columns, columnOrder).slice(0, 3);
+
+    const finalCols = pinned.map((col) => {
+      if (!col.children) return col;
+      let en =
+        col.children.find((child) => child.key === 'en') ?? col.children[0];
+
+      return { ...col, children: [en] };
+    });
+
+    console.log('PINNED: ', flattenColumnKeys(finalCols));
+
+    return flattenColumnKeys(finalCols);
+  }, [columnOrder, visibleColumns]);
+
   //pinned leaf columns
-  const pinnedColumns = useMemo(
-    () =>
-      flattenColumnKeys(orderColumnsByKeys(columns, columnOrder).slice(0, 3)),
-    [columnOrder, visibleColumns]
-  );
+  const pinnedColumns2 = useMemo(() => {
+    const pinned = orderColumnsByKeys(columns, columnOrder).slice(0, 3);
+
+    const finalCols = pinned.map((col) => {
+      if (!col.children) return col;
+
+      //extract only the en child column
+      let en =
+        col.children.find((child) => child.key === 'en') ?? col.children[0];
+
+      //column with only the en
+      const newCol = { ...col, children: [en] };
+
+      //remove the en from the original column
+      const colWithoutEn = {
+        ...col,
+        children: col.children.filter((child) => child.key != en.key),
+      };
+
+      /* setColumnsShow((prev) => [
+        ...prev.filter((prev) => prev.key != col.key),
+        newCol,
+        colWithoutEn,
+      ]); */
+
+      return { ...col, children: [en] };
+    });
+
+    return flattenColumnKeys(finalCols);
+  }, [columnOrder, visibleColumns]);
 
   const handleTableChange = (table: Table<T>) => {
     setTotalResults(table.getRowCount());
@@ -126,7 +169,7 @@ const CustomDataTable = <T extends Record<string, unknown>>({
 
       <TanstackTable
         data={data}
-        columns={columns}
+        columns={columnsShow}
         visibleColumns={fullVisibleColumns}
         columnOrder={fullColumnOrder}
         setTable={setTable}

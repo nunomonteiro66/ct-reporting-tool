@@ -120,40 +120,6 @@ TanstackTableProps<T>) => {
     setColumnPinning({
       left: pinnedColumns,
     });
-
-    const pinnedGroupedHeaders = columns.filter(
-      (col) =>
-        col.children &&
-        col.children.some((child) =>
-          pinnedColumns.includes(`${col.key}.${child.key}`)
-        )
-    );
-
-    // columnSizing shape: { "group.child": 120, "group.child2": 200, ... }
-    const updatedColumnSizing = { ...columnSizing };
-
-    pinnedGroupedHeaders.forEach((col) => {
-      // Get only the pinned children of this group
-      const pinnedChildren = col.children.filter((child) =>
-        pinnedColumns.includes(`${col.key}.${child.key}`)
-      );
-
-      // Find the max width among pinned children from columnSizing
-      const maxWidth = Math.max(
-        ...pinnedChildren.map((child) => {
-          const id = `${col.key}.${child.key}`;
-          return columnSizing[id] ?? child.minSize ?? 150; // fallback to minSize or default
-        })
-      );
-
-      // Apply max width to ALL children in this group
-      col.children.forEach((child) => {
-        const id = `${col.key}.${child.key}`;
-        updatedColumnSizing[id] = maxWidth;
-      });
-    });
-
-    setColumnSizing(updatedColumnSizing);
   }, [visibleColumns, columns, columnOrder, pinnedColumns]);
 
   /* useEffect(() => {
@@ -198,8 +164,10 @@ TanstackTableProps<T>) => {
       return makeLeaf({ ...col, key: fullKey });
     };
 
+    console.log('BUILDING COLS: ', pinnedColumns, columnPinning, columns);
+
     return columns.map((col) => buildColumn(col)) as ColumnDef<T, any>[];
-  }, [columns]);
+  }, [columns, columnPinning]);
 
   const globalSearchFn = (
     row: Row<T>,
@@ -229,6 +197,10 @@ TanstackTableProps<T>) => {
       ? rowValue === searchTerm
       : rowValue.toLowerCase().includes(searchTerm.toLowerCase());
   };
+
+  useEffect(() => {
+    console.log('COL FIL: ', columnFilters);
+  }, [columnFilters]);
 
   const table = useReactTable({
     data,
@@ -326,8 +298,8 @@ TanstackTableProps<T>) => {
                         id={header.column.id}
                         colSpan={header.colSpan}
                         style={{
-                          ...getCommonPinningStyles(header.column, header),
-                          //width: header.getSize(),
+                          //...getCommonPinningStyles(header.column, header),
+                          width: header.getSize(),
                         }}
                         className="px-4 py-2 font-semibold text-center border-r-2 border-r-[#e2e8f0] overflow-hidden text-ellipsis bg-white"
                       >
