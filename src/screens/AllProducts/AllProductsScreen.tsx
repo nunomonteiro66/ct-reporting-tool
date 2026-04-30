@@ -143,7 +143,7 @@ const AllProducts = () => {
     );
     setProducts(mappedProducts);
 
-    //mapRemainingProducts();
+    mapRemainingProducts();
 
     setLoading(false);
   }, [languages]);
