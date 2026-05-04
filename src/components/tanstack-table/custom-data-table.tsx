@@ -38,7 +38,7 @@ const CustomDataTable = <T extends Record<string, unknown>>({
     },
   } = useContext();
 
-  const [columnsShow, setColumnsShow] = useState(columns);
+  const [hideNa, setHideNa] = useState(true);
 
   //visible columns keys with the children
   //only set visible the children with selected language
@@ -124,18 +124,29 @@ const CustomDataTable = <T extends Record<string, unknown>>({
             }}
           />
         </div>
-        <ColumnOrder
-          columns={columns}
-          visibleColumns={visibleColumns}
-          setVisibleColumns={setVisibleColumns}
-          columnOrder={columnOrder}
-          setColumnOrder={setColumnOrder}
-        />
+        <div className="flex w-full justify-between">
+          <Switch
+            enabled={hideNa}
+            onChange={(value) => {
+              console.log('CHANGING NA COLS: ', value);
+              setHideNa(value);
+            }}
+            label="Hide NA only columns"
+          />
+
+          <ColumnOrder
+            columns={columns}
+            visibleColumns={visibleColumns}
+            setVisibleColumns={setVisibleColumns}
+            columnOrder={columnOrder}
+            setColumnOrder={setColumnOrder}
+          />
+        </div>
       </div>
 
       <TanstackTable
         data={data}
-        columns={columnsShow}
+        columns={columns}
         visibleColumns={fullVisibleColumns}
         columnOrder={fullColumnOrder}
         setTable={setTable}
@@ -143,6 +154,7 @@ const CustomDataTable = <T extends Record<string, unknown>>({
         pinnedColumns={pinnedColumns}
         pagination={pagination}
         setPagination={setPagination}
+        hideNaCols={hideNa}
       />
     </div>
   );

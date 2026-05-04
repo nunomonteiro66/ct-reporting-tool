@@ -5,7 +5,7 @@ export type MappedProduct = Partial<TProduct> & {
   sku?: string;
   names: Record<string, string>;
   descriptions: Record<string, string>;
-  attributes: Record<string, string>;
+  attributes: Record<string, Record<string, string>>;
   image: 'Yes' | 'No';
   categories: string[];
   selections: string[];

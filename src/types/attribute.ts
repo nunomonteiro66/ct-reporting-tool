@@ -10,7 +10,7 @@ type LabelLocale = {
 
 export type AttributeComplete = {
   value: string;
-  label: string | string[]; //in case we want the label to be in several lines
+  label: string[]; //label has name and code (Type (7_type) )
   type: string;
   label_locales: LabelLocale[];
 };

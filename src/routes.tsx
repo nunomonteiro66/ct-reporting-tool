@@ -2,9 +2,7 @@ import type { ReactNode } from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import Spacings from '@commercetools-uikit/spacings';
 import Welcome from './components/welcome';
-import Images from './screens/Images/Images';
 import ProductsScreen from './screens/AllProducts/index';
-import TestScreen from './screens/test-screen';
 import DocumentsScreen from './screens/Documents';
 import ImagesScreen from './screens/Images';
 
@@ -37,9 +35,7 @@ const ApplicationRoutes = (_props: ApplicationRoutesProps) => {
         <Route path={`${match.path}/all-products`}>
           <ProductsScreen />
         </Route>
-        <Route path={`${match.path}/test`}>
-          <TestScreen />
-        </Route>
+
         <Route>
           <Welcome />
         </Route>

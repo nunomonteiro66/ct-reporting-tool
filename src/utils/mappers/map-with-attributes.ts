@@ -1,5 +1,10 @@
 import { AttributeComplete } from '../../types/attribute';
-import { TAsset, TProduct, TProductVariant } from '../../types/generated/ctp';
+import {
+  TAsset,
+  TProduct,
+  TProductVariant,
+  TRawProductAttribute,
+} from '../../types/generated/ctp';
 import { MappedProduct } from '../../types/mapped-product';
 import { ProductType } from '../../types/product-type';
 import { getAssetType } from '../get-asset-type';
@@ -51,6 +56,47 @@ function mapAllAttributes(
   productType: ProductType,
   languages: string[]
 ) {
+  //when a variant has the value for this attribute
+  const handleExistingAttributeValue = (attribute: TRawProductAttribute) => {
+    const value = attribute.value;
+
+    //localization ( {en: '', pt: '', ...})
+    if (typeof value === 'object') {
+      //exception attribute that needs the localization as value (['...' (en), '...' (pt), ...])
+      if (attribute.name === '0000_branch_code') {
+        const valueStr = Object.entries(value)
+          .map(([lang, v]) => `${v} (${lang})`)
+          .join(', ');
+
+        return { en: valueStr };
+      }
+
+      return value;
+    }
+
+    //all attributes must be children (if single value like this case, put under en)
+    return { en: value };
+  };
+
+  //when a variant doesn't have the value for this attribute (check if it is suposed to have, or not)
+  const handleMissingAttributeValue = (attribute: AttributeComplete) => {
+    const key = attribute.value as string;
+    const isBranchCode =
+      attribute.type === 'ltext' && attribute.value !== '0000_branch_code';
+    const isEmpty = productTypeAttrSet.has(key);
+
+    //if is empty (product type has this attribute, but value is missing), return ''
+    //if product type doesn't have this attribute, return N/A
+    return isEmpty
+      ? { en: '' }
+      : isBranchCode
+      ? languages.reduce<Record<string, string>>(
+          (acc, lang) => ({ ...acc, [lang]: 'N/A' }),
+          {}
+        )
+      : { en: 'N/A' };
+  };
+
   // Convert variant.attributes to a map for faster lookup
   const variantAttributesMap = Object.fromEntries(
     (variant.attributesRaw ?? []).map((attr) => [attr.name, attr])
@@ -69,34 +115,10 @@ function mapAllAttributes(
     const variantAttr = variantAttributesMap[key];
 
     //variant has value for this attribute
-    if (variantAttr) {
-      const val = variantAttr.value;
+    value = variantAttr
+      ? handleExistingAttributeValue(variantAttr)
+      : handleMissingAttributeValue(uniqueAttr);
 
-      //localization
-      if (typeof val === 'object' && val !== null) {
-        value =
-          variantAttr.name === '0000_branch_code'
-            ? Object.entries(val)
-                .map(([lang, v]) => `${v} (${lang})`)
-                .join(', ')
-            : val;
-      } else {
-        value = val;
-      }
-    } else {
-      const isBranchCode =
-        uniqueAttr.type === 'ltext' && uniqueAttr.value !== '0000_branch_code';
-      const isEmpty = productTypeAttrSet.has(key);
-
-      value = isEmpty
-        ? ''
-        : isBranchCode
-        ? languages.reduce<Record<string, string>>(
-            (acc, lang) => ({ ...acc, [lang]: 'N/A' }),
-            {}
-          )
-        : 'N/A';
-    }
     acc[key] = value;
     return acc;
   }, {} as Record<string, string | Record<string, unknown>>);

@@ -64,21 +64,6 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
     filtersChanged('languages', defaultOptions);
   }, []);
 
-  //if the column "categories changed in the column, change it also in here"
-  /* useEffect(() => {
-    const categoriesFilters = table
-      ?.getState()
-      .columnFilters.find((filter) => filter.id === 'categories');
-    if (!categoriesFilters) return;
-
-    console.log('Setting: ', categoriesFilters);
-
-    setAppliedFilters((prev) => {
-      prev['categories'] = categoriesFilters.value as string[];
-      return prev;
-    });
-  }, [table?.getState().columnFilters]); */
-
   //when the attributes filters change, replace the active columns
   const changeAttributesShown = (selectedAttributes: string[]) => {
     //remove all attributes columns from active columns
@@ -90,6 +75,7 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
       ...newActiveColumns,
       ...selectedAttributes.flatMap((opt) => [`attributes.${opt}`]),
     ];
+
     setVisibleColumns(newActiveColumns);
   };
 
@@ -98,22 +84,6 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
     const selectedCategories = categories.filter((cat) =>
       selectedOptions.includes(cat.key ?? '')
     );
-
-    //table uses category names from both the parent and child
-    /* const selectedCategoriesLabels = selectedCategories.map((cat) => cat.name);
-
-    table?.setColumnFilters((prev) => {
-      const existingCategoriesFilters = prev.find(
-        (filter) => filter.id === 'categories'
-      );
-      if (existingCategoriesFilters) {
-        (existingCategoriesFilters.value as Array<unknown>).push(
-          selectedCategoriesLabels
-        );
-        return prev;
-      }
-      return [...prev, { id: 'categories', value: selectedCategoriesLabels }];
-    }); */
 
     const newAttributesKeys = [
       ...new Set(

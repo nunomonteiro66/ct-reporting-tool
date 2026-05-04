@@ -40,6 +40,7 @@ type TanstackTableProps<T> = {
   pinnedColumns: string[];
   pagination: PaginationState;
   setPagination: Dispatch<SetStateAction<PaginationState>>;
+  hideNaCols?: boolean;
   /* globalSearchFn: (
     row: Row<T>,
     columnId: string,
@@ -65,6 +66,7 @@ const TanstackTable = <T extends Record<string, unknown>>({
   pinnedColumns,
   pagination,
   setPagination,
+  hideNaCols = true,
 }: /* globalSearchFn, */
 TanstackTableProps<T>) => {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -88,10 +90,17 @@ TanstackTableProps<T>) => {
   //checks if a column has only N/A values
   //if it has, hide and show a message
   const checkColumnsNA = () => {
+    console.log('TOGGLING NA COLS: ', hideNaCols);
     if (!table) return;
-    const visibleWithoutNA = getColumnsKeysWithoutNA(visibleColumns, table);
-    setNacols(visibleColumns.length - visibleWithoutNA.length);
-    changeColumnVisibility(visibleWithoutNA);
+
+    if (hideNaCols) {
+      const visibleWithoutNA = getColumnsKeysWithoutNA(visibleColumns, table);
+      setNacols(visibleColumns.length - visibleWithoutNA.length);
+      changeColumnVisibility(visibleWithoutNA);
+    } else {
+      setNacols(0);
+      changeColumnVisibility(visibleColumns);
+    }
   };
 
   const changeColumnVisibility = (visibleColumns: string[]) => {
@@ -232,7 +241,13 @@ TanstackTableProps<T>) => {
 
   useEffect(() => {
     checkColumnsNA();
-  }, [visibleColumns, columnFilters, table.getAllColumns(), globalFilter]);
+  }, [
+    visibleColumns,
+    columnFilters,
+    table.getAllColumns(),
+    globalFilter,
+    hideNaCols,
+  ]);
 
   return (
     <>
@@ -264,7 +279,7 @@ TanstackTableProps<T>) => {
                           //...getCommonPinningStyles(header.column, header),
                           width: header.getSize(),
                         }}
-                        className="px-4 py-2 font-semibold text-center border-r-2 border-r-[#e2e8f0] overflow-hidden text-ellipsis bg-white"
+                        className="px-4 py-2 font-semibold text-left border-r-2 border-r-[#e2e8f0] overflow-hidden text-ellipsis bg-white"
                       >
                         {!header.isPlaceholder &&
                           flexRender(
@@ -290,7 +305,7 @@ TanstackTableProps<T>) => {
                 <tr key="no-results">
                   <td
                     colSpan={columns.length}
-                    className="py-10 px-4 text-center text-[#94a3b8] text-[13px]"
+                    className="py-10 px-4 text-left text-[#94a3b8] text-[13px]"
                     key="no-results-cell"
                   >
                     No results found

@@ -169,15 +169,7 @@ const AllProducts = () => {
     languages: string[]
   ) => {
     //add the extra columns for the attributes
-    const newColumns = [...defaultColumns];
-    uniqueAttributesComplete.forEach((attribute) => {
-      let newColEntry = {
-        label: Array.isArray(attribute.label)
-          ? attribute.label.join(' ')
-          : attribute.label,
-        key: `attributes.${attribute.value}`,
-        isVisible: false, //hidden by default
-      };
+    const attrColumns = uniqueAttributesComplete.map((attribute) => {
       //attribute has several values (localization)
       //0000_branch_code (EL) is the only exception to the localization
       if (attribute.type === 'ltext' && attribute.value != '0000_branch_code') {
@@ -187,7 +179,7 @@ const AllProducts = () => {
 
         //the default label
         const enLabel = getLabel('en') ?? '';
-        newColumns.push({
+        return {
           label: `${attribute.value}`,
           key: `attributes.${attribute.value}`,
           isVisible: false,
@@ -198,13 +190,23 @@ const AllProducts = () => {
               key: lang,
             };
           }),
-        });
-      } else
-        newColumns.push({
-          ...newColEntry,
-          isSortable: true,
-        });
+        };
+      }
+
+      return {
+        label: attribute.label[1], //attribute id
+        isVisible: false,
+        key: `attributes.${attribute.value}`,
+        children: [
+          {
+            label: attribute.label[0], //attribute name (en)
+            key: 'en',
+          },
+        ],
+      };
     });
+
+    const newColumns = [...defaultColumns, ...attrColumns];
 
     //add all the extra columns for the locales (names, descriptions)
     const extraColumns = [

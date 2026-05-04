@@ -1,4 +1,7 @@
 import { expect, Page } from '@playwright/test';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { writeFileSync, readFileSync } from 'fs';
 
 export async function openAllProductsScreen(page: Page) {
   await page.goto(
@@ -106,3 +109,15 @@ export async function setColumnFilters(
     .getByRole('button', { name: 'Apply' })
     .click();
 }
+
+export const getJsonData = (fileName: string) => {
+  const __dirname = dirname(fileURLToPath(import.meta.url));
+  const filePath = join(__dirname, fileName);
+  return JSON.parse(readFileSync(filePath, 'utf-8'));
+};
+
+export const writeJsonData = (fileName: string, data: any) => {
+  const __dirname = dirname(fileURLToPath(import.meta.url));
+  const filePath = join(__dirname, fileName);
+  writeFileSync(filePath, JSON.stringify(data, null, 2));
+};
