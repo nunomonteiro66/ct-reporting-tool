@@ -109,7 +109,11 @@ const Images = () => {
     load();
   }, []);
 
-  const isColumnOnlyEmpty = (table, columnId: string) => {
+  const isColumnOnlyEmpty = (
+    table: Table<ImageProduct>,
+    columnId: string,
+    pagination = true
+  ) => {
     const columnDef = table.getColumn(columnId);
 
     if (!columnDef || columnDef.columns.length > 0) {
@@ -118,7 +122,10 @@ const Images = () => {
     }
 
     // uses only current page rows
-    const rows = table.getPaginationRowModel().rows;
+    const rows = pagination
+      ? table.getPaginationRowModel().rows //only the current page
+      : table.getSortedRowModel().rows; //all rows with filters and sorting, regardless of pagination
+
     const values = rows.map((row) => row.getValue(columnId));
 
     return (
@@ -127,17 +134,21 @@ const Images = () => {
     );
   };
 
-  const getColumnsKeysNonEmpty = (activeColumns: string[], table) => {
+  const getColumnsKeysNonEmpty = (
+    activeColumns: string[],
+    table: Table<ImageProduct>,
+    pagination = true
+  ) => {
     if (table)
       return activeColumns.filter(
-        (colKey) => !isColumnOnlyEmpty(table, colKey)
+        (colKey) => !isColumnOnlyEmpty(table, colKey, pagination)
       );
     return [];
   };
 
   useEffect(() => {
     const nonEmptyAssets = getColumnsKeysNonEmpty(
-      visibleColumns.filter((col) => col.startsWith('images')),
+      columns.map((col) => col.key).filter((col) => col.startsWith('images')),
       table
     );
     setVisibleColumns((prev) => [
@@ -145,6 +156,12 @@ const Images = () => {
       ...nonEmptyAssets,
     ]);
   }, [pagination]);
+
+  useEffect(() => {
+    const random30 = [...data].sort(() => Math.random() - 0.5).slice(0, 30);
+    console.log(random30);
+    console.log(random30.map((row) => row.sku).join(', '));
+  }, [data]);
 
   return (
     <>
@@ -162,14 +179,27 @@ const Images = () => {
                 if (table) {
                   setLoading(true);
                   //reapply all columns
-                  setTimeout(() => {
-                    exportTableExcelManually(
-                      table,
-                      'products-images',
-                      columns.map((col) => col.key)
-                    );
-                    setLoading(false);
-                  }, 0);
+                  const nonEmptyAssets = getColumnsKeysNonEmpty(
+                    columns
+                      .map((col) => col.key)
+                      .filter((col) => col.startsWith('images')),
+                    table,
+                    false
+                  );
+
+                  const newVisibleColumns = [
+                    ...visibleColumns.filter(
+                      (col) => !col.startsWith('images')
+                    ),
+                    ...nonEmptyAssets,
+                  ];
+                  exportTableExcelManually(
+                    table,
+                    'products-images',
+                    columns
+                      .map((col) => col.key)
+                      .filter((key) => newVisibleColumns.includes(key))
+                  );
 
                   setLoading(false);
                 }

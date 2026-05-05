@@ -10,6 +10,7 @@ import { orderColumnsByKeys } from '../../utils/sorting';
 import Switch from '../switch';
 import SelectableSearchInput from '@commercetools-uikit/selectable-search-input';
 import { TableContextType } from '../../types/table-context';
+import { isLocal } from '../../helpers';
 
 type CustomDataTableProps<T> = {
   data: T[];
@@ -71,6 +72,22 @@ const CustomDataTable = <T extends Record<string, unknown>>({
     return flattenColumnKeys(finalCols);
   }, [columnOrder, visibleColumns]);
 
+  //for the columns orderer component, use the full label (label translated + code)
+  const columnsFullLabel = useMemo(
+    () =>
+      columns.map((col) =>
+        col.children
+          ? {
+              ...col,
+              label: `${
+                col.children.find((child) => child.key === 'en')?.label
+              } (${col.label})`,
+            }
+          : col
+      ),
+    [columns]
+  );
+
   const handleTableChange = (table: Table<T>) => {
     setTotalResults(table.getRowCount());
   };
@@ -89,6 +106,11 @@ const CustomDataTable = <T extends Record<string, unknown>>({
       ...newGlobalFilter,
     }));
   };
+
+  const columnsOrderer = columns.map((col) => {
+    if (!col.children) return col;
+    return { ...col, label: col.children[0].label };
+  });
 
   return (
     <div className="flex flex-col h-full gap-2">
@@ -124,7 +146,15 @@ const CustomDataTable = <T extends Record<string, unknown>>({
             }}
           />
         </div>
-        <div className="flex w-full justify-between">
+
+        <ColumnOrder
+          columns={columnsFullLabel}
+          visibleColumns={visibleColumns}
+          setVisibleColumns={setVisibleColumns}
+          columnOrder={columnOrder}
+          setColumnOrder={setColumnOrder}
+        />
+        {isLocal && (
           <Switch
             enabled={hideNa}
             onChange={(value) => {
@@ -133,15 +163,7 @@ const CustomDataTable = <T extends Record<string, unknown>>({
             }}
             label="Hide NA only columns"
           />
-
-          <ColumnOrder
-            columns={columns}
-            visibleColumns={visibleColumns}
-            setVisibleColumns={setVisibleColumns}
-            columnOrder={columnOrder}
-            setColumnOrder={setColumnOrder}
-          />
-        </div>
+        )}
       </div>
 
       <TanstackTable

@@ -70,3 +70,8 @@ export const convertToActionData = (draft: Partial<TChannel>) => ({
   ...draft,
   name: transformLocalizedFieldToLocalizedString(draft.nameAllLocales || []),
 });
+
+//checks if the app is running locally (dev)
+export const isLocal =
+  window.location.hostname === 'localhost' ||
+  window.location.hostname === '127.0.0.1';

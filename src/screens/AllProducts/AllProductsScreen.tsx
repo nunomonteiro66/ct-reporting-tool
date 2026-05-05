@@ -157,7 +157,7 @@ const AllProducts = () => {
       ...attr,
       label: [
         ...(Array.isArray(attr.label) ? attr.label : [attr.label]),
-        `(${attr.value})`,
+        `${attr.value}`,
       ],
     }));
     return uniqueAttributesComplete;
