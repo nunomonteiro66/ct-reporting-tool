@@ -60,7 +60,7 @@ const exportTableExcel = async <T,>(
     // Style header row
     const row = worksheet.getRow(rowIndex + 1);
     row.font = { bold: true };
-    row.alignment = { horizontal: 'center' };
+    row.alignment = { horizontal: 'left' };
     row.eachCell((cell) => {
       cell.fill = {
         type: 'pattern',
@@ -119,7 +119,7 @@ export const exportTableExcelManually = async <T,>(
   // style header
   const row = worksheet.getRow(1);
   row.font = { bold: true };
-  row.alignment = { horizontal: 'center' };
+  row.alignment = { horizontal: 'left' };
   row.eachCell((cell) => {
     cell.fill = {
       type: 'pattern',
