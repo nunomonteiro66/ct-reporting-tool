@@ -11,15 +11,19 @@ import Switch from '../switch';
 import SelectableSearchInput from '@commercetools-uikit/selectable-search-input';
 import { TableContextType } from '../../types/table-context';
 import { isLocal } from '../../helpers';
+import { WarningMessage } from '@commercetools-uikit/messages';
+import { getColumnsKeysWithoutNA } from '../../utils/helpers';
 
 type CustomDataTableProps<T> = {
   data: T[];
+  pinnedColumns?: string[];
   useContext: () => TableContextType<T>;
 };
 
 const CustomDataTable = <T extends Record<string, unknown>>({
   data,
   useContext,
+  pinnedColumns = [],
 }: CustomDataTableProps<T>) => {
   const {
     state: {
@@ -29,6 +33,7 @@ const CustomDataTable = <T extends Record<string, unknown>>({
       selectedLanguages,
       table,
       pagination,
+      appliedFilters,
     },
     actions: {
       setTotalResults,
@@ -40,6 +45,22 @@ const CustomDataTable = <T extends Record<string, unknown>>({
   } = useContext();
 
   const [hideNa, setHideNa] = useState(true);
+  const [naCols, setNacols] = useState(0); //number of attribute columns that are hidden because they only have N/A values
+
+  //checks if a column has only N/A values
+  //if it has, hide and show a message
+  useEffect(() => {
+    if (!table) return;
+
+    if (hideNa) {
+      const visibleWithoutNA = getColumnsKeysWithoutNA(visibleColumns, table);
+      setNacols(visibleColumns.length - visibleWithoutNA.length);
+      setVisibleColumns(visibleWithoutNA);
+    } else {
+      setNacols(0);
+      setVisibleColumns(visibleColumns);
+    }
+  }, [table?.getSortedRowModel(), appliedFilters, hideNa]);
 
   //visible columns keys with the children
   //only set visible the children with selected language
@@ -58,7 +79,7 @@ const CustomDataTable = <T extends Record<string, unknown>>({
     [columnOrder]
   );
 
-  const pinnedColumns = useMemo(() => {
+  /* const pinnedColumns = useMemo(() => {
     const pinned = orderColumnsByKeys(columns, columnOrder).slice(0, 3);
 
     const finalCols = pinned.map((col) => {
@@ -70,20 +91,52 @@ const CustomDataTable = <T extends Record<string, unknown>>({
     });
 
     return flattenColumnKeys(finalCols);
-  }, [columnOrder, visibleColumns]);
+  }, [columnOrder, visibleColumns]); */
 
-  //for the columns orderer component, use the full label (label translated + code)
+  const finalPinnedColumns = useMemo(
+    () =>
+      pinnedColumns.map((pinCol) => {
+        const column = columns.find((col) => col.key === pinCol);
+
+        if (!column) return '';
+
+        //column without children
+        if (!column?.children) return pinCol;
+
+        //column with children, pin the en columns, or the first (in case en isn't selected)
+        return `${pinCol}.${
+          selectedLanguages.includes('en') ? 'en' : selectedLanguages[0]
+        }`;
+      }),
+    [selectedLanguages]
+  );
+
+  //for the columns orderer component, the attributes columns needs the label + code
   const columnsFullLabel = useMemo(
     () =>
-      columns.map((col) =>
-        col.children
+      columns.map(
+        (col) => {
+          if (!col.children || !col.key.startsWith('attributes.')) return col;
+
+          const enLabel = col.children
+            .find((child) => child.key === 'en')
+            ?.label.split('(en)')[0]
+            .trim();
+          const label = enLabel ? `${enLabel} (${col.label})` : col.label;
+
+          return {
+            ...col,
+            label: label,
+          };
+        }
+        /* col.children
           ? {
               ...col,
               label: `${
                 col.children.find((child) => child.key === 'en')?.label
               } (${col.label})`,
             }
-          : col
+          : col */
       ),
     [columns]
   );
@@ -106,11 +159,6 @@ const CustomDataTable = <T extends Record<string, unknown>>({
       ...newGlobalFilter,
     }));
   };
-
-  const columnsOrderer = columns.map((col) => {
-    if (!col.children) return col;
-    return { ...col, label: col.children[0].label };
-  });
 
   return (
     <div className="flex flex-col h-full gap-2">
@@ -158,13 +206,16 @@ const CustomDataTable = <T extends Record<string, unknown>>({
           <Switch
             enabled={hideNa}
             onChange={(value) => {
-              console.log('CHANGING NA COLS: ', value);
               setHideNa(value);
             }}
             label="Hide NA only columns"
           />
         )}
       </div>
+
+      {naCols != 0 && (
+        <WarningMessage>Hidden {naCols} attribute columns</WarningMessage>
+      )}
 
       <TanstackTable
         data={data}
@@ -173,10 +224,9 @@ const CustomDataTable = <T extends Record<string, unknown>>({
         columnOrder={fullColumnOrder}
         setTable={setTable}
         onTableChange={handleTableChange}
-        pinnedColumns={pinnedColumns}
+        pinnedColumns={finalPinnedColumns}
         pagination={pagination}
         setPagination={setPagination}
-        hideNaCols={hideNa}
       />
     </div>
   );

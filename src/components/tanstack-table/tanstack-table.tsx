@@ -26,7 +26,6 @@ import getCommonPinningStyles from './column-pin';
 import ColumnHeader from './column-header';
 import ColumnFiltersTags from './column-filters-tags';
 import { getColumnsKeysWithoutNA } from '../../utils/helpers';
-import { WarningMessage } from '@commercetools-uikit/messages';
 
 type TanstackTableProps<T> = {
   data: T[];
@@ -40,7 +39,6 @@ type TanstackTableProps<T> = {
   pinnedColumns: string[];
   pagination: PaginationState;
   setPagination: Dispatch<SetStateAction<PaginationState>>;
-  hideNaCols?: boolean;
   /* globalSearchFn: (
     row: Row<T>,
     columnId: string,
@@ -66,7 +64,6 @@ const TanstackTable = <T extends Record<string, unknown>>({
   pinnedColumns,
   pagination,
   setPagination,
-  hideNaCols = true,
 }: /* globalSearchFn, */
 TanstackTableProps<T>) => {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -76,8 +73,6 @@ TanstackTableProps<T>) => {
     exactMatch: false,
   });
 
-  const [naCols, setNacols] = useState(0); //number of attribute columns that are hidden because they only have N/A values
-
   //state for the tanstacktable
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
@@ -86,22 +81,6 @@ TanstackTableProps<T>) => {
   const [columnPinning, setColumnPinning] = useState<ColumnPinningState>({});
 
   const [columnSizing, setColumnSizing] = useState<ColumnSizingState>({});
-
-  //checks if a column has only N/A values
-  //if it has, hide and show a message
-  const checkColumnsNA = () => {
-    console.log('TOGGLING NA COLS: ', hideNaCols);
-    if (!table) return;
-
-    if (hideNaCols) {
-      const visibleWithoutNA = getColumnsKeysWithoutNA(visibleColumns, table);
-      setNacols(visibleColumns.length - visibleWithoutNA.length);
-      changeColumnVisibility(visibleWithoutNA);
-    } else {
-      setNacols(0);
-      changeColumnVisibility(visibleColumns);
-    }
-  };
 
   const changeColumnVisibility = (visibleColumns: string[]) => {
     let columnVisibility = Object.fromEntries(
@@ -239,21 +218,8 @@ TanstackTableProps<T>) => {
     onTableChange?.(table);
   }, [table.getRowModel().rows]);
 
-  useEffect(() => {
-    checkColumnsNA();
-  }, [
-    visibleColumns,
-    columnFilters,
-    table.getAllColumns(),
-    globalFilter,
-    hideNaCols,
-  ]);
-
   return (
     <>
-      {naCols != 0 && (
-        <WarningMessage>Hidden {naCols} attribute columns</WarningMessage>
-      )}
       <ColumnFiltersTags
         columns={flattenColumns(columns)}
         columnFilters={columnFilters}
@@ -276,8 +242,9 @@ TanstackTableProps<T>) => {
                         id={header.column.id}
                         colSpan={header.colSpan}
                         style={{
-                          //...getCommonPinningStyles(header.column, header),
+                          ...getCommonPinningStyles(header.column, header),
                           width: header.getSize(),
+                          opacity: 1,
                         }}
                         className="px-4 py-2 font-semibold text-left border-r-2 border-r-[#e2e8f0] overflow-hidden text-ellipsis bg-white"
                       >

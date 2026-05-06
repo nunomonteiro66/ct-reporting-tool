@@ -43,7 +43,7 @@ const defaultColumns = [
 
 const AllProducts = () => {
   const {
-    state: { loading, table, totalResults },
+    state: { loading, table, totalResults, visibleColumns, columns },
     actions: {
       setColumns,
       setLoading,
@@ -69,9 +69,43 @@ const AllProducts = () => {
   const [uniqueAttributes, setUniqueAttributes] = useState<AttributeComplete[]>(
     []
   );
+
+  const [pinnedColumns, setPinnedColumns] = useState<string[]>([]);
   //language codes (pt, en, ...)
   //defines the language of the attributes values
   const [languages, setLanguages] = useState<string[]>([]);
+
+  useEffect(() => {
+    setLoading(true);
+    loadData();
+  }, []);
+
+  //maps the raw data into usable data (mapped data)
+  //triggers when the language changes
+  useEffect(() => {
+    if (!productTypes || !rawData || !languages) return;
+
+    const mapRemainingProducts = async () => {
+      const newProducts = await mapProductsParallel(
+        rawData.slice(20),
+        productTypes,
+        languages
+      );
+      setProducts((prev) => [...prev, ...newProducts]);
+    };
+
+    //map the products
+    const mappedProducts = mapProducts(
+      rawData.slice(0, 20),
+      productTypes,
+      languages
+    );
+    setProducts(mappedProducts);
+
+    mapRemainingProducts();
+
+    setLoading(false);
+  }, [languages]);
 
   //fetch the product types, the data and the languages codes
   //build the columns and map all the data
@@ -115,38 +149,6 @@ const AllProducts = () => {
       orderColumnsByKeys(finalCols, COLUMN_ORDER).map((col) => col.key)
     );
   };
-
-  useEffect(() => {
-    setLoading(true);
-    loadData();
-  }, []);
-
-  //maps the raw data into usable data (mapped data)
-  //triggers when the language changes
-  useEffect(() => {
-    if (!productTypes || !rawData || !languages) return;
-
-    const mapRemainingProducts = async () => {
-      const newProducts = await mapProductsParallel(
-        rawData.slice(20),
-        productTypes,
-        languages
-      );
-      setProducts((prev) => [...prev, ...newProducts]);
-    };
-
-    //map the products
-    const mappedProducts = mapProducts(
-      rawData.slice(0, 20),
-      productTypes,
-      languages
-    );
-    setProducts(mappedProducts);
-
-    mapRemainingProducts();
-
-    setLoading(false);
-  }, [languages]);
 
   const getAllUniqueAttributes = (productTypes: any) => {
     if (!productTypes || productTypes.length === 0) return [];
@@ -261,7 +263,11 @@ const AllProducts = () => {
               uniqueAttributes={uniqueAttributes}
             />
 
-            <CustomDataTable data={products} useContext={useTableContext} />
+            <CustomDataTable
+              data={products}
+              pinnedColumns={['key', 'sku', 'names']}
+              useContext={useTableContext}
+            />
           </DataPageLayout>
         </>
       )}

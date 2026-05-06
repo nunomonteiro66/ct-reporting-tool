@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import {
   checkTableHeaders,
   openAllProductsScreen,
+  openAttributesFilter,
   removeAllColumnsExceptKey,
 } from './helpers';
 
@@ -99,4 +100,70 @@ test('column-na-several-ids', async ({ page }) => {
   ).toBeVisible();
 
   await checkTableHeaders(page, ['key']);
+});
+
+//columns in the column orderer component should reflect the table
+test('visible-columns-reflects-na', async ({ page }) => {
+  await openAllProductsScreen(page);
+
+  //apply all attributes
+  await openAttributesFilter(page);
+  await page.getByRole('button', { name: 'Apply All' }).click();
+
+  //get a list of all the available columns (ids)
+  const allColumns = (await page.locator('thead tr:first-child th').all()).map(
+    (ele) => ele.getAttribute('id')
+  );
+  console.log('ALLL COLS: ', allColumns);
+
+  //filter by a single sku
+  const sampleId = await page
+    .locator('tbody tr:first-child td:first-child')
+    .textContent();
+  console.log('SAMPLE ID: ', sampleId);
+  const searchBar = await page.getByTestId('selectable-input');
+  searchBar.click();
+  searchBar.fill(sampleId ?? '172591008');
+  await page.getByRole('button', { name: 'search-button' }).click();
+
+  //get the columns in the table
+  const currentColumns = await page
+    .locator('thead tr:first-child th')
+    .evaluateAll((els) => els.map((el) => el.id));
+  console.log('CURRENT COLS: ', currentColumns);
+
+  //get the visible columns in the column orderer
+  await page.locator('#column-orderer-button').click();
+  const ids = await page
+    .getByTestId('selected-columns-panel')
+    .locator('> div > div')
+    .evaluateAll((els) =>
+      els.map((el) => el.getAttribute('data-rfd-draggable-id'))
+    );
+
+  expect(ids).toEqual(currentColumns);
+});
+
+//check if non N/A is shown in the table
+test('n/a are all hidden', async ({ page }) => {
+  await openAllProductsScreen(page);
+
+  //apply all attributes
+  await openAttributesFilter(page);
+  await page.getByRole('button', { name: 'Apply All' }).click();
+
+  //filter by a single sku
+  const sampleId = await page
+    .locator('tbody tr:first-child td:first-child')
+    .textContent();
+  console.log('SAMPLE ID: ', sampleId);
+  const searchBar = await page.getByTestId('selectable-input');
+  searchBar.click();
+  searchBar.fill(sampleId ?? '172591008');
+  await page.getByRole('button', { name: 'search-button' }).click();
+
+  const rows = await page.locator('tbody tr td').allTextContents();
+  console.log(rows);
+  const nas = rows.filter((row) => row.toLowerCase() === 'n/a');
+  expect(nas).toEqual([]);
 });

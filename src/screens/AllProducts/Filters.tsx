@@ -30,13 +30,16 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
       label: lang,
       value: lang,
     }));
+
     setFiltersConfig([
       {
         filterKey: 'attributes',
         label: 'Attributes',
         options: uniqueAttributes.map((attr) => ({
           value: Array.isArray(attr.value) ? attr.value.join('\n') : attr.value,
-          label: Array.isArray(attr.label) ? attr.label.join('\n') : attr.label,
+          label: Array.isArray(attr.label)
+            ? `${attr.label[0]} (${attr.label[1]})`
+            : attr.label,
         })),
       },
       {
