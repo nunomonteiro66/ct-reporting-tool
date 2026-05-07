@@ -201,7 +201,11 @@ const Documents = () => {
           }
         >
           <Filters languages={languages} defaultAssets={defaultAssets} />
-          <CustomDataTable data={data} useContext={useTableContext} />
+          <CustomDataTable
+            data={data}
+            useContext={useTableContext}
+            pinnedColumns={['key', 'sku', 'names']}
+          />
         </DataPageLayout>
       )}
     </>

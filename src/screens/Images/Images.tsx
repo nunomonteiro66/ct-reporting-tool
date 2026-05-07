@@ -213,7 +213,11 @@ const Images = () => {
             />
           }
         >
-          <CustomDataTable data={data} useContext={useTableContext} />
+          <CustomDataTable
+            data={data}
+            useContext={useTableContext}
+            pinnedColumns={['key', 'sku', 'names']}
+          />
         </DataPageLayout>
       )}
     </>

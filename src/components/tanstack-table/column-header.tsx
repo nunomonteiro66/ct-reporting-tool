@@ -136,7 +136,7 @@ const ColumnHeader = <T extends Record<string, unknown>>({
           </span>
         )}
 
-        {hasFilter && (
+        {hasFilter && header.column.getCanFilter() && (
           <span className="inline-flex items-center justify-center min-w-4 h-4 rounded-full bg-blue-500 text-white text-[10px] font-bold px-1">
             {activeFilters.length}
           </span>

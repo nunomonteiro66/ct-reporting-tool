@@ -67,6 +67,19 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
     filtersChanged('languages', defaultOptions);
   }, []);
 
+  const changeDataByCategory = (appliedCategories: string[]) => {
+    //table needs the full shown name (as shown in the cells)
+    const newCategories = categories
+      .filter((cat) => appliedCategories.includes(cat.key ?? ''))
+      .map((cat) => cat.name);
+
+    //filter the data by category (change the column filter)
+    table?.setColumnFilters((prev) => [
+      ...prev,
+      { id: 'categories', value: newCategories },
+    ]);
+  };
+
   //when the attributes filters change, replace the active columns
   const changeAttributesShown = (selectedAttributes: string[]) => {
     //remove all attributes columns from active columns
@@ -114,6 +127,10 @@ const Filters = ({ categories, languages, uniqueAttributes }: FiltersProps) => {
         const newAttributes = changeAttributesByCategory(selected);
         changeAttributesShown(newAttributes);
         newAppliedFilters['attributes'] = newAttributes;
+
+        //set column filter for the data
+        changeDataByCategory(selected);
+
         break;
     }
 

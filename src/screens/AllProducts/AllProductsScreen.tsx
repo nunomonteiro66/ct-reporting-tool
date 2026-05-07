@@ -106,6 +106,9 @@ const AllProducts = () => {
       [
         getAllProductTypes(),
         getAllProducts(),
+        /* (
+          await getProducts(0, 20)
+        ).data.results, */
         getAllLanguagesCodes(),
         getAllCategories(),
       ]
@@ -124,6 +127,8 @@ const AllProducts = () => {
     setProductTypes(productTypes);
     setLanguages(languages);
     setCategories(categories);
+
+    console.log('CATEGOIRES: ', categories);
 
     const uniqueAttrs = getAllUniqueAttributes(productTypes);
     setUniqueAttributes(uniqueAttrs);
@@ -254,7 +259,6 @@ const AllProducts = () => {
                     }
                   }}
                 />
-                <PrimaryButton label="asd" onClick={() => setLoading(true)} />
               </>
             }
           >
