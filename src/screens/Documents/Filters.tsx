@@ -73,7 +73,6 @@ const Filters = ({ languages, defaultAssets }: FiltersProps) => {
   }, []);
 
   const changeActiveTypes = (selectedTypes: string[]) => {
-    console.log('active: ', selectedTypes);
     setVisibleColumns((prev) =>
       columns
         .map((col) => col.key)

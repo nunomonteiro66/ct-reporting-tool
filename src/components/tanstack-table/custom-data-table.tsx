@@ -67,7 +67,6 @@ const CustomDataTable = <T extends Record<string, unknown>>({
         visibleAttributesCols,
         table
       );
-      console.log(visibleWithoutNA, visibleAttributesCols);
       setNacols(visibleAttributesCols.length - visibleWithoutNA.length);
 
       setVisibleColumns([

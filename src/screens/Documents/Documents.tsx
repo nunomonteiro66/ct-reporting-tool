@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useProductsGraphql } from '../../hooks/use-products-connector/use-products-graphql';
 import { TProduct as CTProduct } from '../../types/generated/ctp';
 import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
@@ -41,25 +41,57 @@ const defaultAssets = [
 
 const Documents = () => {
   const {
-    state: { loading, table },
+    state: { loading, table, totalResults, visibleColumns, selectedLanguages },
     actions: { setColumns, setVisibleColumns, setLoading },
   } = useTableContext();
 
   const { getAllProductsDocuments, getProductDocuments } = useProductsGraphql();
 
-  const [data, setData] = useState<DocumentProduct[]>([]);
+  const [originalData, setOriginalData] = useState<DocumentProduct[]>([]);
 
   const [languages, setLanguages] = useState<string[]>([]);
+
+  const filteredAssets = (
+    assets: Record<string, Record<string, { name: string; link: string }>>
+  ) =>
+    Object.fromEntries(
+      Object.entries(assets)
+        .filter(
+          ([doc]) =>
+            visibleColumns.length === 0 ||
+            visibleColumns.includes(`assets.${doc}`)
+        )
+        .flatMap(([doc, languages]) => {
+          const filteredLanguages = Object.fromEntries(
+            Object.entries(languages).filter(
+              ([lang]) =>
+                selectedLanguages.length === 0 ||
+                selectedLanguages.includes(lang)
+            )
+          );
+          return Object.keys(filteredLanguages).length > 0
+            ? [[doc, filteredLanguages]]
+            : [];
+        })
+    );
+
+  const data = useMemo(
+    () =>
+      originalData.filter(
+        (data) => Object.entries(filteredAssets(data.assets)).length != 0
+      ),
+    [originalData, selectedLanguages, visibleColumns]
+  );
 
   useEffect(() => {
     const load = async () => {
       setLoading(true);
-      //const data = await getAllProductsDocuments();
-      const data = (await getProductDocuments(0, 1, ['172547020D1000'])).data
-        ?.results;
+      const data = await getAllProductsDocuments();
+      /* const data = (await getProductDocuments(0, 1, ['172547020D1000'])).data
+        ?.results; */
       const mapped = extractData(data as CTProduct[]);
 
-      setData(mapped);
+      setOriginalData(mapped);
 
       //get all the possible languages (from the mapped documents)
       const allLangs = [
@@ -184,6 +216,7 @@ const Documents = () => {
       ) : (
         <DataPageLayout
           title="Documents"
+          totalResults={totalResults}
           actions={
             <PrimaryButton
               label="Export Excel"
