@@ -119,20 +119,6 @@ const CustomDataTable = <T extends Record<string, unknown>>({
     [columnOrder]
   );
 
-  /* const pinnedColumns = useMemo(() => {
-    const pinned = orderColumnsByKeys(columns, columnOrder).slice(0, 3);
-
-    const finalCols = pinned.map((col) => {
-      if (!col.children) return col;
-      let en =
-        col.children.find((child) => child.key === 'en') ?? col.children[0];
-
-      return { ...col, children: [en] };
-    });
-
-    return flattenColumnKeys(finalCols);
-  }, [columnOrder, visibleColumns]); */
-
   const finalPinnedColumns = useMemo(
     () =>
       pinnedColumns.map((pinCol) => {
@@ -154,30 +140,20 @@ const CustomDataTable = <T extends Record<string, unknown>>({
   //for the columns orderer component, the attributes columns needs the label + code
   const columnsFullLabel = useMemo(
     () =>
-      columns.map(
-        (col) => {
-          if (!col.children || !col.key.startsWith('attributes.')) return col;
+      columns.map((col) => {
+        if (!col.children || !col.key.startsWith('attributes.')) return col;
 
-          const enLabel = col.children
-            .find((child) => child.key === 'en')
-            ?.label.split('(en)')[0]
-            .trim();
-          const label = enLabel ? `${enLabel} (${col.label})` : col.label;
+        const enLabel = col.children
+          .find((child) => child.key === 'en')
+          ?.label.split('(en)')[0]
+          .trim();
+        const label = enLabel ? `${enLabel} (${col.label})` : col.label;
 
-          return {
-            ...col,
-            label: label,
-          };
-        }
-        /* col.children
-          ? {
-              ...col,
-              label: `${
-                col.children.find((child) => child.key === 'en')?.label
-              } (${col.label})`,
-            }
-          : col */
-      ),
+        return {
+          ...col,
+          label: label,
+        };
+      }),
     [columns]
   );
 

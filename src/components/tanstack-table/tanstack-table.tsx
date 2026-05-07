@@ -26,6 +26,7 @@ import getCommonPinningStyles from './column-pin';
 import ColumnHeader from './column-header';
 import ColumnFiltersTags from './column-filters-tags';
 import { getColumnsKeysWithoutNA } from '../../utils/helpers';
+import { splitPinnedHeaderGroups } from './split-pinned-headers';
 
 type TanstackTableProps<T> = {
   data: T[];
@@ -217,9 +218,13 @@ TanstackTableProps<T>) => {
   useEffect(() => {
     onTableChange?.(table);
   }, [table.getRowModel().rows]);
-  useEffect(() => {
-    console.log('COL FILTERS CHANGED: ', columnFilters);
-  }, [columnFilters]);
+
+  //splits the column headers, in case one column is pinned
+  //f.e: names.en is pinned, so two headers: One for the pinned, and the other for the names.da, names.sv, ...
+  const headerGroups = splitPinnedHeaderGroups(
+    table.getHeaderGroups(),
+    visibleColumns
+  );
 
   return (
     <>
@@ -235,7 +240,7 @@ TanstackTableProps<T>) => {
             className="border-collapse table-fixed"
           >
             <thead className="sticky top-0 z-10">
-              {table.getHeaderGroups().map((hg) => (
+              {headerGroups.map((hg) => (
                 <tr key={hg.id}>
                   {hg.headers.map((header) =>
                     header.isPlaceholder || header.column.columns.length > 0 ? (
