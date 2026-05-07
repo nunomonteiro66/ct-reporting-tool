@@ -22,7 +22,6 @@ import Filters from './Filters';
 import CustomDataTable from '../../components/tanstack-table/custom-data-table';
 import { orderColumnsByKeys } from '../../utils/sorting';
 import { COLUMN_ORDER } from './columns-order';
-import { expected } from '../../../test-data/mapped';
 
 const defaultColumns = [
   { key: 'key', label: 'key' },
@@ -43,14 +42,8 @@ const defaultColumns = [
 
 const AllProducts = () => {
   const {
-    state: { loading, table, totalResults, visibleColumns, columns },
-    actions: {
-      setColumns,
-      setLoading,
-      setVisibleColumns,
-      setColumnOrder,
-      setAppliedFilters,
-    },
+    state: { loading, table, totalResults },
+    actions: { setColumns, setLoading, setVisibleColumns, setColumnOrder },
   } = useTableContext();
 
   const { getAllProducts, getAllProductTypes, getProducts } =
@@ -70,7 +63,6 @@ const AllProducts = () => {
     []
   );
 
-  const [pinnedColumns, setPinnedColumns] = useState<string[]>([]);
   //language codes (pt, en, ...)
   //defines the language of the attributes values
   const [languages, setLanguages] = useState<string[]>([]);
@@ -247,14 +239,23 @@ const AllProducts = () => {
             loading={loading}
             totalResults={totalResults}
             actions={
-              <PrimaryButton
-                label="Export Excel"
-                onClick={() => {
-                  if (table) {
-                    exportTableExcel(table, 'products-w-attributes');
-                  }
-                }}
-              />
+              <>
+                <PrimaryButton
+                  label="Export Excel"
+                  onClick={() => {
+                    console.log('TABLE: ', table);
+                    if (table) {
+                      setLoading(true);
+
+                      setTimeout(() => {}, 6000);
+
+                      exportTableExcel(table, 'products-w-attributes');
+                      setLoading(false);
+                    }
+                  }}
+                />
+                <PrimaryButton label="asd" onClick={() => setLoading(true)} />
+              </>
             }
           >
             <Filters
@@ -267,6 +268,7 @@ const AllProducts = () => {
               data={products}
               pinnedColumns={['key', 'sku', 'names']}
               useContext={useTableContext}
+              categories={categories}
             />
           </DataPageLayout>
         </>

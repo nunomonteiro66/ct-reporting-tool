@@ -13,16 +13,19 @@ import { TableContextType } from '../../types/table-context';
 import { isLocal } from '../../helpers';
 import { WarningMessage } from '@commercetools-uikit/messages';
 import { getColumnsKeysWithoutNA } from '../../utils/helpers';
+import { Category } from '../../types/category';
 
 type CustomDataTableProps<T> = {
   data: T[];
   pinnedColumns?: string[];
+  categories: Category[];
   useContext: () => TableContextType<T>;
 };
 
 const CustomDataTable = <T extends Record<string, unknown>>({
   data,
   useContext,
+  categories,
   pinnedColumns = [],
 }: CustomDataTableProps<T>) => {
   const {
@@ -53,14 +56,51 @@ const CustomDataTable = <T extends Record<string, unknown>>({
     if (!table) return;
 
     if (hideNa) {
-      const visibleWithoutNA = getColumnsKeysWithoutNA(visibleColumns, table);
-      setNacols(visibleColumns.length - visibleWithoutNA.length);
-      setVisibleColumns(visibleWithoutNA);
-    } else {
-      setNacols(0);
-      setVisibleColumns(visibleColumns);
+      //get applied attributes
+      const appliedAttributes = Object.entries(appliedFilters).find(
+        ([key]) => key === 'attributes'
+      );
+      if (!appliedAttributes) return;
+
+      //get only the attributes that should be shown
+      const visibleAttributesCols = appliedAttributes[1].map(
+        (attr) => `attributes.${attr}`
+      );
+      const visibleWithoutNA = getColumnsKeysWithoutNA(
+        visibleAttributesCols,
+        table
+      );
+      console.log(visibleWithoutNA, visibleAttributesCols);
+      setNacols(visibleAttributesCols.length - visibleWithoutNA.length);
+
+      setVisibleColumns([
+        //non attribute columns are always visible
+        ...visibleColumns.filter((col) => !col.startsWith('attributes.')),
+        ...visibleWithoutNA,
+      ]);
     }
   }, [table?.getSortedRowModel(), appliedFilters, hideNa]);
+
+  //category filter
+  const appliedCategories = Object.entries(appliedFilters).find(
+    ([key]) => key === 'categories'
+  )?.[1];
+  useEffect(() => {
+    if (appliedCategories) {
+      console.log('CATEGORIES CHANGED', categories);
+
+      //table needs the full shown name (as shown in the cells)
+      const newCategories = categories
+        .filter((cat) => appliedCategories.includes(cat.key ?? ''))
+        .map((cat) => cat.name);
+
+      //filter the data by category (change the column filter)
+      table?.setColumnFilters((prev) => [
+        ...prev,
+        { id: 'categories', value: newCategories },
+      ]);
+    }
+  }, [appliedCategories]);
 
   //visible columns keys with the children
   //only set visible the children with selected language

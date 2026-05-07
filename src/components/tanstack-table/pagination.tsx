@@ -28,6 +28,7 @@ const Pagination = <T extends Record<string, unknown>>({
         <Button
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
+          name="previousPage"
         >
           <AngleLeftIcon
             color={!table.getCanPreviousPage() ? 'neutral60' : 'primary'}
@@ -54,6 +55,7 @@ const Pagination = <T extends Record<string, unknown>>({
         <Button
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
+          name="nextPage"
         >
           <AngleRightIcon
             color={!table.getCanNextPage() ? 'neutral60' : 'primary'}

@@ -5,52 +5,93 @@ import CustomDataTable from '../../components/tanstack-table/custom-data-table';
 import { useTableContext } from '../AllProducts/context';
 import { useEffect } from 'react';
 import { flattenColumns } from '../../utils/flatten-columns';
-import { expected } from '../../../test-data/mapped';
+import FiltersComponent from '../../components/filters/filters';
+import { ImageProduct } from '../../types/images';
+import { imagesSample } from '../Images/tests/images-sample';
+
+const buildExtraColumns = (data: ImageProduct[]) => {
+  const len = data.length
+    ? Math.max(...data.map((map) => Object.keys(map.images).length))
+    : 0;
+  return Array.from({ length: len }, (_, i) => [
+    { key: `images.${i}.name`, label: `Image ${i + 1}` },
+    { key: `images.${i}.link`, label: `Image ${i + 1} link` },
+  ]).flat();
+};
 
 const TestC = () => {
   const {
     actions: { setColumns, setVisibleColumns, setSelectedLanguages },
   } = useTableContext();
 
-  const cols = [
-    { key: 'key', label: 'key' },
-    {
-      key: 'sku',
-      label: 'SKU',
-    },
-    { key: 'productType.key', label: 'Product Type Key' },
-    { key: 'productType.name', label: 'Product Type Name' },
-    { key: 'categories', label: 'Categories' },
-    { key: 'selections', label: 'Product Selections' },
-    { key: 'image', label: 'Image' },
-    { key: 'epd', label: 'EPD' },
-    { key: 'dop', label: 'DOP' },
-    { key: 'doc', label: 'DOC' },
-    { key: 'datasheet', label: 'Datasheet' },
-    {
-      key: 'names',
-      label: 'Names',
-      children: [
-        { key: 'en', label: 'EN' },
-        { key: 'sv', label: 'SV' },
-      ],
-    },
-  ];
+  const data = imagesSample;
 
-  const data = expected;
+  const cols = [{ key: 'sku', label: 'sku' }, ...buildExtraColumns(data)];
 
   useEffect(() => {
     //setColumns(mockColumns);
     //setVisibleColumns(mockColumns.map((col) => col.key));
     setColumns(cols);
+    console.log('COLUMNS: ', cols);
+    //setVisibleColumns(cols.map((col) => col.key));
     setVisibleColumns(cols.map((col) => col.key));
 
     setSelectedLanguages(['en', 'sv']);
   }, []);
 
+  const filterConfig = [
+    {
+      filterKey: '1',
+      label: '1',
+      options: [
+        {
+          value: '1',
+          label: '1',
+        },
+        {
+          value: '2',
+          label: '2',
+        },
+        {
+          value: '3',
+          label: '3',
+        },
+      ],
+    },
+    {
+      filterKey: '2',
+      label: '2',
+      options: [
+        {
+          value: '1',
+          label: '1',
+        },
+        {
+          value: '2',
+          label: '2',
+        },
+        {
+          value: '3',
+          label: '3',
+        },
+      ],
+    },
+  ];
+
   return (
     <>
-      <CustomDataTable data={data} />
+      {/* <Filters
+        categories={categories ?? []}
+        languages={languages}
+        uniqueAttributes={uniqueAttributes}
+      /> */}
+      <FiltersComponent
+        filtersConfig={filterConfig}
+        appliedFilters={{ '1': ['1'] }}
+        clearAllCallback={() => {}}
+        submitCallback={() => {}}
+      />
+      <CustomDataTable data={data} useContext={useTableContext} />
     </>
   );
 };

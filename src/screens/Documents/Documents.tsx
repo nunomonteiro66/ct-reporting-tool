@@ -54,9 +54,9 @@ const Documents = () => {
   useEffect(() => {
     const load = async () => {
       setLoading(true);
-      const data = await getAllProductsDocuments();
-      /* const data = (await getProductDocuments(0, 1, ['172547020D1000'])).data
-        ?.results; */
+      //const data = await getAllProductsDocuments();
+      const data = (await getProductDocuments(0, 1, ['172547020D1000'])).data
+        ?.results;
       const mapped = extractData(data as CTProduct[]);
 
       setData(mapped);

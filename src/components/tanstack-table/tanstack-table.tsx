@@ -217,6 +217,9 @@ TanstackTableProps<T>) => {
   useEffect(() => {
     onTableChange?.(table);
   }, [table.getRowModel().rows]);
+  useEffect(() => {
+    console.log('COL FILTERS CHANGED: ', columnFilters);
+  }, [columnFilters]);
 
   return (
     <>

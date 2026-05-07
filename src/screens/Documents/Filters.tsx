@@ -55,14 +55,25 @@ const Filters = ({ languages, defaultAssets }: FiltersProps) => {
     ]);
 
     //set all documents on by default
-    filtersChanged('types', assetsOptions);
+    const assetsFilters = handleFilterChange(
+      'types',
+      assetsOptions.map((asset) => asset.value)
+    );
+
+    filtersChanged(
+      'types',
+      assetsOptions.map((asset) => asset.value)
+    );
 
     //set en on by default
-    const defaultEn = languagesOptions.filter((lang) => lang.value === 'en');
-    if (defaultEn) filtersChanged('languages', defaultEn);
+    const languagesFilters = handleFilterChange('languages', ['en']);
+    //filtersChanged('languages', ['en']);
+
+    setAppliedFilters({ ...assetsFilters, ...languagesFilters });
   }, []);
 
   const changeActiveTypes = (selectedTypes: string[]) => {
+    console.log('active: ', selectedTypes);
     setVisibleColumns((prev) =>
       columns
         .map((col) => col.key)
@@ -74,27 +85,31 @@ const Filters = ({ languages, defaultAssets }: FiltersProps) => {
     );
   };
 
-  const filtersChanged: FilterSubmitCallbackProps = (key, selectedOptions) => {
+  const handleFilterChange = (key: string, selectedOptions: string[]) => {
     let selected = selectedOptions;
+    let newAppliedFilters: Record<string, string[]> = {};
     switch (key) {
       case 'languages':
         if (selected.length === 0) {
-          const enOption = getEnglishOption(filtersConfig);
-          if (enOption) selected = [enOption];
+          selected = ['en'];
         }
-        changeLanguagesShown(
-          selected.map((opt) => opt.value),
-          setSelectedLanguages
-        );
+        changeLanguagesShown(selected, setSelectedLanguages);
         break;
       case 'types':
-        changeActiveTypes(selectedOptions.map((opt) => opt.value));
+        changeActiveTypes(selectedOptions);
+        break;
     }
 
-    setAppliedFilters((prev) => [
-      ...prev.filter((f) => f.filterKey !== key),
-      { filterKey: key, values: selectedOptions },
-    ]);
+    newAppliedFilters[key] = selected;
+
+    return newAppliedFilters;
+  };
+
+  const filtersChanged: FilterSubmitCallbackProps = (key, selectedOptions) => {
+    setAppliedFilters({
+      ...appliedFilters,
+      ...handleFilterChange(key, selectedOptions),
+    });
   };
 
   const clearAllFilters = () => {
@@ -112,19 +127,6 @@ const Filters = ({ languages, defaultAssets }: FiltersProps) => {
           break;
       }
     });
-
-    setAppliedFilters(
-      filtersConfig.map((config) => {
-        if (config.filterKey === 'languages') {
-          const enOption = getEnglishOption(filtersConfig);
-          return {
-            filterKey: config.filterKey,
-            values: enOption ? [enOption] : [],
-          };
-        }
-        return { filterKey: config.filterKey, values: [] };
-      })
-    );
   };
 
   return (

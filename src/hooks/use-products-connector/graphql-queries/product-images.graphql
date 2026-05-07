@@ -30,6 +30,9 @@ query ProductImages($limit: Int = 500, $offset: Int = 0) {
                 uri
               }
             }
+            images {
+              url
+            }
             attributesRaw(includeNames: "7_type") {
               name
               value

@@ -4,13 +4,21 @@ import { dirname, join } from 'path';
 import { writeFileSync, readFileSync } from 'fs';
 
 export async function openAllProductsScreen(page: Page) {
-  await page.goto(
-    'http://localhost:3001/mynkt-production/ct-reporting-tool/all-products'
-  );
+  await page.goto('http://localhost:3001/mynkt-production/ct-reporting-tool');
 
   await page.click('text=All product and variant attributes');
 
   await expect(page.getByRole('heading', { name: 'Products' })).toBeVisible({
+    timeout: 60000,
+  });
+}
+
+export async function openImagesScreen(page: Page) {
+  await page.goto('http://localhost:3001/mynkt-production/ct-reporting-tool');
+
+  await page.click('text=All products images');
+
+  await expect(page.getByRole('heading', { name: 'Images' })).toBeVisible({
     timeout: 60000,
   });
 }
@@ -86,6 +94,7 @@ export async function dragToReorder(
   );
   await page.waitForTimeout(300);
   await page.mouse.up();
+  await page.waitForTimeout(500);
 }
 
 export async function openColumnFilter(page: Page, headerName: string) {

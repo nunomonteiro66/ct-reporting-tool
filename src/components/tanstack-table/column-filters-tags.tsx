@@ -14,8 +14,12 @@ const ColumnFiltersTags = ({
   columnFilters,
   setColumnFilters,
 }: ColumnFiltersTagsProps) => {
-  const getLabel = (id: string) =>
-    columns.find((col) => col.key === id)?.label ?? '';
+  const getColumn = (id: string) => columns.find((col) => col.key === id);
+
+  const getLabel = (id: string) => getColumn(id)?.label ?? '';
+
+  //returns true if the column has the filter disabled
+  const filterDisabled = (id: string) => getColumn(id)?.disableFilter ?? false;
 
   const removeFilter = (columnFilter: ColumnFilter, value: string) => {
     setColumnFilters((prev) =>
@@ -36,17 +40,19 @@ const ColumnFiltersTags = ({
 
   return (
     <div className="grid grid-cols-[repeat(5,auto)] gap-2">
-      {columnFilters.map((columnFilter) =>
-        (columnFilter.value as string[]).map((value) => (
-          <Tag
-            onRemove={() => removeFilter(columnFilter, value)}
-            tone="primary"
-            horizontalConstraint="auto"
-          >
-            {`${getLabel(columnFilter.id)}: ${value}`}
-          </Tag>
-        ))
-      )}
+      {columnFilters
+        .filter((columnFilter) => !filterDisabled(columnFilter.id))
+        .map((columnFilter) =>
+          (columnFilter.value as string[]).map((value) => (
+            <Tag
+              onRemove={() => removeFilter(columnFilter, value)}
+              tone="primary"
+              horizontalConstraint="auto"
+            >
+              {`${getLabel(columnFilter.id)}: ${value}`}
+            </Tag>
+          ))
+        )}
     </div>
   );
 };

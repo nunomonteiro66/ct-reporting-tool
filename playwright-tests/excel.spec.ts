@@ -3,6 +3,7 @@ import {
   dragToReorder,
   openAllProductsScreen,
   openAttributesFilter,
+  openImagesScreen,
   setColumnFilters,
 } from './helpers';
 import * as XLSX from 'xlsx';
@@ -90,11 +91,10 @@ test('check extracted excel', async ({ page }) => {
 
   //set some column filters
   await setColumnFilters(page, 'Product Type Key', ['10120']);
-  await setColumnFilters(
-    page,
-    'Number of group of product (544_number_of_group_of_product)',
-    ['10120', '10138']
-  );
+  await setColumnFilters(page, 'Number of group of product', [
+    '10120',
+    '10138',
+  ]);
 
   //get the actual headers
   const headers = await page.locator('[id="header-label"]').allTextContents();
@@ -127,4 +127,44 @@ test('check extracted excel', async ({ page }) => {
   }
 
   expect(excelDataNormalized).toEqual(tableDataNormalized);
+});
+
+test('check extracted images', async ({ page }) => {
+  const defaultColumns = [
+    'Key',
+    'SKU',
+    'Product Name',
+    'Type',
+    'Product Type Key',
+    'Product Type Name',
+    'Product Categories',
+    'Product Selections',
+  ];
+
+  const buildWithImageColumns = (total: number) => {
+    const imageCols = Array.from({ length: total }, (_, i) => [
+      `Image ${i + 1}`,
+      `Image ${i + 1} link`,
+    ]).flat();
+    return [...defaultColumns, ...imageCols];
+  };
+
+  await openImagesScreen(page);
+
+  //search by skus
+  await page
+    .locator('div')
+    .filter({ hasText: /^All Columns$/ })
+    .nth(4)
+    .click();
+
+  const download = await downloadExcel(page);
+
+  const excelContent = await readExcel(download);
+
+  const columns = buildWithImageColumns(5);
+
+  //check headers
+  let actual = normalizeRow(excelContent[0], columns.length);
+  await expect(actual).toEqual(columns);
 });

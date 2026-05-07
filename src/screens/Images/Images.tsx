@@ -8,7 +8,7 @@ import exportTableExcel, {
   exportTableExcelManually,
 } from '../../components/tanstack-table/export-excel';
 import DataPageLayout from '../../layouts/data-page-layout';
-import { getProductSelectionsNames } from '../../utils/mappers/miscellaneous';
+import { getProductSelections } from '../../utils/mappers/miscellaneous';
 import CustomDataTable from '../../components/tanstack-table/custom-data-table';
 import { useTableContext } from './context';
 import { ImageProduct } from '../../types/images';
@@ -23,7 +23,7 @@ const defaultColumns = [
   { key: 'type', label: 'Type' },
   { key: 'product_type_key', label: 'Product Type Key' },
   { key: 'product_type_name', label: 'Product Type Name' },
-  { key: 'categories', label: 'Product categories' },
+  { key: 'categories', label: 'Product Categories' },
   { key: 'selections', label: 'Product Selections' },
 ];
 
@@ -44,6 +44,33 @@ const Images = () => {
 
   const [data, setData] = useState<ImageProduct[]>([]);
 
+  useEffect(() => {
+    const load = async () => {
+      const data = await getAllProductsImages();
+      const mapped = extractData(data);
+      setData(mapped);
+
+      //the product with most images dictates the total columns
+      const columns = [...defaultColumns, ...buildExtraColumns(mapped)];
+      setColumns(columns);
+      setVisibleColumns(columns.map((col) => col.key));
+
+      setLoading(false);
+    };
+    load();
+  }, []);
+
+  useEffect(() => {
+    const nonEmptyAssets = getColumnsKeysNonEmpty(
+      columns.map((col) => col.key).filter((col) => col.startsWith('images')),
+      table
+    );
+    setVisibleColumns((prev) => [
+      ...prev.filter((col) => !col.startsWith('images')),
+      ...nonEmptyAssets,
+    ]);
+  }, [pagination]);
+
   const extractData = (products: CTProduct[]) => {
     return products.flatMap((prod) => {
       const current = prod.masterData.current;
@@ -58,21 +85,29 @@ const Images = () => {
             product_type_key: prodType?.key,
             product_type_name: prodType?.name,
             categories: current?.categories.map((cat) => cat.name),
-            selections: getProductSelectionsNames(
-              prod.productSelectionRefs.results.map(
-                (res) => res.productSelection?.name ?? ''
-              )
+            selections: getProductSelections(
+              prod.productSelectionRefs.results,
+              variant.sku ?? ''
             ),
-            images: variant.assets
-              .filter((asset) => {
-                const custom = asset.custom?.customFieldsRaw;
-                return custom && custom.length > 0;
-              })
-              .map((asset) => {
+
+            images: variant.images
+              .map((image) => {
+                const url = image.url;
+                const filename = decodeURIComponent(
+                  url.split('/').at(-1)?.split('?')[0] ?? ''
+                );
+
+                const imageAsset = variant.assets.find(
+                  (asset) => asset.sources[0].uri === url
+                );
+                let imageOrder = imageAsset?.custom?.customFieldsRaw?.find(
+                  (custom) => custom.name === 'nkt_imageOrder'
+                )?.value[0] as Number;
+
                 return {
-                  name: asset.name ?? '',
-                  link: asset.sources[0].uri,
-                  order: Number(asset.custom?.customFieldsRaw![0].value[0]),
+                  name: filename ?? '',
+                  link: url,
+                  order: imageOrder,
                 };
               })
               .sort((asset, asset2) => asset.order - asset2.order),
@@ -92,22 +127,6 @@ const Images = () => {
       { key: `images.${i}.link`, label: `Image ${i + 1} link` },
     ]).flat();
   };
-
-  useEffect(() => {
-    const load = async () => {
-      const data = await getAllProductsImages();
-      const mapped = extractData(data);
-      setData(mapped);
-
-      //the product with most images dictates the total columns
-      const columns = [...defaultColumns, ...buildExtraColumns(mapped)];
-      setColumns(columns);
-      setVisibleColumns(columns.map((col) => col.key));
-
-      setLoading(false);
-    };
-    load();
-  }, []);
 
   const isColumnOnlyEmpty = (
     table: Table<ImageProduct>,
@@ -147,20 +166,7 @@ const Images = () => {
   };
 
   useEffect(() => {
-    const nonEmptyAssets = getColumnsKeysNonEmpty(
-      columns.map((col) => col.key).filter((col) => col.startsWith('images')),
-      table
-    );
-    setVisibleColumns((prev) => [
-      ...prev.filter((col) => !col.startsWith('images')),
-      ...nonEmptyAssets,
-    ]);
-  }, [pagination]);
-
-  useEffect(() => {
-    const random30 = [...data].sort(() => Math.random() - 0.5).slice(0, 30);
-    console.log(random30);
-    console.log(random30.map((row) => row.sku).join(', '));
+    console.log(data.find((d) => d.sku === 'C7571'));
   }, [data]);
 
   return (
